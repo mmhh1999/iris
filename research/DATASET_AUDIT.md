@@ -59,30 +59,51 @@ For component-level validation even though none support the full end-to-end task
 - **NeRF-OSR** — for borrowing its multi-time-of-day sun-relighting *evaluation protocol* (held-out time-of-day views, calibrated color chart, known sun geometry) even though its data is outdoor-only; it is the closest existing methodological template for how to structure held-out relighting evaluation.
 - **FIPT real scenes** — for validating the HDR/exposure-bracketing and CRF pipeline that IRIS already depends on, since these are the only real scenes in IRIS's own pipeline with actual HDR ground truth.
 
-## If targeted capture is concluded necessary: minimal capture protocol
+## If targeted capture is concluded necessary: phased capture protocol
 
-Given the explicit guidance that "a carefully captured 2–5 scene dataset may be scientifically more valuable than thousands of uncontrolled images," the following is a deliberately small, rigorous protocol rather than a large loose one.
+**Status: refined in session 2** (incorporating the user's own detailed capture-planning input, which improves substantially on the session-1 draft below in several ways: an explicit phased go/no-go structure, 4 conditions per room instead of 3, reused camera positions for clean cross-time comparison, a two-tier photometric budget, explicit diversity axes, and explicit train/test split design). Given the explicit guidance that "a carefully captured 2–5 scene dataset may be scientifically more valuable than thousands of uncontrolled images," this stays a deliberately phased, small-first protocol rather than committing to a large capture up front.
 
-**Scope: 3 rooms, 3 sessions each (9 total capture sessions).**
-Pick 2–3 rooms with one large, unobstructed window each (e.g., one south-facing room with a large window producing a strong, unambiguous floor sun patch at some time of day; one east- or west-facing room to get a contrasting low-sun-angle grazing case; optionally one room with a smaller/partially-obstructed window as a harder case). A 4th–5th room can be added later only if the first 2–3 prove the protocol works — do not scale up before validating the pipeline end-to-end on one room.
+### Phase 0 — one room, today: a go/no-go gate, not a dataset
 
-**Per-room fixed geometry, per-session lighting.** The room's furniture/geometry must stay physically unchanged across all sessions within that room — only the sun position changes. This is what makes the dataset scientifically useful: identical scene, varying illumination, enabling held-out relighting evaluation exactly the way NeRF-OSR does outdoors.
+**1 room x 3 time-of-day sessions x ~20 views ≈ 60 images.** Purpose: answer one narrow question — does `utils/window_geometry.py::project_window_to_plane`'s ephemeris-derived sun-direction prediction (already built and validated on synthetic data, `PHASE_A_SYNTHETIC.md`) approximately match a real observed sun patch, once real timestamp+GPS+window-bearing metadata and a real (imperfect) reconstructed mesh are involved instead of exact synthetic ground truth? This is the real-data analog of Phase A's Test 2. If it works: proceed to Phase 1. If it's badly wrong and the cause traces to mesh/window-reconstruction noise rather than the physical model itself, that's still informative (motivates a window-geometry-robustness fix) but is a reason to pause before scaling capture, not proceed blindly.
 
-**Time-of-day sessions per room (3 minimum):**
-- Morning (low, raking sun angle — long sun patch, likely from one side of the window)
-- Solar noon or peak sun altitude for the day (shortest, most compact sun patch)
-- Afternoon (raking angle from the opposite side)
-Each session is a *complete* multi-view capture of the whole room, not just a photo of the patch — the geometry is shared but each session needs its own full posed image set since indirect bounce lighting, shadows, and material appearance change with sun position too.
+### Phase 1 — three rooms: enough to run IRIS-vs-ours and the killer experiment once
 
-**Multi-view trajectory per session, consistent with what IRIS/BakedSDF-style reconstruction needs.** IRIS's own README recommends camera poses be estimated with the NeRFstudio pipeline (`transforms.json`) for custom data, and geometry reconstructed with BakedSDF in SDFStudio (their customized fork). Concretely: walk a smooth, overlapping orbit/sweep trajectory around the room (60–150 images per session, phone photogrammetry style, ~70–80% frame overlap, covering the window, the sun patch on the floor/walls, and enough of the room for SDF convergence), then run COLMAP (or NeRFstudio's `ns-process-data` wrapper around COLMAP) for poses, followed by BakedSDF/SDFStudio mesh extraction exactly as documented in `README.md`'s "Customized Data" section.
+**3 rooms x 4 time-of-day conditions x ~30 views ≈ 360 images.** If Phase 0 passes, this is enough to run the full comparison (baseline IRIS vs. this project's method) and the killer experiment (`NOVELTY_GAP.md`) at least once per room. If the hypothesis holds here, it is worth the investment of Phase 2.
 
-**Exposure/HDR handling.** Full RAW+HDR bracketing (as FIPT did with 5-stop bracketing) is the gold standard but expensive per session at 60–150 viewpoints; a realistic minimum is: shoot RAW (DNG) at a single well-chosen exposure that keeps the sun patch from full clipping where possible (or accept some clipping and record it — IRIS itself works from LDR input, so this is not disqualifying), and additionally capture a handful (5–10) of fixed-tripod HDR-bracketed shots per session specifically of the sun patch and the window itself, for radiometric ground truth and CRF/exposure validation, following the FIPT/Laval convention.
+### Phase 2 — 8-12 rooms: paper-scale
 
-**Metadata to preserve, all cheap to capture with modern phones:**
-- EXIF timestamp on every frame (preserve, do not strip on export/resize).
-- GPS coordinates from phone location services, recorded once per session (room doesn't move; confirms date/time → solar position via standard solar-position algorithms).
-- Building/window compass bearing — measured with a phone compass app held flush against the window pane, recorded once per room (this, combined with GPS + timestamp, gives physically-grounded sun-direction ground truth without needing to detect the sun in-image).
-- Window geometry — manually measured (tape measure) bounding dimensions and sill height, or annotated directly on the reconstructed mesh; cross-check against the mesh reconstruction.
-- Optional but valuable: a LiDAR scan from an iPhone Pro-class device (Polycam, Scaniverse, or Apple's own APIs) per room, captured once (geometry is fixed across sessions), to provide an independent geometry ground truth channel alongside the photogrammetric SDF reconstruction — useful for validating/debugging the BakedSDF mesh, especially for the thin, often-problematic window frame/glass geometry.
+**8-12 rooms x 4 conditions x 40-60 views ≈ 1280-2880 images**, plus **~160-240 HDR validation viewpoints** (5-10 fixed tripod positions per room-condition, bracketed). This is the scale to target for a full paper's worth of quantitative results across diverse conditions (see Diversity, below). A further extension to 15-20 rooms / 4-6 conditions (60-120 room-time captures) would let the dataset itself be positioned as a second contribution (a reusable cross-time daylight inverse-rendering benchmark) — worth considering once Phase 2 validates the core method, not before.
 
-**Why this is sufficient and why not to go bigger initially.** 3 rooms × 3 sessions with careful pose/timestamp/geo metadata already provides: (1) held-out relighting evaluation (train on 2 sessions' worth of a room's images, test on the 3rd time-of-day, analogous to NeRF-OSR's protocol), (2) physically-grounded sun-direction ground truth without manual annotation, (3) real cast sun patches at multiple angles per room, and (4) geometry good enough for IRIS's existing pipeline. Scaling to many rooms/uncontrolled images before this minimal protocol is validated risks reproducing the exact problem this audit identified in the existing datasets — large image counts with no controlled, physically-grounded daylight variation.
+### Per-room protocol (applies at every phase)
+
+**Geometry: scan once per room, not once per session.** The room's furniture/geometry must stay physically unchanged across all sessions within that room — only the sun position changes between sessions. This is what makes the dataset scientifically useful (identical scene, varying illumination, enabling held-out cross-time evaluation), and scanning geometry once (rather than per-session) is a large, low-risk time saving: reconstruct once via BakedSDF/SDFStudio (per IRIS's own README "Customized Data" section) and, if available, cross-check with a one-time LiDAR scan (iPhone Pro-class device, Polycam/Scaniverse), which is particularly useful for the thin, reconstruction-fragile window frame/aperture geometry.
+
+**Four time-of-day conditions per room, chosen from the room's actual solar trajectory (not mechanically fixed clock times like "8/11/14/17")** — compute the trajectory for the room's date/location/window-orientation first, then pick times that hit each of:
+- **T1 — no/weak direct sun**: establishes a material/daylight baseline without a confounding direct patch.
+- **T2 — sun just entering**: shadow-boundary geometry is most informative here (sharpest, most localized cue for Mode B).
+- **T3 — strong direct sun**: the core condition this project's inverse-rendering decomposition targets.
+- **T4 — sun position substantially changed from T3**: this is the held-out condition for the killer experiment (observe T1-T3, or a subset, predict T4, compare against T4's actual photograph).
+
+**Reuse camera positions across a room's sessions.** Mark floor positions (tape/chalk) and return to approximately the same viewpoints each session. This makes `I(x, v, t1)` vs `I(x, v, t2)` comparisons clean (same view, only illumination differs) rather than needing to reconcile different camera trajectories per session — valuable for both qualitative figures and any per-pixel evaluation.
+
+**Two-tier photometric capture, not uniform HDR bracketing everywhere** (this is the main efficiency gain over the session-1 draft's "5-10 HDR shots per session" note, made more systematic): (a) the main multi-view set (30-60 views/session depending on phase) shot as RAW/LDR at a single reasonable exposure — consistent with IRIS's own LDR-input design, so partial clipping of the sun patch is not disqualifying; (b) a small fixed set of **5-10 tripod positions per room, reused every session**, shot as HDR brackets (e.g. -4/-2/0/+2/+4 EV, following FIPT/Laval convention) — this is the photometric ground-truth channel for cross-time radiance comparison, kept small deliberately since bracketing every multi-view frame would make the capture budget balloon without adding much (the multi-view set's job is geometry+material recovery, not radiometric GT).
+
+**Multi-view trajectory, consistent with IRIS's own recommended pipeline.** Per IRIS's README "Customized Data" section: NeRFstudio (`ns-process-data`/COLMAP) for poses, BakedSDF in SDFStudio for the mesh. Walk a smooth, overlapping sweep (~70-80% frame overlap), covering the window, the sun patch region, and enough of the room for SDF convergence.
+
+**Metadata (all cheap with a modern phone, but precision matters for the ephemeris prior to be useful):**
+- Per-frame EXIF timestamp, preserved through export/resize — precise to the second where possible, since the ephemeris-derived sun position moves meaningfully within minutes at low elevation.
+- Per-frame/per-session: exposure, ISO, aperture, focal length, white balance (RAW capture preserves this; don't discard by exporting to a lossy/stripped format).
+- Per-session (recorded once, room doesn't move): GPS coordinates, timezone.
+- Per-room (recorded once): world-north bearing, window compass bearing (phone compass held flush against the pane), window polygon/dimensions (tape measure or mesh annotation, cross-checked against the reconstruction), general room geometry notes.
+
+### Diversity (deliberate, not incidental — matters most at Phase 2)
+
+Don't capture 8-12 near-identical rooms. Deliberately cover, across the room set: **window type** (single, double, large curtain wall, small punched window), **orientation** (E/SE/S/SW/W — different daily sun-patch trajectories), **material** (wood, carpet, concrete, paint, metal floors/walls — different albedo/specular behavior under the same sun), **sun condition** (hard direct sun, partially occluded, diffuse/overcast, mixed artificial+daylight), **room geometry** (simple rectangular, complex, deep, shallow). Additionally capture a small **"hard set"** deliberately including blinds, curtains, tree/vegetation shadows, multiple windows in one room, a reflective floor, a glass table, a strong specular object, and partially cloudy sky — not necessarily used for main training/evaluation, but valuable for a failure-case/generalization-limits section, which reviewers consistently respond well to.
+
+### Train/test splits (design up front, don't split randomly after the fact)
+
+At least three distinct splits, each answering a different question:
+1. **Novel view**: `room_i, t1, views_train -> views_test` (standard held-out-view reconstruction quality — necessary but, per `NOVELTY_GAP.md`, not sufficient evidence on its own).
+2. **Novel time (the core evaluation)**: `room_i, t1 -> room_i, t_k (k != 1)` — the killer experiment's split.
+3. **Novel room**: `rooms_train -> room_heldout`. Since this project's method is expected to be a per-scene optimization (like IRIS/FIPT themselves), "novel room" generalization means re-running the *same* method/hyperparameters on a held-out room's own data (an ablation of robustness/reproducibility across scenes), not a traditional trained-model cross-scene generalization claim — state this distinction explicitly in any eventual paper to avoid an unfounded generalization claim.

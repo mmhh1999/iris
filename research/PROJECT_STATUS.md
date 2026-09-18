@@ -1,10 +1,10 @@
 # Project Status
 
-Last updated: 2026-09-18 (session 1).
+Last updated: 2026-09-18 (session 2).
 
 ## Goal
 
-Investigate whether explicit modeling of solar geometry, window geometry, and light transmission can improve inverse rendering and relighting of real indoor scenes under daylight, addressing IRIS's lack of any outdoor/environment illumination term. See `IRIS_ARCHITECTURE_AUDIT.md` for the confirmed gap and `../` project brief (conversation) for full scope.
+**Revised in session 2 — see D0007.** Not "add explicit sun+sky to IRIS" (found, session 2, to be already substantially done single-image by the same lab — Li et al., ECCV 2022, `LITERATURE.md` §1a). Now: investigate whether **solar-geometry and window-projection constraints (jointly with a solar-ephemeris prior) resolve material-illumination ambiguity in multi-view indoor inverse rendering**, evaluated by the central test of whether the recovered decomposition **predicts a real, independently captured photograph under an unseen solar condition** (not just training-condition reconstruction quality). See `NOVELTY_GAP.md` for the full reframing and the "killer experiment" design, `TECHNICAL_PROPOSAL.md` for the (mostly unchanged) engineering plan, and `IRIS_ARCHITECTURE_AUDIT.md` for the original confirmed gap this all still rests on (IRIS has zero environment/sky illumination term, full stop — that finding is unaffected by the reframing).
 
 ## Branch
 
@@ -12,7 +12,7 @@ Investigate whether explicit modeling of solar geometry, window geometry, and li
 
 ## Current phase
 
-**Phase A/B/C core claims validated on synthetic data (PASSED).** Phase 0 (audit), Phase A (direction recovery), Phase B (intensity recovery), and Phase C's core geometric-alignment claim are done on one synthetic scene/condition; see below and `EXPERIMENTS.md` EXP0002 / `PHASE_A_SYNTHETIC.md`. Next: either (a) broaden the synthetic sweep (multiple sun angles, material-error sensitivity) before trusting these numbers as representative, or (b) move to Phase D (integrate into IRIS's actual training pipeline) once the GPU/OptiX environment is confirmed. Leaning toward (a) first since it's cheap and directly addresses the "single favorable data point" limitation already flagged, while (b) is blocked on the user's WSL2 fix anyway.
+**Phase A/B/C core claims validated on synthetic data (PASSED); GPU/OptiX environment now working; research question reframed after a critical literature finding.** Three major developments since the branch was created, all in this single continuous session: (1) Phase A/B/C synthetic validation passed, (2) the WSL2/OptiX GPU blocker was resolved end-to-end (user applied the fix, verified with an actual GPU-rendered image), (3) the user identified — and I independently verified — a directly on-point prior paper that required substantially revising the novelty claim (D0007). Next: verify IRIS's own drjit-0.4.x-era code against the now-working drjit 1.5.0 stack, then a Phase 0 real-room capture (per the user's refined `DATASET_AUDIT.md` protocol) as the next go/no-go gate, in parallel with broadening the synthetic sweep.
 
 ## What's done
 
@@ -25,21 +25,22 @@ Investigate whether explicit modeling of solar geometry, window geometry, and li
 ## What's blocked / waiting
 
 - No IRIS datasets downloaded yet (box.com links in README; ~8 scenes). Needed for full baseline reproduction, not yet done.
-- Whether IRIS's actual codebase (drjit 0.4.x-era API) runs against the now-working drjit 1.5.0/mitsuba 3.9.1 stack is untested — next immediate step.
+- Whether IRIS's actual codebase (drjit 0.4.x-era API) runs against the now-working drjit 1.5.0/mitsuba 3.9.1 stack is untested — immediate next step.
+- Real-world Phase 0 capture (`DATASET_AUDIT.md`'s refined protocol): a real-world action item for the user (needs a room with a window, a day with usable sun, ~1 hour across 3 sessions). Not blocking synthetic/engineering work.
+- Finding a collaborator with differentiable-rendering/light-transport depth: per the user's own networking plan (not recorded in detail here — see memory note below), this is entirely the user's own action (warm intros, CMU graphics seminar, etc.), not something I act on. Worth noting: the "what you need before reaching out" checklist the user described (failure example, method figure, synthetic demo, 1-page proposal) is **already substantially satisfied** by `IRIS_ARCHITECTURE_AUDIT.md` + `TECHNICAL_PROPOSAL.md` + `PHASE_A_SYNTHETIC.md`'s render — missing piece is a real-room predicted-vs-observed sun patch figure, which the Phase 0 capture above would directly produce.
 
-## What's next (in order, per project brief §24 and §4-6)
+## What's next (in order)
 
-1. Once GPU CUDA+OptiX is confirmed working: minimal smoke test (load a trivial mesh, run `ray_intersect`, run one path-tracing step) before attempting any full pipeline stage.
-2. Literature survey (`LITERATURE.md`) and novelty framing (`NOVELTY_GAP.md`) — GPU-independent, can proceed now.
-3. Dataset audit (`DATASET_AUDIT.md`) — GPU-independent, can proceed now: survey real-world daylight-indoor datasets against the required-properties table (windows, sun patches, multiview, poses, geometry, timestamps, geo/orientation, HDR/RAW, license).
-4. Download at least one IRIS-provided scene and attempt full baseline reproduction (needs GPU fix + dataset download).
-5. Phase A: tiny synthetic room+window+sun scene to validate solar-geometry recovery before touching real data or the main training pipeline.
+1. Verify IRIS's own `utils/path_tracing.py` etc. against drjit 1.5.0 (API compatibility check — Mitsuba-side calls already spot-checked OK; `.torch()` interop and the full training pipeline not yet tried).
+2. Broaden the Phase A/B synthetic sweep (multiple sun angles, material-estimation-error sensitivity) — cheap, addresses the "single favorable data point" limitation, doesn't depend on the user.
+3. Real-world Phase 0 capture (user-driven, whenever feasible) — the next real go/no-go gate per the reframed research question.
+4. Once both above land: Phase D (joint optimization integrated into IRIS's actual training stages, GPU now available).
 
 ## Open scientific questions (not yet resolved by evidence)
 
-- Does explicit sun/sky modeling actually improve *relighting* metrics, or only training-view PSNR (which would be a false positive per project brief §16)?
-- Can sun direction be recovered from window+sun-patch geometry alone (Mode B) with useful accuracy, or is metadata (Mode A) required?
-- Is any candidate real dataset actually adequate, or will targeted capture be necessary (see `DATASET_AUDIT.md` once written)?
+- Does the ephemeris+window-projection prediction actually match a real observed sun patch on real (imperfect) reconstructed geometry, or does real-world mesh/window-reconstruction noise dominate? (Phase 0's whole purpose.)
+- Does the recovered decomposition predict a real held-out time-of-day photograph better than baseline IRIS's own relighting edits — the killer experiment (`NOVELTY_GAP.md`)? Nothing else matters as much as this one.
+- Can sun direction be recovered from window+sun-patch geometry alone (Mode B) with useful accuracy on real data, or is metadata (Mode A) required to disambiguate? (Synthetic evidence so far: yes, 2.5 deg error, but only one condition tested.)
 
 ## Links
 
@@ -48,3 +49,8 @@ Investigate whether explicit modeling of solar geometry, window geometry, and li
 - [[decisions-log]] `DECISIONS.md`
 - [[experiments-registry]] `EXPERIMENTS.md`
 - [[failed-ideas]] `FAILED_IDEAS.md`
+- [[literature-survey]] `LITERATURE.md`
+- [[novelty-gap]] `NOVELTY_GAP.md`
+- [[dataset-audit]] `DATASET_AUDIT.md`
+- [[technical-proposal]] `TECHNICAL_PROPOSAL.md`
+- [[phase-a-synthetic]] `PHASE_A_SYNTHETIC.md`
