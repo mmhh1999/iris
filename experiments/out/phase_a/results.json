@@ -1,0 +1,22 @@
+{
+  "test1_analytic_self_consistency": {
+    "true_az": 200.0,
+    "true_el": 40.0,
+    "recovered_az": 200.0,
+    "recovered_el": 40.0,
+    "best_iou": 1.0,
+    "angular_error_deg": 0.0
+  },
+  "test2_render_cross_validation": {
+    "status": "OK",
+    "true_az": 200.0,
+    "true_el": 40.0,
+    "recovered_az": 196.75,
+    "recovered_el": 40.25,
+    "best_iou": 0.7621872836942549,
+    "angular_error_deg": 2.4974804450877337,
+    "cross_check_iou_at_true_direction": 0.7104828524239775,
+    "n_floor_bright_px": 17075,
+    "preview_image": "/home/minghao/projects/iris/experiments/out/phase_a/render.png"
+  }
+}

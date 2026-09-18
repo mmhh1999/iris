@@ -12,7 +12,7 @@ Investigate whether explicit modeling of solar geometry, window geometry, and li
 
 ## Current phase
 
-**Phase 0: audit + environment setup.** Not yet started: Phase A (synthetic sun-through-window validation) per the project brief's development order.
+**Phase A complete (PASSED), starting Phase B/C design.** Phase 0 (audit) and Phase A (synthetic sun-through-window validation) are done; see below and `EXPERIMENTS.md` EXP0002 / `PHASE_A_SYNTHETIC.md`.
 
 ## What's done
 
@@ -20,6 +20,7 @@ Investigate whether explicit modeling of solar geometry, window geometry, and li
 2. **Compute environment blocker found and being resolved** — see `BASELINE_REPRODUCTION.md` EXP0001. Local machine is WSL2 + RTX 5070 Ti (Blackwell). Repo's pinned `mitsuba==3.5.0`/`drjit==0.4.4` cannot initialize CUDA at all on this GPU. Newer `mitsuba==3.9.1`/`drjit==1.5.0` initializes CUDA JIT but needs OptiX, which needs manual driver-file setup under WSL2 (user is performing this now, requires a WSL restart outside my control).
 3. **Literature survey + novelty/gap analysis complete** — `LITERATURE.md` (~40 methods), `NOVELTY_GAP.md`. Key finding: sun+sky decomposition (SG-sun + SH-sky) is mature for **outdoor** scenes (NeRF-OSR→SOL-NeRF→ROS-GS/GaRe), window-aperture geometry recovery from indoor point clouds is a solved classical problem, transmissive-material recovery is mature for discrete objects — but no system combines all three with indoor SVBRDF/emitter co-optimization. `TECHNICAL_PROPOSAL.md` updated to adopt the SOL-NeRF/ROS-GS sky parameterization and Mitsuba's built-in thin-dielectric BSDF rather than inventing new machinery.
 4. **Dataset audit complete** — `DATASET_AUDIT.md`. Evaluated 18 dataset/families; verdict: no existing real-world dataset combines geometry + multiview + confirmed windows + confirmed sun patches + multi-time variation (structural gap across the field, not a close call). Concludes targeted capture (3 rooms x 3 time-of-day sessions) is necessary for real-world Phase E/F evaluation. **This is a real-world action item for the user, not something I can do — flagged to user, not yet scheduled/blocking.** In the meantime, `OpenRooms` and `I²-SDF` (synthetic, explicit window-emitter ground truth) are recommended for component-level validation, and IRIS's own 8 scenes remain the baseline-reproduction target.
+5. **Phase A synthetic validation PASSED** — `PHASE_A_SYNTHETIC.md`, EXP0002. Built `utils/solar_geometry.py` (Mode A, pvlib-backed, self-tested), `utils/window_geometry.py` (window-to-plane sun-patch projection), `utils/sun_patch.py` (IoU-based Mode B geometric search). Recovered a known synthetic sun direction (ground truth az=200/el=40 deg) to 2.5 deg angular error from an independent Mitsuba (`llvm_ad_rgb`, CPU) render's actual sun patch — not just a circular self-consistency check. Residual error traced to an unmodeled occluder (a glossy sphere's self-shadow biting into the patch), confirmed not Monte-Carlo noise via an spp ablation. This is a real, physically-grounded pass of the project brief's Phase A gate, run entirely on CPU without waiting for the GPU/OptiX fix (D0004).
 
 ## What's blocked / waiting
 

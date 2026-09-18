@@ -10,3 +10,8 @@ notebooks/*
 /data/
 lightning_logs/
 *-Copy*
+/.venv/
+/.venv*/
+/experiments/out/
+!/experiments/out/phase_a/render.png
+!/experiments/out/phase_a/results.json

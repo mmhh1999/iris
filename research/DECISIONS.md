@@ -63,3 +63,15 @@ Format per entry: Decision / Alternatives considered / Evidence / Reason.
 **Evidence:** `DATASET_AUDIT.md`'s verdict is unambiguous (not a case where evidence fails to distinguish direction) — the open question is purely whether the user is willing/able to do the physical capture work, which doesn't gate anything upstream of Phase E (real-world validation). Phases A-D are synthetic/methods-development and unaffected either way.
 
 **Reason:** Keeps the project moving on the parts that don't depend on the user's answer, consistent with "own the project... don't ask me what to do next" — while still surfacing the real-world action item clearly rather than silently assuming the user will do the capture, since that's genuinely their call (their house/office access, their time).
+
+---
+
+## D0006 — Phase A render-validation camera must be chosen so its center ray actually hits the floor inside the room
+
+**Decision:** When building the Phase A synthetic-scene camera pose (`experiments/phase_a_sun_recovery.py::build_scene`), explicitly check/derive that the camera's center ray intersects `z=0` at a `y` value inside `ROOM_Y`, not just "looks vaguely downward."
+
+**Alternatives considered:** Pick a camera pose by eye/intuition (as first attempted) and debug empirically if results look wrong.
+
+**Evidence:** The first camera pose (`origin=[0,3.3,1.4]`, `target=[0,0,1]`) produced a render-based cross-validation IoU of only 0.25 at the *true* sun direction (i.e. the analytic model appeared to disagree substantially with Mitsuba's own renderer). Diagnosed by projecting the center ray analytically: it crossed `z=0` at `y=-8.25`, far outside the room (`y` must be in `[0,4]`), meaning the camera saw almost none of the floor region where the patch actually falls — a small sliver only, dominated by grazing-angle sampling noise. This was purely a test-harness bug, not a flaw in `utils/window_geometry.py`'s projection math (confirmed separately: Test 1's analytic self-consistency check, which doesn't depend on any camera, passed with 0.0 error throughout). After fixing the camera pose to look steeply enough at the floor (and correcting a second, related bug — placing the camera above the ceiling, `z=2.6 > ROOM_Z_TOP=2.5` — which put it outside the room entirely and rendered pure black), true-direction cross-check IoU rose to 0.71 and recovered-direction angular error fell to 2.5°.
+
+**Reason:** This class of bug (camera geometrically unable to see the phenomenon being measured) is easy to introduce and easy to misdiagnose as an algorithm failure. Recording the check explicitly so future scene-authoring code (Phase C/D real-scene camera selection, in particular) verifies visibility of the region of interest analytically before trusting a low-overlap or zero-detection result as evidence against the model.
