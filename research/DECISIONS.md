@@ -39,3 +39,27 @@ Format per entry: Decision / Alternatives considered / Evidence / Reason.
 **Reason:** This is a decision with real cost (user must find/download a ~1GB Windows-host driver package, do manual admin file copies, and restart their entire WSL environment, killing any other work they have running there) and affects the entire compute strategy for the rest of the project (CPU porting would mean weeks of additional engineering risk vs. the documented, if fiddly, native fix). Per the operating instructions, this is exactly the kind of "irreversible or expensive decision" / "existing evidence cannot distinguish which direction is best without the user's own constraints" (do they have another idle WSL session? is this their primary dev machine?) that warrants asking rather than assuming.
 
 **User's answer:** Fix WSL2/OptiX directly (recommended option). Exact instructions relayed in-conversation; awaiting confirmation of restart before re-verifying.
+
+---
+
+## D0004 — Phase A synthetic validation proceeds on CPU (LLVM Mitsuba variant), not blocked on the GPU/OptiX fix
+
+**Decision:** Build and run the Phase A synthetic room+window+sun scene (project brief §12 Phase A) using `mitsuba.set_variant('llvm_ad_rgb')` rather than waiting for the CUDA/OptiX fix from D0003 to land.
+
+**Alternatives considered:** Block all rendering work until GPU+OptiX is confirmed working, to stay closest to the "real" execution environment IRIS will eventually train under.
+
+**Evidence:** `BASELINE_REPRODUCTION.md` EXP0001 already confirmed the LLVM/CPU Mitsuba backend loads scenes and renders correctly on this machine today. Phase A's scene is intentionally tiny (one room, one window, a handful of shapes) — exactly the regime where CPU ray tracing is fast enough to not matter, unlike the full IRIS training pipeline (hash-grid BRDF MLP + thousands of training rays per step across a full scan mesh), which does need CUDA for practical runtime.
+
+**Reason:** No reason to let an infrastructure blocker stall algorithmic validation work that doesn't need the blocked resource. If Phase A's synthetic sun-recovery test passes on CPU, that result is unaffected by which Mitsuba backend eventually runs full IRIS training. Revisit only if Phase A CPU runtimes turn out to be impractically slow (not expected at this scale).
+
+---
+
+## D0005 — Dataset audit concludes targeted real-world capture is needed; treated as a user-owned action item, not a blocker for algorithm work
+
+**Decision:** Note the `DATASET_AUDIT.md` verdict (no existing dataset suffices; recommend a 3-room x 3-session capture protocol) to the user as a recommendation requiring their real-world effort (access to rooms with windows, time across a day, a phone/camera), but continue Phase A/B/C algorithmic work on synthetic data in parallel rather than pausing to wait for a capture decision.
+
+**Alternatives considered:** Treat this as a hard blocking decision requiring the user's explicit go/no-go before any further work (per the escalation criteria's "multiple scientifically distinct directions" clause).
+
+**Evidence:** `DATASET_AUDIT.md`'s verdict is unambiguous (not a case where evidence fails to distinguish direction) — the open question is purely whether the user is willing/able to do the physical capture work, which doesn't gate anything upstream of Phase E (real-world validation). Phases A-D are synthetic/methods-development and unaffected either way.
+
+**Reason:** Keeps the project moving on the parts that don't depend on the user's answer, consistent with "own the project... don't ask me what to do next" — while still surfacing the real-world action item clearly rather than silently assuming the user will do the capture, since that's genuinely their call (their house/office access, their time).
