@@ -38,7 +38,7 @@ Format per entry: Decision / Alternatives considered / Evidence / Reason.
 
 **Reason:** This is a decision with real cost (user must find/download a ~1GB Windows-host driver package, do manual admin file copies, and restart their entire WSL environment, killing any other work they have running there) and affects the entire compute strategy for the rest of the project (CPU porting would mean weeks of additional engineering risk vs. the documented, if fiddly, native fix). Per the operating instructions, this is exactly the kind of "irreversible or expensive decision" / "existing evidence cannot distinguish which direction is best without the user's own constraints" (do they have another idle WSL session? is this their primary dev machine?) that warrants asking rather than assuming.
 
-**User's answer:** Fix WSL2/OptiX directly (recommended option). Exact instructions relayed in-conversation; awaiting confirmation of restart before re-verifying.
+**User's answer:** Fix WSL2/OptiX directly (recommended option). **Resolved 2026-09-18** — see `BASELINE_REPRODUCTION.md` EXP0001 for the full procedure actually used (including a TrustedInstaller-ownership snag with `takeown`/`icacls` that needed the Explorer GUI path instead) and verification (full GPU path-traced render confirmed working).
 
 ---
 
