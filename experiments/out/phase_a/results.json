@@ -18,5 +18,39 @@
     "cross_check_iou_at_true_direction": 0.7104828524239775,
     "n_floor_bright_px": 17075,
     "preview_image": "/home/minghao/projects/iris/experiments/out/phase_a/render.png"
+  },
+  "test3_intensity_recovery": {
+    "recovered_el_deg_used": 40.25,
+    "L_ambient": [
+      0.0359879694879055,
+      0.02983705699443817,
+      0.025165457278490067
+    ],
+    "L_patch": [
+      0.8058978915214539,
+      0.700568675994873,
+      0.561531126499176
+    ],
+    "L_direct": [
+      0.7699099183082581,
+      0.6707316040992737,
+      0.5363656878471375
+    ],
+    "recovered_E_sun": [
+      6.239110573639582,
+      5.9295278570695205,
+      5.215848826496221
+    ],
+    "true_E_sun": [
+      6.0,
+      5.7,
+      5.0
+    ],
+    "relative_error_per_channel": [
+      0.0398517622732637,
+      0.040268045099915835,
+      0.04316976529924421
+    ],
+    "mean_relative_error": 0.04109652422414125
   }
 }

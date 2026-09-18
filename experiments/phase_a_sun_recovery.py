@@ -331,10 +331,66 @@ def test_render_cross_validation():
     return result
 
 
+# ---------------------------------------------------------------------------
+# Test 3 (Phase B): sun intensity recovery, given a (recovered) sun
+# direction and known material albedo -- per project brief Phase B:
+# "Hold geometry/material approximately fixed. Recover: sun
+# azimuth/elevation, sun intensity." Direction recovery is Test 2
+# above; this is the intensity half.
+# ---------------------------------------------------------------------------
+
+FLOOR_ALBEDO = np.array([0.6, 0.55, 0.5])   # matches the 'room' BSDF reflectance above
+GT_SUN_IRRADIANCE = np.array([6.0, 5.7, 5.0])  # matches the 'sun' emitter above
+
+
+def test_intensity_recovery(recovered_el_deg):
+    """Invert the simple Lambertian relation L_direct = (albedo/pi) *
+    E_sun * cos(theta_i) for E_sun, using the *recovered* (not ground
+    truth) sun elevation from Test 2 -- i.e. this chains off Test 2's
+    own output, testing the realistic use case (direction unknown,
+    recovered from geometry, then used for intensity) rather than an
+    isolated intensity-only test with direction given for free.
+
+    The direct-only radiance is estimated by subtracting a local
+    ambient baseline (mean radiance of floor pixels outside the patch
+    but still floor) from the patch's mean radiance -- both linear
+    contributions to the rendered pixel value, so this subtraction is
+    exact in the noise-free limit and only approximate insofar as the
+    ambient term isn't perfectly uniform across the floor (it varies
+    slightly with each point's solid-angle view of the window).
+    """
+    scene, _ = build_scene()
+    image_np, _, floor_mask, patch_mask = render_and_extract_floor_patch(scene)
+
+    ambient_pixels = floor_mask & ~patch_mask
+    if ambient_pixels.sum() < 50 or patch_mask.sum() < 50:
+        return dict(status='FAILED', reason='not enough floor/patch pixels for radiometric estimate')
+
+    L_ambient = image_np[ambient_pixels].mean(axis=0)
+    L_patch = image_np[patch_mask].mean(axis=0)
+    L_direct = np.clip(L_patch - L_ambient, 1e-6, None)
+
+    cos_theta = np.sin(np.deg2rad(recovered_el_deg))
+    E_sun_recovered = L_direct * np.pi / (FLOOR_ALBEDO * cos_theta)
+
+    rel_err = np.abs(E_sun_recovered - GT_SUN_IRRADIANCE) / GT_SUN_IRRADIANCE
+    result = dict(
+        recovered_el_deg_used=recovered_el_deg,
+        L_ambient=L_ambient.tolist(), L_patch=L_patch.tolist(), L_direct=L_direct.tolist(),
+        recovered_E_sun=E_sun_recovered.tolist(), true_E_sun=GT_SUN_IRRADIANCE.tolist(),
+        relative_error_per_channel=rel_err.tolist(),
+        mean_relative_error=float(rel_err.mean()),
+    )
+    print('[Test 3: sun intensity recovery]', json.dumps(result, indent=2))
+    return result
+
+
 if __name__ == '__main__':
     r1 = test_analytic_self_consistency()
     r2 = test_render_cross_validation()
+    r3 = test_intensity_recovery(recovered_el_deg=r2['recovered_el'])
     with open(os.path.join(OUT_DIR, 'results.json'), 'w') as f:
         json.dump({'test1_analytic_self_consistency': r1,
-                   'test2_render_cross_validation': r2}, f, indent=2)
+                   'test2_render_cross_validation': r2,
+                   'test3_intensity_recovery': r3}, f, indent=2)
     print('\nResults written to', os.path.join(OUT_DIR, 'results.json'))
