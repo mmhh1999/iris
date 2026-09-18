@@ -1,0 +1,41 @@
+# Decisions Log
+
+Format per entry: Decision / Alternatives considered / Evidence / Reason.
+
+---
+
+## D0001 — Work on a dedicated branch, don't touch `main`
+
+**Decision:** All research/engineering work happens on `research/daylight-aware-iris`, branched from `main` @ `d2d4381`. `main` stays byte-identical to the reproducible baseline.
+
+**Alternatives considered:** Work directly on `main` with careful commits.
+
+**Evidence:** Project brief §19 explicitly requires this ("Do development on a separate branch... Keep original baseline behavior reproducible").
+
+**Reason:** Guarantees the original IRIS baseline remains runnable/comparable at any point, and lets `git diff main...research/daylight-aware-iris` serve as the audit trail for every architectural change.
+
+---
+
+## D0002 — Audit before touching any algorithm code
+
+**Decision:** Completed a full read-only architecture audit (`IRIS_ARCHITECTURE_AUDIT.md`) before writing any new module or modifying existing files.
+
+**Alternatives considered:** Start prototyping a sun/sky emitter immediately based on the project brief's assumptions about IRIS's structure.
+
+**Evidence:** Project brief §2 explicitly forbids modifying the core algorithm before the audit is complete, and the audit's findings (e.g., the exact "assume zero background lighting" comments, the emitter-extraction saturation threshold, the purely-reflective BSDF flags) are specific enough that skipping this step would have risked building on wrong assumptions about, e.g., whether a transmission BSDF path already partially existed (it doesn't).
+
+**Reason:** Scientific rigor requires verifying the failure mode mechanically, not just architecturally-plausibly, before proposing a fix. The audit also surfaced a concrete, previously-unstated mechanism (emitter-mesh misclassification of sun patches via LDR saturation threshold) that materially shapes which experiments are worth running first.
+
+---
+
+## D0003 — GPU/CUDA reproducibility issue treated as a genuine blocking decision, escalated to user
+
+**Decision:** Asked the user how to resolve the WSL2 + Blackwell (RTX 5070 Ti) OptiX initialization failure rather than silently picking a workaround (e.g., silently porting to CPU/LLVM Mitsuba backend, or silently proceeding with only non-GPU work indefinitely).
+
+**Alternatives considered:** (a) full LLVM/CPU Mitsuba port, (b) cloud GPU, (c) pause GPU work and continue survey-only work, (d) user fixes WSL2/OptiX driver setup (**chosen by user**).
+
+**Evidence:** `BASELINE_REPRODUCTION.md` EXP0001. Confirmed via direct testing: old pinned `mitsuba==3.5.0`/`drjit==0.4.4` cannot init CUDA JIT at all on this GPU (works fine on other, non-Blackwell GPUs presumably, since raw `cuInit`/`cuDeviceGetCount` succeed via ctypes and LLVM/CPU drjit backend works). Newer `mitsuba==3.9.1`/`drjit==1.5.0` inits CUDA JIT but fails at OptiX scene-acceleration-structure init (`could not find symbol optixQueryFunctionTable`) because WSL2's `/usr/lib/wsl/lib/libnvoptix.so.1` is only a 10KB loader stub, not the real OptiX runtime; Mitsuba's own documented fix requires copying `libnvidia-rtcore.so`, `libnvidia-ptxjitcompiler.so`, `libnvidia-gpucomp.so`, `nvoptix.bin` from a matching Linux driver package (identified: 580.105.xx, matching Windows driver 581.80) into `C:\Windows\System32\lxss\lib` — a Windows-host, admin-level action outside this sandboxed session's reach, followed by `wsl --shutdown` which would terminate this very session.
+
+**Reason:** This is a decision with real cost (user must find/download a ~1GB Windows-host driver package, do manual admin file copies, and restart their entire WSL environment, killing any other work they have running there) and affects the entire compute strategy for the rest of the project (CPU porting would mean weeks of additional engineering risk vs. the documented, if fiddly, native fix). Per the operating instructions, this is exactly the kind of "irreversible or expensive decision" / "existing evidence cannot distinguish which direction is best without the user's own constraints" (do they have another idle WSL session? is this their primary dev machine?) that warrants asking rather than assuming.
+
+**User's answer:** Fix WSL2/OptiX directly (recommended option). Exact instructions relayed in-conversation; awaiting confirmation of restart before re-verifying.
