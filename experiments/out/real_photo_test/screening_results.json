@@ -1,0 +1,50 @@
+{
+  "real1.jpg": {
+    "expected": "positive: window-mullion grid patch on tile floor, hard edges",
+    "n_candidates": 5,
+    "top_score": 0.6783216936617559,
+    "top_rectangularity": 0.7533989554044025,
+    "top_polygon_vertices": 6,
+    "top_area_frac": 0.004055539898886384
+  },
+  "neg_candidate_2.jpg": {
+    "expected": "positive: two window patches on reflective epoxy floor",
+    "n_candidates": 5,
+    "top_score": 0.727711655536828,
+    "top_rectangularity": 0.8506554481179269,
+    "top_polygon_vertices": 4,
+    "top_area_frac": 0.005959828694661458
+  },
+  "neg_candidate_3.jpg": {
+    "expected": "positive (harder): soft diagonal patch through glass doors, mall",
+    "n_candidates": 3,
+    "top_score": 0.6149865215698136,
+    "top_rectangularity": 0.8082652741059523,
+    "top_polygon_vertices": 3,
+    "top_area_frac": 0.0021347112920937043
+  },
+  "neg_final.jpg": {
+    "expected": "positive: clean rectangular patch on carpet, window out of frame",
+    "n_candidates": 3,
+    "top_score": 0.6583151421623499,
+    "top_rectangularity": 0.7003834965126585,
+    "top_polygon_vertices": 4,
+    "top_area_frac": 0.020308484765051395
+  },
+  "neg_final2.jpg": {
+    "expected": "negative: bright window (blinds), but no distinct cast floor patch",
+    "n_candidates": 3,
+    "top_score": 0.6644749274241005,
+    "top_rectangularity": 0.7070691355949066,
+    "top_polygon_vertices": 5,
+    "top_area_frac": 0.027350899066617862
+  },
+  "neg_candidate_1.jpg": {
+    "expected": "negative: outdoor photo, not applicable",
+    "n_candidates": 4,
+    "top_score": 0.5604774714613666,
+    "top_rectangularity": 0.6086062837516315,
+    "top_polygon_vertices": 6,
+    "top_area_frac": 0.004046122233072917
+  }
+}
