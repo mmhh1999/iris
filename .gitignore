@@ -15,3 +15,5 @@ lightning_logs/
 /experiments/out/
 !/experiments/out/phase_a/render.png
 !/experiments/out/phase_a/results.json
+!/experiments/out/identifiability/*.png
+!/experiments/out/identifiability/results.json

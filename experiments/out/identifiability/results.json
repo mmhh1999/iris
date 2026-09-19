@@ -1,0 +1,48 @@
+{
+  "test1_uniform_albedo": {
+    "name": "test1_uniform_albedo",
+    "albedo_rmse_baseline": 0.22633381187915802,
+    "albedo_rmse_ours": 0.09822092950344086,
+    "pixel_fit_rmse_baseline": 0.01017120573669672,
+    "pixel_fit_rmse_ours": 0.010621204040944576,
+    "recovered_patch_ours": {
+      "cx": 52.252464294433594,
+      "cy": 44.9781608581543,
+      "hw": 16.067899703979492,
+      "hh": 10.820344924926758
+    },
+    "true_patch": {
+      "cx": 50.0,
+      "cy": 45.0,
+      "hw": 14.0,
+      "hh": 11.0
+    },
+    "recovered_E_ambient_ours": 0.34205278754234314,
+    "true_E_ambient": 0.3,
+    "recovered_E_sun_ours": 1.8289225101470947,
+    "true_E_sun": 2.5
+  },
+  "test2_real_material_edge": {
+    "name": "test2_real_material_edge",
+    "albedo_rmse_baseline": 0.22034795582294464,
+    "albedo_rmse_ours": 0.12354784458875656,
+    "pixel_fit_rmse_baseline": 0.010441622696816921,
+    "pixel_fit_rmse_ours": 0.0107887526974082,
+    "recovered_patch_ours": {
+      "cx": 52.01555633544922,
+      "cy": 44.994815826416016,
+      "hw": 15.915872573852539,
+      "hh": 10.871858596801758
+    },
+    "true_patch": {
+      "cx": 50.0,
+      "cy": 45.0,
+      "hw": 14.0,
+      "hh": 11.0
+    },
+    "recovered_E_ambient_ours": 0.36956921219825745,
+    "true_E_ambient": 0.3,
+    "recovered_E_sun_ours": 1.5845493078231812,
+    "true_E_sun": 2.5
+  }
+}

@@ -31,10 +31,12 @@ Last updated: 2026-09-18 (session 2).
 
 ## What's next (in order)
 
-1. Verify IRIS's own `utils/path_tracing.py` etc. against drjit 1.5.0 (API compatibility check — Mitsuba-side calls already spot-checked OK; `.torch()` interop and the full training pipeline not yet tried).
-2. Broaden the Phase A/B synthetic sweep (multiple sun angles, material-estimation-error sensitivity) — cheap, addresses the "single favorable data point" limitation, doesn't depend on the user.
-3. Real-world Phase 0 capture (user-driven, whenever feasible) — the next real go/no-go gate per the reframed research question.
-4. Once both above land: Phase D (joint optimization integrated into IRIS's actual training stages, GPU now available).
+1. ~~Verify IRIS's own `utils/path_tracing.py` against drjit 1.5.0~~ **Done, EXP0003/D0008** — found and fixed two real API breaks (one silent-shape-transpose bug), verified geometrically correct, not just error-free.
+2. ~~Identifiability mechanism test~~ **Done, EXP0004, PASSED** — `IDENTIFIABILITY_ABLATION.md`. Controlled proxy experiment (not full IRIS) directly supports Contribution One: the solar constraint improves recovered albedo (2.3x / 1.8x RMSE reduction across two sub-tests) while *not* improving pixel-fit error — the improvement is in disentanglement, not reconstruction, which is the core defensible claim.
+3. Broaden the Phase A/B synthetic sweep (multiple sun angles, material-estimation-error sensitivity) and the identifiability ablation (noise/config sweep) — cheap, addresses "single favorable data point" concerns, doesn't depend on the user.
+4. Download an IRIS scene (needs the user — box.com requires a browser session, not scriptable) to attempt real baseline reproduction and eventually re-run the identifiability test with IRIS's actual `NGPBRDF`, the evidence that would really matter for a paper.
+5. Real-world Phase 0 capture (user-driven, whenever feasible) — the next real go/no-go gate per the reframed research question.
+6. Phase D: joint optimization integrated into IRIS's actual training stages (GPU confirmed working, core ray-intersection primitive confirmed compatible — the remaining engineering, `model/external_lighting.py` / `model/transmission.py` per `TECHNICAL_PROPOSAL.md`, not yet built).
 
 ## Open scientific questions (not yet resolved by evidence)
 
