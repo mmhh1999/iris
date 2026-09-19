@@ -27,25 +27,35 @@ def ray_intersect(scene,xs,ds):
         valid: B whether a valid intersection
     """
     # convert pytorch tensor to mitsuba
-    xs_mi = mitsuba.Point3f(xs[...,0],xs[...,1],xs[...,2])
-    ds_mi = mitsuba.Vector3f(ds[...,0],ds[...,1],ds[...,2])
+    # NOTE (drjit>=1.x / mitsuba>=3.6 compatibility, see research/DECISIONS.md D0008):
+    # the direct `mitsuba.Point3f(torch_tensor, torch_tensor, torch_tensor)` convenience
+    # constructor used by older drjit (0.4.x, this repo's original pin) now requires each
+    # component to be pre-wrapped as a drjit scalar array.
+    xs_mi = mitsuba.Point3f(mitsuba.Float(xs[...,0]),mitsuba.Float(xs[...,1]),mitsuba.Float(xs[...,2]))
+    ds_mi = mitsuba.Vector3f(mitsuba.Float(ds[...,0]),mitsuba.Float(ds[...,1]),mitsuba.Float(ds[...,2]))
     rays_mi = mitsuba.Ray3f(xs_mi,ds_mi)
-    
+
     ret = scene.ray_intersect_preliminary(rays_mi)
     idx = mitsuba.Int(ret.prim_index).torch().long()
     ret = ret.compute_surface_interaction(rays_mi)
-    
-    positions = ret.p.torch()
-    normals = ret.n.torch()
+
+    # NOTE (drjit>=1.x compatibility): `.torch()` on a multi-component drjit array
+    # (Point3f/Vector3f/Point2f/...) now returns shape (components, B) instead of the
+    # (B, components) layout this codebase assumes throughout -- a silent shape-transpose,
+    # not an error, so it must be corrected here at the single point of conversion rather
+    # than chasing it through every downstream consumer. Scalar arrays (Float/Int, e.g.
+    # `idx` and `ts` below) are unaffected and need no transpose.
+    positions = ret.p.torch().T.contiguous()
+    normals = ret.n.torch().T.contiguous()
     normals = NF.normalize(normals,dim=-1)
-    
+
     # check if invalid intersection
     ts  = ret.t.torch()
     valid = (~ts.isinf())
-    
+
     idx[~valid] = -1
     normals = double_sided(-ds,normals)
-    return positions,normals,ret.uv.torch(),idx,valid
+    return positions,normals,ret.uv.torch().T.contiguous(),idx,valid
 
 def path_tracing_det_diff(scene,emitter_net,material_net,
                           positions,wis,normals,uvs,triangle_idxs,

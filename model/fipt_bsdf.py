@@ -42,24 +42,31 @@ class FIPTBSDF(mitsuba.BSDF):
         self.m_components  = [reflection_flags]
         self.m_flags = reflection_flags
 
+    # NOTE (drjit>=1.x / mitsuba>=3.6 compatibility, see research/DECISIONS.md D0008):
+    # same two fixes as utils/path_tracing.py::ray_intersect throughout this class:
+    # (1) `.torch()` on a multi-component array (Vector3f/Point3f/Point2f) now returns
+    #     shape (components, B) instead of (B, components) -- needs `.T.contiguous()`;
+    #     scalar arrays (Float/Int) are unaffected.
+    # (2) constructing a multi-component array from raw torch tensor slices now requires
+    #     each component to be pre-wrapped, e.g. `mitsuba.Float(x[...,0])`.
     def sample(self, ctx, si, sample1, sample2, active):
-        wi = si.to_world(si.wi).torch()
-        normal = si.n.torch()
-        position = si.p.torch()
+        wi = si.to_world(si.wi).torch().T.contiguous()
+        normal = si.n.torch().T.contiguous()
+        position = si.p.torch().T.contiguous()
         triangle_idx = mitsuba.Int(si.prim_index).torch().long()
-        
+
         mat = self.material_net(position)
         wo,pdf,brdf_weight = self.material_net.sample_brdf(
-            sample1.torch().reshape(-1),sample2.torch(),
+            sample1.torch().reshape(-1),sample2.torch().T.contiguous(),
             wi,normal,mat
         )
         brdf_weight[self.is_emitter[triangle_idx]] = 1.0 # increase from 0 to 1 to fill the emitter region color
-        
+
         pdf_mi = mitsuba.Float(pdf.squeeze(-1))
-        wo_mi = mitsuba.Vector3f(wo[...,0],wo[...,1],wo[...,2])
+        wo_mi = mitsuba.Vector3f(mitsuba.Float(wo[...,0]),mitsuba.Float(wo[...,1]),mitsuba.Float(wo[...,2]))
         wo_mi = si.to_local(wo_mi)
-        value_mi = mitsuba.Vector3f(brdf_weight[...,0],brdf_weight[...,1],brdf_weight[...,2])
-        
+        value_mi = mitsuba.Vector3f(mitsuba.Float(brdf_weight[...,0]),mitsuba.Float(brdf_weight[...,1]),mitsuba.Float(brdf_weight[...,2]))
+
         bs = mitsuba.BSDFSample3f()
         bs.pdf = pdf_mi
         bs.sampled_component = mitsuba.UInt32(0)
@@ -70,29 +77,29 @@ class FIPTBSDF(mitsuba.BSDF):
         return (bs,value_mi)
 
     def eval(self, ctx, si, wo, active):
-        wo = si.to_world(wo).torch()
-        wi = si.to_world(si.wi).torch()
+        wo = si.to_world(wo).torch().T.contiguous()
+        wi = si.to_world(si.wi).torch().T.contiguous()
         triangle_idx = mitsuba.Int(si.prim_index).torch().long()
-        
-        normal = si.n.torch()
-        position = si.p.torch()
-        
+
+        normal = si.n.torch().T.contiguous()
+        position = si.p.torch().T.contiguous()
+
         mat = self.material_net(position)
-        
+
         brdf,_ = self.material_net.eval_brdf(wo,wi,normal,mat)
         brdf[self.is_emitter[triangle_idx]]=0
-        brdf = mitsuba.Vector3f(brdf[...,0],brdf[...,1],brdf[...,2])
-        
+        brdf = mitsuba.Vector3f(mitsuba.Float(brdf[...,0]),mitsuba.Float(brdf[...,1]),mitsuba.Float(brdf[...,2]))
+
         return brdf
 
 
     def pdf(self, ctx, si, wo,active):
-        wo = si.to_world(wo).torch()
-        wi = si.to_world(si.wi).torch()
-        
-        normal = si.n.torch()
-        position = si.p.torch()
-        
+        wo = si.to_world(wo).torch().T.contiguous()
+        wi = si.to_world(si.wi).torch().T.contiguous()
+
+        normal = si.n.torch().T.contiguous()
+        position = si.p.torch().T.contiguous()
+
         mat = self.material_net(position)
         _,pdf = self.material_net.eval_brdf(wo,wi,normal,mat)
         pdf = mitsuba.Float(pdf.squeeze(-1))
@@ -100,20 +107,20 @@ class FIPTBSDF(mitsuba.BSDF):
 
 
     def eval_pdf(self, ctx, si, wo, active=True):
-        wo = si.to_world(wo).torch()
-        wi = si.to_world(si.wi).torch()
+        wo = si.to_world(wo).torch().T.contiguous()
+        wi = si.to_world(si.wi).torch().T.contiguous()
         triangle_idx = mitsuba.Int(si.prim_index).torch().long()
-        
-        normal = si.n.torch()
-        position = si.p.torch()
-        
+
+        normal = si.n.torch().T.contiguous()
+        position = si.p.torch().T.contiguous()
+
         mat = self.material_net(position)
-        
+
         brdf,pdf = self.material_net.eval_brdf(wo,wi,normal,mat)
         brdf[self.is_emitter[triangle_idx]] = 0
-        brdf = mitsuba.Vector3f(brdf[...,0],brdf[...,1],brdf[...,2])
+        brdf = mitsuba.Vector3f(mitsuba.Float(brdf[...,0]),mitsuba.Float(brdf[...,1]),mitsuba.Float(brdf[...,2]))
         pdf = mitsuba.Float(pdf.squeeze(-1))
-        
+
         return brdf,pdf
     def to_string(self,):
         return 'FIPTBSDF'
