@@ -1,3 +1,13 @@
+## EXP0012 — real scanned geometry rerendering (2026-09-19)
+
+Completed 32 observations on the unchanged 4.22M-triangle ScanNet++ room
+`1b379f1114`: four cameras, four simulated sun conditions, two seeds. Known
+uniform diffuse material. Train-only direction error 0.486°, heldout direct-sun
+proxy IoU 0.900 (oracle 0.980). Camera yaw ±1° reduces mean IoU to 0.822.
+Full pipeline rerun reproduced all mask metrics. Not a full IRIS comparison or
+real-photo sim-to-real result. See `SCANNETPP_RERENDER_ZH.md` and
+`research/evidence/EXP0012/`.
+
 # Experiments Registry
 
 Every experiment gets a unique ID (EXP0001, EXP0002, ...), never reused, never deleted (even if superseded or negative). Full detail for each experiment lives in `BASELINE_REPRODUCTION.md` (baseline/environment experiments) or a future `research/PHASE_A_SYNTHETIC.md` / `research/PHASE_B_...md` etc. as phases progress; this file is the index.
@@ -14,3 +24,15 @@ Every experiment gets a unique ID (EXP0001, EXP0002, ...), never reused, never d
 | EXP0005 | 2026-09-19 | (branch `research/daylight-aware-iris`, `utils/sun_patch.py::screen_image_for_sun_patches` + `experiments/real_photo_screening.py` added) | Real-world screening (partial) | A shape-aware (rectangularity + polygon simplicity) 2D screening heuristic will identify real, photographed sun patches better than IRIS's own brightness-only emitter criterion, on genuinely real (not synthetic) photographs. | **Mixed, informative PASS on the tested claim; does not yet enable the full geometry-grounded comparison the user asked for** | 6 real, freely-licensed photos (via Openverse). 3/4 true positives cleanly identified as top candidate over other bright regions (incl. visible windows in the same frame) using only shape evidence. Found 2 genuine limitations: (1) window-mullion grid patches fragment into disconnected components under simple connected-component analysis; (2) 2D-only screening cannot always distinguish a bright light source (window aperture) from a receiving surface (floor) without 3D geometry -- confirmed on a deliberately chosen hard-negative image where the top "candidate" was the window itself. No full posed-multiview + geometry real dataset was autonomously accessible (IRIS's box.com links, ScanNet++, and the IVGM dataset -- the best content match, explicitly documenting sunlit office windows -- are all gated behind registration or an impractical 282GB Baidu Pan bulk download; see `DECISIONS.md` D0009), so the geometry-grounded Mode B comparison against real data remains blocked on dataset access, not on this screening step. Full writeup: `REAL_PHOTO_SCREENING.md`. |
 
 Future rows will be appended here as experiments run; do not renumber or reorder existing rows.
+
+| EXP0006 | 2026-09-19 | pre-existing unfinished working tree | ScanNet++ 2D screening | Shape scores identify likely sunlit real scenes | Exploratory / unvalidated | Existing `scannetpp_screening.py` uses raw resized images and heuristic scores called confidence; window false positives observed in prior session. No accuracy claim. Superseded for geometry work by EXP0007. |
+| EXP0007 | 2026-09-19 | `63434ae58efbb3b16fd9d2e6eb67403b689b98c6` + source hashes in manifest | Real geometry audit | Mesh support resolves bright-window ambiguity | Mixed / insufficient | 2 scenes, 24 train images, seed 0, 59 candidates: 55 surface-supported, 4 rejected. Artificial lights survive. First attempt invalidated for omitted world-coordinate transform. 3,741 poses independently verified against COLMAP; 7 unit tests pass. Full config, hashes and metrics: `research/evidence/EXP0007/`; interpretation: `SCANNETPP_GEOMETRY_AUDIT.md`. |
+
+| EXP0008 | 2026-09-19 | `63434ae5` + archived exact sources | Real daylight visibility | A one-view solar fit predicts disjoint same-sequence views better than appearance memory | **Negative for superiority; useful component result** | ScanNet++ `1b379f1114`, seed 0, 1 fit + 3 frozen views, 4,000 floor points/view. Mean proxy IoU: physical 0.709, memorized floor 0.833, wrong direction 0.319. No sun GT/real relighting/IRIS comparison. Config, metrics, hashes and source snapshots: `evidence/EXP0008/`; report `REAL_SUN_VISIBILITY.md`. |
+| EXP0009 | 2026-09-19 | `63434ae5` + archived exact sources | Controlled changed-light prediction | Explicit solar visibility predicts a changed illumination better than freezing train appearance | **Positive component validation** | Phase A room, 3 off-grid solar conditions x seeds 0/1, 32 spp, 192x144. Mean angular error 0.430°, heldout proxy IoU 0.951 vs 0.148. Known geometry/materials and supplied relative angular change. On-grid pilot retained, not headline. `evidence/EXP0009/`, `HELDOUT_SUN_CONTROL.md`. |
+| EXP0010 | 2026-09-19 | `63434ae5` + archived exact sources | Window-model control | Explicit portals outperform using implicit mesh openings alone | **Exploratory, confounded** | Same real split/config/seed as EXP0008, separately fitted implicit-opening direction 345/44 degrees, heldout proxy IoU 0.624. Explicit model differs in ray termination at aperture; exterior mesh occlusion is a confound. Neither direction has independent GT. `evidence/EXP0010/`, `REAL_SUN_VISIBILITY.md`. |
+
+EXP0007 extension: 53 scenes, 424 images, 1,141 candidates, 916 supported / 225
+rejected; one scene skipped for bound mismatch. Initial broad run aborted and is
+retained with failure record. `evidence/EXP0007_expanded/` holds the completed
+rerun. These are screening counts, not precision or recall.

@@ -1,0 +1,22 @@
+{
+  "render.py": "4c42989af099035fbd28faffdf4de48d446119793caf05144fd3f05620858156",
+  "initialize.py": "325a4905111ebf76efc51b239fd071f910809c8d4a70b0c705d235437be440f3",
+  "train_brdf_crf.py": "4a7e9bc53af342c78fded98b52d28cc128633feac93ffc5c1d9f4e2dcfface8e",
+  "train_emitter.py": "cf6535a494653f0cc4b2673dae0812d4b1a4891387a82af07916afd273c14d08",
+  "slf_bake.py": "64000f51ce69ce8f2464eab3c7b10141c0313d4fb6ec63cc990b89af89b9207a",
+  "slf_refine.py": "8eced4dadff594b228c6c59dd3930e035fcb88118ccd0008512b1d1bd0a8efbc",
+  "bake_shading.py": "8af9fe936640df01dab7e0953cc1dc2f49973328e47aed9054f70e2fdd223c6d",
+  "refine_shading.py": "a0b1abfce1e4cc9fbd32312864a249cfec6b12f4d1d4e2fbeca7f5e9cea735d4",
+  "extract_emitter_ldr.py": "59b50708c1227438c8e5de53f84613390e16d1012aeae3724f82d934630d85b6",
+  "utils/path_tracing.py": "64511049ea9f97bc3a124259b0d67b9f117e262c9cfdfc2cf2ae0c3e5965daa0",
+  "model/brdf.py": "8b610ab0eea8a253f08260214a0195bb17da03b7997c28817ea54887c9ee8ac8",
+  "model/emitter.py": "44daf70b9e8fa759b6b349b5a2db1fa1c83555023c19abd7d253cd1a50de3521",
+  "model/slf.py": "8027b9aacf942287d71f791081cce20532ae4c4bc1f362bdc047b8b47e420245",
+  "crf/model_crf.py": "adf8fb1feb4e878fa4238b8f1cd50f801ed14672a94d6cf6e66d366ab885a6e2",
+  "configs/config.py": "b7bde74f0cad72deef0ae00ca136c4fd7544da6d530ee8dd2943b69805255be3",
+  "const.py": "485ab2ac02d01474bd25889f9bb5864e742c0b0817f8b17b9b91518bb4bd2be3",
+  "experiments/fetch_official_baseline.py": "46962d16349a06b60964c7faf337cb5f5bd899824a5bca4fe167bbfdf3f3bad9",
+  "experiments/build_tcnn_local.py": "353e64d8bdc338d5f4460da3b93f75f2249b5513ee545d00e3abc270efb28ec4",
+  "experiments/run_original_iris.py": "aac5d6e015c02f8eff1274885fd3c174d7c68f2409a73e162f00ca3e70139b61",
+  "experiments/visualize_iris_baseline.py": "c42bea6b50464671997a8338161d124ffc0829454aa50cc7982d0a3b31ae9899"
+}

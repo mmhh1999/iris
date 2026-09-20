@@ -1,0 +1,120 @@
+diff --git a/initialize.py b/initialize.py
+index 6e8ec2d..580f4ac 100644
+--- a/initialize.py
++++ b/initialize.py
+@@ -393,6 +393,7 @@ if __name__ == '__main__':
+     # add PROGRAM level args
+     parser.add_argument('--experiment_name', type=str, required=True)
+     parser.add_argument('--max_epochs', type=int, default=500)
++    parser.add_argument('--max_steps', type=int, default=-1, help='Optional bounded training check; -1 runs all epochs.')
+     parser.add_argument('--log_path', type=str, default='./logs')
+     parser.add_argument('--ft', type=str, default=None)
+     parser.add_argument('--checkpoint_path', type=str, default='./checkpoints')
+@@ -424,14 +425,14 @@ if __name__ == '__main__':
+     model = ModelTrainer(hparams)
+     
+     
+-    # Update to lightning 1.9
+-    trainer = Trainer.from_argparse_args(
+-        args,
+-        accelerator='gpu', devices=[0], gpus=None, 
++    # Explicit arguments work with both Lightning 1.9 and 2.x.
++    trainer = Trainer(
++        accelerator='gpu', devices=[args.device if args.device is not None else 0],
+         # logger=logger,
+         callbacks=[checkpoint_callback],
+         log_every_n_steps=1,
+-        max_epochs=args.max_epochs, 
++        max_epochs=args.max_epochs,
++        max_steps=args.max_steps,
+     )
+ 
+     start_time = time.time()
+diff --git a/render.py b/render.py
+index e45bec5..fd02695 100644
+--- a/render.py
++++ b/render.py
+@@ -67,6 +67,8 @@ def main():
+     parser.add_argument('--split', type=str, default='val')
+     parser.add_argument('--ckpt', type=str, default='last.ckpt')
+     parser.add_argument('--light_type', type=str, default='slf', choices=['slf', 'area'])
++    parser.add_argument('--max_frames', type=int, default=None,
++                        help='Optional frame limit for a bounded runtime check; default renders the full split.')
+     parser.set_defaults(resume=False)
+     args = parser.parse_args()
+     args.gpus = [args.device]
+@@ -154,7 +156,10 @@ def main():
+     ssim_list = []
+     SPP = args.SPP
+     spp = args.spp
+-    for i in tqdm(range(len(dataset))):
++    frame_count = len(dataset) if args.max_frames is None else min(len(dataset), args.max_frames)
++    if frame_count <= 0:
++        raise ValueError('max_frames must be positive')
++    for i in tqdm(range(frame_count)):
+         batch = dataset[i]
+         rays = batch['rays'].to(device)
+         rays_x = rays[..., :3]
+diff --git a/train_brdf_crf.py b/train_brdf_crf.py
+index 56248d2..97f3334 100644
+--- a/train_brdf_crf.py
++++ b/train_brdf_crf.py
+@@ -516,6 +516,7 @@ if __name__ == '__main__':
+     # add PROGRAM level args
+     parser.add_argument('--experiment_name', type=str, required=True)
+     parser.add_argument('--max_epochs', type=int, default=500)
++    parser.add_argument('--max_steps', type=int, default=-1, help='Optional bounded training check; -1 runs all epochs.')
+     parser.add_argument('--log_path', type=str, default='./logs')
+     parser.add_argument('--ft', type=str, default=None)
+     parser.add_argument('--checkpoint_path', type=str, default='./checkpoints')
+@@ -547,13 +548,13 @@ if __name__ == '__main__':
+     # setup model trainer
+     model = ModelTrainer(hparams)
+     
+-    # Update to lightning 1.9
+-    trainer = Trainer.from_argparse_args(
+-        args,
+-        accelerator='gpu', devices=[0], gpus=None, 
++    # Explicit arguments work with both Lightning 1.9 and 2.x.
++    trainer = Trainer(
++        accelerator='gpu', devices=[args.device if args.device is not None else 0],
+         callbacks=[checkpoint_callback],
+         log_every_n_steps=1,
+-        max_epochs=args.max_epochs, 
++        max_epochs=args.max_epochs,
++        max_steps=args.max_steps,
+     )
+ 
+     start_time = time.time()
+diff --git a/train_emitter.py b/train_emitter.py
+index 959beaf..56dc93b 100644
+--- a/train_emitter.py
++++ b/train_emitter.py
+@@ -395,6 +395,7 @@ if __name__ == '__main__':
+     # add PROGRAM level args
+     parser.add_argument('--experiment_name', type=str, required=True)
+     parser.add_argument('--max_epochs', type=int, default=500)
++    parser.add_argument('--max_steps', type=int, default=-1, help='Optional bounded training check; -1 runs all epochs.')
+     parser.add_argument('--log_path', type=str, default='./logs')
+     parser.add_argument('--ft', type=str, default=None)
+     parser.add_argument('--checkpoint_path', type=str, default='./checkpoints')
+@@ -425,14 +426,14 @@ if __name__ == '__main__':
+     # setup model trainer
+     model = ModelTrainer(hparams)
+     
+-    # Update to lightning 1.9
+-    trainer = Trainer.from_argparse_args(
+-        args,
+-        accelerator='gpu', devices=[0], gpus=None, 
++    # Explicit arguments work with both Lightning 1.9 and 2.x.
++    trainer = Trainer(
++        accelerator='gpu', devices=[args.device if args.device is not None else 0],
+         # logger=logger,
+         callbacks=[checkpoint_callback],
+         log_every_n_steps=1,
+-        max_epochs=args.max_epochs, 
++        max_epochs=args.max_epochs,
++        max_steps=args.max_steps,
+     )
+ 
+     start_time = time.time()

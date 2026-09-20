@@ -1,0 +1,8 @@
+{
+  "user_supplied_url": "https://zju-kjl-jointlab-azure.kujiale.com/zju-kjl-jointlab/interiorverse/InteriorVerse_dataset.txt",
+  "observed_http_status": 404,
+  "replacement": "https://huggingface.co/datasets/Lez/InteriorVerse",
+  "endorsement": "official author repository README August 2026",
+  "downloaded_shard": "dataset_85/part_0.zip",
+  "full_dataset_downloaded": false
+}

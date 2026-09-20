@@ -119,3 +119,29 @@ Format per entry: Decision / Alternatives considered / Evidence / Reason.
 **Reason:** All four real dataset paths investigated are genuinely gated in ways that require either the user's action (registration, regional access to a specific cloud service) or are impractical to attempt blindly from this environment — this is not a case of insufficient effort, it's a real, confirmed accessibility landscape (worth recording so a future session doesn't re-investigate the same four options from scratch). Rather than treat this as fully blocking, the screening component is valuable to build and validate now regardless of which dataset eventually becomes available — it is the same first-stage tool either way, and testing it on real (if uncurated, ungeoreferenced) photos is a genuine, if partial, piece of real-world validation, honestly scoped as such in `REAL_PHOTO_SCREENING.md` (EXP0005) rather than oversold as the full geometry-grounded comparison the user actually asked for.
 
 **Follow-up owned by the user:** either complete ScanNet++'s registration, or attempt/facilitate the IVGM Baidu Pan download (they may have better access to that service than this sandboxed environment), or proceed with the Phase 0 real-room capture (`DATASET_AUDIT.md`) — any one of these unblocks the real geometry-grounded comparison. Not treated as urgent/blocking for continued engineering work in the meantime.
+
+## D0010 — 2026-09-19: coordinate validation before interpreting real-data screening
+
+Decision: use official undistorted image/intrinsic pairs, invert both ScanNet++
+world and camera transforms, verify against COLMAP, and retain all geometry
+screening outputs as evidence rather than semantic labels. Alternative: reuse
+only the camera-axis flip and declare all mesh hits sunlit surfaces. Rejected:
+EXP0007 invalidated first run reversed the apparent conclusion (55 rejected vs
+4 after correction); artificial light remains after filtering. CPU Mitsuba avoids
+this session's GPU access restriction without changing IRIS training behavior.
+See `SCANNETPP_GEOMETRY_AUDIT.md`. Original baseline remains unreproduced.
+
+## D0011 — 2026-09-19: falsify static-view gains before claiming relighting gains
+
+Expanded screening selected room `1b379f1114` for its visible cast shadows. Fit a
+single view and freeze the direction before disjoint-view evaluation (EXP0008).
+Do not call a 0.709 heldout-view proxy IoU an advantage over SLF: a nearest-neighbor
+static appearance control scores 0.833. Retain this negative comparison. Add
+controlled changed-illumination validation (EXP0009): off-grid angular error
+0.430 degrees, changed-light IoU 0.951 vs 0.148 frozen appearance. Known geometry,
+materials and relative angular change make this component evidence only.
+
+An implicit-mesh-opening control (EXP0010) selects a different solar direction and
+scores 0.624. Visibility termination differs from the explicit-portal model, so
+this comparison alone cannot attribute the difference to explicit window labels.
+See `REAL_SUN_VISIBILITY.md` and `HELDOUT_SUN_CONTROL.md` for provenance and limits.

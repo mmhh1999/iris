@@ -1,0 +1,1465 @@
+{
+  "summary": {
+    "fit": {
+      "azimuth": 224.0,
+      "elevation": 23.0,
+      "train_iou": 0.906721536351166,
+      "angular_error_deg": 0.4858316308256028
+    },
+    "test_mean_iou": 0.8997089225404351,
+    "test_oracle_mean_iou": 0.97970821016119,
+    "test_wrong_sun_mean_iou": 0.33941760012948435,
+    "test_mean_window_crossing_fraction": 0.9878650030576814,
+    "test_receiver_noise_iou": {
+      "0.01": 0.5022848762794418,
+      "0.05": 0.41847830169076183
+    },
+    "n_renders": 32,
+    "evaluation_seconds": 9.592241086997092,
+    "disclosure": "Real scanned geometry with synthetic materials and lighting. Component direction/visibility evaluation, not a learned BRDF, full IRIS comparison, or demonstrated sim-to-real transfer. Direct-only images are privileged synthetic observations.",
+    "independent_rooms": 1
+  },
+  "observations": [
+    {
+      "condition": "train",
+      "view": 0,
+      "seed": 101,
+      "path": "train/view_0_seed_101",
+      "estimated_sun": {
+        "iou": 0.9224334600760457,
+        "tp": 7278,
+        "fp": 467,
+        "fn": 145,
+        "n": 32484
+      },
+      "oracle_sun": {
+        "iou": 0.9775832338506433,
+        "tp": 7370,
+        "fp": 116,
+        "fn": 53,
+        "n": 32484
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.29296977660972406,
+        "tp": 4459,
+        "fp": 7797,
+        "fn": 2964,
+        "n": 32484
+      },
+      "unoccluded_fraction": 0.2304519147888191,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.681538872562116,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.5172189733593242,
+          "tp": 3980,
+          "fp": 272,
+          "fn": 3443,
+          "n": 32484
+        },
+        "0.05": {
+          "iou": 0.4697944255265481,
+          "tp": 3725,
+          "fp": 506,
+          "fn": 3698,
+          "n": 32484
+        }
+      }
+    },
+    {
+      "condition": "train",
+      "view": 0,
+      "seed": 202,
+      "path": "train/view_0_seed_202",
+      "estimated_sun": {
+        "iou": 0.9227647431832594,
+        "tp": 7276,
+        "fp": 469,
+        "fn": 140,
+        "n": 32484
+      },
+      "oracle_sun": {
+        "iou": 0.9771792490380788,
+        "tp": 7365,
+        "fp": 121,
+        "fn": 51,
+        "n": 32484
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.29301958722229526,
+        "tp": 4458,
+        "fp": 7798,
+        "fn": 2958,
+        "n": 32484
+      },
+      "unoccluded_fraction": 0.2304519147888191,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.681538872562116,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.517295188556567,
+          "tp": 3978,
+          "fp": 274,
+          "fn": 3438,
+          "n": 32484
+        },
+        "0.05": {
+          "iou": 0.46928220007569066,
+          "tp": 3720,
+          "fp": 511,
+          "fn": 3696,
+          "n": 32484
+        }
+      }
+    },
+    {
+      "condition": "train",
+      "view": 1,
+      "seed": 101,
+      "path": "train/view_1_seed_101",
+      "estimated_sun": {
+        "iou": 0.8753268198706481,
+        "tp": 6361,
+        "fp": 430,
+        "fn": 476,
+        "n": 29219
+      },
+      "oracle_sun": {
+        "iou": 0.9783424776205603,
+        "tp": 6776,
+        "fp": 89,
+        "fn": 61,
+        "n": 29219
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.3629501019098664,
+        "tp": 4808,
+        "fp": 6410,
+        "fn": 2029,
+        "n": 29219
+      },
+      "unoccluded_fraction": 0.2349498613915603,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.7232337946103423,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.48965995836224846,
+          "tp": 3528,
+          "fp": 368,
+          "fn": 3309,
+          "n": 29219
+        },
+        "0.05": {
+          "iou": 0.3868520859671302,
+          "tp": 3060,
+          "fp": 1073,
+          "fn": 3777,
+          "n": 29219
+        }
+      }
+    },
+    {
+      "condition": "train",
+      "view": 1,
+      "seed": 202,
+      "path": "train/view_1_seed_202",
+      "estimated_sun": {
+        "iou": 0.875671210243701,
+        "tp": 6360,
+        "fp": 431,
+        "fn": 472,
+        "n": 29219
+      },
+      "oracle_sun": {
+        "iou": 0.9787633631898295,
+        "tp": 6775,
+        "fp": 90,
+        "fn": 57,
+        "n": 29219
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.3619557835961669,
+        "tp": 4797,
+        "fp": 6421,
+        "fn": 2035,
+        "n": 29219
+      },
+      "unoccluded_fraction": 0.2349498613915603,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.7232337946103423,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.48813982521847693,
+          "tp": 3519,
+          "fp": 377,
+          "fn": 3313,
+          "n": 29219
+        },
+        "0.05": {
+          "iou": 0.387799012783192,
+          "tp": 3064,
+          "fp": 1069,
+          "fn": 3768,
+          "n": 29219
+        }
+      }
+    },
+    {
+      "condition": "train",
+      "view": 2,
+      "seed": 101,
+      "path": "train/view_2_seed_101",
+      "estimated_sun": {
+        "iou": 0.9231416078035655,
+        "tp": 5489,
+        "fp": 352,
+        "fn": 105,
+        "n": 27047
+      },
+      "oracle_sun": {
+        "iou": 0.9767932489451476,
+        "tp": 5556,
+        "fp": 94,
+        "fn": 38,
+        "n": 27047
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.2646722996117835,
+        "tp": 3477,
+        "fp": 7543,
+        "fn": 2117,
+        "n": 27047
+      },
+      "unoccluded_fraction": 0.20889562613228824,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.5888495575221239,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.5098343685300207,
+          "tp": 2955,
+          "fp": 202,
+          "fn": 2639,
+          "n": 27047
+        },
+        "0.05": {
+          "iou": 0.48051075268817206,
+          "tp": 2860,
+          "fp": 358,
+          "fn": 2734,
+          "n": 27047
+        }
+      }
+    },
+    {
+      "condition": "train",
+      "view": 2,
+      "seed": 202,
+      "path": "train/view_2_seed_202",
+      "estimated_sun": {
+        "iou": 0.9247601413903384,
+        "tp": 5494,
+        "fp": 347,
+        "fn": 100,
+        "n": 27047
+      },
+      "oracle_sun": {
+        "iou": 0.9754040758959944,
+        "tp": 5552,
+        "fp": 98,
+        "fn": 42,
+        "n": 27047
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.26476857490864797,
+        "tp": 3478,
+        "fp": 7542,
+        "fn": 2116,
+        "n": 27047
+      },
+      "unoccluded_fraction": 0.20889562613228824,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.5888495575221239,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.5127052722558341,
+          "tp": 2966,
+          "fp": 191,
+          "fn": 2628,
+          "n": 27047
+        },
+        "0.05": {
+          "iou": 0.48225399495374266,
+          "tp": 2867,
+          "fp": 351,
+          "fn": 2727,
+          "n": 27047
+        }
+      }
+    },
+    {
+      "condition": "train",
+      "view": 3,
+      "seed": 101,
+      "path": "train/view_3_seed_101",
+      "estimated_sun": {
+        "iou": 0.8837316176470589,
+        "tp": 3846,
+        "fp": 417,
+        "fn": 89,
+        "n": 27489
+      },
+      "oracle_sun": {
+        "iou": 0.9715497878712254,
+        "tp": 3893,
+        "fp": 72,
+        "fn": 42,
+        "n": 27489
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.17082101112519363,
+        "tp": 2426,
+        "fp": 10267,
+        "fn": 1509,
+        "n": 27489
+      },
+      "unoccluded_fraction": 0.14423951398741314,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.5316519546027743,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.5046999276934201,
+          "tp": 2094,
+          "fp": 214,
+          "fn": 1841,
+          "n": 27489
+        },
+        "0.05": {
+          "iou": 0.4453662005214506,
+          "tp": 1879,
+          "fp": 284,
+          "fn": 2056,
+          "n": 27489
+        }
+      }
+    },
+    {
+      "condition": "train",
+      "view": 3,
+      "seed": 202,
+      "path": "train/view_3_seed_202",
+      "estimated_sun": {
+        "iou": 0.884571165785238,
+        "tp": 3847,
+        "fp": 416,
+        "fn": 86,
+        "n": 27489
+      },
+      "oracle_sun": {
+        "iou": 0.9725274725274725,
+        "tp": 3894,
+        "fp": 71,
+        "fn": 39,
+        "n": 27489
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.17059776103640076,
+        "tp": 2423,
+        "fp": 10270,
+        "fn": 1510,
+        "n": 27489
+      },
+      "unoccluded_fraction": 0.14423951398741314,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.5316519546027743,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.503855421686747,
+          "tp": 2091,
+          "fp": 217,
+          "fn": 1842,
+          "n": 27489
+        },
+        "0.05": {
+          "iou": 0.4431818181818182,
+          "tp": 1872,
+          "fp": 291,
+          "fn": 2061,
+          "n": 27489
+        }
+      }
+    },
+    {
+      "condition": "validation",
+      "view": 0,
+      "seed": 101,
+      "path": "validation/view_0_seed_101",
+      "estimated_sun": {
+        "iou": 0.9225853421776412,
+        "tp": 11405,
+        "fp": 682,
+        "fn": 275,
+        "n": 32484
+      },
+      "oracle_sun": {
+        "iou": 0.9914799352475079,
+        "tp": 11637,
+        "fp": 57,
+        "fn": 43,
+        "n": 32484
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.42783029744062717,
+        "tp": 7422,
+        "fp": 5668,
+        "fn": 4258,
+        "n": 32484
+      },
+      "unoccluded_fraction": 0.3599926117473218,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.9893107576534975,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.5159552424368007,
+          "tp": 6225,
+          "fp": 385,
+          "fn": 5455,
+          "n": 32484
+        },
+        "0.05": {
+          "iou": 0.4341723136495644,
+          "tp": 5382,
+          "fp": 716,
+          "fn": 6298,
+          "n": 32484
+        }
+      }
+    },
+    {
+      "condition": "validation",
+      "view": 0,
+      "seed": 202,
+      "path": "validation/view_0_seed_202",
+      "estimated_sun": {
+        "iou": 0.9228465025906736,
+        "tp": 11399,
+        "fp": 688,
+        "fn": 265,
+        "n": 32484
+      },
+      "oracle_sun": {
+        "iou": 0.9902862985685071,
+        "tp": 11622,
+        "fp": 72,
+        "fn": 42,
+        "n": 32484
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.42756632064590544,
+        "tp": 7414,
+        "fp": 5676,
+        "fn": 4250,
+        "n": 32484
+      },
+      "unoccluded_fraction": 0.3599926117473218,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.9893107576534975,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.5163886814372252,
+          "tp": 6223,
+          "fp": 387,
+          "fn": 5441,
+          "n": 32484
+        },
+        "0.05": {
+          "iou": 0.4333440929632021,
+          "tp": 5370,
+          "fp": 728,
+          "fn": 6294,
+          "n": 32484
+        }
+      }
+    },
+    {
+      "condition": "validation",
+      "view": 1,
+      "seed": 101,
+      "path": "validation/view_1_seed_101",
+      "estimated_sun": {
+        "iou": 0.9432025745846743,
+        "tp": 10844,
+        "fp": 333,
+        "fn": 320,
+        "n": 29219
+      },
+      "oracle_sun": {
+        "iou": 0.9876367517566486,
+        "tp": 11104,
+        "fp": 79,
+        "fn": 60,
+        "n": 29219
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.42245179969730867,
+        "tp": 6420,
+        "fp": 4033,
+        "fn": 4744,
+        "n": 29219
+      },
+      "unoccluded_fraction": 0.382730415140833,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.9778234820710007,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.514854065323141,
+          "tp": 5927,
+          "fp": 348,
+          "fn": 5237,
+          "n": 29219
+        },
+        "0.05": {
+          "iou": 0.44396127338365604,
+          "tp": 5411,
+          "fp": 1024,
+          "fn": 5753,
+          "n": 29219
+        }
+      }
+    },
+    {
+      "condition": "validation",
+      "view": 1,
+      "seed": 202,
+      "path": "validation/view_1_seed_202",
+      "estimated_sun": {
+        "iou": 0.9438212018436386,
+        "tp": 10853,
+        "fp": 324,
+        "fn": 322,
+        "n": 29219
+      },
+      "oracle_sun": {
+        "iou": 0.9884382781928139,
+        "tp": 11114,
+        "fp": 69,
+        "fn": 61,
+        "n": 29219
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.42280113150450627,
+        "tp": 6427,
+        "fp": 4026,
+        "fn": 4748,
+        "n": 29219
+      },
+      "unoccluded_fraction": 0.382730415140833,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.9778234820710007,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.5146254665393629,
+          "tp": 5929,
+          "fp": 346,
+          "fn": 5246,
+          "n": 29219
+        },
+        "0.05": {
+          "iou": 0.4432060317980659,
+          "tp": 5408,
+          "fp": 1027,
+          "fn": 5767,
+          "n": 29219
+        }
+      }
+    },
+    {
+      "condition": "validation",
+      "view": 2,
+      "seed": 101,
+      "path": "validation/view_2_seed_101",
+      "estimated_sun": {
+        "iou": 0.8384118190212373,
+        "tp": 6356,
+        "fp": 1018,
+        "fn": 207,
+        "n": 27047
+      },
+      "oracle_sun": {
+        "iou": 0.9847639161261126,
+        "tp": 6528,
+        "fp": 66,
+        "fn": 35,
+        "n": 27047
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.2507784928378659,
+        "tp": 3624,
+        "fp": 7888,
+        "fn": 2939,
+        "n": 27047
+      },
+      "unoccluded_fraction": 0.24379783340111658,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.9824082499241735,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.4921985815602837,
+          "tp": 3470,
+          "fp": 487,
+          "fn": 3093,
+          "n": 27047
+        },
+        "0.05": {
+          "iou": 0.4096536375017388,
+          "tp": 2945,
+          "fp": 626,
+          "fn": 3618,
+          "n": 27047
+        }
+      }
+    },
+    {
+      "condition": "validation",
+      "view": 2,
+      "seed": 202,
+      "path": "validation/view_2_seed_202",
+      "estimated_sun": {
+        "iou": 0.8379305793849808,
+        "tp": 6349,
+        "fp": 1025,
+        "fn": 203,
+        "n": 27047
+      },
+      "oracle_sun": {
+        "iou": 0.984901102219538,
+        "tp": 6523,
+        "fp": 71,
+        "fn": 29,
+        "n": 27047
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.2501038062283737,
+        "tp": 3614,
+        "fp": 7898,
+        "fn": 2938,
+        "n": 27047
+      },
+      "unoccluded_fraction": 0.24379783340111658,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.9824082499241735,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.49148453022991767,
+          "tp": 3463,
+          "fp": 494,
+          "fn": 3089,
+          "n": 27047
+        },
+        "0.05": {
+          "iou": 0.4094959621275411,
+          "tp": 2941,
+          "fp": 630,
+          "fn": 3611,
+          "n": 27047
+        }
+      }
+    },
+    {
+      "condition": "validation",
+      "view": 3,
+      "seed": 101,
+      "path": "validation/view_3_seed_101",
+      "estimated_sun": {
+        "iou": 0.8541921932434798,
+        "tp": 4880,
+        "fp": 683,
+        "fn": 150,
+        "n": 27489
+      },
+      "oracle_sun": {
+        "iou": 0.9816893089190786,
+        "tp": 4986,
+        "fp": 49,
+        "fn": 44,
+        "n": 27489
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.26496232963684074,
+        "tp": 3130,
+        "fp": 6783,
+        "fn": 1900,
+        "n": 27489
+      },
+      "unoccluded_fraction": 0.18316417476081343,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.9785501489572989,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.496274217585693,
+          "tp": 2664,
+          "fp": 338,
+          "fn": 2366,
+          "n": 27489
+        },
+        "0.05": {
+          "iou": 0.42212148685403444,
+          "tp": 2328,
+          "fp": 485,
+          "fn": 2702,
+          "n": 27489
+        }
+      }
+    },
+    {
+      "condition": "validation",
+      "view": 3,
+      "seed": 202,
+      "path": "validation/view_3_seed_202",
+      "estimated_sun": {
+        "iou": 0.8521693491952415,
+        "tp": 4871,
+        "fp": 692,
+        "fn": 153,
+        "n": 27489
+      },
+      "oracle_sun": {
+        "iou": 0.980507974010632,
+        "tp": 4980,
+        "fp": 55,
+        "fn": 44,
+        "n": 27489
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.26488271657210605,
+        "tp": 3128,
+        "fp": 6785,
+        "fn": 1896,
+        "n": 27489
+      },
+      "unoccluded_fraction": 0.18316417476081343,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.9785501489572989,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.49599254426840633,
+          "tp": 2661,
+          "fp": 341,
+          "fn": 2363,
+          "n": 27489
+        },
+        "0.05": {
+          "iou": 0.4223230490018149,
+          "tp": 2327,
+          "fp": 486,
+          "fn": 2697,
+          "n": 27489
+        }
+      }
+    },
+    {
+      "condition": "test_a",
+      "view": 0,
+      "seed": 101,
+      "path": "test_a/view_0_seed_101",
+      "estimated_sun": {
+        "iou": 0.8462532299741602,
+        "tp": 3275,
+        "fp": 414,
+        "fn": 181,
+        "n": 32484
+      },
+      "oracle_sun": {
+        "iou": 0.9757212225078549,
+        "tp": 3416,
+        "fp": 45,
+        "fn": 40,
+        "n": 32484
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.29980308500164093,
+        "tp": 1827,
+        "fp": 2638,
+        "fn": 1629,
+        "n": 32484
+      },
+      "unoccluded_fraction": 0.10654476049747567,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.9791967639410575,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.4782372143634385,
+          "tp": 1758,
+          "fp": 220,
+          "fn": 1698,
+          "n": 32484
+        },
+        "0.05": {
+          "iou": 0.379796397807361,
+          "tp": 1455,
+          "fp": 375,
+          "fn": 2001,
+          "n": 32484
+        }
+      }
+    },
+    {
+      "condition": "test_a",
+      "view": 0,
+      "seed": 202,
+      "path": "test_a/view_0_seed_202",
+      "estimated_sun": {
+        "iou": 0.846830530401035,
+        "tp": 3273,
+        "fp": 416,
+        "fn": 176,
+        "n": 32484
+      },
+      "oracle_sun": {
+        "iou": 0.9776760160274757,
+        "tp": 3416,
+        "fp": 45,
+        "fn": 33,
+        "n": 32484
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.29908076165462905,
+        "tp": 1822,
+        "fp": 2643,
+        "fn": 1627,
+        "n": 32484
+      },
+      "unoccluded_fraction": 0.10654476049747567,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.9791967639410575,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.4799563676029452,
+          "tp": 1760,
+          "fp": 218,
+          "fn": 1689,
+          "n": 32484
+        },
+        "0.05": {
+          "iou": 0.3804916317991632,
+          "tp": 1455,
+          "fp": 375,
+          "fn": 1994,
+          "n": 32484
+        }
+      }
+    },
+    {
+      "condition": "test_a",
+      "view": 1,
+      "seed": 101,
+      "path": "test_a/view_1_seed_101",
+      "estimated_sun": {
+        "iou": 0.9330427006483345,
+        "tp": 8347,
+        "fp": 337,
+        "fn": 262,
+        "n": 29219
+      },
+      "oracle_sun": {
+        "iou": 0.9874090331523623,
+        "tp": 8548,
+        "fp": 48,
+        "fn": 61,
+        "n": 29219
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.4228271923648596,
+        "tp": 5405,
+        "fp": 4174,
+        "fn": 3204,
+        "n": 29219
+      },
+      "unoccluded_fraction": 0.2941921352544577,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.9905770125639832,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.5277216610549944,
+          "tp": 4702,
+          "fp": 301,
+          "fn": 3907,
+          "n": 29219
+        },
+        "0.05": {
+          "iou": 0.43833580980683506,
+          "tp": 4130,
+          "fp": 813,
+          "fn": 4479,
+          "n": 29219
+        }
+      }
+    },
+    {
+      "condition": "test_a",
+      "view": 1,
+      "seed": 202,
+      "path": "test_a/view_1_seed_202",
+      "estimated_sun": {
+        "iou": 0.9335198656966984,
+        "tp": 8341,
+        "fp": 343,
+        "fn": 251,
+        "n": 29219
+      },
+      "oracle_sun": {
+        "iou": 0.9886613444405877,
+        "tp": 8545,
+        "fp": 51,
+        "fn": 47,
+        "n": 29219
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.4227215784528656,
+        "tp": 5399,
+        "fp": 4180,
+        "fn": 3193,
+        "n": 29219
+      },
+      "unoccluded_fraction": 0.2941921352544577,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.9905770125639832,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.5270133662810289,
+          "tp": 4692,
+          "fp": 311,
+          "fn": 3900,
+          "n": 29219
+        },
+        "0.05": {
+          "iou": 0.4380577985550361,
+          "tp": 4123,
+          "fp": 820,
+          "fn": 4469,
+          "n": 29219
+        }
+      }
+    },
+    {
+      "condition": "test_a",
+      "view": 2,
+      "seed": 101,
+      "path": "test_a/view_2_seed_101",
+      "estimated_sun": {
+        "iou": 0.8509513742071881,
+        "tp": 2415,
+        "fp": 314,
+        "fn": 109,
+        "n": 27047
+      },
+      "oracle_sun": {
+        "iou": 0.9627906976744186,
+        "tp": 2484,
+        "fp": 56,
+        "fn": 40,
+        "n": 27047
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.32933173269307725,
+        "tp": 1646,
+        "fp": 2474,
+        "fn": 878,
+        "n": 27047
+      },
+      "unoccluded_fraction": 0.09391060006655082,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.984251968503937,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.48916636063165625,
+          "tp": 1332,
+          "fp": 199,
+          "fn": 1192,
+          "n": 27047
+        },
+        "0.05": {
+          "iou": 0.38705137227304715,
+          "tp": 1100,
+          "fp": 318,
+          "fn": 1424,
+          "n": 27047
+        }
+      }
+    },
+    {
+      "condition": "test_a",
+      "view": 2,
+      "seed": 202,
+      "path": "test_a/view_2_seed_202",
+      "estimated_sun": {
+        "iou": 0.8470215015861826,
+        "tp": 2403,
+        "fp": 326,
+        "fn": 108,
+        "n": 27047
+      },
+      "oracle_sun": {
+        "iou": 0.9607919254658385,
+        "tp": 2475,
+        "fp": 65,
+        "fn": 36,
+        "n": 27047
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.32673069227691076,
+        "tp": 1633,
+        "fp": 2487,
+        "fn": 878,
+        "n": 27047
+      },
+      "unoccluded_fraction": 0.09391060006655082,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.984251968503937,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.4876702245123298,
+          "tp": 1325,
+          "fp": 206,
+          "fn": 1186,
+          "n": 27047
+        },
+        "0.05": {
+          "iou": 0.38637967537050105,
+          "tp": 1095,
+          "fp": 323,
+          "fn": 1416,
+          "n": 27047
+        }
+      }
+    },
+    {
+      "condition": "test_a",
+      "view": 3,
+      "seed": 101,
+      "path": "test_a/view_3_seed_101",
+      "estimated_sun": {
+        "iou": 0.8318112633181126,
+        "tp": 3279,
+        "fp": 547,
+        "fn": 116,
+        "n": 27489
+      },
+      "oracle_sun": {
+        "iou": 0.9656565656565657,
+        "tp": 3346,
+        "fp": 70,
+        "fn": 49,
+        "n": 27489
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.3179921773142112,
+        "tp": 2439,
+        "fp": 4275,
+        "fn": 956,
+        "n": 27489
+      },
+      "unoccluded_fraction": 0.12426788897377132,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.9868266978922716,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.4916125541125541,
+          "tp": 1817,
+          "fp": 301,
+          "fn": 1578,
+          "n": 27489
+        },
+        "0.05": {
+          "iou": 0.3759418030657314,
+          "tp": 1447,
+          "fp": 454,
+          "fn": 1948,
+          "n": 27489
+        }
+      }
+    },
+    {
+      "condition": "test_a",
+      "view": 3,
+      "seed": 202,
+      "path": "test_a/view_3_seed_202",
+      "estimated_sun": {
+        "iou": 0.8297386450139559,
+        "tp": 3270,
+        "fp": 556,
+        "fn": 115,
+        "n": 27489
+      },
+      "oracle_sun": {
+        "iou": 0.968451519536903,
+        "tp": 3346,
+        "fp": 70,
+        "fn": 39,
+        "n": 27489
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.3184073107049608,
+        "tp": 2439,
+        "fp": 4275,
+        "fn": 946,
+        "n": 27489
+      },
+      "unoccluded_fraction": 0.12426788897377132,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.9868266978922716,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.49213665943600865,
+          "tp": 1815,
+          "fp": 303,
+          "fn": 1570,
+          "n": 27489
+        },
+        "0.05": {
+          "iou": 0.37584591358667363,
+          "tp": 1444,
+          "fp": 457,
+          "fn": 1941,
+          "n": 27489
+        }
+      }
+    },
+    {
+      "condition": "test_b",
+      "view": 0,
+      "seed": 101,
+      "path": "test_b/view_0_seed_101",
+      "estimated_sun": {
+        "iou": 0.9322549952426261,
+        "tp": 9798,
+        "fp": 291,
+        "fn": 421,
+        "n": 32484
+      },
+      "oracle_sun": {
+        "iou": 0.9867106411873121,
+        "tp": 10172,
+        "fp": 90,
+        "fn": 47,
+        "n": 32484
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.2509236221066124,
+        "tp": 3328,
+        "fp": 3044,
+        "fn": 6891,
+        "n": 32484
+      },
+      "unoccluded_fraction": 0.3159093707671469,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.9925940362502437,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.5091550638947168,
+          "tp": 5339,
+          "fp": 267,
+          "fn": 4880,
+          "n": 32484
+        },
+        "0.05": {
+          "iou": 0.446973104254745,
+          "tp": 4969,
+          "fp": 898,
+          "fn": 5250,
+          "n": 32484
+        }
+      }
+    },
+    {
+      "condition": "test_b",
+      "view": 0,
+      "seed": 202,
+      "path": "test_b/view_0_seed_202",
+      "estimated_sun": {
+        "iou": 0.9326419941014176,
+        "tp": 9803,
+        "fp": 286,
+        "fn": 422,
+        "n": 32484
+      },
+      "oracle_sun": {
+        "iou": 0.986521865606516,
+        "tp": 10174,
+        "fp": 88,
+        "fn": 51,
+        "n": 32484
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.251376008444545,
+        "tp": 3334,
+        "fp": 3038,
+        "fn": 6891,
+        "n": 32484
+      },
+      "unoccluded_fraction": 0.3159093707671469,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.9925940362502437,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.5094393592677345,
+          "tp": 5343,
+          "fp": 263,
+          "fn": 4882,
+          "n": 32484
+        },
+        "0.05": {
+          "iou": 0.44725245075996045,
+          "tp": 4973,
+          "fp": 894,
+          "fn": 5252,
+          "n": 32484
+        }
+      }
+    },
+    {
+      "condition": "test_b",
+      "view": 1,
+      "seed": 101,
+      "path": "test_b/view_1_seed_101",
+      "estimated_sun": {
+        "iou": 0.9326071555083245,
+        "tp": 10531,
+        "fp": 337,
+        "fn": 424,
+        "n": 29219
+      },
+      "oracle_sun": {
+        "iou": 0.9864938361131255,
+        "tp": 10883,
+        "fp": 77,
+        "fn": 72,
+        "n": 29219
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.34099839906854895,
+        "tp": 4686,
+        "fp": 2787,
+        "fn": 6269,
+        "n": 29219
+      },
+      "unoccluded_fraction": 0.3750983948800438,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.9777372262773723,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.5023049645390071,
+          "tp": 5666,
+          "fp": 325,
+          "fn": 5289,
+          "n": 29219
+        },
+        "0.05": {
+          "iou": 0.43631186667783267,
+          "tp": 5210,
+          "fp": 986,
+          "fn": 5745,
+          "n": 29219
+        }
+      }
+    },
+    {
+      "condition": "test_b",
+      "view": 1,
+      "seed": 202,
+      "path": "test_b/view_1_seed_202",
+      "estimated_sun": {
+        "iou": 0.9327076323711705,
+        "tp": 10534,
+        "fp": 334,
+        "fn": 426,
+        "n": 29219
+      },
+      "oracle_sun": {
+        "iou": 0.9882086167800453,
+        "tp": 10895,
+        "fp": 65,
+        "fn": 65,
+        "n": 29219
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.3405818181818182,
+        "tp": 4683,
+        "fp": 2790,
+        "fn": 6277,
+        "n": 29219
+      },
+      "unoccluded_fraction": 0.3750983948800438,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.9777372262773723,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.5020824102791316,
+          "tp": 5666,
+          "fp": 325,
+          "fn": 5294,
+          "n": 29219
+        },
+        "0.05": {
+          "iou": 0.4360090399263413,
+          "tp": 5209,
+          "fp": 987,
+          "fn": 5751,
+          "n": 29219
+        }
+      }
+    },
+    {
+      "condition": "test_b",
+      "view": 2,
+      "seed": 101,
+      "path": "test_b/view_2_seed_101",
+      "estimated_sun": {
+        "iou": 0.9316129032258065,
+        "tp": 8664,
+        "fp": 289,
+        "fn": 347,
+        "n": 27047
+      },
+      "oracle_sun": {
+        "iou": 0.9831978915001098,
+        "tp": 8953,
+        "fp": 95,
+        "fn": 58,
+        "n": 27047
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.30147000397298374,
+        "tp": 3794,
+        "fp": 3574,
+        "fn": 5217,
+        "n": 27047
+      },
+      "unoccluded_fraction": 0.3345287832291936,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.9954686118479222,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.5064822817631807,
+          "tp": 4688,
+          "fp": 245,
+          "fn": 4323,
+          "n": 27047
+        },
+        "0.05": {
+          "iou": 0.43976763147166736,
+          "tp": 4315,
+          "fp": 801,
+          "fn": 4696,
+          "n": 27047
+        }
+      }
+    },
+    {
+      "condition": "test_b",
+      "view": 2,
+      "seed": 202,
+      "path": "test_b/view_2_seed_202",
+      "estimated_sun": {
+        "iou": 0.9326023863269913,
+        "tp": 8676,
+        "fp": 277,
+        "fn": 350,
+        "n": 27047
+      },
+      "oracle_sun": {
+        "iou": 0.9841914589965968,
+        "tp": 8965,
+        "fp": 83,
+        "fn": 61,
+        "n": 27047
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.3020411404971805,
+        "tp": 3803,
+        "fp": 3565,
+        "fn": 5223,
+        "n": 27047
+      },
+      "unoccluded_fraction": 0.3345287832291936,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.9954686118479222,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.5072886297376094,
+          "tp": 4698,
+          "fp": 235,
+          "fn": 4328,
+          "n": 27047
+        },
+        "0.05": {
+          "iou": 0.4395358306188925,
+          "tp": 4318,
+          "fp": 798,
+          "fn": 4708,
+          "n": 27047
+        }
+      }
+    },
+    {
+      "condition": "test_b",
+      "view": 3,
+      "seed": 101,
+      "path": "test_b/view_3_seed_101",
+      "estimated_sun": {
+        "iou": 0.9408854810784071,
+        "tp": 11412,
+        "fp": 355,
+        "fn": 362,
+        "n": 27489
+      },
+      "oracle_sun": {
+        "iou": 0.9865947221988028,
+        "tp": 11702,
+        "fp": 87,
+        "fn": 72,
+        "n": 27489
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.4532849965019398,
+        "tp": 7127,
+        "fp": 3949,
+        "fn": 4647,
+        "n": 27489
+      },
+      "unoccluded_fraction": 0.4288624540725381,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.9962677071846636,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.5128694785785454,
+          "tp": 6177,
+          "fp": 270,
+          "fn": 5597,
+          "n": 27489
+        },
+        "0.05": {
+          "iou": 0.443369060950248,
+          "tp": 5543,
+          "fp": 728,
+          "fn": 6231,
+          "n": 27489
+        }
+      }
+    },
+    {
+      "condition": "test_b",
+      "view": 3,
+      "seed": 202,
+      "path": "test_b/view_3_seed_202",
+      "estimated_sun": {
+        "iou": 0.9408611019465523,
+        "tp": 11407,
+        "fp": 360,
+        "fn": 357,
+        "n": 27489
+      },
+      "oracle_sun": {
+        "iou": 0.9862540057345253,
+        "tp": 11695,
+        "fp": 94,
+        "fn": 69,
+        "n": 27489
+      },
+      "wrong_sun_plus10": {
+        "iou": 0.45311108283496626,
+        "tp": 7122,
+        "fp": 3954,
+        "fn": 4642,
+        "n": 27489
+      },
+      "unoccluded_fraction": 0.4288624540725381,
+      "fraction_unoccluded_rays_crossing_approximate_windows": 0.9962677071846636,
+      "receiver_noise": {
+        "0.01": {
+          "iou": 0.5134214244161888,
+          "tp": 6178,
+          "fp": 269,
+          "fn": 5586,
+          "n": 27489
+        },
+        "0.05": {
+          "iou": 0.44453344012815377,
+          "tp": 5550,
+          "fp": 721,
+          "fn": 6214,
+          "n": 27489
+        }
+      }
+    }
+  ],
+  "evaluation_source_sha256": "8e9d63568f78967466449418eea0b9dbca6ea56f91b170dbca34f579d428847b"
+}

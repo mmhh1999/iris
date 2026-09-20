@@ -1,0 +1,194 @@
+[
+  {
+    "condition": "train",
+    "view": 0,
+    "seed": 101,
+    "path": "train/view_0_seed_101"
+  },
+  {
+    "condition": "train",
+    "view": 0,
+    "seed": 202,
+    "path": "train/view_0_seed_202"
+  },
+  {
+    "condition": "train",
+    "view": 1,
+    "seed": 101,
+    "path": "train/view_1_seed_101"
+  },
+  {
+    "condition": "train",
+    "view": 1,
+    "seed": 202,
+    "path": "train/view_1_seed_202"
+  },
+  {
+    "condition": "train",
+    "view": 2,
+    "seed": 101,
+    "path": "train/view_2_seed_101"
+  },
+  {
+    "condition": "train",
+    "view": 2,
+    "seed": 202,
+    "path": "train/view_2_seed_202"
+  },
+  {
+    "condition": "train",
+    "view": 3,
+    "seed": 101,
+    "path": "train/view_3_seed_101"
+  },
+  {
+    "condition": "train",
+    "view": 3,
+    "seed": 202,
+    "path": "train/view_3_seed_202"
+  },
+  {
+    "condition": "validation",
+    "view": 0,
+    "seed": 101,
+    "path": "validation/view_0_seed_101"
+  },
+  {
+    "condition": "validation",
+    "view": 0,
+    "seed": 202,
+    "path": "validation/view_0_seed_202"
+  },
+  {
+    "condition": "validation",
+    "view": 1,
+    "seed": 101,
+    "path": "validation/view_1_seed_101"
+  },
+  {
+    "condition": "validation",
+    "view": 1,
+    "seed": 202,
+    "path": "validation/view_1_seed_202"
+  },
+  {
+    "condition": "validation",
+    "view": 2,
+    "seed": 101,
+    "path": "validation/view_2_seed_101"
+  },
+  {
+    "condition": "validation",
+    "view": 2,
+    "seed": 202,
+    "path": "validation/view_2_seed_202"
+  },
+  {
+    "condition": "validation",
+    "view": 3,
+    "seed": 101,
+    "path": "validation/view_3_seed_101"
+  },
+  {
+    "condition": "validation",
+    "view": 3,
+    "seed": 202,
+    "path": "validation/view_3_seed_202"
+  },
+  {
+    "condition": "test_a",
+    "view": 0,
+    "seed": 101,
+    "path": "test_a/view_0_seed_101"
+  },
+  {
+    "condition": "test_a",
+    "view": 0,
+    "seed": 202,
+    "path": "test_a/view_0_seed_202"
+  },
+  {
+    "condition": "test_a",
+    "view": 1,
+    "seed": 101,
+    "path": "test_a/view_1_seed_101"
+  },
+  {
+    "condition": "test_a",
+    "view": 1,
+    "seed": 202,
+    "path": "test_a/view_1_seed_202"
+  },
+  {
+    "condition": "test_a",
+    "view": 2,
+    "seed": 101,
+    "path": "test_a/view_2_seed_101"
+  },
+  {
+    "condition": "test_a",
+    "view": 2,
+    "seed": 202,
+    "path": "test_a/view_2_seed_202"
+  },
+  {
+    "condition": "test_a",
+    "view": 3,
+    "seed": 101,
+    "path": "test_a/view_3_seed_101"
+  },
+  {
+    "condition": "test_a",
+    "view": 3,
+    "seed": 202,
+    "path": "test_a/view_3_seed_202"
+  },
+  {
+    "condition": "test_b",
+    "view": 0,
+    "seed": 101,
+    "path": "test_b/view_0_seed_101"
+  },
+  {
+    "condition": "test_b",
+    "view": 0,
+    "seed": 202,
+    "path": "test_b/view_0_seed_202"
+  },
+  {
+    "condition": "test_b",
+    "view": 1,
+    "seed": 101,
+    "path": "test_b/view_1_seed_101"
+  },
+  {
+    "condition": "test_b",
+    "view": 1,
+    "seed": 202,
+    "path": "test_b/view_1_seed_202"
+  },
+  {
+    "condition": "test_b",
+    "view": 2,
+    "seed": 101,
+    "path": "test_b/view_2_seed_101"
+  },
+  {
+    "condition": "test_b",
+    "view": 2,
+    "seed": 202,
+    "path": "test_b/view_2_seed_202"
+  },
+  {
+    "condition": "test_b",
+    "view": 3,
+    "seed": 101,
+    "path": "test_b/view_3_seed_101"
+  },
+  {
+    "condition": "test_b",
+    "view": 3,
+    "seed": 202,
+    "path": "test_b/view_3_seed_202"
+  }
+]

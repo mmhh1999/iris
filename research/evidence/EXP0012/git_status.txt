@@ -1,0 +1,39 @@
+ M .gitignore
+ M initialize.py
+ M render.py
+ M research/BASELINE_REPRODUCTION.md
+ M research/DECISIONS.md
+ M research/EXPERIMENTS.md
+ M research/FAILED_IDEAS.md
+ M research/PROJECT_STATUS.md
+ M train_brdf_crf.py
+ M train_emitter.py
+ M utils/sun_patch.py
+?? configs/daylight/
+?? experiments/build_tcnn_local.py
+?? experiments/evaluate_scannetpp_rerender.py
+?? experiments/fetch_official_baseline.py
+?? experiments/heldout_sun_control.py
+?? experiments/portal_ablation.py
+?? experiments/real_sun_visibility.py
+?? experiments/run_daylight_validation.py
+?? experiments/run_original_iris.py
+?? experiments/scannetpp_camera_stress.py
+?? experiments/scannetpp_geometry_audit.py
+?? experiments/scannetpp_rerender.py
+?? experiments/scannetpp_screening.py
+?? experiments/validate_scannetpp_poses.py
+?? experiments/visualize_iris_baseline.py
+?? experiments/visualize_results.py
+?? experiments/visualize_scannetpp_rerender.py
+?? research/CROSS_TIME_CAPTURE_ZH.md
+?? research/HELDOUT_SUN_CONTROL.md
+?? research/REAL_SUN_VISIBILITY.md
+?? research/SCANNETPP_GEOMETRY_AUDIT.md
+?? research/SCANNETPP_RERENDER_ZH.md
+?? research/VISUALIZATION.md
+?? research/evidence/
+?? research/templates/
+?? tests/
+?? utils/geometry_screening.py
+?? utils/multiview_geometry.py

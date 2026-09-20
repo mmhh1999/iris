@@ -1,0 +1,47 @@
+{
+  "config": {
+    "experiment_id": "EXP0009",
+    "train_angles": [
+      [
+        163.7,
+        31.4
+      ],
+      [
+        203.2,
+        43.6
+      ],
+      [
+        218.4,
+        51.7
+      ]
+    ],
+    "seeds": [
+      0,
+      1
+    ],
+    "test_delta_az": 20,
+    "test_delta_el": 10,
+    "spp": 32,
+    "resolution": [
+      192,
+      144
+    ],
+    "threshold_rgb_sum": 1.2,
+    "known_geometry": true,
+    "known_albedo": true,
+    "coarse_grid_az_step": 10,
+    "coarse_grid_el_step": 5,
+    "refine_step": 1,
+    "disclosure": "Test receives true RELATIVE solar azimuth/elevation change, applied to recovered training direction. Appearance baseline freezes train labels. No fitted material, transmission or IRIS baseline."
+  },
+  "source_hashes": {
+    "experiments/heldout_sun_control.py": "72e5d53826c8bcc5de444bd0e9ac43e1acb3b0d19774a0117e179643a45e7bba",
+    "experiments/phase_a_sun_recovery.py": "7946cfc46f55594d86be3789fe06735bf6a720f9f6e53c825d1ad5f8e9ec8517",
+    "utils/multiview_geometry.py": "82c29f98fe838adfc2f20d402b657a2cda65ae4f560ba644fd00cfda93e3ef82",
+    "utils/solar_geometry.py": "2135d3519d51fe2d8e5144b4f45611114f9134c638b2e651eda04733e0d2c9ff",
+    "experiments/real_sun_visibility.py": "7f4eb55abd02711c75cd134da60445ac387ab353901dfd3b28acf6dcf3d63931"
+  },
+  "git_commit": "63434ae58efbb3b16fd9d2e6eb67403b689b98c6",
+  "mitsuba": "3.9.1",
+  "numpy": "2.2.6"
+}

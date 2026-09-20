@@ -1,0 +1,30 @@
+{
+  "experiment_id": "EXP0007",
+  "seed": 0,
+  "git_commit": "63434ae58efbb3b16fd9d2e6eb67403b689b98c6",
+  "git_status": " M .gitignore\n M utils/sun_patch.py\n?? experiments/scannetpp_geometry_audit.py\n?? experiments/scannetpp_screening.py\n?? experiments/validate_scannetpp_poses.py\n?? research/evidence/\n?? tests/\n?? utils/geometry_screening.py\n",
+  "sources": {
+    "experiments/scannetpp_geometry_audit.py": "b53bc96b8f686fc9d76e64097aac1643b6b8e761a924fa6902f096e81d1268ba",
+    "utils/geometry_screening.py": "9d25c4850f715dc1a83570da2a1901eb0e2826ff78c169b04a3de1073967139c",
+    "utils/sun_patch.py": "7a60aee483abcfddabb848094d0e75965030c0cea32c58ca9950264a0a460232",
+    "utils/solar_geometry.py": "2135d3519d51fe2d8e5144b4f45611114f9134c638b2e651eda04733e0d2c9ff",
+    "utils/window_geometry.py": "77f7e7b1d8c90419f317e6669b478690a5a3d16831953a1cbd291c55568a5adc"
+  },
+  "config": {
+    "data_root": "/home/minghao/projects/iris/data_download/scannetpp/data",
+    "scenes": [
+      "7b04052ad0",
+      "3cb9f85891"
+    ],
+    "images": 12,
+    "samples": 256,
+    "out": "experiments/out/EXP0007_verified"
+  },
+  "python": "3.10.21",
+  "mitsuba": "3.9.1",
+  "numpy": "2.2.6",
+  "opencv": "5.0.0",
+  "variant": "llvm_ad_rgb",
+  "hypothesis": "Mesh support rejects some bright apertures; surviving regions are not certified sun patches.",
+  "started_utc": "2026-09-19T16:31:03Z"
+}

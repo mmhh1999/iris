@@ -1,0 +1,22 @@
+{
+  "all_exr_finite": true,
+  "exr_count": 64,
+  "per_condition": {
+    "train": {
+      "estimated_sun_iou": 0.9015500957499818,
+      "oracle_iou": 0.9760178636173689
+    },
+    "validation": {
+      "estimated_sun_iou": 0.8893949452551959,
+      "oracle_iou": 0.9862129456301048
+    },
+    "test_a": {
+      "estimated_sun_iou": 0.8648961388557084,
+      "oracle_iou": 0.9733947905577508
+    },
+    "test_b": {
+      "estimated_sun_iou": 0.934521706225162,
+      "oracle_iou": 0.9860216297646291
+    }
+  }
+}

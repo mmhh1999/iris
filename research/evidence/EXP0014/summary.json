@@ -1,0 +1,28 @@
+[
+  {
+    "scene": "riverview",
+    "views": 32,
+    "train": 24,
+    "test": 8,
+    "downloaded_files": 69,
+    "downloaded_bytes": 537212077,
+    "sha256_recheck_pass": true,
+    "triangles": 1934859,
+    "mean_mesh_hit_fraction": 0.7463800084521199,
+    "hdr_max": 32.00048828125,
+    "max_calibration_roundtrip_px": 2.55056647802121e-07
+  },
+  {
+    "scene": "apartment",
+    "views": 32,
+    "train": 24,
+    "test": 8,
+    "downloaded_files": 69,
+    "downloaded_bytes": 520391636,
+    "sha256_recheck_pass": true,
+    "triangles": 1755017,
+    "mean_mesh_hit_fraction": 0.9951021964089912,
+    "hdr_max": 128.00196838378906,
+    "max_calibration_roundtrip_px": 5.228719146543881e-07
+  }
+]

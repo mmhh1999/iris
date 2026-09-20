@@ -1,0 +1,6 @@
+.jit_kernel_write(): could not write compiled kernel to cache file "/home/minghao/.drjit/8963f66dab7abcd66a8d7052269fdfb0.llvm.v6.bin.3.tmp": Read-only file system
+..............
+----------------------------------------------------------------------
+Ran 15 tests in 0.640s
+
+OK

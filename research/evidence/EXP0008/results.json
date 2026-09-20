@@ -1,0 +1,553 @@
+{
+  "fit": {
+    "azimuth_scene_deg": 240.0,
+    "elevation_deg": 26.0,
+    "train_proxy_iou": 0.8397673188789001,
+    "coarse_top": [
+      {
+        "az": 240.0,
+        "el": 30.0,
+        "iou": 0.8351365275631119
+      },
+      {
+        "az": 240.0,
+        "el": 25.0,
+        "iou": 0.8315621679064825
+      },
+      {
+        "az": 350.0,
+        "el": 45.0,
+        "iou": 0.7617481203007519
+      },
+      {
+        "az": 10.0,
+        "el": 40.0,
+        "iou": 0.7606212882594792
+      },
+      {
+        "az": 250.0,
+        "el": 35.0,
+        "iou": 0.7517343904856293
+      },
+      {
+        "az": 340.0,
+        "el": 45.0,
+        "iou": 0.7405207857469164
+      },
+      {
+        "az": 0.0,
+        "el": 45.0,
+        "iou": 0.7388596070915189
+      },
+      {
+        "az": 240.0,
+        "el": 20.0,
+        "iou": 0.7345872518286312
+      },
+      {
+        "az": 250.0,
+        "el": 30.0,
+        "iou": 0.7271455223880597
+      },
+      {
+        "az": 330.0,
+        "el": 45.0,
+        "iou": 0.7210261108566194
+      }
+    ]
+  },
+  "images": [
+    {
+      "split": "train",
+      "image": "47630f4e_DSC09446.JPG",
+      "n_floor_samples": 4000,
+      "proxy_threshold": 155.0,
+      "bright_fraction": 0.45375,
+      "image_sha256": "074034da3f11b503cff83d6f87019c22789a75b57d614b94853a6072aa4afa67",
+      "mask_sha256": "0a8431369b58633e31c67f4ca02ae9321afa05a199b54dcb31b32790067f9302",
+      "datetime_exif": null,
+      "floor_z_median": 0.36233586072921753,
+      "memory_coverage_within_10cm": 1.0,
+      "metrics": {
+        "fitted": {
+          "iou": 0.8397673188789001,
+          "balanced_accuracy": 0.9200742603904659,
+          "tp": 1588,
+          "fp": 76,
+          "fn": 227,
+          "tn": 2109,
+          "n": 4000
+        },
+        "wrong_direction_plus45": {
+          "iou": 0.11407942238267148,
+          "balanced_accuracy": 0.3685168724902446,
+          "tp": 316,
+          "fp": 955,
+          "fn": 1499,
+          "tn": 1230,
+          "n": 4000
+        },
+        "back_only": {
+          "iou": 0.8397673188789001,
+          "balanced_accuracy": 0.9200742603904659,
+          "tp": 1588,
+          "fp": 76,
+          "fn": 227,
+          "tn": 2109,
+          "n": 4000
+        },
+        "right_only": {
+          "iou": 0.0,
+          "balanced_accuracy": 0.5,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1815,
+          "tn": 2185,
+          "n": 4000
+        },
+        "window_shift_x_-0.1m": {
+          "iou": 0.7136025504782146,
+          "balanced_accuracy": 0.8546406440103133,
+          "tp": 1343,
+          "fp": 67,
+          "fn": 472,
+          "tn": 2118,
+          "n": 4000
+        },
+        "window_shift_x_0.1m": {
+          "iou": 0.8424114225277631,
+          "balanced_accuracy": 0.9214516708587854,
+          "tp": 1593,
+          "fp": 76,
+          "fn": 222,
+          "tn": 2109,
+          "n": 4000
+        },
+        "window_shift_x_1m": {
+          "iou": 0.7187206020696143,
+          "balanced_accuracy": 0.8497695910635374,
+          "tp": 1528,
+          "fp": 311,
+          "fn": 287,
+          "tn": 1874,
+          "n": 4000
+        },
+        "visibility_tolerance_0.02m": {
+          "iou": 0.837123215230037,
+          "balanced_accuracy": 0.9186968499221464,
+          "tp": 1583,
+          "fp": 76,
+          "fn": 232,
+          "tn": 2109,
+          "n": 4000
+        },
+        "visibility_tolerance_0.08m": {
+          "iou": 0.8402961396086727,
+          "balanced_accuracy": 0.9203497424841298,
+          "tp": 1589,
+          "fp": 76,
+          "fn": 226,
+          "tn": 2109,
+          "n": 4000
+        },
+        "all_bright": {
+          "iou": 0.45375,
+          "balanced_accuracy": 0.5,
+          "tp": 1815,
+          "fp": 2185,
+          "fn": 0,
+          "tn": 0,
+          "n": 4000
+        },
+        "all_dark": {
+          "iou": 0.0,
+          "balanced_accuracy": 0.5,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1815,
+          "tn": 2185,
+          "n": 4000
+        },
+        "memorized_floor_1nn": {
+          "iou": 1.0,
+          "balanced_accuracy": 1.0,
+          "tp": 1815,
+          "fp": 0,
+          "fn": 0,
+          "tn": 2185,
+          "n": 4000
+        }
+      }
+    },
+    {
+      "split": "heldout_view",
+      "image": "47630f4e_DSC09417.JPG",
+      "n_floor_samples": 4000,
+      "proxy_threshold": 157.0,
+      "bright_fraction": 0.4155,
+      "image_sha256": "04e373fe0aa67c400cfaaf41eca14c97f9f9a2e6516bebb924fba79f51c199ee",
+      "mask_sha256": "0a8431369b58633e31c67f4ca02ae9321afa05a199b54dcb31b32790067f9302",
+      "datetime_exif": null,
+      "floor_z_median": 0.36215639114379883,
+      "memory_coverage_within_10cm": 0.92025,
+      "metrics": {
+        "fitted": {
+          "iou": 0.5673166202414113,
+          "balanced_accuracy": 0.7624112270559449,
+          "tp": 1222,
+          "fp": 492,
+          "fn": 440,
+          "tn": 1846,
+          "n": 4000
+        },
+        "wrong_direction_plus45": {
+          "iou": 0.3467607973421927,
+          "balanced_accuracy": 0.5916653027107208,
+          "tp": 835,
+          "fp": 746,
+          "fn": 827,
+          "tn": 1592,
+          "n": 4000
+        },
+        "back_only": {
+          "iou": 0.5673166202414113,
+          "balanced_accuracy": 0.7624112270559449,
+          "tp": 1222,
+          "fp": 492,
+          "fn": 440,
+          "tn": 1846,
+          "n": 4000
+        },
+        "right_only": {
+          "iou": 0.0,
+          "balanced_accuracy": 0.5,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1662,
+          "tn": 2338,
+          "n": 4000
+        },
+        "window_shift_x_-0.1m": {
+          "iou": 0.5551707075705097,
+          "balanced_accuracy": 0.7607701049679908,
+          "tp": 1122,
+          "fp": 359,
+          "fn": 540,
+          "tn": 1979,
+          "n": 4000
+        },
+        "window_shift_x_0.1m": {
+          "iou": 0.5686365751512331,
+          "balanced_accuracy": 0.7634805170473906,
+          "tp": 1222,
+          "fp": 487,
+          "fn": 440,
+          "tn": 1851,
+          "n": 4000
+        },
+        "window_shift_x_1m": {
+          "iou": 0.4168629298162977,
+          "balanced_accuracy": 0.6676569501533293,
+          "tp": 885,
+          "fp": 461,
+          "fn": 777,
+          "tn": 1877,
+          "n": 4000
+        },
+        "visibility_tolerance_0.02m": {
+          "iou": 0.5673166202414113,
+          "balanced_accuracy": 0.7624112270559449,
+          "tp": 1222,
+          "fp": 492,
+          "fn": 440,
+          "tn": 1846,
+          "n": 4000
+        },
+        "visibility_tolerance_0.08m": {
+          "iou": 0.5670533642691415,
+          "balanced_accuracy": 0.7621973690576558,
+          "tp": 1222,
+          "fp": 493,
+          "fn": 440,
+          "tn": 1845,
+          "n": 4000
+        },
+        "all_bright": {
+          "iou": 0.4155,
+          "balanced_accuracy": 0.5,
+          "tp": 1662,
+          "fp": 2338,
+          "fn": 0,
+          "tn": 0,
+          "n": 4000
+        },
+        "all_dark": {
+          "iou": 0.0,
+          "balanced_accuracy": 0.5,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1662,
+          "tn": 2338,
+          "n": 4000
+        },
+        "memorized_floor_1nn": {
+          "iou": 0.733677782996712,
+          "balanced_accuracy": 0.8700440789385644,
+          "tp": 1562,
+          "fp": 467,
+          "fn": 100,
+          "tn": 1871,
+          "n": 4000
+        }
+      }
+    },
+    {
+      "split": "heldout_view",
+      "image": "47630f4e_DSC09462.JPG",
+      "n_floor_samples": 4000,
+      "proxy_threshold": 157.0,
+      "bright_fraction": 0.49225,
+      "image_sha256": "2764b3ced7212688cc1229e25d5146f1d0d0438d126d4e3d7a30785a90016972",
+      "mask_sha256": "0a8431369b58633e31c67f4ca02ae9321afa05a199b54dcb31b32790067f9302",
+      "datetime_exif": null,
+      "floor_z_median": 0.3623163104057312,
+      "memory_coverage_within_10cm": 0.726,
+      "metrics": {
+        "fitted": {
+          "iou": 0.7978620019436345,
+          "balanced_accuracy": 0.8950525363718633,
+          "tp": 1642,
+          "fp": 89,
+          "fn": 327,
+          "tn": 1942,
+          "n": 4000
+        },
+        "wrong_direction_plus45": {
+          "iou": 0.20371031038173384,
+          "balanced_accuracy": 0.43967988309191286,
+          "tp": 571,
+          "fp": 834,
+          "fn": 1398,
+          "tn": 1197,
+          "n": 4000
+        },
+        "back_only": {
+          "iou": 0.7978620019436345,
+          "balanced_accuracy": 0.8950525363718633,
+          "tp": 1642,
+          "fp": 89,
+          "fn": 327,
+          "tn": 1942,
+          "n": 4000
+        },
+        "right_only": {
+          "iou": 0.0,
+          "balanced_accuracy": 0.5,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1969,
+          "tn": 2031,
+          "n": 4000
+        },
+        "window_shift_x_-0.1m": {
+          "iou": 0.6871644704734017,
+          "balanced_accuracy": 0.8378471677820596,
+          "tp": 1408,
+          "fp": 80,
+          "fn": 561,
+          "tn": 1951,
+          "n": 4000
+        },
+        "window_shift_x_0.1m": {
+          "iou": 0.7985436893203883,
+          "balanced_accuracy": 0.8953219761047592,
+          "tp": 1645,
+          "fp": 91,
+          "fn": 324,
+          "tn": 1940,
+          "n": 4000
+        },
+        "window_shift_x_1m": {
+          "iou": 0.7520215633423181,
+          "balanced_accuracy": 0.8618195521474035,
+          "tp": 1674,
+          "fp": 257,
+          "fn": 295,
+          "tn": 1774,
+          "n": 4000
+        },
+        "visibility_tolerance_0.02m": {
+          "iou": 0.7973760932944607,
+          "balanced_accuracy": 0.8947986003637374,
+          "tp": 1641,
+          "fp": 89,
+          "fn": 328,
+          "tn": 1942,
+          "n": 4000
+        },
+        "visibility_tolerance_0.08m": {
+          "iou": 0.7978620019436345,
+          "balanced_accuracy": 0.8950525363718633,
+          "tp": 1642,
+          "fp": 89,
+          "fn": 327,
+          "tn": 1942,
+          "n": 4000
+        },
+        "all_bright": {
+          "iou": 0.49225,
+          "balanced_accuracy": 0.5,
+          "tp": 1969,
+          "fp": 2031,
+          "fn": 0,
+          "tn": 0,
+          "n": 4000
+        },
+        "all_dark": {
+          "iou": 0.0,
+          "balanced_accuracy": 0.5,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1969,
+          "tn": 2031,
+          "n": 4000
+        },
+        "memorized_floor_1nn": {
+          "iou": 0.8833249874812218,
+          "balanced_accuracy": 0.9410499622534314,
+          "tp": 1764,
+          "fp": 28,
+          "fn": 205,
+          "tn": 2003,
+          "n": 4000
+        }
+      }
+    },
+    {
+      "split": "heldout_view",
+      "image": "47630f4e_DSC09486.JPG",
+      "n_floor_samples": 4000,
+      "proxy_threshold": 161.0,
+      "bright_fraction": 0.6055,
+      "image_sha256": "dd9e0f857652845e20470031bcf6f25d0abefa2c89cb187e404c01c4ce6f293f",
+      "mask_sha256": "0a8431369b58633e31c67f4ca02ae9321afa05a199b54dcb31b32790067f9302",
+      "datetime_exif": null,
+      "floor_z_median": 0.362032949924469,
+      "memory_coverage_within_10cm": 0.52725,
+      "metrics": {
+        "fitted": {
+          "iou": 0.7626262626262627,
+          "balanced_accuracy": 0.8570813696585692,
+          "tp": 1963,
+          "fp": 152,
+          "fn": 459,
+          "tn": 1426,
+          "n": 4000
+        },
+        "wrong_direction_plus45": {
+          "iou": 0.40520800254048905,
+          "balanced_accuracy": 0.5330637826681697,
+          "tp": 1276,
+          "fp": 727,
+          "fn": 1146,
+          "tn": 851,
+          "n": 4000
+        },
+        "back_only": {
+          "iou": 0.7626262626262627,
+          "balanced_accuracy": 0.8570813696585692,
+          "tp": 1963,
+          "fp": 152,
+          "fn": 459,
+          "tn": 1426,
+          "n": 4000
+        },
+        "right_only": {
+          "iou": 0.0,
+          "balanced_accuracy": 0.5,
+          "tp": 0,
+          "fp": 0,
+          "fn": 2422,
+          "tn": 1578,
+          "n": 4000
+        },
+        "window_shift_x_-0.1m": {
+          "iou": 0.6190476190476191,
+          "balanced_accuracy": 0.7830554099043516,
+          "tp": 1586,
+          "fp": 140,
+          "fn": 836,
+          "tn": 1438,
+          "n": 4000
+        },
+        "window_shift_x_0.1m": {
+          "iou": 0.8162078324932144,
+          "balanced_accuracy": 0.8848117017747119,
+          "tp": 2105,
+          "fp": 157,
+          "fn": 317,
+          "tn": 1421,
+          "n": 4000
+        },
+        "window_shift_x_1m": {
+          "iou": 0.7739849083722602,
+          "balanced_accuracy": 0.8302885254411662,
+          "tp": 2154,
+          "fp": 361,
+          "fn": 268,
+          "tn": 1217,
+          "n": 4000
+        },
+        "visibility_tolerance_0.02m": {
+          "iou": 0.7622377622377622,
+          "balanced_accuracy": 0.8568749287006832,
+          "tp": 1962,
+          "fp": 152,
+          "fn": 460,
+          "tn": 1426,
+          "n": 4000
+        },
+        "visibility_tolerance_0.08m": {
+          "iou": 0.7626262626262627,
+          "balanced_accuracy": 0.8570813696585692,
+          "tp": 1963,
+          "fp": 152,
+          "fn": 459,
+          "tn": 1426,
+          "n": 4000
+        },
+        "all_bright": {
+          "iou": 0.6055,
+          "balanced_accuracy": 0.5,
+          "tp": 2422,
+          "fp": 1578,
+          "fn": 0,
+          "tn": 0,
+          "n": 4000
+        },
+        "all_dark": {
+          "iou": 0.0,
+          "balanced_accuracy": 0.5,
+          "tp": 0,
+          "fp": 0,
+          "fn": 2422,
+          "tn": 1578,
+          "n": 4000
+        },
+        "memorized_floor_1nn": {
+          "iou": 0.882803060813532,
+          "balanced_accuracy": 0.9331903160613682,
+          "tp": 2192,
+          "fp": 61,
+          "fn": 230,
+          "tn": 1517,
+          "n": 4000
+        }
+      }
+    }
+  ],
+  "elapsed_seconds": 3.502785757998936,
+  "max_rss_kib": 853828,
+  "limitations": "Fit training brightness-proxy mask via Otsu on mesh-supported floor pixels; evaluate fixed direction on geometry-selected disjoint views. This is exploratory same-sequence multiview consistency, NOT independent semantic accuracy or cross-time relighting. Wrong direction +45deg, each window alone, and translated windows controls. No heldout-driven tuning.",
+  "aperture_provenance": "Agent approximate geometric hypotheses from visible window frame mesh hits in train image only. Back upper frame points ~[.112,3.809,2.524], [.591,6.328,2.501]; right upper/side/sill points ~[1.135,7.222,2.226], [1.600,7.495,2.505], [2.529,7.834,.646]. Right far endpoint is an unverified extrapolation outside image; aperture translation sensitivity required. No sunlight ground-truth mask or solar orientation calibration."
+}

@@ -1,0 +1,19 @@
+{
+  "identical_metrics_and_per_observation_counts": true,
+  "float_image_files": 64,
+  "byte_identical_float_images": 0,
+  "max_absolute_radiance_difference": 0.019393570721149445,
+  "note": "Repeated same seeds checks reproducibility; not additional independent samples.",
+  "radiance_differences_by_type": {
+    "rgb": {
+      "rmse": 0.00021797219233121723,
+      "max_absolute": 0.019393570721149445,
+      "fraction_exactly_equal": 0.40212249755859375
+    },
+    "direct_sun": {
+      "rmse": 1.2547924921335607e-09,
+      "max_absolute": 5.960464477539063e-08,
+      "fraction_exactly_equal": 0.9914721382988824
+    }
+  }
+}

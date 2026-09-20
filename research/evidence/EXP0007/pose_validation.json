@@ -1,0 +1,12 @@
+[
+  {
+    "scene": "7b04052ad0",
+    "n_train_poses": 1472,
+    "max_abs_matrix_error": 2.220446049250313e-15
+  },
+  {
+    "scene": "3cb9f85891",
+    "n_train_poses": 2269,
+    "max_abs_matrix_error": 1.3322676295501878e-15
+  }
+]

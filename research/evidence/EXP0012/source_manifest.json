@@ -1,0 +1,12 @@
+{
+  "experiments/scannetpp_rerender.py": "d5d4fa0ca9d7eacbd0118f09e0c435851a06fc49229e09d70c006101364d37f3",
+  "experiments/evaluate_scannetpp_rerender.py": "8e9d63568f78967466449418eea0b9dbca6ea56f91b170dbca34f579d428847b",
+  "experiments/scannetpp_camera_stress.py": "cbc6fb000681fc97863ef7374ec16d845a98400e22ec0a13dcac73324006dbd0",
+  "experiments/visualize_scannetpp_rerender.py": "adf93bcc4fbded25a31e0c4a8dc8273f03d5e4efd81b883b9f08c66370ef469e",
+  "utils/geometry_screening.py": "9d25c4850f715dc1a83570da2a1901eb0e2826ff78c169b04a3de1073967139c",
+  "utils/multiview_geometry.py": "82c29f98fe838adfc2f20d402b657a2cda65ae4f560ba644fd00cfda93e3ef82",
+  "utils/solar_geometry.py": "2135d3519d51fe2d8e5144b4f45611114f9134c638b2e651eda04733e0d2c9ff",
+  "configs/daylight/exp0012_scannetpp_rerender.json": "d211632061b1f1148f45598790cdea854cd814ec51a1192c0487f6007fa1eddc",
+  "configs/daylight/exp0008_real_visibility.json": "6d78cf218cbcff59413159e89b5b3c1c605b9293408cbb1b3904d9335c2bdb29",
+  "tests/test_rerender_visibility.py": "6406fcf0de060154d4055bff6388444ab8c82521db799c3de49eea78f4bca3fe"
+}

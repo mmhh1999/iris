@@ -1,0 +1,77 @@
+{
+  "experiment_id": "EXP0008",
+  "config": {
+    "experiment_id": "EXP0008",
+    "scene": "1b379f1114",
+    "train_image": "47630f4e_DSC09446.JPG",
+    "heldout_images": [
+      "47630f4e_DSC09417.JPG",
+      "47630f4e_DSC09462.JPG",
+      "47630f4e_DSC09486.JPG"
+    ],
+    "seed": 0,
+    "pixel_stride": 8,
+    "max_points": 4000,
+    "floor_z": 0.362,
+    "floor_tolerance": 0.02,
+    "shadow_tolerance": 0.04,
+    "coarse_az_step": 10,
+    "coarse_el_step": 5,
+    "apertures": [
+      {
+        "name": "back",
+        "endpoints_xy": [
+          [
+            0.13,
+            3.81
+          ],
+          [
+            0.6,
+            6.46
+          ]
+        ],
+        "z_range": [
+          0.68,
+          2.5
+        ]
+      },
+      {
+        "name": "right",
+        "endpoints_xy": [
+          [
+            1.13,
+            7.22
+          ],
+          [
+            3.9,
+            8.45
+          ]
+        ],
+        "z_range": [
+          0.65,
+          2.5
+        ]
+      }
+    ],
+    "annotation_provenance": "Agent approximate geometric hypotheses from visible window frame mesh hits in train image only. Back upper frame points ~[.112,3.809,2.524], [.591,6.328,2.501]; right upper/side/sill points ~[1.135,7.222,2.226], [1.600,7.495,2.505], [2.529,7.834,.646]. Right far endpoint is an unverified extrapolation outside image; aperture translation sensitivity required. No sunlight ground-truth mask or solar orientation calibration.",
+    "evaluation": "Fit training brightness-proxy mask via Otsu on mesh-supported floor pixels; evaluate fixed direction on geometry-selected disjoint views. This is exploratory same-sequence multiview consistency, NOT independent semantic accuracy or cross-time relighting. Wrong direction +45deg, each window alone, and translated windows controls. No heldout-driven tuning."
+  },
+  "config_sha256": "6d78cf218cbcff59413159e89b5b3c1c605b9293408cbb1b3904d9335c2bdb29",
+  "sources": {
+    "experiments/real_sun_visibility.py": "7f4eb55abd02711c75cd134da60445ac387ab353901dfd3b28acf6dcf3d63931",
+    "utils/multiview_geometry.py": "82c29f98fe838adfc2f20d402b657a2cda65ae4f560ba644fd00cfda93e3ef82",
+    "utils/geometry_screening.py": "9d25c4850f715dc1a83570da2a1901eb0e2826ff78c169b04a3de1073967139c",
+    "utils/solar_geometry.py": "2135d3519d51fe2d8e5144b4f45611114f9134c638b2e651eda04733e0d2c9ff"
+  },
+  "mesh_sha256": "710aadc6be96e0c2c47c10abd02880649ab13f0e9357a9e6a485ca40fd42039a",
+  "transforms_sha256": "61ee50210bccb4b4ce8d672456f12635c5fe30b88989181089e00f758beb045b",
+  "git_commit": "63434ae58efbb3b16fd9d2e6eb67403b689b98c6",
+  "git_status": " M .gitignore\n M research/DECISIONS.md\n M research/EXPERIMENTS.md\n M research/FAILED_IDEAS.md\n M research/PROJECT_STATUS.md\n M utils/sun_patch.py\n?? configs/daylight/\n?? experiments/real_sun_visibility.py\n?? experiments/scannetpp_geometry_audit.py\n?? experiments/scannetpp_screening.py\n?? experiments/validate_scannetpp_poses.py\n?? research/SCANNETPP_GEOMETRY_AUDIT.md\n?? research/evidence/\n?? tests/\n?? utils/geometry_screening.py\n?? utils/multiview_geometry.py\n",
+  "versions": {
+    "python": "3.10.21",
+    "numpy": "2.2.6",
+    "opencv": "5.0.0",
+    "mitsuba": "3.9.1"
+  },
+  "started_utc": "2026-09-19T18:43:48Z"
+}

@@ -1,0 +1,416 @@
+[
+  {
+    "path": "data_download/eyefultower/apartment/cameras.json",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/cameras.json",
+    "bytes": 4468066,
+    "sha256": "a9fd335ebabfcf06311596d55c767c942fe7bff7890566b6411725f763281a6b"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/splits.json",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/splits.json",
+    "bytes": 102072,
+    "sha256": "0e7a55b63dc9080df1b3207228d576ef4a0ec8b1fffa85b46748ab2411596348"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/mesh.obj",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/mesh.obj",
+    "bytes": 211435764,
+    "sha256": "5f807f5d62a4a3053b210665cd7699527cbf44e811573b839a19961cdd269e23"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/mesh.mtl",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/mesh.mtl",
+    "bytes": 175,
+    "sha256": "14962a134a5ed50ade368bd6ee60efebf00fae46d005cc5ff8e9b2878484021f"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/mesh.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/mesh.jpg",
+    "bytes": 24641991,
+    "sha256": "8eb326f5aa30eeab622329638af2885f46a25eb4eac38729ae854ecf3a152348"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/17/17_DSC0001.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/17/17_DSC0001.exr",
+    "bytes": 8421689,
+    "sha256": "21b2a13a61819d8f355811aef1318f20aa47d8adb078daeaa7ee5735d24091ce"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/17/17_DSC0244.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/17/17_DSC0244.exr",
+    "bytes": 8421689,
+    "sha256": "f981e0a39bf98e1de7b6fd97a0b975a2f696b5c4febaaca432b62f2c7837e17c"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/17/17_DSC0487.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/17/17_DSC0487.exr",
+    "bytes": 8421689,
+    "sha256": "91c6373aff500ffdb547e9e12716a72c424674f334faf82cfe55134d887878e8"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/17/17_DSC0730.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/17/17_DSC0730.exr",
+    "bytes": 8421689,
+    "sha256": "2eed01be95e64333b476d75883704100c2fb0b0ac80ebdff2c42e859ad9ca2b7"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/17/17_DSC0964.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/17/17_DSC0964.exr",
+    "bytes": 8421689,
+    "sha256": "e968b893acdc2d4cc305f032126fe6d044fc4bcbb9868dabde785f30911d8935"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/17/17_DSC1198.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/17/17_DSC1198.exr",
+    "bytes": 8421689,
+    "sha256": "d7a0eb83b6a93af97ad49af2b1b3f15179cb7fdad28489dc639d681cb48a6f88"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/17/17_DSC1423.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/17/17_DSC1423.exr",
+    "bytes": 8421689,
+    "sha256": "30206544e431354d1e86a120d04ed30250acb5d589af5acc484fbdc0d20584f4"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/17/17_DSC1666.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/17/17_DSC1666.exr",
+    "bytes": 8421689,
+    "sha256": "d3b8f6fd2da4f3fa5816557e06062909fedf7d44ebc05a131905c47e97583feb"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/19/19_DSC0001.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/19/19_DSC0001.exr",
+    "bytes": 8421689,
+    "sha256": "d01f1e2cfb3165382fa432735d466b4dd7a274c7ead181969c6a49b450cb2660"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/19/19_DSC0235.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/19/19_DSC0235.exr",
+    "bytes": 8421689,
+    "sha256": "f41a99495ddbd1ca51b43b31728e04f58e67e25ac7fb2cb77265046ec4837efe"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/19/19_DSC0469.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/19/19_DSC0469.exr",
+    "bytes": 8421689,
+    "sha256": "ae7fc3feb99392d722d1a3989a813d2edb674a4d27c4bbf26e7e70d6e6daa693"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/19/19_DSC0694.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/19/19_DSC0694.exr",
+    "bytes": 8421689,
+    "sha256": "8d8712d93c0a263fec51bf05a746b88a69bc9b1533bf744e1401497c19a3a199"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/19/19_DSC0901.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/19/19_DSC0901.exr",
+    "bytes": 8421689,
+    "sha256": "bcb834751523af7047fe458b179b337f43aad08bcd3c6917a63bb036e2316a12"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/19/19_DSC1126.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/19/19_DSC1126.exr",
+    "bytes": 8421689,
+    "sha256": "ba35201170225505038ecf47775e92db6767ef421fb070fc6dbcdfd0489d3339"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/19/19_DSC1432.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/19/19_DSC1432.exr",
+    "bytes": 8421689,
+    "sha256": "7e7edcf1dee57064110bd23e5635013ec73710d946ffae8d44986fa8c3e727c7"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/19/19_DSC1657.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/19/19_DSC1657.exr",
+    "bytes": 8421689,
+    "sha256": "3827349c0cae1ee96bd094a054f284373fe48454c20af2feb41f8b7d46f36a6f"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/20/20_DSC0001.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/20/20_DSC0001.exr",
+    "bytes": 8421689,
+    "sha256": "584dce870023a8ad14ca12d3290453549197b2667b979aad89a75353034bb05b"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/20/20_DSC0244.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/20/20_DSC0244.exr",
+    "bytes": 8421689,
+    "sha256": "63acab33436376bfbcfc426f1f578528e2d5f0e50ceb21126f44553603dad6e3"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/20/20_DSC0487.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/20/20_DSC0487.exr",
+    "bytes": 8421689,
+    "sha256": "42a37410f333188256055c3ae1f7f343e19ebc6feb236d8582397dfd25c87337"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/20/20_DSC0730.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/20/20_DSC0730.exr",
+    "bytes": 8421689,
+    "sha256": "a1ac951f8e241a8a91afc10eee5dd0495d656148410b50ece8bd2d35391f711f"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/20/20_DSC0964.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/20/20_DSC0964.exr",
+    "bytes": 8421689,
+    "sha256": "532aa7113122ca4ce8b951edf003da81cdeacc8687207188039eab523b071cf8"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/20/20_DSC1198.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/20/20_DSC1198.exr",
+    "bytes": 8421689,
+    "sha256": "39324eaf44ce87f0131461e9bdccc24b46869b95f85b27c854a31e0349582737"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/20/20_DSC1423.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/20/20_DSC1423.exr",
+    "bytes": 8421689,
+    "sha256": "b38fe9c06299dcf88e33c9384c6965786b4df11f8e26921c3acee33d8c5f726e"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/20/20_DSC1666.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/20/20_DSC1666.exr",
+    "bytes": 8421689,
+    "sha256": "8ff49a065e51e0ee0e20c8347a86b538f6d0d7ee9ec52ba45bb52d1a7fcc0c1a"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/21/21_DSC0001.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/21/21_DSC0001.exr",
+    "bytes": 8421689,
+    "sha256": "831ad8dadd5da127106d2e87f825b367b489fa679683f19f43ce8391227eeb9b"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/21/21_DSC0235.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/21/21_DSC0235.exr",
+    "bytes": 8421689,
+    "sha256": "3b08c65f0e7f51e0c4dc1df970c4ed5c2adad3f64b87e53e3d171fd803bf2068"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/21/21_DSC0478.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/21/21_DSC0478.exr",
+    "bytes": 8421689,
+    "sha256": "794924cb4080d5dfd4db2a52a9440531e6f20b08f0561b3b4b745c5dd56a61d2"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/21/21_DSC0712.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/21/21_DSC0712.exr",
+    "bytes": 8421689,
+    "sha256": "47a1afd2df8f888958ffa410efd4cbfebbe551d6308898a8fc3915f45e4df53d"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/21/21_DSC0946.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/21/21_DSC0946.exr",
+    "bytes": 8421689,
+    "sha256": "7c08c26eeaabc8d5d7cf666e97180439132753dc3ef2e9089182ce2d83a38fe4"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/21/21_DSC1180.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/21/21_DSC1180.exr",
+    "bytes": 8421689,
+    "sha256": "e9e14fa0a9e19aed9b706a96d835ffc5432fe86b6048ecf09ed989fe9961b935"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/21/21_DSC1432.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/21/21_DSC1432.exr",
+    "bytes": 8421689,
+    "sha256": "1814b3bb51a8aa0bd0aa67b126f2401dc91306216fa5944b39e9ea5c205176da"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-1k/21/21_DSC1666.exr",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-1k/21/21_DSC1666.exr",
+    "bytes": 8421689,
+    "sha256": "02a254df099f315718a2fa73882b61766a983982e872dfe9d5d75be8f55831ff"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/17/17_DSC0001.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/17/17_DSC0001.jpg",
+    "bytes": 248100,
+    "sha256": "b667d60d8d4c9c3a626946f30238bac5de7dad88cc8dec65a6edafc17aff1b5e"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/17/17_DSC0244.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/17/17_DSC0244.jpg",
+    "bytes": 457141,
+    "sha256": "98d6a27294ee69f88ac58768e94344c3a0b7e0338785a3369a0c0a314d6eb4fe"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/17/17_DSC0487.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/17/17_DSC0487.jpg",
+    "bytes": 397571,
+    "sha256": "34f28903048bebfddd985e097b1ff044d59bf27af5e0c2d7f221429a9038c0d0"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/17/17_DSC0730.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/17/17_DSC0730.jpg",
+    "bytes": 355870,
+    "sha256": "a29ae879362fd000632565ce0610f9d8826a3f0e9227db1a65a2f6f34bc166d7"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/17/17_DSC0964.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/17/17_DSC0964.jpg",
+    "bytes": 310356,
+    "sha256": "15f71445204e2fb5971265e86ec71f853c2b4f291a5c10953f675be5b9781150"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/17/17_DSC1198.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/17/17_DSC1198.jpg",
+    "bytes": 200003,
+    "sha256": "3f71bfbc9f895eb7873ff6875cd720f0d462c4eeb28361794f9b4ea64f23f04c"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/17/17_DSC1423.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/17/17_DSC1423.jpg",
+    "bytes": 282233,
+    "sha256": "4884ecad024c3e594c15527d6f8aad97e45153611b39670c1faf4b99dee76004"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/17/17_DSC1666.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/17/17_DSC1666.jpg",
+    "bytes": 416518,
+    "sha256": "232da521da9626bd0834a6dd587a2a8cc7cda7af1e71d31b3366cd408800971b"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/19/19_DSC0001.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/19/19_DSC0001.jpg",
+    "bytes": 259119,
+    "sha256": "75390a103d46e61f6fe38edbbfd1da4220affd41a218c73ccd748545e2f5311e"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/19/19_DSC0235.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/19/19_DSC0235.jpg",
+    "bytes": 263558,
+    "sha256": "418512cc61f2b6cca227de0f0171149469d2002e7da866f13fcb0e895d047a33"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/19/19_DSC0469.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/19/19_DSC0469.jpg",
+    "bytes": 326562,
+    "sha256": "b21d6084338fda835f47b6037ac9c94393bba456668faea181dd61a24592a011"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/19/19_DSC0694.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/19/19_DSC0694.jpg",
+    "bytes": 449574,
+    "sha256": "cc8f4377508bb7e410a23f057a1a24fb8de70951ce6c97ca4b95388263dfa3ca"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/19/19_DSC0901.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/19/19_DSC0901.jpg",
+    "bytes": 330692,
+    "sha256": "389c14c45ae9ca8fee597ff90a9cccce4760474f37be4a3e5a9f700031007cef"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/19/19_DSC1126.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/19/19_DSC1126.jpg",
+    "bytes": 248623,
+    "sha256": "b8bc1dd3977278b8d5dc54f7cc80a1ccb1669363d36e80f7f838635a7e2692ad"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/19/19_DSC1432.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/19/19_DSC1432.jpg",
+    "bytes": 262341,
+    "sha256": "9e0a8bc0c600cfb20481936de28fbc16871c276f9801b75f353037219c8384fe"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/19/19_DSC1657.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/19/19_DSC1657.jpg",
+    "bytes": 349972,
+    "sha256": "d32152af1400475987ab62d32216b6116127d0c69ec0ecb560cc73349883f945"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/20/20_DSC0001.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/20/20_DSC0001.jpg",
+    "bytes": 295321,
+    "sha256": "b51968f0e1c5d33f9c568976f56b6a827f1c3dd23d1b007c006a9202324d4f57"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/20/20_DSC0244.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/20/20_DSC0244.jpg",
+    "bytes": 400241,
+    "sha256": "5054752826daee7e3a636806fde0166d8c39a0a0a743f74db3f612c008455c25"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/20/20_DSC0487.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/20/20_DSC0487.jpg",
+    "bytes": 374191,
+    "sha256": "d2cfcf70b9709327405027fb09d08bce21a64ce341479ac3cb525ae84bc92fbe"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/20/20_DSC0730.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/20/20_DSC0730.jpg",
+    "bytes": 344242,
+    "sha256": "ffb3982e309841cc7ad09b9e40308ce1145eff5fd549dd7141b3bd80f7c55bee"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/20/20_DSC0964.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/20/20_DSC0964.jpg",
+    "bytes": 316257,
+    "sha256": "8b470da222c381b5c21484c3053f14cad8a1160ed01564761db1910122f7219c"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/20/20_DSC1198.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/20/20_DSC1198.jpg",
+    "bytes": 203742,
+    "sha256": "b50be36a603c8721300915a9dcaf40cddd3c4b36118ab7c950e1f0126a931c97"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/20/20_DSC1423.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/20/20_DSC1423.jpg",
+    "bytes": 279687,
+    "sha256": "8377043c065ad93762ab56c5ed0db2c288773222e9a339cc9aca9e882c688520"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/20/20_DSC1666.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/20/20_DSC1666.jpg",
+    "bytes": 319745,
+    "sha256": "ee2c636d27fe637b9b5c2396688777c31b878f6638e3e54cffd04e6cf62f000b"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/21/21_DSC0001.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/21/21_DSC0001.jpg",
+    "bytes": 233956,
+    "sha256": "d066ffd994ceb546f2e0cea667c22a009129b9e16bbfa8226e94d4eb0e0a5e5d"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/21/21_DSC0235.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/21/21_DSC0235.jpg",
+    "bytes": 409206,
+    "sha256": "188e2b1fbf3a7a2dcdead9ec1e4a00108f0a3cbdf5c26a8096f6518a53558884"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/21/21_DSC0478.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/21/21_DSC0478.jpg",
+    "bytes": 437081,
+    "sha256": "ccafe85c31d8b01eab461e3ff3f833dacd9ad0c99fb72559001ff503246e50ae"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/21/21_DSC0712.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/21/21_DSC0712.jpg",
+    "bytes": 317474,
+    "sha256": "232b7b64e2f502e95b06aaa21e7f47f432aac99674f8d649ab0e7a09a7b18e73"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/21/21_DSC0946.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/21/21_DSC0946.jpg",
+    "bytes": 311742,
+    "sha256": "366c8f6f5179dc35e19efd3bf6d586e65febfc5bb50bbe36ac6f05685d278890"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/21/21_DSC1180.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/21/21_DSC1180.jpg",
+    "bytes": 209592,
+    "sha256": "cb90fd88de519a3e6963c7c21a7179ad2546183f10ad6766966a5c0d47c803bb"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/21/21_DSC1432.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/21/21_DSC1432.jpg",
+    "bytes": 253703,
+    "sha256": "5f456ae3da01bfe1cd31b3a3b9ce9d33c177ca9cfb07af46af6efca6f1ef36fa"
+  },
+  {
+    "path": "data_download/eyefultower/apartment/images-jpeg-1k/21/21_DSC1666.jpg",
+    "url": "https://fb-baas-f32eacb9-8abb-11eb-b2b8-4857dd089e15.s3.amazonaws.com/EyefulTower/apartment/images-jpeg-1k/21/21_DSC1666.jpg",
+    "bytes": 385107,
+    "sha256": "92677a702beac869bfd9bef3c23b2ba515519f96bb900caa1b66a85869260d38"
+  }
+]

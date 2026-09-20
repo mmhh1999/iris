@@ -1,0 +1,67 @@
+{
+  "run_id": "20260919T184714_168179Z",
+  "status": "completed",
+  "stages": [
+    {
+      "stage": "tests",
+      "command": [
+        "/home/minghao/projects/iris/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "seconds": 1.1236369959951844
+    },
+    {
+      "stage": "real",
+      "command": [
+        "/home/minghao/projects/iris/.venv/bin/python",
+        "experiments/real_sun_visibility.py",
+        "--out",
+        "/home/minghao/projects/iris/experiments/out/validation_cycles/20260919T184714_168179Z/real"
+      ],
+      "exit_code": 0,
+      "seconds": 4.0031373880046885
+    },
+    {
+      "stage": "portal_ablation",
+      "command": [
+        "/home/minghao/projects/iris/.venv/bin/python",
+        "experiments/portal_ablation.py",
+        "--out",
+        "/home/minghao/projects/iris/experiments/out/validation_cycles/20260919T184714_168179Z/portal_ablation"
+      ],
+      "exit_code": 0,
+      "seconds": 3.206129393991432
+    },
+    {
+      "stage": "synthetic",
+      "command": [
+        "/home/minghao/projects/iris/.venv/bin/python",
+        "experiments/heldout_sun_control.py",
+        "--out",
+        "/home/minghao/projects/iris/experiments/out/validation_cycles/20260919T184714_168179Z/synthetic"
+      ],
+      "exit_code": 0,
+      "seconds": 12.847339761996409
+    }
+  ],
+  "findings": {
+    "real_physical_proxy_iou": 0.7092682949371029,
+    "real_memory_proxy_iou": 0.8332686104304886,
+    "real_physical_beats_memory": false,
+    "implicit_mesh_openings_proxy_iou": 0.6242545478535343,
+    "synthetic": {
+      "mean_angular_error_deg": 0.429712666103449,
+      "mean_heldout_physical_iou": 0.9511427712950993,
+      "mean_heldout_frozen_iou": 0.14782127130535738,
+      "n_cases": 6,
+      "elapsed_seconds": 12.153251051000552
+    },
+    "claim_limit": "Component validation only; no full IRIS comparison or real heldout-illumination validation."
+  }
+}

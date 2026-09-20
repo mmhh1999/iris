@@ -1,4 +1,5 @@
 /datas/
+/data_download/
 **/__pycache__/
 notebooks/*
 **/.ipynb_checkpoints
@@ -20,3 +21,7 @@ lightning_logs/
 !/experiments/out/real_photo_test/
 !/experiments/out/real_photo_test/*.jpg
 !/experiments/out/real_photo_test/*.json
+
+/.toolchain/
+
+/.publication/

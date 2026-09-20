@@ -1,0 +1,112 @@
+{
+  "global_step": 3,
+  "epoch": 1,
+  "finite_state": true,
+  "optimizer_parameters_with_nonzero_momentum": 2,
+  "training_scalars": {
+    "hp_metric": [
+      {
+        "step": 0,
+        "value": -1.0
+      }
+    ],
+    "init/albedo": [
+      {
+        "step": 0,
+        "value": 0.12793046236038208
+      },
+      {
+        "step": 1,
+        "value": 0.13273796439170837
+      },
+      {
+        "step": 2,
+        "value": 0.12960658967494965
+      }
+    ],
+    "init/roughness": [
+      {
+        "step": 0,
+        "value": 0.1873948723077774
+      },
+      {
+        "step": 1,
+        "value": 0.19406993687152863
+      },
+      {
+        "step": 2,
+        "value": 0.19051015377044678
+      }
+    ],
+    "init/loss": [
+      {
+        "step": 0,
+        "value": 0.19493930041790009
+      },
+      {
+        "step": 1,
+        "value": 0.19316428899765015
+      },
+      {
+        "step": 2,
+        "value": 0.19387350976467133
+      }
+    ],
+    "init/loss_c": [
+      {
+        "step": 0,
+        "value": 0.06594310700893402
+      },
+      {
+        "step": 1,
+        "value": 0.06711548566818237
+      },
+      {
+        "step": 2,
+        "value": 0.068265900015831
+      }
+    ],
+    "init/loss_a": [
+      {
+        "step": 0,
+        "value": 0.12899619340896606
+      },
+      {
+        "step": 1,
+        "value": 0.12604880332946777
+      },
+      {
+        "step": 2,
+        "value": 0.12560760974884033
+      }
+    ],
+    "init/psnr": [
+      {
+        "step": 0,
+        "value": 11.808305740356445
+      },
+      {
+        "step": 1,
+        "value": 11.731772422790527
+      },
+      {
+        "step": 2,
+        "value": 11.65796184539795
+      }
+    ],
+    "epoch": [
+      {
+        "step": 0,
+        "value": 0.0
+      },
+      {
+        "step": 1,
+        "value": 0.0
+      },
+      {
+        "step": 2,
+        "value": 0.0
+      }
+    ]
+  }
+}

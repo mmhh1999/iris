@@ -1,3 +1,43 @@
+## EXP0011 — official bathroom baseline on Blackwell (2026-09-19)
+
+This supersedes earlier missing-toolchain and inaccessible-Box conclusions.
+The public archives were range-downloaded directly, with ZIP CRC checking and
+SHA-256 manifests. No private account or manual download was needed.
+
+- Official synthetic bathroom: 109 training views, 13 validation views, 640×320.
+- Official `last_1.ckpt`, original 256 SPP / 16 samples per batch, all 13 validation
+  views: **PSNR 28.97625 dB, SSIM 0.79503** (mean per image, original metric code).
+- Original initialization passed three optimizer steps; finite losses and state,
+  nonzero optimizer momentum in material and emitter parameters; checkpoint saved.
+- From-scratch SLF baking and emitter extraction passed on all 109 training views.
+- Original BRDF/CRF and emitter optimization each passed three steps.
+- The bounded pipeline is running stage 10 (indirect shading refinement) in a
+  detached process. It will then run final BRDF/CRF optimization and rendering.
+- A detached full 6/4/1/4-epoch run is queued after all bounded stages succeed.
+  This is execution validation in progress, not completed converged retraining.
+- No real same-room cross-time comparison is possible with the available data yet.
+
+Environment: torch 2.11.0+cu128, torchvision 0.26.0+cu128, Mitsuba 3.9.1 /
+Dr.Jit 1.5.0, Lightning 2.6.6, tiny-cuda-nn 2.0 (commit recorded in evidence),
+local CUDA 12.8 and GCC 13.4. OpenCV 5 lacked EXR support; switched to 4.11.0.86.
+Original pinned torch/Mitsuba versions are not used on this Blackwell machine.
+Compatibility changes: explicit Lightning Trainer construction; optional training
+step/render frame limits. Our first automation copied `last.ckpt`, unlike the official
+scripts which move it. Lightning versioned new files and later stages read stale
+weights. Parameter-difference checks detected this; the runner now moves the file,
+and affected stages 07 onward were invalidated and restarted from the true
+stage-06 checkpoint. The official pretrained evaluation was unaffected. Previously verified Dr.Jit ray conversion fixes remain.
+No BRDF architecture, loss, or lighting-model change is part of this baseline.
+
+Evidence: `research/evidence/EXP0011/`; outputs and logs:
+`experiments/out/EXP0011_baseline/`. Comparison figure:
+`experiments/out/EXP0011_baseline/baseline_comparison.png`.
+
+Reproduction helpers: `experiments/fetch_official_baseline.py`,
+`experiments/build_tcnn_local.py`, `experiments/run_original_iris.py`.
+The runner defaults to bounded execution; `--full-training` selects the original
+6/4/1/4 epoch budgets. Use a fresh output directory for each run.
+
 # Baseline Reproduction Log
 
 Tracks environment setup and baseline reproduction attempts for IRIS on `main` @ `d2d4381`. See `EXPERIMENTS.md` for the experiment index.
@@ -74,3 +114,14 @@ Tracks environment setup and baseline reproduction attempts for IRIS on `main` @
 `transforms_all.json`'s format is exactly what NeRFstudio's `ns-process-data` (COLMAP wrapper) produces — consistent with the README's "Customized Data" section recommending that exact tool. ScanNet++'s own official download/toolkit ships pre-computed COLMAP poses and the laser-scanned mesh directly, but not necessarily already in this exact `transforms_all.json` shape or this directory layout — **a conversion step will very likely be needed** once the raw download lands: (a) export ScanNet++'s COLMAP poses to a NeRFstudio/NeRF-style `transforms.json` (either via `ns-process-data` re-running COLMAP from scratch on the DSLR images, or a direct COLMAP->transforms.json converter reusing ScanNet++'s already-computed poses, if one is readily available from ScanNet++'s own toolkit — to be checked once the data is in hand), (b) place/rename the mesh at `scans/scene.ply`, (c) generate or reuse a `train_test_lists.json` (ScanNet++ itself ships an official per-scene train/test split which may be directly reusable here). No exposure/CRF/timestamp handling needed from the raw data beyond what's already hardcoded (`exposures = np.ones(...)`, a fixed mean EMoR CRF curve, both already noted as ScanNet++ limitations in `IRIS_ARCHITECTURE_AUDIT.md` §7).
 
 This mapping is recorded now, ahead of having the actual data, specifically so the conversion script can be written and run immediately once the download completes rather than requiring another investigation pass then.
+
+### 2026-09-19 autonomous continuation: current access check
+
+`nvidia-smi --query-gpu=name,driver_version,memory.total,memory.used --format=csv,noheader`
+executed outside the restricted sandbox reports RTX 5070 Ti / 581.80 / 16,303 MiB
+(total) / 2,999 MiB (used at check time). Therefore the earlier sandbox NVML error
+is not evidence of unavailable hardware. `tinycudann` remains absent;
+`gcc`, `g++`, `nvcc`, `cmake` and `ninja` are absent from PATH. Torch, torch_scatter
+and pytorch_lightning are installed. No compiler installation or full baseline
+training was performed in this continuation. EXP0008–EXP0010 are CPU geometry
+and rendering component experiments and must not be recorded as IRIS reproduction.

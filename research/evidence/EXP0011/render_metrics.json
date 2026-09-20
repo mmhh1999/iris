@@ -1,0 +1,10 @@
+{
+  "scene": "official synthetic bathroom",
+  "checkpoint": "official last_1.ckpt",
+  "validation_views": 13,
+  "SPP": 256,
+  "spp": 16,
+  "mean_psnr": 28.97625,
+  "mean_ssim": 0.79503,
+  "scope": "pretrained reconstruction; not from-scratch convergence or real cross-time validation"
+}

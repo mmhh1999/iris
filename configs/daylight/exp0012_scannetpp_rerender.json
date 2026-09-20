@@ -1,0 +1,31 @@
+{
+  "experiment_id": "EXP0012",
+  "scene": "1b379f1114",
+  "views": ["47630f4e_DSC09446.JPG", "47630f4e_DSC09417.JPG", "47630f4e_DSC09462.JPG", "47630f4e_DSC09486.JPG"],
+  "conditions": [
+    {"name": "train", "azimuth": 223.7, "elevation": 23.4},
+    {"name": "validation", "azimuth": 242.3, "elevation": 32.1},
+    {"name": "test_a", "azimuth": 261.6, "elevation": 41.7},
+    {"name": "test_b", "azimuth": 278.2, "elevation": 29.3}
+  ],
+  "resolution": [384, 256],
+  "spp": 64,
+  "seeds": [101, 202],
+  "diffuse_reflectance": 0.55,
+  "sun_irradiance": [3.0, 2.85, 2.55],
+  "sky_radiance": [0.10, 0.12, 0.16],
+  "max_depth": 8,
+  "floor_z": 0.362,
+  "floor_tolerance": 0.025,
+  "fit_max_points": 3000,
+  "fit_az_step": 10,
+  "fit_el_step": 5,
+  "fit_seed": 17,
+  "shadow_ray_offset_m": 0.002,
+  "geometry": "Original complete scanned mesh, no repair, decimation or vertex-color texture. Scanned holes remain and are audited.",
+  "camera": "Official camera poses converted to mesh coordinates. Render camera uses fx for both focal axes; original fy is recorded and the sub-percent approximation is measured.",
+  "material": "Assigned uniform two-sided diffuse material, known simulator truth; not recovered real reflectance.",
+  "split": "Fit direction only on train condition, view 0, seed 101. All other views/conditions/seeds are held out from fitting. No hyperparameter tuning on heldout images.",
+  "test_inputs": "True relative changes of simulated sun azimuth/elevation are supplied. Angles are in scene coordinates, not calibrated geographic headings or actual capture times.",
+  "limits": "Real scanned geometry with synthetic materials and lighting. Component direction/visibility evaluation, not a learned BRDF, full IRIS comparison, or demonstrated sim-to-real transfer. Direct-only images are privileged synthetic observations."
+}

@@ -1,0 +1,14 @@
+{
+  "pid": 676939,
+  "command": [
+    "/home/minghao/projects/iris/.venv/bin/python",
+    "/home/minghao/projects/iris/experiments/run_original_iris.py",
+    "--output",
+    "/home/minghao/projects/iris/experiments/out/EXP0011_baseline/full_training",
+    "--full-training",
+    "--after-success",
+    "/home/minghao/projects/iris/experiments/out/EXP0011_baseline/from_scratch"
+  ],
+  "started_utc": "2026-09-20T00:51:31.034430+00:00",
+  "checkpoint_handoff": "move last.ckpt as in original scripts"
+}

@@ -1,0 +1,91 @@
+{
+  "experiment_id": "EXP0010",
+  "recovered_az": 345.0,
+  "recovered_el": 44.0,
+  "train_iou": 0.7836538461538461,
+  "images": [
+    {
+      "split": "train",
+      "image": "47630f4e_DSC09446.JPG",
+      "n_floor_samples": 4000,
+      "proxy_threshold": 155.0,
+      "bright_fraction": 0.45375,
+      "image_sha256": "074034da3f11b503cff83d6f87019c22789a75b57d614b94853a6072aa4afa67",
+      "mask_sha256": "0a8431369b58633e31c67f4ca02ae9321afa05a199b54dcb31b32790067f9302",
+      "datetime_exif": null,
+      "floor_z_median": 0.36233586072921753,
+      "metrics": {
+        "iou": 0.7836538461538461,
+        "balanced_accuracy": 0.88839508040673,
+        "tp": 1630,
+        "fp": 265,
+        "fn": 185,
+        "tn": 1920,
+        "n": 4000
+      }
+    },
+    {
+      "split": "heldout_view",
+      "image": "47630f4e_DSC09417.JPG",
+      "n_floor_samples": 4000,
+      "proxy_threshold": 157.0,
+      "bright_fraction": 0.4155,
+      "image_sha256": "04e373fe0aa67c400cfaaf41eca14c97f9f9a2e6516bebb924fba79f51c199ee",
+      "mask_sha256": "0a8431369b58633e31c67f4ca02ae9321afa05a199b54dcb31b32790067f9302",
+      "datetime_exif": null,
+      "floor_z_median": 0.36215639114379883,
+      "metrics": {
+        "iou": 0.5738132498695879,
+        "balanced_accuracy": 0.7763928049007709,
+        "tp": 1100,
+        "fp": 255,
+        "fn": 562,
+        "tn": 2083,
+        "n": 4000
+      }
+    },
+    {
+      "split": "heldout_view",
+      "image": "47630f4e_DSC09462.JPG",
+      "n_floor_samples": 4000,
+      "proxy_threshold": 157.0,
+      "bright_fraction": 0.49225,
+      "image_sha256": "2764b3ced7212688cc1229e25d5146f1d0d0438d126d4e3d7a30785a90016972",
+      "mask_sha256": "0a8431369b58633e31c67f4ca02ae9321afa05a199b54dcb31b32790067f9302",
+      "datetime_exif": null,
+      "floor_z_median": 0.3623163104057312,
+      "metrics": {
+        "iou": 0.6464599722350763,
+        "balanced_accuracy": 0.8074812473696806,
+        "tp": 1397,
+        "fp": 192,
+        "fn": 572,
+        "tn": 1839,
+        "n": 4000
+      }
+    },
+    {
+      "split": "heldout_view",
+      "image": "47630f4e_DSC09486.JPG",
+      "n_floor_samples": 4000,
+      "proxy_threshold": 161.0,
+      "bright_fraction": 0.6055,
+      "image_sha256": "dd9e0f857652845e20470031bcf6f25d0abefa2c89cb187e404c01c4ce6f293f",
+      "mask_sha256": "0a8431369b58633e31c67f4ca02ae9321afa05a199b54dcb31b32790067f9302",
+      "datetime_exif": null,
+      "floor_z_median": 0.362032949924469,
+      "metrics": {
+        "iou": 0.6524904214559387,
+        "balanced_accuracy": 0.7919998765017338,
+        "tp": 1703,
+        "fp": 188,
+        "fn": 719,
+        "tn": 1390,
+        "n": 4000
+      }
+    }
+  ],
+  "heldout_mean_iou": 0.6242545478535343,
+  "elapsed_seconds": 3.098276917997282,
+  "disclosure": "Same geometry, implicit mesh openings, no explicit aperture labels. Geometry fixed; brightness labels are proxies. Not IRIS."
+}

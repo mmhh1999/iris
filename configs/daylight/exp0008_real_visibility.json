@@ -1,0 +1,20 @@
+{
+  "experiment_id": "EXP0008",
+  "scene": "1b379f1114",
+  "train_image": "47630f4e_DSC09446.JPG",
+  "heldout_images": ["47630f4e_DSC09417.JPG", "47630f4e_DSC09462.JPG", "47630f4e_DSC09486.JPG"],
+  "seed": 0,
+  "pixel_stride": 8,
+  "max_points": 4000,
+  "floor_z": 0.362,
+  "floor_tolerance": 0.02,
+  "shadow_tolerance": 0.04,
+  "coarse_az_step": 10,
+  "coarse_el_step": 5,
+  "apertures": [
+    {"name": "back", "endpoints_xy": [[0.13, 3.81], [0.60, 6.46]], "z_range": [0.68, 2.50]},
+    {"name": "right", "endpoints_xy": [[1.13, 7.22], [3.90, 8.45]], "z_range": [0.65, 2.50]}
+  ],
+  "annotation_provenance": "Agent approximate geometric hypotheses from visible window frame mesh hits in train image only. Back upper frame points ~[.112,3.809,2.524], [.591,6.328,2.501]; right upper/side/sill points ~[1.135,7.222,2.226], [1.600,7.495,2.505], [2.529,7.834,.646]. Right far endpoint is an unverified extrapolation outside image; aperture translation sensitivity required. No sunlight ground-truth mask or solar orientation calibration.",
+  "evaluation": "Fit training brightness-proxy mask via Otsu on mesh-supported floor pixels; evaluate fixed direction on geometry-selected disjoint views. This is exploratory same-sequence multiview consistency, NOT independent semantic accuracy or cross-time relighting. Wrong direction +45deg, each window alone, and translated windows controls. No heldout-driven tuning."
+}

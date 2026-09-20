@@ -1,0 +1,142 @@
+{
+  "scene": "riverview",
+  "variant": "cuda_ad_rgb",
+  "mitsuba": "3.9.1",
+  "triangles": 1934859,
+  "views": [
+    {
+      "camera_id": "17/17_DSC0001",
+      "mesh_hit_fraction": 0.9122578581871345
+    },
+    {
+      "camera_id": "17/17_DSC0064",
+      "mesh_hit_fraction": 0.8452576754385965
+    },
+    {
+      "camera_id": "17/17_DSC0127",
+      "mesh_hit_fraction": 0.7909813596491229
+    },
+    {
+      "camera_id": "17/17_DSC0199",
+      "mesh_hit_fraction": 0.8426763523391813
+    },
+    {
+      "camera_id": "17/17_DSC0262",
+      "mesh_hit_fraction": 0.4283854166666667
+    },
+    {
+      "camera_id": "17/17_DSC0325",
+      "mesh_hit_fraction": 0.5822368421052632
+    },
+    {
+      "camera_id": "17/17_DSC0379",
+      "mesh_hit_fraction": 0.7956871345029239
+    },
+    {
+      "camera_id": "17/17_DSC0442",
+      "mesh_hit_fraction": 0.6917717470760234
+    },
+    {
+      "camera_id": "19/19_DSC0001",
+      "mesh_hit_fraction": 0.4112298976608187
+    },
+    {
+      "camera_id": "19/19_DSC0064",
+      "mesh_hit_fraction": 0.43071546052631576
+    },
+    {
+      "camera_id": "19/19_DSC0127",
+      "mesh_hit_fraction": 0.8488441154970761
+    },
+    {
+      "camera_id": "19/19_DSC0199",
+      "mesh_hit_fraction": 0.7885827850877193
+    },
+    {
+      "camera_id": "19/19_DSC0262",
+      "mesh_hit_fraction": 0.8943485014619883
+    },
+    {
+      "camera_id": "19/19_DSC0325",
+      "mesh_hit_fraction": 0.8726014254385965
+    },
+    {
+      "camera_id": "19/19_DSC0379",
+      "mesh_hit_fraction": 0.8717562134502924
+    },
+    {
+      "camera_id": "19/19_DSC0442",
+      "mesh_hit_fraction": 0.9000137061403509
+    },
+    {
+      "camera_id": "20/20_DSC0001",
+      "mesh_hit_fraction": 0.7949561403508771
+    },
+    {
+      "camera_id": "20/20_DSC0064",
+      "mesh_hit_fraction": 0.8036595394736842
+    },
+    {
+      "camera_id": "20/20_DSC0127",
+      "mesh_hit_fraction": 0.9010645102339181
+    },
+    {
+      "camera_id": "20/20_DSC0199",
+      "mesh_hit_fraction": 0.8645833333333334
+    },
+    {
+      "camera_id": "20/20_DSC0262",
+      "mesh_hit_fraction": 0.5021016081871345
+    },
+    {
+      "camera_id": "20/20_DSC0325",
+      "mesh_hit_fraction": 0.5269554093567251
+    },
+    {
+      "camera_id": "20/20_DSC0379",
+      "mesh_hit_fraction": 0.8512426900584795
+    },
+    {
+      "camera_id": "20/20_DSC0442",
+      "mesh_hit_fraction": 0.7721125730994152
+    },
+    {
+      "camera_id": "21/21_DSC0001",
+      "mesh_hit_fraction": 0.8244014985380117
+    },
+    {
+      "camera_id": "21/21_DSC0064",
+      "mesh_hit_fraction": 0.8549205043859649
+    },
+    {
+      "camera_id": "21/21_DSC0127",
+      "mesh_hit_fraction": 0.6458790204678363
+    },
+    {
+      "camera_id": "21/21_DSC0199",
+      "mesh_hit_fraction": 0.5263614766081871
+    },
+    {
+      "camera_id": "21/21_DSC0262",
+      "mesh_hit_fraction": 0.6961577119883041
+    },
+    {
+      "camera_id": "21/21_DSC0325",
+      "mesh_hit_fraction": 0.7536321271929824
+    },
+    {
+      "camera_id": "21/21_DSC0379",
+      "mesh_hit_fraction": 0.8594663742690059
+    },
+    {
+      "camera_id": "21/21_DSC0442",
+      "mesh_hit_fraction": 0.7993192616959064
+    }
+  ],
+  "diagnostic": "captured texture reprojection, NOT relighting or material estimation",
+  "columns": [
+    "real HDR preview",
+    "captured mesh texture",
+    "geometry normals"
+  ]
+}

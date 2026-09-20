@@ -1,0 +1,14 @@
+{
+  "failure": "The initial automation copied last.ckpt instead of moving it as the official shell scripts do. Lightning kept the old last.ckpt and wrote trained last-v1.ckpt / last-v2.ckpt, so later stages read stale weights.",
+  "observed_stale_material_and_crf_change": 0.0,
+  "actual_stage06_checkpoint": "last-v1.ckpt",
+  "fix": "Use shutil.move at all four stage boundaries; retain original artifacts, restore stage-04 emitter, replay stages 07 onward with the verified stage-06 model.",
+  "unaffected": [
+    "official pretrained 13-view reconstruction",
+    "stages 01-06 numerical computation"
+  ],
+  "superseded": [
+    "first executions of stages 07-10"
+  ],
+  "full_training_started_before_fix": false
+}

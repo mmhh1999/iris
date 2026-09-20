@@ -1,0 +1,12 @@
+{
+  "material.mlp.params": {
+    "max_absolute_change": 0.0030039194971323013,
+    "changed_elements": 3060031,
+    "finite": true
+  },
+  "model_crf.weight": {
+    "max_absolute_change": 0.003000300843268633,
+    "changed_elements": 9,
+    "finite": true
+  }
+}

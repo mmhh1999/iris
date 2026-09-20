@@ -1,0 +1,12 @@
+{
+  "recorded_utc": "2026-09-20T00:53:11.013569+00:00",
+  "official_checkpoint_render": "passed_all_13_views",
+  "original_initialization": "passed_3_steps",
+  "original_brdf_crf": "passed_3_steps",
+  "original_emitter_optimization": "passed_3_steps",
+  "bounded_pipeline": "running_stage_10_detached",
+  "full_converged_training": "queued_after_bounded_pipeline_success",
+  "real_cross_time_validation": "blocked_missing_photos",
+  "human_certification_or_novelty_claim": false,
+  "checkpoint_handoff": "fixed and verified; material/CRF weights preserved through emitter stage"
+}

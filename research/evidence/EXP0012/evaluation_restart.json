@@ -1,0 +1,3 @@
+{
+  "reason": "Replace sequential GPU ray queries with mathematically equivalent batched queries. All 32 rendered observations completed and retained. No light, split or fitting-grid changes."
+}

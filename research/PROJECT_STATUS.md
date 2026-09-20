@@ -1,6 +1,92 @@
+## EXP0015 — InteriorVerse material data acquired (2026-09-20)
+
+The user-supplied legacy URL returns 404. The author's August 2026 update endorses
+the Lez/InteriorVerse backup. Downloaded and SHA-256/CRC-verified its first 2.11 GB
+85-degree shard: 100 scenes, 5,988 EXRs. Inspected all six modalities for 26 views
+from three scenes. This is synthetic material-map data, not real scans or a
+verified solar-rerender asset bundle. No mesh/extrinsics/sun metadata in this shard;
+the official README still marks spatially-varying lighting unreleased.
+See `INTERIORVERSE_ACCESS_ZH.md` and `evidence/EXP0015/`.
+
+## EXP0014 — real HDR acquisition and geometry audit (2026-09-20)
+
+Downloaded complete meshes/calibration and 32-view HDR pilots for each of two
+real Eyeful Tower scenes: riverview and apartment (64 HDRs, 48 train / 16 official
+test views; 1.06 GB acquired). All file hashes rechecked, HDRs decoded, distortion
+removed, camera round trips checked, and all 64 views ray-traced against the mesh.
+Riverview has visible real daylight patches and is the selected first solar scene.
+Interactive inspection: `experiments/out/EXP0014_eyeful/index.html`.
+Report: `EYEFUL_PILOT_ZH.md`; evidence: `evidence/EXP0014/`.
+This is data/geometry preparation, not recovered BRDF or solar rerendering.
+TexIR and Cali-HDR remain access-by-request; official instructions saved, no emails sent.
+
+## Current objective — photo-only solar/BRDF evaluation (2026-09-19)
+
+The user clarified the target: generate many photorealistic interiors with retained
+solar and material ground truth, hide that truth from estimation, and test whether
+recovering explicit sun improves BRDF accuracy. Shadow IoU alone does not answer
+this question. See `PHOTO_ONLY_SOLAR_BRDF_ZH.md` for the current protocol and
+`evidence/EXP0013_preparation/asset_audit.json` for two acquired, CRC-checked complete
+PBR asset packages. Those artist-authored scenes are engineering assets, not real
+scans, and are not yet converted into verified solar datasets. Strict photo-only
+and known-geometry diagnostic tracks must remain separate. No new BRDF result yet.
+
+## EXP0012 — real scanned geometry rerendering (2026-09-19)
+
+Completed 32 observations on the unchanged 4.22M-triangle ScanNet++ room
+`1b379f1114`: four cameras, four simulated sun conditions, two seeds. Known
+uniform diffuse material. Train-only direction error 0.486°, heldout direct-sun
+proxy IoU 0.900 (oracle 0.980). Camera yaw ±1° reduces mean IoU to 0.822.
+Full pipeline rerun reproduced all mask metrics. Not a full IRIS comparison or
+real-photo sim-to-real result. See `SCANNETPP_RERENDER_ZH.md` and
+`research/evidence/EXP0012/`.
+
 # Project Status
 
-Last updated: 2026-09-18 (session 2).
+Last updated: 2026-09-19 (EXP0008–EXP0010).
+
+## Baseline progress — EXP0011 (2026-09-19)
+
+Local CUDA 12.8 / GCC 13 toolchain and tiny-cuda-nn now work on RTX 5070 Ti.
+Official bathroom data (109 train / 13 validation images) and checkpoint are
+downloaded with ZIP CRC verification and SHA-256 manifests. Official-checkpoint
+rendering and three actual initialization optimizer steps have passed. Full-split rendering passed: PSNR 28.97625 / SSIM 0.79503. Original BRDF/CRF
+and emitter optimization also passed three steps each. The bounded full pipeline
+is running stage 10 in a detached process; a separate detached full 6/4/1/4-epoch
+run is queued to start only after all bounded stages succeed. This is not yet a
+converged from-scratch reproduction. Real cross-time photos are still
+missing. See `research/evidence/EXP0011/` and `CROSS_TIME_CAPTURE_ZH.md`.
+
+## Current verified status — 2026-09-19 (EXP0008–EXP0010)
+
+This supersedes conflicting historical status below. Full IRIS baseline is still
+**not reproduced at this earlier checkpoint**. GPU access works outside the sandbox (RTX 5070 Ti, 16,303 MiB,
+driver 581.80); missing build dependencies were subsequently resolved in EXP0011. CPU component
+experiments are functional and cheap.
+
+- Broad screening: 53 scenes / 424 images / 1,141 candidates; one additional scene
+  skipped for mismatched geometry bounds. This is screening, not labeled accuracy.
+- Real scene `1b379f1114`: direction fitted to one image, evaluated on three frozen
+  disjoint views. Mean brightness-proxy IoU 0.709; static appearance memory 0.833.
+  **No demonstrated same-light advantage over static appearance.**
+- Implicit mesh-opening control obtains 0.624 with a substantially different sun
+  direction. Its visibility convention differs; this is not clean causal evidence
+  for window labels and no real angular ground truth is available.
+- Controlled changed-light test: 3 off-grid conditions x 2 render seeds. Mean
+  angular error 0.430 degrees; changed-light proxy IoU 0.951 vs 0.148 frozen
+  appearance. Known mesh/material and supplied relative sun change: component
+  validation only, not full IRIS or real relighting.
+- 13 tests pass; one-command evidence cycle records unique run directories,
+  logs, configurations, exact source snapshots, failures and negative findings:
+  `.venv/bin/python experiments/run_daylight_validation.py`.
+
+Reports: `REAL_SUN_VISIBILITY.md`, `HELDOUT_SUN_CONTROL.md`. Machine-readable
+records: `research/evidence/EXP0008`, `EXP0009`, `EXP0010`, `EXP0007_expanded`.
+
+Remaining scientific gates: independently calibrated windows and sun observations;
+isolate exterior-occlusion effects; real heldout illumination; original IRIS
+baseline and joint material/light optimization. No formal certification or new
+novelty claim has been made. Existing synthetic passes are component evidence.
 
 ## Goal
 

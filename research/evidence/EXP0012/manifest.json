@@ -1,0 +1,266 @@
+{
+  "config": {
+    "experiment_id": "EXP0012",
+    "scene": "1b379f1114",
+    "views": [
+      "47630f4e_DSC09446.JPG",
+      "47630f4e_DSC09417.JPG",
+      "47630f4e_DSC09462.JPG",
+      "47630f4e_DSC09486.JPG"
+    ],
+    "conditions": [
+      {
+        "name": "train",
+        "azimuth": 223.7,
+        "elevation": 23.4
+      },
+      {
+        "name": "validation",
+        "azimuth": 242.3,
+        "elevation": 32.1
+      },
+      {
+        "name": "test_a",
+        "azimuth": 261.6,
+        "elevation": 41.7
+      },
+      {
+        "name": "test_b",
+        "azimuth": 278.2,
+        "elevation": 29.3
+      }
+    ],
+    "resolution": [
+      384,
+      256
+    ],
+    "spp": 64,
+    "seeds": [
+      101,
+      202
+    ],
+    "diffuse_reflectance": 0.55,
+    "sun_irradiance": [
+      3.0,
+      2.85,
+      2.55
+    ],
+    "sky_radiance": [
+      0.1,
+      0.12,
+      0.16
+    ],
+    "max_depth": 8,
+    "floor_z": 0.362,
+    "floor_tolerance": 0.025,
+    "fit_max_points": 3000,
+    "fit_az_step": 10,
+    "fit_el_step": 5,
+    "fit_seed": 17,
+    "shadow_ray_offset_m": 0.002,
+    "geometry": "Original complete scanned mesh, no repair, decimation or vertex-color texture. Scanned holes remain and are audited.",
+    "camera": "Official camera poses converted to mesh coordinates. Render camera uses fx for both focal axes; original fy is recorded and the sub-percent approximation is measured.",
+    "material": "Assigned uniform two-sided diffuse material, known simulator truth; not recovered real reflectance.",
+    "split": "Fit direction only on train condition, view 0, seed 101. All other views/conditions/seeds are held out from fitting. No hyperparameter tuning on heldout images.",
+    "test_inputs": "True relative changes of simulated sun azimuth/elevation are supplied. Angles are in scene coordinates, not calibrated geographic headings or actual capture times.",
+    "limits": "Real scanned geometry with synthetic materials and lighting. Component direction/visibility evaluation, not a learned BRDF, full IRIS comparison, or demonstrated sim-to-real transfer. Direct-only images are privileged synthetic observations."
+  },
+  "variant": "cuda_ad_rgb",
+  "mitsuba": "3.9.1",
+  "numpy": "2.2.6",
+  "mesh_sha256": "710aadc6be96e0c2c47c10abd02880649ab13f0e9357a9e6a485ca40fd42039a",
+  "transforms_sha256": "61ee50210bccb4b4ce8d672456f12635c5fe30b88989181089e00f758beb045b",
+  "triangle_count": 4218877,
+  "cameras": [
+    {
+      "name": "47630f4e_DSC09446.JPG",
+      "K": [
+        [
+          102.41736419032796,
+          0.0,
+          192.0
+        ],
+        [
+          0.0,
+          102.41736419032796,
+          128.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c2w": [
+        [
+          -0.028257968442551972,
+          0.4253818693919289,
+          -0.9045726905075839,
+          3.5749973189298303
+        ],
+        [
+          0.9981176341206944,
+          0.061283049369644446,
+          -0.0023614227208652496,
+          5.6457100155067526
+        ],
+        [
+          0.054430466439382874,
+          -0.902936682748346,
+          -0.4263128795504617,
+          1.504955547923377
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "47630f4e_DSC09417.JPG",
+      "K": [
+        [
+          102.41736419032796,
+          0.0,
+          192.0
+        ],
+        [
+          0.0,
+          102.41736419032796,
+          128.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c2w": [
+        [
+          -0.6349393978104001,
+          0.3765492528347614,
+          -0.6745832945587596,
+          2.800666633505483
+        ],
+        [
+          0.7720956214421394,
+          0.3396187485459827,
+          -0.5371475188306629,
+          5.997368230048703
+        ],
+        [
+          0.026838637410340052,
+          -0.8618989301685227,
+          -0.5063693530579365,
+          1.4541638292448105
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "47630f4e_DSC09462.JPG",
+      "K": [
+        [
+          102.41736419032796,
+          0.0,
+          192.0
+        ],
+        [
+          0.0,
+          102.41736419032796,
+          128.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c2w": [
+        [
+          0.128452841706008,
+          0.2669543893737202,
+          -0.9551100572456327,
+          3.9810011766366857
+        ],
+        [
+          0.991583982207199,
+          -0.01888155067141386,
+          0.12808080759566046,
+          5.382905427087087
+        ],
+        [
+          0.01615777483953215,
+          -0.9635241777134329,
+          -0.2671330853224437,
+          1.608803546306597
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "47630f4e_DSC09486.JPG",
+      "K": [
+        [
+          102.41736419032796,
+          0.0,
+          192.0
+        ],
+        [
+          0.0,
+          102.41736419032796,
+          128.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c2w": [
+        [
+          0.5288580925759713,
+          0.20934631957900218,
+          -0.8224860098479683,
+          3.907017370818821
+        ],
+        [
+          0.8482689239629072,
+          -0.09913344342132224,
+          0.5202041839837929,
+          5.376072479305333
+        ],
+        [
+          0.027366961024512682,
+          -0.9728035150399892,
+          -0.23000950104316362,
+          1.6447697695262133
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "original_render_scaled_fy": 102.70663823749106,
+  "render_fy": 102.41736419032796,
+  "fy_relative_error": 0.0028165077946978867,
+  "source_sha256": "81c7fecbac06d4b5186f95f10bf739389d7aca068b9ce146f0767c1ec63eb613",
+  "config_sha256": "d211632061b1f1148f45598790cdea854cd814ec51a1192c0487f6007fa1eddc",
+  "started_utc": "2026-09-20T03:10:20Z"
+}

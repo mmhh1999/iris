@@ -1,0 +1,525 @@
+{
+  "provenance": "synthetic_artist_authored",
+  "original_url_status": 404,
+  "endorsed_mirror": "https://huggingface.co/datasets/Lez/InteriorVerse",
+  "archive": "dataset_85/part_0.zip",
+  "archive_bytes": 2112042290,
+  "sha256": "941bb94467ff65de713095447c2b93f97f78f1538b9858d8c7e633be28f1d670",
+  "sha256_matches_hf_lfs": true,
+  "all_zip_crcs_pass": true,
+  "archive_scenes": 100,
+  "archive_files": 5988,
+  "file_types": {
+    ".exr": 5988
+  },
+  "non_exr_files": [],
+  "sampled_scenes": [
+    "L3D124S12ENDIMHHKCAUI5L7GLUF3P3WC888",
+    "L3D124S14ENDIMG25VAUI5NFSLUF3P3XQ888",
+    "L3D124S14ENDIMG6GXYUI5NYALUF3P3W6888"
+  ],
+  "sampled_views": 26,
+  "material_channels": "RGB: roughness, metallic, unused; GGX convention needs model mapping",
+  "depth_unit": "millimetres; invalid depth may be inf",
+  "normal_frame": "OpenGL camera",
+  "explicit_sun_parameters_found": false,
+  "complete_scene_assets_found": false,
+  "lighting_release": "official README still marks spatially-varying lighting unreleased",
+  "role": "material-map evaluation candidate; not real scans or verified solar rerender dataset",
+  "records": [
+    {
+      "scene": "L3D124S12ENDIMHHKCAUI5L7GLUF3P3WC888",
+      "view": "000_im.exr",
+      "split": "val",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.9910904947916667,
+      "roughness_range": [
+        0.01000213623046875,
+        0.78857421875
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 1.8369140625
+    },
+    {
+      "scene": "L3D124S12ENDIMHHKCAUI5L7GLUF3P3WC888",
+      "view": "001_im.exr",
+      "split": "val",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.989677734375,
+      "roughness_range": [
+        0.01000213623046875,
+        0.78857421875
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 0.5400390625
+    },
+    {
+      "scene": "L3D124S12ENDIMHHKCAUI5L7GLUF3P3WC888",
+      "view": "002_im.exr",
+      "split": "val",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.9917350260416666,
+      "roughness_range": [
+        0.01000213623046875,
+        0.78857421875
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 0.8642578125
+    },
+    {
+      "scene": "L3D124S12ENDIMHHKCAUI5L7GLUF3P3WC888",
+      "view": "003_im.exr",
+      "split": "val",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.9850227864583333,
+      "roughness_range": [
+        0.01000213623046875,
+        0.78857421875
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 0.71630859375
+    },
+    {
+      "scene": "L3D124S12ENDIMHHKCAUI5L7GLUF3P3WC888",
+      "view": "004_im.exr",
+      "split": "val",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.9912565104166666,
+      "roughness_range": [
+        0.01000213623046875,
+        0.78857421875
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 0.98828125
+    },
+    {
+      "scene": "L3D124S14ENDIMG25VAUI5NFSLUF3P3XQ888",
+      "view": "000_im.exr",
+      "split": "train",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.9773567708333334,
+      "roughness_range": [
+        0.01000213623046875,
+        0.78857421875
+      ],
+      "metallic_range": [
+        0.0,
+        0.97265625
+      ],
+      "hdr_max": 2.09765625
+    },
+    {
+      "scene": "L3D124S14ENDIMG25VAUI5NFSLUF3P3XQ888",
+      "view": "001_im.exr",
+      "split": "train",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.9672721354166667,
+      "roughness_range": [
+        0.01000213623046875,
+        0.78857421875
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 0.93017578125
+    },
+    {
+      "scene": "L3D124S14ENDIMG25VAUI5NFSLUF3P3XQ888",
+      "view": "002_im.exr",
+      "split": "train",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.982158203125,
+      "roughness_range": [
+        0.01000213623046875,
+        0.78857421875
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 0.7021484375
+    },
+    {
+      "scene": "L3D124S14ENDIMG25VAUI5NFSLUF3P3XQ888",
+      "view": "003_im.exr",
+      "split": "train",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.99673828125,
+      "roughness_range": [
+        0.01000213623046875,
+        0.78857421875
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 0.89208984375
+    },
+    {
+      "scene": "L3D124S14ENDIMG6GXYUI5NYALUF3P3W6888",
+      "view": "000_im.exr",
+      "split": "train",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.9448470052083333,
+      "roughness_range": [
+        0.01000213623046875,
+        0.79150390625
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 7.84375
+    },
+    {
+      "scene": "L3D124S14ENDIMG6GXYUI5NYALUF3P3W6888",
+      "view": "001_im.exr",
+      "split": "train",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.8899869791666667,
+      "roughness_range": [
+        0.01000213623046875,
+        0.79150390625
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 7.65234375
+    },
+    {
+      "scene": "L3D124S14ENDIMG6GXYUI5NYALUF3P3W6888",
+      "view": "002_im.exr",
+      "split": "train",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.893486328125,
+      "roughness_range": [
+        0.01000213623046875,
+        0.79150390625
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 7.62109375
+    },
+    {
+      "scene": "L3D124S14ENDIMG6GXYUI5NYALUF3P3W6888",
+      "view": "003_im.exr",
+      "split": "train",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.875478515625,
+      "roughness_range": [
+        0.01000213623046875,
+        0.78857421875
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 7.37890625
+    },
+    {
+      "scene": "L3D124S14ENDIMG6GXYUI5NYALUF3P3W6888",
+      "view": "004_im.exr",
+      "split": "train",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.9778743489583334,
+      "roughness_range": [
+        0.01000213623046875,
+        0.78857421875
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 6.890625
+    },
+    {
+      "scene": "L3D124S14ENDIMG6GXYUI5NYALUF3P3W6888",
+      "view": "005_im.exr",
+      "split": "train",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.6587923177083334,
+      "roughness_range": [
+        0.01000213623046875,
+        0.78857421875
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 7.3046875
+    },
+    {
+      "scene": "L3D124S14ENDIMG6GXYUI5NYALUF3P3W6888",
+      "view": "006_im.exr",
+      "split": "train",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.8296549479166667,
+      "roughness_range": [
+        0.01000213623046875,
+        0.78857421875
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 7.6328125
+    },
+    {
+      "scene": "L3D124S14ENDIMG6GXYUI5NYALUF3P3W6888",
+      "view": "007_im.exr",
+      "split": "train",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.9958919270833333,
+      "roughness_range": [
+        0.01000213623046875,
+        0.6845703125
+      ],
+      "metallic_range": [
+        0.0,
+        0.9892578125
+      ],
+      "hdr_max": 7.05078125
+    },
+    {
+      "scene": "L3D124S14ENDIMG6GXYUI5NYALUF3P3W6888",
+      "view": "008_im.exr",
+      "split": "train",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.844228515625,
+      "roughness_range": [
+        0.01000213623046875,
+        0.78857421875
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 7.25390625
+    },
+    {
+      "scene": "L3D124S14ENDIMG6GXYUI5NYALUF3P3W6888",
+      "view": "009_im.exr",
+      "split": "train",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.82056640625,
+      "roughness_range": [
+        0.01000213623046875,
+        0.78857421875
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 7.29296875
+    },
+    {
+      "scene": "L3D124S14ENDIMG6GXYUI5NYALUF3P3W6888",
+      "view": "010_im.exr",
+      "split": "train",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.9838802083333333,
+      "roughness_range": [
+        0.01000213623046875,
+        0.79150390625
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 3.951171875
+    },
+    {
+      "scene": "L3D124S14ENDIMG6GXYUI5NYALUF3P3W6888",
+      "view": "011_im.exr",
+      "split": "train",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.7731022135416666,
+      "roughness_range": [
+        0.01000213623046875,
+        0.78857421875
+      ],
+      "metallic_range": [
+        0.0,
+        0.9052734375
+      ],
+      "hdr_max": 7.828125
+    },
+    {
+      "scene": "L3D124S14ENDIMG6GXYUI5NYALUF3P3W6888",
+      "view": "012_im.exr",
+      "split": "train",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.9967154947916667,
+      "roughness_range": [
+        0.01000213623046875,
+        0.78857421875
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 7.1875
+    },
+    {
+      "scene": "L3D124S14ENDIMG6GXYUI5NYALUF3P3W6888",
+      "view": "013_im.exr",
+      "split": "train",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.846708984375,
+      "roughness_range": [
+        0.01000213623046875,
+        0.78857421875
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 7.7734375
+    },
+    {
+      "scene": "L3D124S14ENDIMG6GXYUI5NYALUF3P3W6888",
+      "view": "014_im.exr",
+      "split": "train",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.7583756510416667,
+      "roughness_range": [
+        0.01000213623046875,
+        0.78857421875
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 7.2578125
+    },
+    {
+      "scene": "L3D124S14ENDIMG6GXYUI5NYALUF3P3W6888",
+      "view": "015_im.exr",
+      "split": "train",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.72546875,
+      "roughness_range": [
+        0.01000213623046875,
+        0.78857421875
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 7.6953125
+    },
+    {
+      "scene": "L3D124S14ENDIMG6GXYUI5NYALUF3P3W6888",
+      "view": "016_im.exr",
+      "split": "train",
+      "resolution": [
+        480,
+        640
+      ],
+      "valid_fraction": 0.7247688802083333,
+      "roughness_range": [
+        0.01000213623046875,
+        0.78857421875
+      ],
+      "metallic_range": [
+        0.0,
+        1.0
+      ],
+      "hdr_max": 7.6328125
+    }
+  ]
+}

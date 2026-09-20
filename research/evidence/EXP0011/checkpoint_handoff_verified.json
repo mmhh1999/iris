@@ -1,0 +1,7 @@
+{
+  "correct_brdf_weights_preserved_in_emitter_stage": true,
+  "correct_crf_weights_preserved_in_emitter_stage": true,
+  "global_step": 3,
+  "last_ckpt_moved_not_copied": true,
+  "finite_state": true
+}
