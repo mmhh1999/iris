@@ -1,3 +1,64 @@
+## 2026-09-23：EXP0022/EXP0023 — Cali-HDR + Pano2Pano（Guanzhou Ji 组）已获取并完成 EXIF 审计
+
+用户获得并提供了 Cali-HDR Dataset（88.97GB，14 场景，2022–2023）与其后续
+扩展 Pano2Pano_Release（80.21GB，9 场景，2024）——此前 `DATASET_AUDIT.md`
+已识别但标记为"仅限邮件申请，未发邮件"的同一课题组数据集。
+只读扫描（zip 中心目录 + 每张 JPG 前 256KiB，不解压 169GB 全量数据）发现：
+3879 张 JPG 中 73.6% 带 EXIF GPS，55.9% 带罗盘朝向，坐标均落在匹兹堡。
+用已在合成数据验证过的 `utils/solar_geometry.py`（pvlib）对 2853 张带
+GPS+UTC 时间戳的图像计算真实太阳位置，35 个场景 0 例昼夜不一致，高度角
+范围与匹兹堡纬度/季节物理吻合——这是纯自洽性检验，不是方法优势结论。
+解锁了 `DATASET_AUDIT.md`"星历预测是否匹配真实观测"这一未决问题的
+真实（非合成）数据来源；**不改变**该审计"无数据集同时具备多视角几何+
+真实窗口+太阳斑"的核心结论——两者仍是单视点全景，不能替代 Phase 0 实地
+采集。169GB 原始数据的复制解压已作为独立后台任务启动（不依赖本次会话），
+完成后详见 `data_download/import_ji_datasets_status.json`。
+像素级太阳斑视觉核验有意未做，留待下次会话决定框架。
+详见 [Cali-HDR/Pano2Pano 获取报告](CALI_HDR_PANO2PANO_ACQUISITION_ZH.md)。
+
+## 2026-09-20：EXP0019 太阳光斑数据与 IRIS 对照已完成
+
+已生成固定哑光地板厨房数据（14 视角×4 照明，56 HDR），三组 IRIS 全 12 阶段完成。
+修复并回归验证“训练到 200 步但交接 last 仅第 18 步”的保存问题。
+太阳 A 的受光—阴影 albedo 差扣除无太阳对照后增加 14–18 个百分点；
+太阳 B 未复现该局部指标，并出现 46 个非灯具三角面被提取为发光面。
+仅为已知几何、中性先验、200 步、单房间受控诊断，非原论文默认配置或方法优势。
+[报告](SUNPATCH_IRIS_BENCHMARK_ZH.md)；本地入口 `experiments/out/EXP0019_sunpatch/index.html`。
+
+## 2026-09-20：EXP0018 原生材质诊断
+
+已导出两房间四视角的 25 方向 BSDF 响应及几何/材质标识。
+直接调用原版 IRIS BRDF 做真值拟合，并运行同模型对照；发现少量高光方向
+预测仍不稳定，验收未通过。不能把拟合参数当作 GT，也不能据此声称太阳提升。
+详见 [原生材质诊断](NATIVE_BRDF_COMPATIBILITY_ZH.md)。
+
+## EXP0017 — full-material solar-render pilot (2026-09-20)
+
+Two authored textured PBR rooms rendered under three known sun directions, two
+cameras and two seeds (24 HDRs), plus four sky-only controls. First lateral camera
+move failed in bathroom; preserved and corrected with forward motion and ray-distance
+checks. Final low/high-SPP runs have matching cameras/lighting. 4096 vs 256 SPP
+reduces paired-seed RMSE by 4.107x on average; minimum sun intervention / seed-noise
+ratio is 15.615. Residual relative noise is 3.9–9.3%, so this is not a converged
+high-precision BRDF benchmark. Exported eight train and four heldout-light HDRs
+without sun/BRDF truth. No inverse method run yet. See `PBR_SOLAR_PILOT_ZH.md`.
+
+## Active research workflow and EXP0016 (2026-09-20)
+
+Current task archive: `ACTIVE_RESEARCH_TASK_ZH.md`, machine state `task_state.json`.
+User capture contract: `REAL_CAPTURE_3DGS_ZH.md` (preserve photos/time/exposure/poses,
+not only a 3DGS PLY). First InteriorVerse supervised material-prior pilot completed
+on 82/14/4 scene-disjoint rooms, three fixed seeds. Compared to a weak constant
+training-mean baseline: albedo MSE -29.4%, roughness -12.9%, metallic +0.3%.
+Visual predictions are oversmoothed; prior quality gate failed and it is not adopted.
+No solar-method or sim-to-real claim. See `MATERIAL_PRIOR_PILOT_ZH.md`.
+
+Baseline correction: EXP0011 stage10 had no logged progress for about 13 hours;
+the owned child was stopped with SIGTERM and the full-run prerequisite wait had
+already timed out. Previous "running/queued" descriptions below are historical,
+not current. Failure evidence preserved. New experiments use bounded watchdogs.
+17 unit tests pass, including watchdog success and timeout termination.
+
 ## EXP0015 — InteriorVerse material data acquired (2026-09-20)
 
 The user-supplied legacy URL returns 404. The author's August 2026 update endorses

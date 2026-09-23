@@ -145,3 +145,35 @@ An implicit-mesh-opening control (EXP0010) selects a different solar direction a
 scores 0.624. Visibility termination differs from the explicit-portal model, so
 this comparison alone cannot attribute the difference to explicit window labels.
 See `REAL_SUN_VISIBILITY.md` and `HELDOUT_SUN_CONTROL.md` for provenance and limits.
+
+## D0012 — 2026-09-23: copy, don't move, the user's Cali-HDR/Pano2Pano originals; defer pixel-level sun-patch matching
+
+**Decision:** When importing the user-supplied Cali-HDR + Pano2Pano archives
+(169GB combined, from `/mnt/c/Users/XMH/Downloads/`) while the user was
+offline overnight, (a) copy rather than delete/move the Windows-side
+originals, only removing the local zip copy in `data_download/` after a
+verified extraction, and (b) stop the automated work at EXIF inventory
+(EXP0022) + ephemeris self-consistency (EXP0023) rather than also attempting
+pixel-level sun-patch-vs-prediction visual matching in the same unattended
+session.
+
+**Reason:** (a) A multi-hour transfer over a slow WSL2 9p mount has real
+interruption risk; the user said "move" but nothing indicated the Windows
+copies were disposable, and deleting a user's only copy of freshly-obtained
+research data during an unsupervised run is not a reversible mistake worth
+risking to save ~169GB of disk (636GB was free). (b) Unlike the EXIF
+self-consistency check (pure computation on metadata already extracted,
+zero new methodological choices), pixel-level sun-patch matching requires
+new framing decisions this project has consistently treated as
+user-facing — e.g. how to define "predicted patch location" under a
+panoramic (not pinhole) projection, and how to pick comparison pairs
+across scenes that include real property addresses. Following the same
+pattern as D0009's user-owned follow-ups, this is flagged rather than
+rushed.
+
+**Follow-up owned by the user:** decide whether/how to scope a pixel-level
+sun-patch cross-check pilot (candidate pair already prepared:
+`research/evidence/EXP0023/preview_images/`, Pano2Pano `6236 5th ave`
+indoor+outdoor, camera-to-sun angle 137°/145°); the full RAW data will be
+sitting in `data_download/cali_hdr/` and `data_download/pano2pano/` once the
+background import finishes.

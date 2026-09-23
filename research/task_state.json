@@ -1,0 +1,106 @@
+{
+  "updated": "2026-09-23",
+  "objective": "Explain sunlight patches in multi-view indoor inverse rendering and improve BRDF and unseen-light rerendering",
+  "authoritative_brief": "research/ACTIVE_RESEARCH_TASK_ZH.md",
+  "tasks": [
+    {
+      "id": "T01",
+      "task": "Freeze hypotheses, protocols, acquisition contract and prior-art boundaries",
+      "status": "complete"
+    },
+    {
+      "id": "T02",
+      "task": "Verify InteriorVerse first shard and real HDR geometry inputs",
+      "status": "complete",
+      "evidence": [
+        "EXP0014",
+        "EXP0015"
+      ]
+    },
+    {
+      "id": "T03",
+      "task": "Train and evaluate a scene-disjoint InteriorVerse material-prior pilot",
+      "status": "complete",
+      "experiment": "EXP0016",
+      "claim_scope": "supervised material prior only",
+      "quality_gate": "failed: oversmoothed materials; metallic did not improve",
+      "decision": "do not adopt this prior as-is"
+    },
+    {
+      "id": "T04",
+      "task": "Diagnose original IRIS stage10 stall before restart",
+      "status": "needs_fix",
+      "evidence": "research/evidence/EXP0011/stalled_stage10.json",
+      "additional_finding": "EXP0019 small kitchen completes stage10; checkpoint handoff fixed with explicit final saves, CPU regression and 9 checkpoint step checks; original full bathroom stall not resolved."
+    },
+    {
+      "id": "T05",
+      "task": "Create quality-checked multi-scene multi-sun rerender data with complete ground truth",
+      "status": "in_progress",
+      "experiment": "EXP0017",
+      "completed": "two textured authored rooms, two views, three sun conditions, two seeds, sky-only controls, corrected camera and noise comparison",
+      "remaining": "finite solar disc/realistic sky, stronger convergence, more scenes/views and matched BRDF ground-truth export",
+      "native_response_diagnostic": {
+        "experiment": "EXP0018",
+        "ground_truth_export": "complete: 25 directions, 4 views, native BSDF responses",
+        "iris_parameter_truth": "not established",
+        "gate": "failed: sharp-highlight heldout response unstable even in matched-family control",
+        "next": "peak-aware angular sampling and parameter recovery checks"
+      },
+      "sunpatch_diagnostic": {
+        "experiment": "EXP0019",
+        "status": "completed controlled pilot",
+        "dataset": "56 HDR, 14 views, 4 lighting conditions, matched IRIS matte floor",
+        "baseline": "3 full stage pipelines; 200 steps per learned stage; neutral prior",
+        "finding": "sun A positive local albedo contamination; sun B not reproduced and nonlamp emitter false positives",
+        "not_claimed": "generalized failure, converged default IRIS, method advantage"
+      }
+    },
+    {
+      "id": "T06",
+      "task": "Integrate explicit sunlight visibility into IRIS and run matched ablations",
+      "status": "planned"
+    },
+    {
+      "id": "T07",
+      "task": "Validate user real multi-time capture and sim-to-real",
+      "status": "awaiting_capture",
+      "contract": "research/REAL_CAPTURE_3DGS_ZH.md"
+    },
+    {
+      "id": "T09",
+      "task": "Acquire and EXIF-audit user-supplied Cali-HDR + Pano2Pano (Ji et al.) real HDR panorama archives; check real-EXIF ephemeris self-consistency",
+      "status": "complete",
+      "experiment": "EXP0022, EXP0023",
+      "claim_scope": "data acquisition + metadata inventory + physical self-consistency check only; no BRDF/solar-method claim",
+      "finding": "169GB combined; 73.6% of JPEGs have EXIF GPS, 55.9% have compass heading; 0 day/night inconsistencies across 35 scenes",
+      "resolves": "DATASET_AUDIT.md Cali-HDR row 'absolute timestamp not confirmed published' unknown",
+      "does_not_resolve": "DATASET_AUDIT.md core verdict (no dataset has multi-view geometry + confirmed windows + sun patches) is unchanged; both remain single-viewpoint",
+      "next_undecided": "pixel-level sun-patch-vs-ephemeris visual matching on real photos -- deferred, needs framing decision, not run unattended",
+      "evidence": "research/evidence/EXP0022/, research/evidence/EXP0023/",
+      "report": "research/CALI_HDR_PANO2PANO_ACQUISITION_ZH.md"
+    },
+    {
+      "id": "T08",
+      "task": "Reproduce contemporary indoor baselines before method claims",
+      "status": "in_progress",
+      "primary": "SGS-Intrinsic",
+      "progress": "public-upstream adaptation starts; CUDA forward/backward contracts pass; dataset and image-prior integration pending",
+      "blocking_details": [
+        "private RGB-X implementation equivalence unverified",
+        "dataset/priors and full training still pending"
+      ],
+      "experiment": "EXP0021",
+      "evidence": "research/SGS_REPAIR_ZH.md"
+    }
+  ],
+  "claims": {
+    "new_novelty_established": false,
+    "brdf_improvement_from_sun_proven": false,
+    "real_cross_time_advantage_proven": false,
+    "controlled_sunpatch_contamination_observed": true,
+    "controlled_observation_scope": "EXP0019 sun A only, neutral-prior known-geometry single-room bounded setting"
+  },
+  "automation": "bounded runs with configs, source/data hashes, logs, progress timeout and per-scene evaluation; not an always-on service",
+  "baseline_registry": "research/baseline_registry.json"
+}

@@ -1,0 +1,799 @@
+{
+  "generated_utc": "2026-09-23T04:20:32.541703+00:00",
+  "source_zips": {
+    "cali_hdr": "/mnt/c/Users/XMH/Downloads/Cali-HDR Dataset.zip",
+    "pano2pano": "/mnt/c/Users/XMH/Downloads/Pano2Pano_Release.zip"
+  },
+  "method": "read-only central-directory + per-JPEG 256KiB prefix EXIF parse; no full extraction",
+  "total_jpegs_scanned": 3879,
+  "total_with_gps": 2853,
+  "total_with_heading": 2169,
+  "errors": {
+    "cali_hdr": {
+      "no_exif": 9,
+      "parse_error": 0
+    },
+    "pano2pano": {
+      "no_exif": 0,
+      "parse_error": 0
+    }
+  },
+  "scene_summary": [
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20221006",
+      "scene_folder": "fisheye",
+      "n_images": 243,
+      "n_with_gps": 0,
+      "n_with_heading": 0,
+      "indoor_outdoor_present": [
+        "outdoor"
+      ],
+      "lat": null,
+      "lon": null,
+      "dates_seen": [
+        "2022:10:06"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20221006",
+      "scene_folder": "theta",
+      "n_images": 261,
+      "n_with_gps": 252,
+      "n_with_heading": 0,
+      "indoor_outdoor_present": [
+        "indoor"
+      ],
+      "lat": 40.3634,
+      "lon": -80.187319,
+      "dates_seen": [
+        "2022:10:06"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20221014",
+      "scene_folder": "fisheye",
+      "n_images": 180,
+      "n_with_gps": 0,
+      "n_with_heading": 0,
+      "indoor_outdoor_present": [
+        "outdoor"
+      ],
+      "lat": null,
+      "lon": null,
+      "dates_seen": [
+        "2022:10:14"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20221014",
+      "scene_folder": "theta",
+      "n_images": 180,
+      "n_with_gps": 180,
+      "n_with_heading": 0,
+      "indoor_outdoor_present": [
+        "indoor"
+      ],
+      "lat": 40.368242,
+      "lon": -80.178286,
+      "dates_seen": [
+        "2022:10:14"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230519",
+      "scene_folder": "fisheye",
+      "n_images": 72,
+      "n_with_gps": 0,
+      "n_with_heading": 0,
+      "indoor_outdoor_present": [
+        "outdoor"
+      ],
+      "lat": null,
+      "lon": null,
+      "dates_seen": [
+        "2023:05:19"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230519",
+      "scene_folder": "theta",
+      "n_images": 72,
+      "n_with_gps": 72,
+      "n_with_heading": 72,
+      "indoor_outdoor_present": [
+        "indoor"
+      ],
+      "lat": 40.458247,
+      "lon": -79.932053,
+      "dates_seen": [
+        "2023:05:19"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230521",
+      "scene_folder": "fisheye",
+      "n_images": 72,
+      "n_with_gps": 0,
+      "n_with_heading": 0,
+      "indoor_outdoor_present": [
+        "outdoor"
+      ],
+      "lat": null,
+      "lon": null,
+      "dates_seen": [
+        "2023:05:21"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230521",
+      "scene_folder": "pano",
+      "n_images": 72,
+      "n_with_gps": 72,
+      "n_with_heading": 72,
+      "indoor_outdoor_present": [
+        "indoor"
+      ],
+      "lat": 40.458253,
+      "lon": -79.932067,
+      "dates_seen": [
+        "2023:05:21"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230528",
+      "scene_folder": "fisheye",
+      "n_images": 36,
+      "n_with_gps": 0,
+      "n_with_heading": 0,
+      "indoor_outdoor_present": [
+        "outdoor"
+      ],
+      "lat": null,
+      "lon": null,
+      "dates_seen": [
+        "2023:05:28"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230528",
+      "scene_folder": "theta",
+      "n_images": 63,
+      "n_with_gps": 63,
+      "n_with_heading": 63,
+      "indoor_outdoor_present": [
+        "indoor"
+      ],
+      "lat": 40.458158,
+      "lon": -79.932503,
+      "dates_seen": [
+        "2023:05:28"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230529",
+      "scene_folder": "fisheye",
+      "n_images": 18,
+      "n_with_gps": 0,
+      "n_with_heading": 0,
+      "indoor_outdoor_present": [
+        "outdoor"
+      ],
+      "lat": null,
+      "lon": null,
+      "dates_seen": [
+        "2023:05:29"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230529",
+      "scene_folder": "theta",
+      "n_images": 36,
+      "n_with_gps": 36,
+      "n_with_heading": 36,
+      "indoor_outdoor_present": [
+        "indoor"
+      ],
+      "lat": 40.457889,
+      "lon": -79.932183,
+      "dates_seen": [
+        "2023:05:29"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230610",
+      "scene_folder": "fisheye",
+      "n_images": 27,
+      "n_with_gps": 0,
+      "n_with_heading": 0,
+      "indoor_outdoor_present": [
+        "outdoor"
+      ],
+      "lat": null,
+      "lon": null,
+      "dates_seen": [
+        "2023:06:10"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230610",
+      "scene_folder": "theta",
+      "n_images": 54,
+      "n_with_gps": 54,
+      "n_with_heading": 54,
+      "indoor_outdoor_present": [
+        "indoor"
+      ],
+      "lat": 40.452019,
+      "lon": -79.950839,
+      "dates_seen": [
+        "2023:06:10"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230615",
+      "scene_folder": "fisheye",
+      "n_images": 63,
+      "n_with_gps": 0,
+      "n_with_heading": 0,
+      "indoor_outdoor_present": [
+        "outdoor"
+      ],
+      "lat": null,
+      "lon": null,
+      "dates_seen": [
+        "2023:06:15"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230615",
+      "scene_folder": "theta",
+      "n_images": 72,
+      "n_with_gps": 72,
+      "n_with_heading": 72,
+      "indoor_outdoor_present": [
+        "indoor"
+      ],
+      "lat": 40.458158,
+      "lon": -79.9325,
+      "dates_seen": [
+        "2023:06:15"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230622",
+      "scene_folder": "fisheye",
+      "n_images": 72,
+      "n_with_gps": 0,
+      "n_with_heading": 0,
+      "indoor_outdoor_present": [
+        "outdoor"
+      ],
+      "lat": null,
+      "lon": null,
+      "dates_seen": [
+        "2023:06:22"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230622",
+      "scene_folder": "theta",
+      "n_images": 72,
+      "n_with_gps": 72,
+      "n_with_heading": 72,
+      "indoor_outdoor_present": [
+        "indoor"
+      ],
+      "lat": 40.457886,
+      "lon": -79.932342,
+      "dates_seen": [
+        "2023:06:22"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230625",
+      "scene_folder": "fisheye",
+      "n_images": 81,
+      "n_with_gps": 0,
+      "n_with_heading": 0,
+      "indoor_outdoor_present": [
+        "outdoor"
+      ],
+      "lat": null,
+      "lon": null,
+      "dates_seen": [
+        "2023:06:25"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230625",
+      "scene_folder": "theta",
+      "n_images": 81,
+      "n_with_gps": 81,
+      "n_with_heading": 81,
+      "indoor_outdoor_present": [
+        "indoor"
+      ],
+      "lat": 40.458153,
+      "lon": -79.9325,
+      "dates_seen": [
+        "2023:06:25"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230630",
+      "scene_folder": "fisheye",
+      "n_images": 18,
+      "n_with_gps": 0,
+      "n_with_heading": 0,
+      "indoor_outdoor_present": [
+        "outdoor"
+      ],
+      "lat": null,
+      "lon": null,
+      "dates_seen": [
+        "2023:06:30"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230630",
+      "scene_folder": "theta",
+      "n_images": 36,
+      "n_with_gps": 36,
+      "n_with_heading": 36,
+      "indoor_outdoor_present": [
+        "indoor"
+      ],
+      "lat": 40.434019,
+      "lon": -79.923469,
+      "dates_seen": [
+        "2023:06:30"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230706",
+      "scene_folder": "fisheye",
+      "n_images": 72,
+      "n_with_gps": 0,
+      "n_with_heading": 0,
+      "indoor_outdoor_present": [
+        "outdoor"
+      ],
+      "lat": null,
+      "lon": null,
+      "dates_seen": [
+        "2023:07:06"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230706",
+      "scene_folder": "theta",
+      "n_images": 81,
+      "n_with_gps": 81,
+      "n_with_heading": 81,
+      "indoor_outdoor_present": [
+        "indoor"
+      ],
+      "lat": 40.458153,
+      "lon": -79.9325,
+      "dates_seen": [
+        "2023:07:06"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230707",
+      "scene_folder": "fisheye",
+      "n_images": 18,
+      "n_with_gps": 0,
+      "n_with_heading": 0,
+      "indoor_outdoor_present": [
+        "outdoor"
+      ],
+      "lat": null,
+      "lon": null,
+      "dates_seen": [
+        "2023:07:07"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230707",
+      "scene_folder": "theta",
+      "n_images": 36,
+      "n_with_gps": 36,
+      "n_with_heading": 36,
+      "indoor_outdoor_present": [
+        "indoor"
+      ],
+      "lat": 40.435992,
+      "lon": -79.930461,
+      "dates_seen": [
+        "2023:07:07"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230709",
+      "scene_folder": "essex",
+      "n_images": 117,
+      "n_with_gps": 90,
+      "n_with_heading": 90,
+      "indoor_outdoor_present": [
+        "indoor",
+        "outdoor"
+      ],
+      "lat": 40.4574,
+      "lon": -79.9333,
+      "dates_seen": [
+        "2023:07:09"
+      ]
+    },
+    {
+      "dataset": "cali_hdr",
+      "date_folder": "20230709",
+      "scene_folder": "penn_ave",
+      "n_images": 81,
+      "n_with_gps": 63,
+      "n_with_heading": 63,
+      "indoor_outdoor_present": [
+        "indoor",
+        "outdoor"
+      ],
+      "lat": 40.447097,
+      "lon": -79.895394,
+      "dates_seen": [
+        "2023:07:09"
+      ]
+    },
+    {
+      "dataset": "pano2pano",
+      "date_folder": "20240225",
+      "scene_folder": "indoor",
+      "n_images": 72,
+      "n_with_gps": 72,
+      "n_with_heading": 72,
+      "indoor_outdoor_present": [
+        "indoor"
+      ],
+      "lat": 40.43,
+      "lon": -79.926633,
+      "dates_seen": [
+        "2024:02:25"
+      ]
+    },
+    {
+      "dataset": "pano2pano",
+      "date_folder": "20240225",
+      "scene_folder": "outdoor",
+      "n_images": 54,
+      "n_with_gps": 54,
+      "n_with_heading": 54,
+      "indoor_outdoor_present": [
+        "outdoor"
+      ],
+      "lat": 40.430033,
+      "lon": -79.926697,
+      "dates_seen": [
+        "2024:02:25"
+      ]
+    },
+    {
+      "dataset": "pano2pano",
+      "date_folder": "20240312",
+      "scene_folder": "1356-in",
+      "n_images": 9,
+      "n_with_gps": 9,
+      "n_with_heading": 9,
+      "indoor_outdoor_present": [
+        "indoor"
+      ],
+      "lat": 40.458125,
+      "lon": -79.932478,
+      "dates_seen": [
+        "2024:03:12"
+      ]
+    },
+    {
+      "dataset": "pano2pano",
+      "date_folder": "20240312",
+      "scene_folder": "1400-out",
+      "n_images": 9,
+      "n_with_gps": 9,
+      "n_with_heading": 9,
+      "indoor_outdoor_present": [
+        "outdoor"
+      ],
+      "lat": 40.458136,
+      "lon": -79.932522,
+      "dates_seen": [
+        "2024:03:12"
+      ]
+    },
+    {
+      "dataset": "pano2pano",
+      "date_folder": "20240312",
+      "scene_folder": "1404-in",
+      "n_images": 9,
+      "n_with_gps": 9,
+      "n_with_heading": 9,
+      "indoor_outdoor_present": [
+        "indoor"
+      ],
+      "lat": 40.458147,
+      "lon": -79.932564,
+      "dates_seen": [
+        "2024:03:12"
+      ]
+    },
+    {
+      "dataset": "pano2pano",
+      "date_folder": "20240312",
+      "scene_folder": "2024-in",
+      "n_images": 9,
+      "n_with_gps": 9,
+      "n_with_heading": 9,
+      "indoor_outdoor_present": [
+        "indoor"
+      ],
+      "lat": 40.458106,
+      "lon": -79.932556,
+      "dates_seen": [
+        "2024:03:12"
+      ]
+    },
+    {
+      "dataset": "pano2pano",
+      "date_folder": "20240323",
+      "scene_folder": "indoor",
+      "n_images": 108,
+      "n_with_gps": 108,
+      "n_with_heading": 108,
+      "indoor_outdoor_present": [
+        "indoor"
+      ],
+      "lat": 40.430022,
+      "lon": -79.926661,
+      "dates_seen": [
+        "2024:03:23"
+      ]
+    },
+    {
+      "dataset": "pano2pano",
+      "date_folder": "20240323",
+      "scene_folder": "outdoor",
+      "n_images": 36,
+      "n_with_gps": 36,
+      "n_with_heading": 36,
+      "indoor_outdoor_present": [
+        "outdoor"
+      ],
+      "lat": 40.430006,
+      "lon": -79.926697,
+      "dates_seen": [
+        "2024:03:23"
+      ]
+    },
+    {
+      "dataset": "pano2pano",
+      "date_folder": "20240324",
+      "scene_folder": "6311 Darlington Rd",
+      "n_images": 108,
+      "n_with_gps": 108,
+      "n_with_heading": 0,
+      "indoor_outdoor_present": [
+        "indoor",
+        "outdoor"
+      ],
+      "lat": 40.436992,
+      "lon": -79.918833,
+      "dates_seen": [
+        "2024:03:24"
+      ]
+    },
+    {
+      "dataset": "pano2pano",
+      "date_folder": "20240324",
+      "scene_folder": "776 Montclair St",
+      "n_images": 144,
+      "n_with_gps": 144,
+      "n_with_heading": 0,
+      "indoor_outdoor_present": [
+        "indoor",
+        "outdoor"
+      ],
+      "lat": 40.420867,
+      "lon": -79.930508,
+      "dates_seen": [
+        "2024:03:24"
+      ]
+    },
+    {
+      "dataset": "pano2pano",
+      "date_folder": "20240326",
+      "scene_folder": "city view apt",
+      "n_images": 135,
+      "n_with_gps": 135,
+      "n_with_heading": 135,
+      "indoor_outdoor_present": [
+        "indoor",
+        "outdoor"
+      ],
+      "lat": 40.440161,
+      "lon": -79.986744,
+      "dates_seen": [
+        "2024:03:26"
+      ]
+    },
+    {
+      "dataset": "pano2pano",
+      "date_folder": "20240326",
+      "scene_folder": "highland plaza apt",
+      "n_images": 144,
+      "n_with_gps": 144,
+      "n_with_heading": 144,
+      "indoor_outdoor_present": [
+        "indoor",
+        "outdoor"
+      ],
+      "lat": 40.457136,
+      "lon": -79.925072,
+      "dates_seen": [
+        "2024:03:26"
+      ]
+    },
+    {
+      "dataset": "pano2pano",
+      "date_folder": "20240330",
+      "scene_folder": "indoor",
+      "n_images": 144,
+      "n_with_gps": 144,
+      "n_with_heading": 144,
+      "indoor_outdoor_present": [
+        "indoor"
+      ],
+      "lat": 40.447214,
+      "lon": -79.895794,
+      "dates_seen": [
+        "2024:03:30"
+      ]
+    },
+    {
+      "dataset": "pano2pano",
+      "date_folder": "20240330",
+      "scene_folder": "outdoor",
+      "n_images": 36,
+      "n_with_gps": 36,
+      "n_with_heading": 36,
+      "indoor_outdoor_present": [
+        "outdoor"
+      ],
+      "lat": 40.447222,
+      "lon": -79.895822,
+      "dates_seen": [
+        "2024:03:30"
+      ]
+    },
+    {
+      "dataset": "pano2pano",
+      "date_folder": "20240331",
+      "scene_folder": "6236 5th ave",
+      "n_images": 162,
+      "n_with_gps": 162,
+      "n_with_heading": 162,
+      "indoor_outdoor_present": [
+        "indoor",
+        "outdoor"
+      ],
+      "lat": 40.452344,
+      "lon": -79.921503,
+      "dates_seen": [
+        "2024:03:31"
+      ]
+    },
+    {
+      "dataset": "pano2pano",
+      "date_folder": "20240331",
+      "scene_folder": "6311 Darlington Rd",
+      "n_images": 81,
+      "n_with_gps": 81,
+      "n_with_heading": 81,
+      "indoor_outdoor_present": [
+        "indoor",
+        "outdoor"
+      ],
+      "lat": 40.437369,
+      "lon": -79.918556,
+      "dates_seen": [
+        "2024:03:31"
+      ]
+    },
+    {
+      "dataset": "pano2pano",
+      "date_folder": "20240421",
+      "scene_folder": "indoor",
+      "n_images": 108,
+      "n_with_gps": 108,
+      "n_with_heading": 108,
+      "indoor_outdoor_present": [
+        "indoor"
+      ],
+      "lat": 40.443886,
+      "lon": -80.000908,
+      "dates_seen": [
+        "2024:04:21"
+      ]
+    },
+    {
+      "dataset": "pano2pano",
+      "date_folder": "20240421",
+      "scene_folder": "outdoor",
+      "n_images": 18,
+      "n_with_gps": 18,
+      "n_with_heading": 18,
+      "indoor_outdoor_present": [
+        "outdoor"
+      ],
+      "lat": 40.443925,
+      "lon": -80.000872,
+      "dates_seen": [
+        "2024:04:21"
+      ]
+    },
+    {
+      "dataset": "pano2pano",
+      "date_folder": "20240502",
+      "scene_folder": "indoor",
+      "n_images": 162,
+      "n_with_gps": 162,
+      "n_with_heading": 162,
+      "indoor_outdoor_present": [
+        "indoor"
+      ],
+      "lat": 40.453861,
+      "lon": -79.920817,
+      "dates_seen": [
+        "2024:05:02"
+      ]
+    },
+    {
+      "dataset": "pano2pano",
+      "date_folder": "20240502",
+      "scene_folder": "outdoor",
+      "n_images": 45,
+      "n_with_gps": 45,
+      "n_with_heading": 45,
+      "indoor_outdoor_present": [
+        "outdoor"
+      ],
+      "lat": 40.453894,
+      "lon": -79.920756,
+      "dates_seen": [
+        "2024:05:02"
+      ]
+    }
+  ]
+}
