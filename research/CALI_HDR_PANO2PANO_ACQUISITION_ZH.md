@@ -102,17 +102,27 @@ EXIF+缩略图段），用 PIL 解析 EXIF，不下载/解压 DNG/CR2 大文件�
    传输中断导致数据丢失，选择**复制**而非**移动**；确认解压校验通过后本
    会话只删除了本地的 zip 拷贝，Windows 原始文件未动）。
 
-## 数据落地状态
+## 数据落地状态 — 已完成（2026-09-23 04:48 UTC）
 
-后台任务 `data_download/import_ji_datasets.sh`（在本会话中以
-`nohup ... & disown` 方式启动为独立进程，不依赖本对话存活）：
-拷贝 `Cali-HDR Dataset.zip` / `Pano2Pano_Release.zip` 到
-`data_download/cali_hdr/` / `data_download/pano2pano/`，校验字节数、解压、
-统计文件数，成功后删除本地 zip 拷贝以释放空间。日志：
-`data_download/import_ji_datasets.log`，结构化状态：
-`data_download/import_ji_datasets_status.json`。启动时磁盘可用 636GB，
-两数据集解压后预计峰值占用不超过原始压缩体积（JPG/DNG/CR2 在 zip 内基本
-未再压缩），有充足余量。
+后台任务 `data_download/import_ji_datasets.sh`（以 `nohup ... & disown`
+方式启动为独立进程，不依赖对话存活）已完整跑完并逐字节校验通过：
+
+| 数据集 | 拷贝校验 | 解压后文件数 | 解压后总字节数 | 与 zip 元数据比对 |
+|---|---|---|---|---|
+| `data_download/cali_hdr/extracted/` | 88,968,381,364 字节，与源 zip 一致 | 4580 | 88,967,371,386 | 与 zip 内 4580 个真实文件条目的 `file_size` 之和逐字节相等 |
+| `data_download/pano2pano/extracted/` | 80,211,412,643 字节，与源 zip 一致 | 3187 | 80,210,671,305 | 与 zip 内 3187 个真实文件条目的 `file_size` 之和逐字节相等 |
+
+**过程中的一个插曲**：两个压缩包解压时 `unzip` 命令行工具都报错退出
+（`mapname: conversion of  failed`）——原因是两个 zip 内部都有一条字面量为
+`/` 的根目录条目，`unzip` 的路径映射逻辑处理不了它，且不是"警告后继续"而是
+直接中止解压（cali_hdr 因此只解压出 4580/4882 个条目就停了，pano2pano
+同理）。用 Python `zipfile` 模块重新解压（跳过这一条空名条目，其余逐一正常
+写入）后两个数据集都做到了字节数与 zip 自身元数据完全一致。已经把
+`import_ji_datasets.sh` 里的解压步骤换成同样的 Python 方式，供以后重跑。
+
+本地 zip 拷贝已在校验通过后删除；`/mnt/c/Users/XMH/Downloads/` 下的两个
+原始文件全程未被读写以外的方式触碰。磁盘峰值占用约 553GB（共 1007GB），
+完成后回落到 478GB 已用 / 478GB 可用。
 
 ## 相关文件
 
