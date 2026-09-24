@@ -31,6 +31,8 @@ def main():
                    help='Resume at a numbered stage, retaining earlier artifacts and records.')
     p.add_argument('--sun-toward-world', type=str, default=None,
                    help='comma-separated x,y,z unit vector; enables the explicit daylight sun term')
+    p.add_argument('--sun-lr-scale', type=float, default=1.0,
+                   help='learning-rate multiplier for the sun_irradiance parameter (see EXP0026)')
     a = p.parse_args()
     out = a.output.resolve(); out.mkdir(parents=True, exist_ok=True)
     data = a.data.resolve()
@@ -90,7 +92,7 @@ def main():
     run('05_bake_shading','bake_shading.py',ds+['--slf_path',bake/'vslf.npz','--emitter_path',bake/'emitter.pth','--output',shading])
     if a.sun_toward_world:
         run('051_bake_sun_term','bake_sun_term.py',ds+['--output',shading,'--sun-toward-world='+a.sun_toward_world])
-    brdf = ['--max_epochs',1000,'--cache_dir',shading,'--lp',0.005,'--la',0.0,'--l_crf_weight',0.001]
+    brdf = ['--max_epochs',1000,'--cache_dir',shading,'--lp',0.005,'--la',0.0,'--l_crf_weight',0.001,'--sun_lr_scale',a.sun_lr_scale]
     if run('06_brdf_crf','train_brdf_crf.py',common+brdf+['--dir_val','val_0','--ckpt_path',model/'init.ckpt','--voxel_path',bake/'vslf.npz']):
         promote('last_0.ckpt')
     run('07_slf_refine','slf_refine.py',ds+['--output',bake,'--load','vslf.npz','--save','vslf_0.npz','--ckpt',model/'last_0.ckpt','--crf_basis',3])

@@ -61,16 +61,16 @@
       "task": "Integrate explicit sunlight visibility into IRIS and run matched ablations",
       "status": "first_real_result",
       "experiment": "EXP0025",
-      "finding": "reduced EXP0019's sun-attributable normalized-gap contamination from +18.4/+14.0pp to +0.83-1.71pp across a 200/400/600-step sweep (best at 400 steps: +0.83/+0.74pp, where the view9 number is already smaller in magnitude than SGS-Intrinsic's -1.20pp); 1000 steps regresses to +6.6/+5.4pp",
-      "required_fix": "adding the explicit sun term alone was insufficient/actively harmful (two failed parameterizations made contamination 3x WORSE than vanilla IRIS); only worked once a within-segment albedo-consistency regularizer was added alongside it, since kd/albedo had zero spatial regularization in IRIS's has_part branch and had no reason to prefer the new low-DOF term",
+      "finding": "EXP0025 reduced EXP0019's sun-attributable normalized-gap contamination from +18.4/+14.0pp to +0.83-1.71pp (non-monotonic, mixed vs SGS); EXP0026 fixed a bilinear kd/sun_irradiance coupling instability with a separate slower learning rate for the sun term, tightening the curve to +0.21-1.74pp and, at the matched 200-step budget, cleanly beating SGS-Intrinsic's magnitude (-0.43/-1.20pp) on BOTH heldout views (+0.21/+0.28pp)",
+      "required_fix": "adding the explicit sun term alone was insufficient/actively harmful (two failed parameterizations made contamination 3x WORSE than vanilla IRIS); needed both (a) a within-segment albedo-consistency regularizer (EXP0025, since kd/albedo had zero spatial regularization in IRIS's has_part branch) and (b) a separate, slower learning rate for the global sun_irradiance parameter (EXP0026, to damp bilinear-coupling oscillation across step counts)",
       "limitations": [
-        "absolute albedo accuracy degraded (saturated/clipped) at every tested step budget",
-        "non-monotonic across step counts (200/400/600/1000pp: 1.71/0.83/1.33/6.62) -- 400 is an observed best point, not a validated/tuned setting",
+        "absolute albedo accuracy degraded (saturated/clipped) at every tested step budget, even after the EXP0026 fix",
+        "still non-monotonic across step counts (200/400/600/1000pp with EXP0026's fix: 0.21/1.18/0.65/1.74 avg) -- 200 steps is the best observed point, not a proven-optimal setting; no further hyperparameter grid search performed deliberately",
         "1 room, 1 seed only",
         "sun direction is oracle (generator ground truth), not Mode B or ephemeris-recovered",
         "does not yet touch emitter extraction/classification stage"
       ],
-      "evidence": "research/evidence/EXP0025/",
+      "evidence": "research/evidence/EXP0025/, research/evidence/EXP0026/",
       "report": "research/SUNPATCH_DAYLIGHT_METHOD_ZH.md"
     },
     {

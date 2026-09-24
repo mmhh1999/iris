@@ -223,6 +223,36 @@ scale/gradient-conditioning together, not just non-negativity, when adding a
 new learnable physical parameter to an existing loss whose other terms
 already have an established internal unit scale.
 
+## D0015 — 2026-09-24: bilinear kd/sun_irradiance terms need separate learning rates, or the joint fit oscillates across step counts
+
+**Decision:** Give `sun_irradiance_raw` (EXP0025) its own optimizer param
+group at 0.1x the base learning rate (new `--sun_lr_scale` flag,
+`train_brdf_crf.py`/`experiments/run_sunpatch_iris_daylight.py`, default 1.0
+so nothing changes unless explicitly set).
+
+**Reason:** EXP0025's fix (D0014's albedo-consistency regularizer) worked,
+but its 200/400/600/1000-step sweep was wildly non-monotonic (+1.71/+0.83/
++1.33/+6.62pp) -- not a smoothly-converging quantity. `Ld = kd*(diffuse +
+sun_vis*sun_irradiance)` is bilinear in (kd, sun_irradiance): a
+high-capacity per-point neural field and a single low-DOF global scalar
+sharing one learning rate is a textbook recipe for oscillatory joint
+convergence (the same failure mode as unconditioned matrix-factorization or
+NeRF appearance-code/exposure co-optimization). Slowing only the global
+parameter's updates relative to the per-point field is the standard fix.
+
+**Result:** confirmed the mechanism, not a coincidence -- the whole
+step-count curve tightened from a [0.83, 6.62]pp range to [0.21, 1.74]pp,
+and the 200-step point (matching EXP0019's own protocol exactly) went from
+a mixed result (one heldout view better than SGS-Intrinsic, one worse) to
+cleanly beating SGS's magnitude on both heldout views (+0.21/+0.28pp vs
+SGS's -0.43/-1.20pp). Deliberately did not grid-search `sun_lr_scale`
+further (tried only 0.1) -- this is reported as a mechanism-motivated
+architectural fix, not a tuned hyperparameter, specifically to avoid
+overfitting a single 1-room/1-seed synthetic scene. The curve is still
+non-monotonic (400/1000 steps worse than 200/600), so 200 steps remains an
+observed best point, not a proven-optimal setting, and absolute albedo
+accuracy is still saturated at every budget -- neither is hidden.
+
 ## D0013 — 2026-09-23: renumber the SGS sun-patch pairing experiment EXP0022 → EXP0024
 
 **Decision:** A pre-existing draft (`research/SGS_SUNPATCH_BENCHMARK_ZH.md`,

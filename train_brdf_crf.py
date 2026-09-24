@@ -127,8 +127,23 @@ class ModelTrainer(pl.LightningModule):
             opt = optim.SGD
         if(self.hparams.optimizer == 'Adam'):
             opt = optim.Adam
-        
-        optimizer = opt(self.parameters(), lr=self.hparams.learning_rate, weight_decay=self.hparams.weight_decay)    
+
+        # Daylight-aware extension: `Ld = kd*(diffuse + sun_vis*sun_irradiance)`
+        # is bilinear in (kd, sun_irradiance) -- a high-capacity per-point
+        # field and a single low-DOF global scalar sharing one learning rate
+        # is a known recipe for oscillatory, non-monotonic joint convergence
+        # (EXP0025's step-count sweep showed exactly this: 200/400/600/1000
+        # steps gave 1.71/0.83/1.33/6.62pp, not a monotonic curve). Giving
+        # the global parameter a slower learning rate is the standard fix
+        # for this kind of coupled-parameter instability. See EXP0026 in
+        # research/SUNPATCH_DAYLIGHT_METHOD_ZH.md.
+        sun_param_names = {'sun_irradiance_raw'}
+        sun_params = [p for n,p in self.named_parameters() if n in sun_param_names]
+        other_params = [p for n,p in self.named_parameters() if n not in sun_param_names]
+        param_groups = [{'params': other_params, 'lr': self.hparams.learning_rate}]
+        if sun_params:
+            param_groups.append({'params': sun_params, 'lr': self.hparams.learning_rate*self.hparams.sun_lr_scale})
+        optimizer = opt(param_groups, weight_decay=self.hparams.weight_decay)
         scheduler = optim.lr_scheduler.MultiStepLR(optimizer,milestones=self.hparams.milestones,gamma=self.hparams.scheduler_rate)
         return [optimizer], [scheduler]
     
@@ -573,12 +588,15 @@ if __name__ == '__main__':
     parser.add_argument('--device', type=int, required=False,default=0)
     parser.add_argument('--val_frame', type=int, default=0)
     parser.add_argument('--cache_dir', type=str)
+    parser.add_argument('--sun_lr_scale', type=float, default=1.0,
+                         help='Daylight-aware extension: learning-rate multiplier for sun_irradiance_raw relative to the base learning rate, to damp bilinear kd/sun_irradiance coupling instability.')
     parser.set_defaults(resume=False)
     args = parser.parse_args()
     args.gpus = [args.device]
     hparams.experiment_name = args.experiment_name
     hparams.val_frame = args.val_frame
     hparams.cache_dir = args.cache_dir
+    hparams.sun_lr_scale = args.sun_lr_scale
     experiment_name = args.experiment_name
 
     # setup checkpoint loading
