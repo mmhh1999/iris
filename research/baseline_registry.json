@@ -4,11 +4,11 @@
   "primary": "SGS-Intrinsic",
   "our_method_vs_primary": {
     "experiment": "EXP0025",
-    "metric": "sun-attributable normalized lit/shadow albedo gap change, matched 200-step budget, same scene as EXP0019/EXP0024",
+    "metric": "sun-attributable normalized lit/shadow albedo gap change, same scene as EXP0019/EXP0024, swept over 200/400/600/1000-step budgets",
     "vanilla_iris_EXP0019": "+18.4pp / +14.0pp",
     "sgs_intrinsic_EXP0024": "-0.43pp / -1.20pp",
-    "ours_EXP0025": "+1.7pp / +1.6pp",
-    "verdict": "not yet beating SGS-Intrinsic's magnitude on this narrow metric (still 1.5-4x larger in absolute value), but closed ~11x of the gap from vanilla IRIS; not stable across step counts (1000-step check regresses to +6.6/+5.4pp); 1 room/1 seed/oracle sun direction -- see SUNPATCH_DAYLIGHT_METHOD_ZH.md for the full honest scope"
+    "ours_EXP0025_by_steps": {"200": "+1.71/+1.60pp", "400": "+0.83/+0.74pp (best observed)", "600": "+1.33/+1.19pp", "1000": "+6.62/+5.40pp (regression)"},
+    "verdict": "at the best-observed budget (400 steps), one of two heldout views (view9, 0.74pp) is already smaller in magnitude than SGS-Intrinsic's -1.20pp; the other (view3, 0.83pp) is still larger than SGS's -0.43pp -- a mixed, not a clean, win. Non-monotonic across step counts, so 400 steps is an observed best point from an exploratory sweep, not a validated/tuned setting. All tested budgets closed most of the gap from vanilla IRIS. 1 room/1 seed/oracle sun direction -- see SUNPATCH_DAYLIGHT_METHOD_ZH.md for the full honest scope"
   },
   "methods": [
     {

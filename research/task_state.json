@@ -61,11 +61,11 @@
       "task": "Integrate explicit sunlight visibility into IRIS and run matched ablations",
       "status": "first_real_result",
       "experiment": "EXP0025",
-      "finding": "reduced EXP0019's sun-attributable normalized-gap contamination from +18.4/+14.0pp to +1.7/+1.6pp at matched 200-step budget (~11x), now same order of magnitude as SGS-Intrinsic's -0.43/-1.20pp (EXP0024), though still 1.5-4x larger in absolute value",
+      "finding": "reduced EXP0019's sun-attributable normalized-gap contamination from +18.4/+14.0pp to +0.83-1.71pp across a 200/400/600-step sweep (best at 400 steps: +0.83/+0.74pp, where the view9 number is already smaller in magnitude than SGS-Intrinsic's -1.20pp); 1000 steps regresses to +6.6/+5.4pp",
       "required_fix": "adding the explicit sun term alone was insufficient/actively harmful (two failed parameterizations made contamination 3x WORSE than vanilla IRIS); only worked once a within-segment albedo-consistency regularizer was added alongside it, since kd/albedo had zero spatial regularization in IRIS's has_part branch and had no reason to prefer the new low-DOF term",
       "limitations": [
-        "absolute albedo accuracy degraded (saturated/clipped at 200 steps)",
-        "not stable across step counts: 1000-step run regresses to +6.6/+5.4pp",
+        "absolute albedo accuracy degraded (saturated/clipped) at every tested step budget",
+        "non-monotonic across step counts (200/400/600/1000pp: 1.71/0.83/1.33/6.62) -- 400 is an observed best point, not a validated/tuned setting",
         "1 room, 1 seed only",
         "sun direction is oracle (generator ground truth), not Mode B or ephemeris-recovered",
         "does not yet touch emitter extraction/classification stage"
