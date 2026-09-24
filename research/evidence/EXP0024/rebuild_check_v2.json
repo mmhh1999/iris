@@ -1,0 +1,42 @@
+[
+  {
+    "file": "scene/gaussian_model_sgs.py",
+    "sha256": "73ae0247d720f6910585abe09115b18e78e5acbca363fe79ff365b0dec12f4e1",
+    "matches": true
+  },
+  {
+    "file": "utils/rgbx_guidance.py",
+    "sha256": "ada24a4e9fc9e27058b86d2f5505de9e6d2eacc12db4c8f0edb723b819ce0374",
+    "matches": true
+  },
+  {
+    "file": "utils/sam_region_infer.py",
+    "sha256": "665c095f4244b7200ba97ac3a3b151c09ea579bc964d3088a471ca67239426b2",
+    "matches": true
+  },
+  {
+    "file": "utils/normal_guidance.py",
+    "sha256": "dd7a5244c1b2dd359fab4896e83e666df1cfeda17a6a98719e3ffb05c5b9f34a",
+    "matches": true
+  },
+  {
+    "file": "utils/pose_utils.py",
+    "sha256": "77de6ff1e826f2e768dfab142b4573b601031365ad12ed691101376d298a1b6f",
+    "matches": true
+  },
+  {
+    "file": "rgb2x/pipeline_rgb2x_myversion.py",
+    "sha256": "43422eb5a75d6a7aea11e21fcc1effe9088a5975e56bab9d24bb3b45705a9741",
+    "matches": true
+  },
+  {
+    "file": "gaussian_renderer/render_sgs.py",
+    "sha256": "1e060828be428d15106d8ab52a98e701b74f790c4673f84e013da6c97525ae13",
+    "matches": true
+  },
+  {
+    "file": "pbr/renderutils/ops.py",
+    "sha256": "21f9e8ab0bd48205ab52a73e9ce66bf3a932782c8f21cfa32f7f73b2cb234577",
+    "matches": true
+  }
+]

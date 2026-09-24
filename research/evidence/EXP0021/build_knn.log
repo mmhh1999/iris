@@ -1,0 +1,64 @@
+Using CPython 3.10.21 interpreter at: .venv/bin/python
+Resolved 1 package in 1.35s
+   Building simple-knn @ file:///home/minghao/projects/iris/third_party/r3dg_upstream/submodules/simple-knn
+  × Failed to build `simple-knn @
+  │ file:///home/minghao/projects/iris/third_party/r3dg_upstream/submodules/simple-knn`
+  ├─▶ The build backend returned an error
+  ╰─▶ Call to `setuptools.build_meta:__legacy__.build_wheel` failed (exit
+      status: 1)
+
+      [stdout]
+      running bdist_wheel
+      running build
+      running build_ext
+      building 'simple_knn._C' extension
+      creating build/temp.linux-x86_64-cpython-310
+      /home/minghao/projects/iris/.toolchain/compiler/bin/x86_64-conda-linux-gnu-g++
+      -Wno-unused-result -Wsign-compare -Wunreachable-code
+      -DNDEBUG -g -fwrapv -O3 -Wall -O3 -fstack-protector
+      -fstack-clash-protection -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
+      -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -fPIC -fPIC
+      -I/home/minghao/projects/iris/.venv/lib/python3.10/site-packages/torch/include
+      -I/home/minghao/projects/iris/.venv/lib/python3.10/site-packages/torch/include/torch/csrc/api/include
+      -I/home/minghao/projects/iris/.toolchain/compiler/include
+      -I/home/minghao/projects/iris/.venv/include
+      -I/home/minghao/.local/share/uv/python/cpython-3.10.21-linux-x86_64-gnu/include/python3.10
+      -c ext.cpp -o build/temp.linux-x86_64-cpython-310/ext.o
+      -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=_C -std=c++17
+      /home/minghao/projects/iris/.toolchain/compiler/bin/nvcc
+      -I/home/minghao/projects/iris/.venv/lib/python3.10/site-packages/torch/include
+      -I/home/minghao/projects/iris/.venv/lib/python3.10/site-packages/torch/include/torch/csrc/api/include
+      -I/home/minghao/projects/iris/.toolchain/compiler/include
+      -I/home/minghao/projects/iris/.venv/include
+      -I/home/minghao/.local/share/uv/python/cpython-3.10.21-linux-x86_64-gnu/include/python3.10
+      -c simple_knn.cu -o build/temp.linux-x86_64-cpython-310/simple_knn.o
+      -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__
+      -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__
+      --expt-relaxed-constexpr --compiler-options '-fPIC'
+      -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=_C
+      -gencode=arch=compute_120,code=sm_120 -ccbin
+      /home/minghao/projects/iris/.toolchain/compiler/bin/x86_64-conda-linux-gnu-gcc
+      -std=c++17
+
+      [stderr]
+      W0920 22:16:30.620000 1066142 torch/utils/cpp_extension.py:680]
+      Attempted to use ninja as the BuildExtension backend but we could not
+      find ninja.. Falling back to using the slow distutils backend.
+      simple_knn.cu:23: warning: "__CUDACC__" redefined
+         23 | #define __CUDACC__
+            |
+      <command-line>: note: this is the location of the previous definition
+      simple_knn.cu(90): error: identifier "FLT_MAX" is undefined
+          me.minn = { FLT_MAX, FLT_MAX, FLT_MAX };
+                      ^
+
+      simple_knn.cu(154): error: identifier "FLT_MAX" is undefined
+         float best[3] = { FLT_MAX, FLT_MAX, FLT_MAX };
+                           ^
+
+      2 errors detected in the compilation of "simple_knn.cu".
+      error: command '/home/minghao/projects/iris/.toolchain/compiler/bin/nvcc'
+      failed with exit code 2
+
+
+hint: Build failures usually indicate a problem with the package or the build environment

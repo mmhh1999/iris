@@ -1,0 +1,64 @@
+Traceback (most recent call last):
+  File "/home/minghao/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/urllib/request.py", line 1348, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+  File "/home/minghao/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/http/client.py", line 1331, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/home/minghao/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/http/client.py", line 1377, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/home/minghao/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/http/client.py", line 1326, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/home/minghao/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/http/client.py", line 1086, in _send_output
+    self.send(msg)
+  File "/home/minghao/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/http/client.py", line 1024, in send
+    self.connect()
+  File "/home/minghao/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/http/client.py", line 1496, in connect
+    super().connect()
+  File "/home/minghao/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/http/client.py", line 990, in connect
+    self.sock = self._create_connection(
+  File "/home/minghao/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/socket.py", line 836, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+  File "/home/minghao/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/socket.py", line 967, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/minghao/projects/iris/.venv/lib/python3.10/site-packages/torch/hub.py", line 206, in _parse_repo_info
+    with urlopen(f"https://github.com/{repo_owner}/{repo_name}/tree/main/"):
+  File "/home/minghao/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+  File "/home/minghao/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/urllib/request.py", line 519, in open
+    response = self._open(req, data)
+  File "/home/minghao/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/urllib/request.py", line 536, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+  File "/home/minghao/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+  File "/home/minghao/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/urllib/request.py", line 1391, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+  File "/home/minghao/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/urllib/request.py", line 1351, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno -3] Temporary failure in name resolution>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/minghao/projects/iris/third_party/sgs_adapted/train.py", line 10, in <module>
+    from gaussian_renderer import render_fn_dict
+  File "/home/minghao/projects/iris/third_party/sgs_adapted/gaussian_renderer/__init__.py", line 1, in <module>
+    from gaussian_renderer.render_r3dg import render
+  File "/home/minghao/projects/iris/third_party/sgs_adapted/gaussian_renderer/render_r3dg.py", line 7, in <module>
+    from scene.cameras import Camera
+  File "/home/minghao/projects/iris/third_party/sgs_adapted/scene/__init__.py", line 20, in <module>
+    from utils.camera_utils import cameraList_from_camInfos, camera_to_JSON
+  File "/home/minghao/projects/iris/third_party/sgs_adapted/utils/camera_utils.py", line 20, in <module>
+    from utils.normal_guidance import get_normal_tensor
+  File "/home/minghao/projects/iris/third_party/sgs_adapted/utils/normal_guidance.py", line 8, in <module>
+    predictor = torch.hub.load("Stable-X/StableNormal", "StableNormal_turbo", trust_repo=True)
+  File "/home/minghao/projects/iris/.venv/lib/python3.10/site-packages/torch/hub.py", line 661, in load
+    repo_or_dir = _get_cache_or_reload(
+  File "/home/minghao/projects/iris/.venv/lib/python3.10/site-packages/torch/hub.py", line 278, in _get_cache_or_reload
+    repo_owner, repo_name, ref = _parse_repo_info(github)
+  File "/home/minghao/projects/iris/.venv/lib/python3.10/site-packages/torch/hub.py", line 222, in _parse_repo_info
+    raise RuntimeError(
+RuntimeError: It looks like there is no internet connection and the repo could not be found in the cache (/home/minghao/projects/iris/.baseline_deps/torch_cache/hub)

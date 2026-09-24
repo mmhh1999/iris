@@ -1,0 +1,7 @@
+Using CPython 3.10.21 interpreter at: .venv/bin/python
+Resolved 1 package in 1.21s
+   Building simple-knn @ file:///home/minghao/projects/iris/third_party/r3dg_upstream/submodules/simple-knn
+      Built simple-knn @ file:///home/minghao/projects/iris/third_party/r3dg_upstream/submodules/simple-knn
+Prepared 1 package in 1m 00s
+Installed 1 package in 0.51ms
+ + simple-knn==0.0.0 (from file:///home/minghao/projects/iris/third_party/r3dg_upstream/submodules/simple-knn)

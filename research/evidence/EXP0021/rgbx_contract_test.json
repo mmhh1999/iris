@@ -1,0 +1,7 @@
+{
+  "pass": true,
+  "RGBX_lazy_import": true,
+  "postprocess_max_error": 0.0,
+  "checkpoint_inference_tested": false,
+  "scope": "decoded values in [-1,1]; interface test, not prediction accuracy"
+}

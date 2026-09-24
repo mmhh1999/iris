@@ -1,0 +1,16 @@
+{
+  "label": "SGS-public-upstream-adaptation",
+  "official_sgs": "282f76608dc24ea217ae9eebb05d2141ceae00c2",
+  "public_rgbx": "977e0df27d369d3e68900399f59a42b0156d4440",
+  "changes": [
+    "public RGB-X raw-AOV return adapter; author private modifications unknown",
+    "lazy RGB-X, SAM2 and StableNormal weight load; explicit SAM2 checkpoint environment variable",
+    "public simple_knn function for simple_knn_r3dg import",
+    "correct upstream recenter_poses indentation error",
+    "valid axis-aligned normal mask uses vector magnitude",
+    "cache direct PyTorch extension loader return",
+    "SGS_RGBX_MODEL permits pinned local model snapshot",
+    "public RGB-X photo input uses gamma-2.2 linearization"
+  ],
+  "official_reproduction": false
+}

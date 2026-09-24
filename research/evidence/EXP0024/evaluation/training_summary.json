@@ -1,0 +1,36 @@
+{
+  "sun_a": {
+    "psnr_pbr": {
+      "first_60_mean": 15.533687043190003,
+      "previous_60_mean": 29.41144911448161,
+      "last_60_mean": 30.992252254486083
+    },
+    "l1_albedo": {
+      "first_60_mean": 0.05775516939659913,
+      "previous_60_mean": 0.032932301005348566,
+      "last_60_mean": 0.0325416048678259
+    },
+    "loss_total_with_invariance": {
+      "first_60_mean": 0.3344613865017891,
+      "previous_60_mean": 0.09107500538229943,
+      "last_60_mean": 0.1276986340681712
+    }
+  },
+  "sky": {
+    "psnr_pbr": {
+      "first_60_mean": 16.00168261130651,
+      "previous_60_mean": 28.951206715901694,
+      "last_60_mean": 29.513315773010255
+    },
+    "l1_albedo": {
+      "first_60_mean": 0.07941325937087337,
+      "previous_60_mean": 0.04654554508936902,
+      "last_60_mean": 0.04549017388684054
+    },
+    "loss_total_with_invariance": {
+      "first_60_mean": 0.3504455553988616,
+      "previous_60_mean": 0.09432282658914724,
+      "last_60_mean": 0.1082745653266708
+    }
+  }
+}

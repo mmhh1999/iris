@@ -1,0 +1,149 @@
+{
+  "scope": "Training-view prior-only diagnostic, not heldout benchmark or SGS result",
+  "rows": [
+    {
+      "condition": "sun_a",
+      "view": 1,
+      "lit_count": 40,
+      "shadow_count": 2584,
+      "linear_albedo_mae": 0.19954577338904408,
+      "normalized_gap": 0.0754263699054718
+    },
+    {
+      "condition": "sun_a",
+      "view": 2,
+      "lit_count": 118,
+      "shadow_count": 2795,
+      "linear_albedo_mae": 0.18456679124422906,
+      "normalized_gap": -0.004948651418089867
+    },
+    {
+      "condition": "sun_a",
+      "view": 4,
+      "lit_count": 43,
+      "shadow_count": 3625,
+      "linear_albedo_mae": 0.07407756909460268,
+      "normalized_gap": 0.10848185420036316
+    },
+    {
+      "condition": "sun_a",
+      "view": 5,
+      "lit_count": 105,
+      "shadow_count": 3409,
+      "linear_albedo_mae": 0.2477179624933849,
+      "normalized_gap": -0.0007256909739226103
+    },
+    {
+      "condition": "sun_a",
+      "view": 6,
+      "lit_count": 147,
+      "shadow_count": 3504,
+      "linear_albedo_mae": 0.2263663000683667,
+      "normalized_gap": -0.016010159626603127
+    },
+    {
+      "condition": "sun_a",
+      "view": 7,
+      "lit_count": 267,
+      "shadow_count": 3450,
+      "linear_albedo_mae": 0.1342441109314228,
+      "normalized_gap": -0.014648913405835629
+    },
+    {
+      "condition": "sun_a",
+      "view": 8,
+      "lit_count": 54,
+      "shadow_count": 3846,
+      "linear_albedo_mae": 0.15872112157792823,
+      "normalized_gap": 0.1269952803850174
+    },
+    {
+      "condition": "sun_a",
+      "view": 10,
+      "lit_count": 168,
+      "shadow_count": 3817,
+      "linear_albedo_mae": 0.24750422639934222,
+      "normalized_gap": -0.01490208599716425
+    },
+    {
+      "condition": "sun_a",
+      "view": 11,
+      "lit_count": 280,
+      "shadow_count": 3671,
+      "linear_albedo_mae": 0.22581137043626148,
+      "normalized_gap": -0.02280278503894806
+    },
+    {
+      "condition": "sky",
+      "view": 1,
+      "lit_count": 40,
+      "shadow_count": 2584,
+      "linear_albedo_mae": 0.1347076435415026,
+      "normalized_gap": -0.01982330158352852
+    },
+    {
+      "condition": "sky",
+      "view": 2,
+      "lit_count": 118,
+      "shadow_count": 2795,
+      "linear_albedo_mae": 0.15679384378446845,
+      "normalized_gap": -0.03693404793739319
+    },
+    {
+      "condition": "sky",
+      "view": 4,
+      "lit_count": 43,
+      "shadow_count": 3625,
+      "linear_albedo_mae": 0.06944722707791912,
+      "normalized_gap": 0.008421803824603558
+    },
+    {
+      "condition": "sky",
+      "view": 5,
+      "lit_count": 105,
+      "shadow_count": 3409,
+      "linear_albedo_mae": 0.19777361258578932,
+      "normalized_gap": -0.06444854289293289
+    },
+    {
+      "condition": "sky",
+      "view": 6,
+      "lit_count": 147,
+      "shadow_count": 3504,
+      "linear_albedo_mae": 0.12253691852639172,
+      "normalized_gap": -0.07041524350643158
+    },
+    {
+      "condition": "sky",
+      "view": 7,
+      "lit_count": 267,
+      "shadow_count": 3450,
+      "linear_albedo_mae": 0.10944960684470352,
+      "normalized_gap": -0.025342358276247978
+    },
+    {
+      "condition": "sky",
+      "view": 8,
+      "lit_count": 54,
+      "shadow_count": 3846,
+      "linear_albedo_mae": 0.08883340739030272,
+      "normalized_gap": 0.0023500672541558743
+    },
+    {
+      "condition": "sky",
+      "view": 10,
+      "lit_count": 168,
+      "shadow_count": 3817,
+      "linear_albedo_mae": 0.19238355267992294,
+      "normalized_gap": -0.06627915054559708
+    },
+    {
+      "condition": "sky",
+      "view": 11,
+      "lit_count": 280,
+      "shadow_count": 3671,
+      "linear_albedo_mae": 0.08920029842083363,
+      "normalized_gap": -0.02072025276720524
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "protocol": "P1 SGS material-stage public adaptation",
+  "condition": "sky",
+  "warmup_steps": 1000,
+  "material_steps": 600,
+  "seed": 7,
+  "geometry": "shared known mesh ray samples; frozen positions/normals/scales/opacity",
+  "geometry_stage_semantics": false,
+  "material_cross_view": true,
+  "material_self_invariance_start": 1400,
+  "envmap_resolution": 128,
+  "priors": "RGB-X from training images only",
+  "input": "/home/minghao/projects/iris/experiments/out/EXP0022_sgs_sunpatch/input_v2",
+  "official_full_reproduction": false
+}

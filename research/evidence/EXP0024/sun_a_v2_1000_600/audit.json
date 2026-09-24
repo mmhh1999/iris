@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "warmup_checkpoint_step": 1000,
+  "material_checkpoint_step": 1600,
+  "frozen_parameters_exactly_equal": {
+    "positions": true,
+    "normals": true,
+    "SH_dc": true,
+    "SH_rest": true,
+    "scales": true,
+    "rotations": true,
+    "opacity": true
+  },
+  "cross_view_steps": 200,
+  "self_invariance_steps": 67,
+  "finite_losses": true,
+  "material_updates": {
+    "base_color": {
+      "finite": true,
+      "changed_from_zero_initialization_fraction": 0.9956764578819275
+    },
+    "roughness": {
+      "finite": true,
+      "changed_from_zero_initialization_fraction": 0.9919792413711548
+    }
+  },
+  "light_optimizer_steps": {
+    "point_light": [
+      600.0
+    ],
+    "env_light": [
+      600.0
+    ]
+  },
+  "checkpoint_sha256": {
+    "warmup/chkpnt1000.pth": "4bb1135264bcb35f992795d600c6d31a1ee48fb13d604aff7e45a0de9d1d33bb",
+    "material/chkpnt1600.pth": "89386b7e2b701ec5e16b31f77361082cac06964dfb485ab70829735bd9525c6e",
+    "material/env_light_chkpnt1600.pth": "a2ae3eb8c8009a01632c9ff8cfdee1c8e33af34067ea65945b31c2954e360456",
+    "material/point_light_chkpnt1600.pth": "d5f36bc0472aa216664070d1c409382634b751f662ed621c1da074c45e12188c",
+    "material/visibility_enc_chkpnt1600.pth": "928d6f95cc8b836ec4634b6f7b4a083532683e5dfd9516c6392ed10ca440b169"
+  },
+  "scientific_convergence_established": false
+}

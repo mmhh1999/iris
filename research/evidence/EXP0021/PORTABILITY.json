@@ -1,0 +1,13 @@
+{
+  "label": "SGS-public-upstream-adaptation",
+  "official_sgs": "282f76608dc24ea217ae9eebb05d2141ceae00c2",
+  "public_rgbx": "977e0df27d369d3e68900399f59a42b0156d4440",
+  "changes": [
+    "public RGB-X raw-AOV return adapter; author private modifications unknown",
+    "lazy RGB-X and SAM2 weight load; explicit checkpoint environment variable",
+    "public simple_knn function for simple_knn_r3dg import",
+    "lazy StableNormal weight load",
+    "correct upstream recenter_poses indentation error"
+  ],
+  "official_reproduction": false
+}

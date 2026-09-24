@@ -1,0 +1,4 @@
+{
+  "reason": "Missing RGB-X input gamma linearization; engineering-only run, excluded from scientific comparison",
+  "replacement": "sun_a_v2_1000_600"
+}

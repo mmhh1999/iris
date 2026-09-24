@@ -1,0 +1,79 @@
+{
+  "updated": "2026-09-20",
+  "selection_authorized": true,
+  "primary": "SGS-Intrinsic",
+  "methods": [
+    {
+      "name": "SGS-Intrinsic",
+      "role": "primary contemporary indoor BRDF baseline",
+      "year": 2026,
+      "source": "https://github.com/GrumpySloths/SGS_Intrinsic.github.io",
+      "commit": "282f76608dc24ea217ae9eebb05d2141ceae00c2",
+      "status": "P1_known_geometry_material_stage_pilot_completed_2026-09-20_archived_2026-09-23",
+      "observed_failure": "historical EXP0020 startup failures repaired in separate adaptation (EXP0021); P1 known-geometry pilot (EXP0024) since completed",
+      "static_blockers": [
+        "r3dg-rasterization CUDA source directory absent; referenced by JIT fallback",
+        "simple_knn_r3dg references author-local source",
+        "SAM2 checkpoint absolute author path; checkpoint not supplied",
+        "requirements includes author-local paths and old CUDA/Torch pins"
+      ],
+      "scores": {
+        "experiment": "EXP0024",
+        "protocol": "P1 known-geometry material-stage only; 1 synthetic room, 1 seed, 12 train / 2 heldout views, 1000 warmup + 600 material steps",
+        "not_directly_comparable_to_EXP0019_IRIS": "different tone mapping, learned prior, optimization protocol (pipeline's own evaluation script flags this explicitly)",
+        "normalized_lit_shadow_albedo_gap_pct": {"sun_a_v3": -2.36, "sky_v3": -1.93, "sun_a_v9": -2.62, "sky_v9": -1.42},
+        "sun_extra_effect_pct_points": {"v3": -0.43, "v9": -1.20},
+        "interpretation": "both conditions show a baseline negative (lit-darker-than-shadow) albedo gap unrelated to sun; the extra sun-attributable shift is small (<1.2pp) and opposite in sign/an order of magnitude smaller than vanilla IRIS's EXP0019 finding (+14 to +18pp) -- on this narrow diagnostic SGS-Intrinsic appears markedly less sun-contaminated than unmodified IRIS, not a confirmed general result",
+        "convergence_established": false
+      },
+      "evidence": "research/evidence/EXP0024/ (entrypoint contracts: research/evidence/EXP0021/entrypoint_final/result.json)",
+      "core_source_unavailable": "author-private RGB-X modifications unknown; public RGB-X adapter implemented; matching public CUDA interfaces now found and tested",
+      "report": "research/SGS_REPAIR_ZH.md, research/SGS_SUNPATCH_BENCHMARK_ZH.md",
+      "latest_experiment": "EXP0024",
+      "remaining": [
+        "multi-seed / multi-room statistical power",
+        "full official-budget convergence",
+        "reconstructed (not known) geometry",
+        "heldout cross-time relighting -- the actual killer-experiment comparison, which SGS's generic env-map relighting has no physically-grounded mechanism to attempt"
+      ],
+      "official_reproduction": false
+    },
+    {
+      "name": "AEGIR",
+      "year": 2026,
+      "role": "priority pending-release indoor baseline",
+      "source": "https://darkgeekms.github.io/projects/aegir/",
+      "status": "official_page_code_coming_soon",
+      "scores": null
+    },
+    {
+      "name": "IRGS++",
+      "year": 2026,
+      "role": "secondary candidate; verify implementation and indoor suitability",
+      "source": "https://arxiv.org/abs/2607.22780",
+      "status": "implementation_not_audited",
+      "scores": null
+    },
+    {
+      "name": "SIR",
+      "role": "targeted shadow separation comparator",
+      "status": "not_reproduced",
+      "scores": null
+    },
+    {
+      "name": "IRIS",
+      "role": "historical diagnostic only",
+      "status": "EXP0019 bounded pilot completed; not default-budget reproduction",
+      "scores": "research/SUNPATCH_IRIS_BENCHMARK_ZH.md"
+    }
+  ],
+  "fairness": [
+    "same allowed photos and split",
+    "separate known geometry and reconstructed geometry tracks",
+    "separate HDR and LDR",
+    "report prior inputs, training steps, GPU time and memory",
+    "GT material and sun labels evaluation only",
+    "score albedo contamination, BRDF angular response and heldout-light physical rendering",
+    "do not replace missing official components silently or call modified baseline official"
+  ]
+}

@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/minghao/projects/iris/third_party/sgs_intrinsic/train.py", line 10, in <module>
+    from gaussian_renderer import render_fn_dict
+  File "/home/minghao/projects/iris/third_party/sgs_intrinsic/gaussian_renderer/__init__.py", line 1, in <module>
+    from gaussian_renderer.render_r3dg import render
+  File "/home/minghao/projects/iris/third_party/sgs_intrinsic/gaussian_renderer/render_r3dg.py", line 7, in <module>
+    from scene.cameras import Camera
+  File "/home/minghao/projects/iris/third_party/sgs_intrinsic/scene/__init__.py", line 17, in <module>
+    from scene.dataset_readers import sceneLoadTypeCallbacks
+  File "/home/minghao/projects/iris/third_party/sgs_intrinsic/scene/dataset_readers.py", line 27, in <module>
+    from scene.gaussian_model import BasicPointCloud
+  File "/home/minghao/projects/iris/third_party/sgs_intrinsic/scene/gaussian_model.py", line 20, in <module>
+    from simple_knn._C import distCUDA2
+ModuleNotFoundError: No module named 'simple_knn'

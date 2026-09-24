@@ -1,0 +1,157 @@
+{
+  "model": {
+    "repo": "zheng95z/rgb-to-x",
+    "revision": "b38b3fd73a14ea62f3953fc54bc4ac67b067bae0",
+    "path": "/home/minghao/projects/iris/.baseline_deps/hf_cache/hub/models--zheng95z--rgb-to-x/snapshots/b38b3fd73a14ea62f3953fc54bc4ac67b067bae0"
+  },
+  "steps": 50,
+  "seed": 42,
+  "training_only": true,
+  "input_color_conversion": "LDR ** 2.2, matching public RGB-X demo",
+  "results": [
+    {
+      "condition": "sun_a",
+      "view": 0,
+      "seconds": 7.174213935999433,
+      "image_sha256": "95808f8da5013f252b39ed3bcd1e294dca11cea5d314e571a8315308687d4a41"
+    },
+    {
+      "condition": "sun_a",
+      "view": 1,
+      "seconds": 6.8638602909923065,
+      "image_sha256": "1ec96aa1ddeb59aec73128e6484e0c3d485bd8d4ccd7cd159422f111ffe8a9de"
+    },
+    {
+      "condition": "sun_a",
+      "view": 2,
+      "seconds": 6.8827557929907925,
+      "image_sha256": "14c9e644145e5f33f48b941a9065dfb61f97eeea7747c1f2aef02eba71efb457"
+    },
+    {
+      "condition": "sun_a",
+      "view": 4,
+      "seconds": 6.5599235279951245,
+      "image_sha256": "78a78b6bc34c2869b4e43efb7b1834b65f054c8f188ae4dd9f0913d6e1ae399e"
+    },
+    {
+      "condition": "sun_a",
+      "view": 5,
+      "seconds": 6.749508926994167,
+      "image_sha256": "cc667263d051def98ac03758a7ffd06ea88efc96879dd695970718c1e6581f57"
+    },
+    {
+      "condition": "sun_a",
+      "view": 6,
+      "seconds": 6.804043048003223,
+      "image_sha256": "e72874111ea560d5988aac231a461fd6dccf0d2e65c39c39a7ea8c7482cf41b6"
+    },
+    {
+      "condition": "sun_a",
+      "view": 7,
+      "seconds": 6.844647034013178,
+      "image_sha256": "9ac778f3cd0a0bcb622fdebd2db3f0537ced2d69960e3c73ae3dd91fa2c40217"
+    },
+    {
+      "condition": "sun_a",
+      "view": 8,
+      "seconds": 6.402074416982941,
+      "image_sha256": "612e646092bd46adced91c353a2ca4060eec0e3a514d32953b36bbe6f42a3859"
+    },
+    {
+      "condition": "sun_a",
+      "view": 10,
+      "seconds": 6.3386270480114035,
+      "image_sha256": "f4a32b65ca16fab3b51e54cdc6d582522bb45d336d4b23d1272962df9502f498"
+    },
+    {
+      "condition": "sun_a",
+      "view": 11,
+      "seconds": 6.355211702000815,
+      "image_sha256": "db921dc30cba50fa1e040b5381063ace21deec1ca2dff94ecf641a774ffaa844"
+    },
+    {
+      "condition": "sun_a",
+      "view": 12,
+      "seconds": 6.654178688011598,
+      "image_sha256": "45e85287b9465f1fadece03a4319d4edc2e73718675feaebc5d75aa2652ab80b"
+    },
+    {
+      "condition": "sun_a",
+      "view": 13,
+      "seconds": 6.840750692004804,
+      "image_sha256": "83499f1e8b8ad397ee7c0be953b366f504073faec0abfa4ddec1244936f95e77"
+    },
+    {
+      "condition": "sky",
+      "view": 0,
+      "seconds": 6.809295794024365,
+      "image_sha256": "b1c3b9e0a8a3fae1b7316175a65bac116497c168fba7d3e2fbd8eedc01098a48"
+    },
+    {
+      "condition": "sky",
+      "view": 1,
+      "seconds": 7.052163393993396,
+      "image_sha256": "ea507a9566f48797d5df1f71b8f5dee915b64bf41a443e200cd6bfdd95bed263"
+    },
+    {
+      "condition": "sky",
+      "view": 2,
+      "seconds": 6.581534791999729,
+      "image_sha256": "55323bb8c3f9550ef549a03d0f77f65423676ca08e6118ff3fec1cfc18245a7e"
+    },
+    {
+      "condition": "sky",
+      "view": 4,
+      "seconds": 6.91398769398802,
+      "image_sha256": "fbb6799c963ee9486abd40bbb084e1ab042499470a4f772aed3f233ca4cd24bf"
+    },
+    {
+      "condition": "sky",
+      "view": 5,
+      "seconds": 6.8853276949957944,
+      "image_sha256": "190dfe77d77eeba1c514fe6f94d0220996b27db6d3df6dfa7e85712b909161c8"
+    },
+    {
+      "condition": "sky",
+      "view": 6,
+      "seconds": 7.358227994001936,
+      "image_sha256": "2be805fe5fd37715a563dfe1c29b80e78e41bde687bc5e125f2b8fcdb0fa6db1"
+    },
+    {
+      "condition": "sky",
+      "view": 7,
+      "seconds": 6.844827196007827,
+      "image_sha256": "f0b7197d05b9b21cbd754f5673f367f2d45ad09faf1f63767732d7a99ece373a"
+    },
+    {
+      "condition": "sky",
+      "view": 8,
+      "seconds": 6.765785699011758,
+      "image_sha256": "9896ff4b78469803751dedcc164350ac1dc6503ce70d5bd62f7ad793ab8c5fbd"
+    },
+    {
+      "condition": "sky",
+      "view": 10,
+      "seconds": 6.601085300993873,
+      "image_sha256": "52ed4da8dbb0c69be2d1c44b1931f3a22e536cc27eb970e9a703ac52ba0cd131"
+    },
+    {
+      "condition": "sky",
+      "view": 11,
+      "seconds": 3.882691202015849,
+      "image_sha256": "e79e8ea6f1e6aebc78b18af0c754691df3ab0be5ff6f83226862cefe5d853347"
+    },
+    {
+      "condition": "sky",
+      "view": 12,
+      "seconds": 3.2224662020162214,
+      "image_sha256": "c7831e2a28115268984bcfc771e22b019eece264af7c2a9a0cbbff77b342b7d5"
+    },
+    {
+      "condition": "sky",
+      "view": 13,
+      "seconds": 3.222927203984,
+      "image_sha256": "a08b6d018a2779262ec7ee6537f3e204961e346d79a2b82f058df85f36815a15"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "label": "SGS-public-upstream-adaptation",
+  "command": [
+    "/home/minghao/projects/iris/.venv/bin/python",
+    "train.py",
+    "--help"
+  ],
+  "returncode": 0,
+  "timeout": false,
+  "seconds": 3.933396117994562,
+  "entrypoint_help_passed": true,
+  "scientific_metrics_validated": false,
+  "official_reproduction": false
+}

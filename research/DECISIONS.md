@@ -177,3 +177,31 @@ sun-patch cross-check pilot (candidate pair already prepared:
 indoor+outdoor, camera-to-sun angle 137°/145°); the full RAW data will be
 sitting in `data_download/cali_hdr/` and `data_download/pano2pano/` once the
 background import finishes.
+
+## D0013 — 2026-09-23: renumber the SGS sun-patch pairing experiment EXP0022 → EXP0024
+
+**Decision:** A pre-existing draft (`research/SGS_SUNPATCH_BENCHMARK_ZH.md`,
+written 2026-09-20, never committed) had independently claimed the number
+"EXP0022" for the SGS-Intrinsic sun-patch pairing pilot, with its working
+directory `experiments/out/EXP0022_sgs_sunpatch` and archive script
+targeting `research/evidence/EXP0022`. That number was reassigned the night
+of 2026-09-23 to the Cali-HDR/Pano2Pano dataset audit (D0012/T09), which was
+committed first. Resolution: keep the Cali-HDR/Pano2Pano work at EXP0022 (already
+committed, can't renumber retroactively without rewriting git history), and
+renumber the SGS pairing experiment to **EXP0024** (next free number after
+EXP0023). Only the archive destination and its embedded README in
+`experiments/baselines/archive_sgs_sunpatch.py` were changed; the gitignored
+local working directory name (`EXP0022_sgs_sunpatch`) was left as-is since
+it isn't part of the permanent record and renaming it would require editing
+path references across ~10 baseline scripts for no evidentiary benefit.
+
+**Reason:** discovered while investigating "what baseline have we confirmed
+and how do we beat it" — the SGS pairing pilot had actually already been
+trained and evaluated on 2026-09-20 (real numbers existed:
+`experiments/out/EXP0022_sgs_sunpatch/evaluation_v2/metrics.json`) but was
+never archived to `research/evidence/`, never written into
+`SGS_SUNPATCH_BENCHMARK_ZH.md` (which still said "results to be filled in
+later"), and never reflected in `baseline_registry.json` (`scores: null`).
+Fixed all four in the same pass: renumbered, ran the missing
+`report_sgs_sunpatch.py` + `archive_sgs_sunpatch.py` steps, filled in the
+real numbers, and updated the registry.

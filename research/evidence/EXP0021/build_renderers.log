@@ -1,0 +1,101 @@
+Using CPython 3.10.21 interpreter at: .venv/bin/python
+Resolved 3 packages in 1.29s
+   Building r3dg-rasterization @ file:///home/minghao/projects/iris/third_party/r3dg_upstream/r3dg-rasterization
+   Building diff-gaussian-rasterization-feature @ file:///home/minghao/projects/iris/third_party/sgs_components/feature_rasterizer
+   Building nvdiffrast @ file:///home/minghao/projects/iris/third_party/nvdiffrast_upstream
+  × Failed to build `nvdiffrast @
+  │ file:///home/minghao/projects/iris/third_party/nvdiffrast_upstream`
+  ├─▶ The build backend returned an error
+  ╰─▶ Call to `setuptools.build_meta.build_wheel` failed (exit status: 1)
+
+      [stdout]
+      running bdist_wheel
+      running build
+      running build_py
+      creating build/lib.linux-x86_64-cpython-310/nvdiffrast
+      copying nvdiffrast/__init__.py ->
+      build/lib.linux-x86_64-cpython-310/nvdiffrast
+      creating build/lib.linux-x86_64-cpython-310/nvdiffrast/torch
+      copying nvdiffrast/torch/__init__.py ->
+      build/lib.linux-x86_64-cpython-310/nvdiffrast/torch
+      copying nvdiffrast/torch/ops.py ->
+      build/lib.linux-x86_64-cpython-310/nvdiffrast/torch
+      running egg_info
+      creating nvdiffrast.egg-info
+      writing nvdiffrast.egg-info/PKG-INFO
+      writing dependency_links to nvdiffrast.egg-info/dependency_links.txt
+      writing requirements to nvdiffrast.egg-info/requires.txt
+      writing top-level names to nvdiffrast.egg-info/top_level.txt
+      writing manifest file 'nvdiffrast.egg-info/SOURCES.txt'
+      reading manifest file 'nvdiffrast.egg-info/SOURCES.txt'
+      reading manifest template 'MANIFEST.in'
+      adding license file 'LICENSE.txt'
+      writing manifest file 'nvdiffrast.egg-info/SOURCES.txt'
+      running build_ext
+      building '_nvdiffrast_c' extension
+      creating build/temp.linux-x86_64-cpython-310/csrc/common
+      creating build/temp.linux-x86_64-cpython-310/csrc/common/cudaraster/impl
+      creating build/temp.linux-x86_64-cpython-310/csrc/torch
+      /home/minghao/projects/iris/.toolchain/compiler/bin/nvcc
+      -I/home/minghao/projects/iris/.venv/lib/python3.10/site-packages/torch/include
+      -I/home/minghao/projects/iris/.venv/lib/python3.10/site-packages/torch/include/torch/csrc/api/include
+      -I/home/minghao/projects/iris/.toolchain/compiler/include
+      -I/home/minghao/projects/iris/.venv/include
+      -I/home/minghao/.local/share/uv/python/cpython-3.10.21-linux-x86_64-gnu/include/python3.10
+      -c csrc/common/antialias.cu -o
+      build/temp.linux-x86_64-cpython-310/csrc/common/antialias.o
+      -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__
+      -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__
+      --expt-relaxed-constexpr --compiler-options '-fPIC'
+      -DNVDR_TORCH -lineinfo -DTORCH_API_INCLUDE_EXTENSION_H
+      -DTORCH_EXTENSION_NAME=_nvdiffrast_c
+      -gencode=arch=compute_120,code=sm_120 -ccbin
+      /home/minghao/projects/iris/.toolchain/compiler/bin/x86_64-conda-linux-gnu-gcc
+      -std=c++17
+      /home/minghao/projects/iris/.toolchain/compiler/bin/x86_64-conda-linux-gnu-g++
+      -Wno-unused-result -Wsign-compare -Wunreachable-code
+      -DNDEBUG -g -fwrapv -O3 -Wall -O3 -fstack-protector
+      -fstack-clash-protection -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
+      -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -fPIC -fPIC
+      -I/home/minghao/projects/iris/.venv/lib/python3.10/site-packages/torch/include
+      -I/home/minghao/projects/iris/.venv/lib/python3.10/site-packages/torch/include/torch/csrc/api/include
+      -I/home/minghao/projects/iris/.toolchain/compiler/include
+      -I/home/minghao/projects/iris/.venv/include
+      -I/home/minghao/.local/share/uv/python/cpython-3.10.21-linux-x86_64-gnu/include/python3.10
+      -c csrc/common/common.cpp -o
+      build/temp.linux-x86_64-cpython-310/csrc/common/common.o -DNVDR_TORCH
+      -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=_nvdiffrast_c
+      -std=c++17
+
+      [stderr]
+      W0920 22:21:08.720000 1069798 torch/utils/cpp_extension.py:680]
+      Attempted to use ninja as the BuildExtension backend but we could not
+      find ninja.. Falling back to using the slow distutils backend.
+      warning: no previously-included files matching '*~' found anywhere in
+      distribution
+      warning: no previously-included files matching '*.py[cod]' found
+      anywhere in distribution
+      warning: no previously-included files matching '*.so' found anywhere
+      in distribution
+      warning: no previously-included files matching '__pycache__' found
+      anywhere in distribution
+      warning: no previously-included files matching '.git*' found anywhere
+      in distribution
+      warning: no previously-included files matching '.DS_Store' found
+      anywhere in distribution
+      warning: no previously-included files matching '*.egg-info' found
+      anywhere in distribution
+      warning: no previously-included files matching 'build' found anywhere
+      in distribution
+      warning: no previously-included files matching 'dist' found anywhere
+      in distribution
+      csrc/common/common.cpp:9:10: fatal error: cuda_runtime.h: No such file
+      or directory
+          9 | #include <cuda_runtime.h>
+            |          ^~~~~~~~~~~~~~~~
+      compilation terminated.
+      error: command
+      '/home/minghao/projects/iris/.toolchain/compiler/bin/x86_64-conda-linux-gnu-g++'
+      failed with exit code 1
+
+hint: This error likely indicates that you need to install a library that provides "cuda_runtime.h" for `nvdiffrast@0.4.0`

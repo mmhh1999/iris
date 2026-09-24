@@ -1,3 +1,23 @@
+## 2026-09-23：EXP0024 — SGS-Intrinsic 基线配对结果补齐归档
+
+核实发现 EXP0021 修好入口后，SGS-Intrinsic 的太阳光斑配对试验（已知几何 P1，
+1 房间 1 seed，与 EXP0019 用同一 Country Kitchen 场景）其实早在 2026-09-20
+就跑完并评测过，但从未归档进 `research/evidence/`、从未写进报告、
+`baseline_registry.json` 的 `scores` 也一直是 `null`——本次补上全部四步。
+原草稿把这个实验也编号为"EXP0022"，与今晚新分配的 Cali-HDR/Pano2Pano 审计
+撞号，已改为 **EXP0024**（D0013）。
+
+结果：两组（有太阳 sun_a / 无太阳 sky）在留出视角上，归一化亮暗差都是**负值**
+（−1.4% 到 −2.6%，受光区比阴影区更暗，与太阳无关的基线暗化），太阳额外带来的
+偏移很小（−0.43 到 −1.20 个百分点）——**符号相反、量级比原版 IRIS
+（EXP0019：+14 到 +18 个百分点）小一个数量级**。样本极小（1 房间 1 seed）
+不能当普遍结论，但提示:如果这个趋势在更大样本下站得住，"材质污染指标"
+未必是我们方法明显赢过 SGS 的地方，真正的差异化优势更可能在 SGS 结构上
+做不到的事——它的重打光是换任意环境贴图，不是基于星历的物理真实光照预测，
+这正是 `NOVELTY_GAP.md` killer experiment 的核心论点。
+详见 [SGS 太阳光斑对照](SGS_SUNPATCH_BENCHMARK_ZH.md)、
+`research/evidence/EXP0024/evaluation/index.html`。
+
 ## 2026-09-23：EXP0022/EXP0023 — Cali-HDR + Pano2Pano（Guanzhou Ji 组）已获取并完成 EXIF 审计
 
 用户获得并提供了 Cali-HDR Dataset（88.97GB，14 场景，2022–2023）与其后续

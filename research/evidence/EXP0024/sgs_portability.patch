@@ -1,0 +1,221 @@
+--- official/scene/gaussian_model_sgs.py
++++ adapted/scene/gaussian_model_sgs.py
+@@ -12,7 +12,7 @@
+ from plyfile import PlyData, PlyElement
+ 
+ # from simple_knn._C import distCUDA2
+-from simple_knn_r3dg._C import distCUDA2
++from simple_knn._C import distCUDA2
+ from arguments import OptimizationParams
+ from tqdm import tqdm
+ from utils.graphics_utils import fibonacci_sphere_sampling
+--- official/utils/rgbx_guidance.py
++++ adapted/utils/rgbx_guidance.py
+@@ -8,30 +8,37 @@
+ import os
+ from matplotlib import pyplot as plt
+ 
+-# Load pipeline
+-pipe = StableDiffusionAOVMatEstPipeline.from_pretrained(
+-    "zheng95z/rgb-to-x",
+-    torch_dtype=torch.float16,
+-    cache_dir="./rgb2x/model_cache"
+-    # cache_dir=os.path.join(os.path.dirname(os.path.abspath(__file__)), "model_cache"),
+-).to("cuda")
+-
+-pipe.text_encoder.eval()
+-pipe.vae.eval()
+-pipe.unet.eval()
+-
+-for p in pipe.text_encoder.parameters():
+-    p.requires_grad_(False)
+-for p in pipe.vae.parameters():
+-    p.requires_grad_(False)
+-for p in pipe.unet.parameters():
+-    p.requires_grad_(False)
+-
+-pipe.scheduler = DDIMScheduler.from_config(
+-    pipe.scheduler.config, rescale_betas_zero_snr=True, timestep_spacing="trailing"
+-)
+-pipe.set_progress_bar_config(disable=True)
+-pipe.to("cuda")
++pipe = None
++
++def _get_pipe():
++    global pipe
++    if pipe is None:
++        # Load pipeline
++        pipe = StableDiffusionAOVMatEstPipeline.from_pretrained(
++            os.environ.get("SGS_RGBX_MODEL", "zheng95z/rgb-to-x"),
++            torch_dtype=torch.float16,
++            cache_dir=os.environ.get("HF_HOME", "./rgb2x/model_cache")
++            # cache_dir=os.path.join(os.path.dirname(os.path.abspath(__file__)), "model_cache"),
++        ).to("cuda")
++        
++        pipe.text_encoder.eval()
++        pipe.vae.eval()
++        pipe.unet.eval()
++        
++        for p in pipe.text_encoder.parameters():
++            p.requires_grad_(False)
++        for p in pipe.vae.parameters():
++            p.requires_grad_(False)
++        for p in pipe.unet.parameters():
++            p.requires_grad_(False)
++        
++        pipe.scheduler = DDIMScheduler.from_config(
++            pipe.scheduler.config, rescale_betas_zero_snr=True, timestep_spacing="trailing"
++        )
++        pipe.set_progress_bar_config(disable=True)
++        pipe.to("cuda")
++        
++    return pipe
+ 
+ def sd_estimate_aovs_normal(
+     photo, # Input photo tensor of shape [C, H, W]
+@@ -53,7 +60,7 @@
+     prompt=prompts[aov_name]
+     # Estimate AOVs
+     generator = torch.Generator(device="cuda").manual_seed(seed)
+-    aov_results = pipe(
++    aov_results = _get_pipe()(
+         photo=photo,
+         prompt=prompt,
+         num_inference_steps=inference_step,
+@@ -93,7 +100,7 @@
+     prompt=prompts[aov_name]
+     # Estimate AOVs
+     generator = torch.Generator(device="cuda").manual_seed(seed)
+-    aov_results = pipe(
++    aov_results = _get_pipe()(
+         photo=photo,
+         prompt=prompt,
+         num_inference_steps=inference_step,
+@@ -135,7 +142,7 @@
+     prompt = prompts[aov_name]
+ 
+     generator = torch.Generator(device="cuda").manual_seed(seed)
+-    aov_results = pipe(
++    aov_results = _get_pipe()(
+         photo=photos_resized,
+         prompt=[prompt] * batch_size,
+         num_inference_steps=inference_step,
+--- official/utils/sam_region_infer.py
++++ adapted/utils/sam_region_infer.py
+@@ -13,12 +13,18 @@
+     device = torch.device("cuda")
+ else:
+     device = torch.device("cpu")
+-sam2_checkpoint = "/home/jiahao/ipsm_relighting_v2/checkpoints/sam2.1_hiera_large.pt"
+-model_cfg = "configs/sam2.1/sam2.1_hiera_l.yaml"
+-predictor = build_sam2_video_predictor(model_cfg, sam2_checkpoint, device=device)
+-# Set requires_grad=False for all parameters in predictor
+-for param in predictor.parameters():
+-    param.requires_grad = False
++predictor = None
++
++def _get_predictor():
++    global predictor
++    if predictor is None:
++        checkpoint = os.environ.get("SGS_SAM2_CHECKPOINT")
++        if not checkpoint or not os.path.isfile(checkpoint):
++            raise FileNotFoundError("Set SGS_SAM2_CHECKPOINT to sam2.1_hiera_large.pt")
++        predictor = build_sam2_video_predictor("configs/sam2.1/sam2.1_hiera_l.yaml", checkpoint, device=device)
++        for param in predictor.parameters():
++            param.requires_grad = False
++    return predictor
+ 
+ def extract_number(filename):
+     match = re.search(r'\d+', filename.stem)
+@@ -31,6 +37,7 @@
+ 
+ def get_video_masks(video_dir, save_dir="./video_infer_results"):
+ 
++    predictor = _get_predictor()
+     ensure_dir(save_dir)
+ 
+     # Initialize the inference state.
+--- official/utils/normal_guidance.py
++++ adapted/utils/normal_guidance.py
+@@ -5,9 +5,12 @@
+ import os
+ 
+ 
+-predictor = torch.hub.load("Stable-X/StableNormal", "StableNormal_turbo", trust_repo=True)
++predictor = None
+ 
+ def get_normal_tensor(input_tensor):
++    global predictor
++    if predictor is None:
++        predictor = torch.hub.load("Stable-X/StableNormal", "StableNormal_turbo", trust_repo=True)
+     # input_tensor: [3, h, w], float or uint8, range [0, 1] or [0, 255]
+     # Convert to PIL Image
+     if isinstance(input_tensor, torch.Tensor):
+--- official/utils/pose_utils.py
++++ adapted/utils/pose_utils.py
+@@ -38,7 +38,7 @@
+ def recenter_poses(poses: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
+   """Recenter poses around the origin."""
+   cam2world = poses_avg(poses)
+-    transform = np.linalg.inv(pad_poses(cam2world))  # transform here represents the world-to-camera matrix.
++  transform = np.linalg.inv(pad_poses(cam2world))  # transform here represents the world-to-camera matrix.
+   poses = transform @ pad_poses(poses)
+   return unpad_poses(poses), transform
+ 
+--- official/rgb2x/pipeline_rgb2x_myversion.py
++++ adapted/rgb2x/pipeline_rgb2x_myversion.py
+@@ -0,0 +1,16 @@
++"""Public RGB-X adapter, NOT recovered author-private implementation.
++The SGS caller expects decoded [-1,1] tensors then applies range/gamma conversion.
++Public RGB-X output_type='latent' bypasses its image postprocessing; in this
++pipeline it returns decoded AOV pixels, not diffusion latent features.
++"""
++from .pipeline_rgb2x import StableDiffusionAOVMatEstPipeline as PublicPipeline
++
++class StableDiffusionAOVMatEstPipeline(PublicPipeline):
++    def __call__(self, *args, **kwargs):
++        # Public RGB-X demo linearizes LDR input with gamma 2.2.
++        kwargs['photo'] = kwargs['photo'].clamp(0, 1).pow(2.2)
++        kwargs['output_type'] = 'latent'
++        result = super().__call__(*args, **kwargs)
++        if len(result.images) != 1:
++            raise ValueError('SGS adapter requires exactly one AOV')
++        return result.images[0]
+--- official/gaussian_renderer/render_sgs.py
++++ adapted/gaussian_renderer/render_sgs.py
+@@ -271,9 +271,7 @@
+         .sum(dim=-1)
+         .reshape(H, W, 3)
+     )  # [H, W, 3]
+-    normal_mask = (rendered_normal != 0).all(
+-        0, keepdim=True
+-    )  # Shape [1,800,800]; used to filter valid normals.
++    normal_mask = (torch.linalg.vector_norm(rendered_normal, dim=0, keepdim=True) > 0)  # Shape [1,800,800]; used to filter valid normals.
+     env_light.build_mips()
+     normal_map = rendered_normal.permute(1, 2, 0).detach()
+ 
+@@ -521,7 +519,7 @@
+         )  # [H, W, 3]
+     else:
+         view_dirs = None
+-    normal_mask = (rendered_normal != 0).all(0, keepdim=True)  # [1,H,W]
++    normal_mask = (torch.linalg.vector_norm(rendered_normal, dim=0, keepdim=True) > 0)  # [1,H,W]
+     env_light.build_mips()
+     normal_map = rendered_normal.permute(1, 2, 0).detach()
+     brdf_lut = get_brdf_lut().cuda()
+--- official/pbr/renderutils/ops.py
++++ adapted/pbr/renderutils/ops.py
+@@ -75,12 +75,10 @@
+ 
+     # Compile and load.
+     source_paths = [os.path.join(os.path.dirname(__file__), fn) for fn in source_files]
+-    torch.utils.cpp_extension.load(name='renderutils_plugin', sources=source_paths, extra_cflags=opts,
++    _cached_plugin = torch.utils.cpp_extension.load(name='renderutils_plugin', sources=source_paths, extra_cflags=opts,
+          extra_cuda_cflags=opts, extra_ldflags=ldflags, with_cuda=True, verbose=True)
+ 
+     # Import, cache, and return the compiled module.
+-    import renderutils_plugin
+-    _cached_plugin = renderutils_plugin
+     return _cached_plugin
+ 
+ #----------------------------------------------------------------------------

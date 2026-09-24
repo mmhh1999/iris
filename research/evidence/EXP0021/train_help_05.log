@@ -1,0 +1,175 @@
+usage: train.py [-h] [--sh_degree SH_DEGREE] [--source_path SOURCE_PATH]
+                [--model_path MODEL_PATH] [--images IMAGES]
+                [--resolution RESOLUTION] [--white_background]
+                [--data_device DATA_DEVICE] [--eval] [--debug_cuda]
+                [--global_shs_degree GLOBAL_SHS_DEGREE]
+                [--env_resolution ENV_RESOLUTION] [--n_views N_VIEWS]
+                [--iterations ITERATIONS] [--finetune_visibility]
+                [--position_lr_init POSITION_LR_INIT]
+                [--position_lr_final POSITION_LR_FINAL]
+                [--position_lr_delay_mult POSITION_LR_DELAY_MULT]
+                [--position_lr_max_steps POSITION_LR_MAX_STEPS]
+                [--normal_lr NORMAL_LR] [--sh_lr SH_LR]
+                [--opacity_lr OPACITY_LR] [--scaling_lr SCALING_LR]
+                [--rotation_lr ROTATION_LR] [--env_lr ENV_LR]
+                [--env_rest_lr ENV_REST_LR] [--pointlight_lr POINTLIGHT_LR]
+                [--sgs_env_lr SGS_ENV_LR] [--cubemap_lr CUBEMAP_LR]
+                [--base_color_lr BASE_COLOR_LR] [--roughness_lr ROUGHNESS_LR]
+                [--light_lr LIGHT_LR] [--light_rest_lr LIGHT_REST_LR]
+                [--light_init LIGHT_INIT] [--visibility_lr VISIBILITY_LR]
+                [--visibility_rest_lr VISIBILITY_REST_LR]
+                [--percent_dense PERCENT_DENSE]
+                [--densification_interval DENSIFICATION_INTERVAL]
+                [--opacity_reset_interval OPACITY_RESET_INTERVAL]
+                [--densify_from_iter DENSIFY_FROM_ITER]
+                [--densify_until_iter DENSIFY_UNTIL_ITER]
+                [--densify_grad_threshold DENSIFY_GRAD_THRESHOLD]
+                [--densify_grad_normal_threshold DENSIFY_GRAD_NORMAL_THRESHOLD]
+                [--normal_densify_from_iter NORMAL_DENSIFY_FROM_ITER]
+                [--visibility_enc_lr VISIBILITY_ENC_LR]
+                [--lambda_reg_vis_enc LAMBDA_REG_VIS_ENC]
+                [--lambda_depth LAMBDA_DEPTH]
+                [--lambda_depth_smooth LAMBDA_DEPTH_SMOOTH]
+                [--lambda_mask_entropy LAMBDA_MASK_ENTROPY]
+                [--lambda_opacity LAMBDA_OPACITY]
+                [--lambda_opacity_start_iteration LAMBDA_OPACITY_START_ITERATION]
+                [--lambda_surface LAMBDA_SURFACE]
+                [--lambda_pos_reg LAMBDA_POS_REG]
+                [--lambda_val_reg LAMBDA_VAL_REG] [--lambda_sgs LAMBDA_SGS]
+                [--lambda_normal_render_depth LAMBDA_NORMAL_RENDER_DEPTH]
+                [--normal_weight NORMAL_WEIGHT]
+                [--lambda_normal_smooth LAMBDA_NORMAL_SMOOTH]
+                [--lambda_geo_diffuse LAMBDA_GEO_DIFFUSE]
+                [--semantic_feature_lr SEMANTIC_FEATURE_LR]
+                [--lambda_sam_align LAMBDA_SAM_ALIGN]
+                [--lambda_normal_mvs_depth LAMBDA_NORMAL_MVS_DEPTH]
+                [--lambda_point_entropy LAMBDA_POINT_ENTROPY]
+                [--lambda_orientation LAMBDA_ORIENTATION]
+                [--lambda_orientation_from_iter LAMBDA_ORIENTATION_FROM_ITER]
+                [--lambda_depth_var LAMBDA_DEPTH_VAR]
+                [--lambda_scaling LAMBDA_SCALING]
+                [--lambda_dssim LAMBDA_DSSIM] [--lambda_pbr LAMBDA_PBR]
+                [--lambda_featuregs LAMBDA_FEATUREGS]
+                [--lambda_light LAMBDA_LIGHT]
+                [--lambda_base_color LAMBDA_BASE_COLOR]
+                [--lambda_base_color_smooth LAMBDA_BASE_COLOR_SMOOTH]
+                [--lambda_roughness_smooth LAMBDA_ROUGHNESS_SMOOTH]
+                [--lambda_light_smooth LAMBDA_LIGHT_SMOOTH]
+                [--lambda_visibility_smooth LAMBDA_VISIBILITY_SMOOTH]
+                [--lambda_visibility LAMBDA_VISIBILITY]
+                [--lambda_env_smooth LAMBDA_ENV_SMOOTH]
+                [--lambda_msg LAMBDA_MSG] [--compute_SHs_python]
+                [--compute_cov3D_python] [--tracing] [--sample_num SAMPLE_NUM]
+                [--debug] [--save_training_vis]
+                [--save_training_vis_iteration SAVE_TRAINING_VIS_ITERATION]
+                [--debug_from DEBUG_FROM] [--detect_anomaly] [--gui]
+                [-t {render,normal,neilf,sgs}] [--test_interval TEST_INTERVAL]
+                [--save_interval SAVE_INTERVAL] [--quiet]
+                [--checkpoint_interval CHECKPOINT_INTERVAL] [-c CHECKPOINT]
+                [--is_blender]
+
+Training script parameters
+
+options:
+  -h, --help            show this help message and exit
+  --debug_from DEBUG_FROM
+  --detect_anomaly
+  --gui                 use gui
+  -t {render,normal,neilf,sgs}, --type {render,normal,neilf,sgs}
+  --test_interval TEST_INTERVAL
+  --save_interval SAVE_INTERVAL
+  --quiet
+  --checkpoint_interval CHECKPOINT_INTERVAL
+  -c CHECKPOINT, --checkpoint CHECKPOINT
+  --is_blender
+
+Loading Parameters:
+  --sh_degree SH_DEGREE
+  --source_path SOURCE_PATH, -s SOURCE_PATH
+  --model_path MODEL_PATH, -m MODEL_PATH
+  --images IMAGES, -i IMAGES
+  --resolution RESOLUTION, -r RESOLUTION
+  --white_background, -w
+  --data_device DATA_DEVICE
+  --eval
+  --debug_cuda
+  --global_shs_degree GLOBAL_SHS_DEGREE
+  --env_resolution ENV_RESOLUTION
+  --n_views N_VIEWS
+
+Optimization Parameters:
+  --iterations ITERATIONS
+  --finetune_visibility
+  --position_lr_init POSITION_LR_INIT
+  --position_lr_final POSITION_LR_FINAL
+  --position_lr_delay_mult POSITION_LR_DELAY_MULT
+  --position_lr_max_steps POSITION_LR_MAX_STEPS
+  --normal_lr NORMAL_LR
+  --sh_lr SH_LR
+  --opacity_lr OPACITY_LR
+  --scaling_lr SCALING_LR
+  --rotation_lr ROTATION_LR
+  --env_lr ENV_LR
+  --env_rest_lr ENV_REST_LR
+  --pointlight_lr POINTLIGHT_LR
+  --sgs_env_lr SGS_ENV_LR
+  --cubemap_lr CUBEMAP_LR
+  --base_color_lr BASE_COLOR_LR
+  --roughness_lr ROUGHNESS_LR
+  --light_lr LIGHT_LR
+  --light_rest_lr LIGHT_REST_LR
+  --light_init LIGHT_INIT
+  --visibility_lr VISIBILITY_LR
+  --visibility_rest_lr VISIBILITY_REST_LR
+  --percent_dense PERCENT_DENSE
+  --densification_interval DENSIFICATION_INTERVAL
+  --opacity_reset_interval OPACITY_RESET_INTERVAL
+  --densify_from_iter DENSIFY_FROM_ITER
+  --densify_until_iter DENSIFY_UNTIL_ITER
+  --densify_grad_threshold DENSIFY_GRAD_THRESHOLD
+  --densify_grad_normal_threshold DENSIFY_GRAD_NORMAL_THRESHOLD
+  --normal_densify_from_iter NORMAL_DENSIFY_FROM_ITER
+  --visibility_enc_lr VISIBILITY_ENC_LR
+  --lambda_reg_vis_enc LAMBDA_REG_VIS_ENC
+  --lambda_depth LAMBDA_DEPTH
+  --lambda_depth_smooth LAMBDA_DEPTH_SMOOTH
+  --lambda_mask_entropy LAMBDA_MASK_ENTROPY
+  --lambda_opacity LAMBDA_OPACITY
+  --lambda_opacity_start_iteration LAMBDA_OPACITY_START_ITERATION
+  --lambda_surface LAMBDA_SURFACE
+  --lambda_pos_reg LAMBDA_POS_REG
+  --lambda_val_reg LAMBDA_VAL_REG
+  --lambda_sgs LAMBDA_SGS
+  --lambda_normal_render_depth LAMBDA_NORMAL_RENDER_DEPTH
+  --normal_weight NORMAL_WEIGHT
+  --lambda_normal_smooth LAMBDA_NORMAL_SMOOTH
+  --lambda_geo_diffuse LAMBDA_GEO_DIFFUSE
+  --semantic_feature_lr SEMANTIC_FEATURE_LR
+  --lambda_sam_align LAMBDA_SAM_ALIGN
+  --lambda_normal_mvs_depth LAMBDA_NORMAL_MVS_DEPTH
+  --lambda_point_entropy LAMBDA_POINT_ENTROPY
+  --lambda_orientation LAMBDA_ORIENTATION
+  --lambda_orientation_from_iter LAMBDA_ORIENTATION_FROM_ITER
+  --lambda_depth_var LAMBDA_DEPTH_VAR
+  --lambda_scaling LAMBDA_SCALING
+  --lambda_dssim LAMBDA_DSSIM
+  --lambda_pbr LAMBDA_PBR
+  --lambda_featuregs LAMBDA_FEATUREGS
+  --lambda_light LAMBDA_LIGHT
+  --lambda_base_color LAMBDA_BASE_COLOR
+  --lambda_base_color_smooth LAMBDA_BASE_COLOR_SMOOTH
+  --lambda_roughness_smooth LAMBDA_ROUGHNESS_SMOOTH
+  --lambda_light_smooth LAMBDA_LIGHT_SMOOTH
+  --lambda_visibility_smooth LAMBDA_VISIBILITY_SMOOTH
+  --lambda_visibility LAMBDA_VISIBILITY
+  --lambda_env_smooth LAMBDA_ENV_SMOOTH
+  --lambda_msg LAMBDA_MSG
+
+Pipeline Parameters:
+  --compute_SHs_python
+  --compute_cov3D_python
+  --tracing
+  --sample_num SAMPLE_NUM
+  --debug
+  --save_training_vis
+  --save_training_vis_iteration SAVE_TRAINING_VIS_ITERATION

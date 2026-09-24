@@ -1,0 +1,182 @@
+{
+  "passed": true,
+  "warmup_checkpoint_step": 1000,
+  "material_checkpoint_step": 1600,
+  "frozen_parameters_exactly_equal": {
+    "positions": true,
+    "normals": true,
+    "SH_dc": true,
+    "SH_rest": true,
+    "scales": true,
+    "rotations": true,
+    "opacity": true
+  },
+  "cross_view_steps": 200,
+  "self_invariance_steps": 67,
+  "finite_losses": true,
+  "checkpoint_sha256": {
+    "warmup/chkpnt1000.pth": "4bb1135264bcb35f992795d600c6d31a1ee48fb13d604aff7e45a0de9d1d33bb",
+    "material/chkpnt1600.pth": "89386b7e2b701ec5e16b31f77361082cac06964dfb485ab70829735bd9525c6e",
+    "material/env_light_chkpnt1600.pth": "a2ae3eb8c8009a01632c9ff8cfdee1c8e33af34067ea65945b31c2954e360456",
+    "material/point_light_chkpnt1600.pth": "d5f36bc0472aa216664070d1c409382634b751f662ed621c1da074c45e12188c",
+    "material/visibility_enc_chkpnt1600.pth": "928d6f95cc8b836ec4634b6f7b4a083532683e5dfd9516c6392ed10ca440b169"
+  },
+  "scientific_convergence_established": false
+}
+{
+  "passed": true,
+  "warmup_checkpoint_step": 1000,
+  "material_checkpoint_step": 1600,
+  "frozen_parameters_exactly_equal": {
+    "positions": true,
+    "normals": true,
+    "SH_dc": true,
+    "SH_rest": true,
+    "scales": true,
+    "rotations": true,
+    "opacity": true
+  },
+  "cross_view_steps": 200,
+  "self_invariance_steps": 67,
+  "finite_losses": true,
+  "material_updates": {
+    "base_color": {
+      "finite": true,
+      "changed_from_zero_initialization_fraction": 0.9958381056785583
+    },
+    "roughness": {
+      "finite": true,
+      "changed_from_zero_initialization_fraction": 0.9919792413711548
+    }
+  },
+  "light_optimizer_steps": {
+    "point_light": [
+      600.0
+    ],
+    "env_light": [
+      600.0
+    ]
+  },
+  "checkpoint_sha256": {
+    "warmup/chkpnt1000.pth": "c1b1f32bc89885c63c90a65783368d00664c6a99c824f7cb3eebc6a43a188ae4",
+    "material/chkpnt1600.pth": "f4ffcb0685bbd0f951de96904abad5f8b4351e193e8bf0a299a95aae526628e4",
+    "material/env_light_chkpnt1600.pth": "d2a4b9c4692e40f29e99fc19f80c95a297cbacbf38b47042d7f3f2bc69eb698e",
+    "material/point_light_chkpnt1600.pth": "237790949a9ff37364b37e6b2225df8e36f8dac0c32ebc4f8b888e779dd54dc7",
+    "material/visibility_enc_chkpnt1600.pth": "97b7a64e388ef8007ec746d713b2afffe0c8ff3b4c3f182230741d78cfa6407b"
+  },
+  "scientific_convergence_established": false
+}
+{
+  "protocol": "P1 SGS public adaptation; fixed known geometry; 12 train / 2 heldout views; one room, one seed; no statistical independence across pixels",
+  "truth_in_training": false,
+  "color_space": "predicted sRGB base color converted to linear for material scoring",
+  "geometry_quality_gate": true,
+  "convergence_established": false,
+  "views": [
+    {
+      "condition": "sun_a",
+      "view": 3,
+      "lit_count": 206,
+      "shadow_count": 3040,
+      "floor_interior_count": 3815,
+      "floor_opacity_mean": 0.999725341796875,
+      "floor_opacity_fraction_above_095": 1.0,
+      "albedo_mae_linear": 0.215590432118307,
+      "albedo_scale_aligned_mae": 0.03877395912803069,
+      "evaluation_only_albedo_scale": 0.4914336799167089,
+      "floor_mean_linear_albedo": [
+        0.46483734250068665,
+        0.415999174118042,
+        0.3659358024597168
+      ],
+      "albedo_gap": -0.009834647178649902,
+      "normalized_gap": -0.023560247925352235,
+      "roughness_mean": 0.4900020658969879,
+      "roughness_mae": 0.4099978506565094,
+      "pbr_psnr": 26.659382388968456,
+      "floor_pbr_psnr": 32.141048519699645
+    },
+    {
+      "condition": "sky",
+      "view": 3,
+      "lit_count": 206,
+      "shadow_count": 3040,
+      "floor_interior_count": 3815,
+      "floor_opacity_mean": 0.999725341796875,
+      "floor_opacity_fraction_above_095": 1.0,
+      "albedo_mae_linear": 0.18300531508361156,
+      "albedo_scale_aligned_mae": 0.03014241103523942,
+      "evaluation_only_albedo_scale": 0.5350459309468677,
+      "floor_mean_linear_albedo": [
+        0.45793092250823975,
+        0.371938556432724,
+        0.31914597749710083
+      ],
+      "albedo_gap": -0.007454007863998413,
+      "normalized_gap": -0.019306259105952277,
+      "roughness_mean": 0.47405514121055603,
+      "roughness_mae": 0.42594486474990845,
+      "pbr_psnr": 27.15857686275951,
+      "floor_pbr_psnr": 37.958177036813055
+    },
+    {
+      "condition": "sun_a",
+      "view": 9,
+      "lit_count": 58,
+      "shadow_count": 4067,
+      "floor_interior_count": 4624,
+      "floor_opacity_mean": 0.9942079782485962,
+      "floor_opacity_fraction_above_095": 0.9900519031141869,
+      "albedo_mae_linear": 0.2158731200707584,
+      "albedo_scale_aligned_mae": 0.03956517631031204,
+      "evaluation_only_albedo_scale": 0.49116159940537946,
+      "floor_mean_linear_albedo": [
+        0.4627857208251953,
+        0.41703319549560547,
+        0.36676329374313354
+      ],
+      "albedo_gap": -0.010892152786254883,
+      "normalized_gap": -0.02615264707894367,
+      "roughness_mean": 0.4904365837574005,
+      "roughness_mae": 0.40956342220306396,
+      "pbr_psnr": 29.235917422365823,
+      "floor_pbr_psnr": 33.78366517224621
+    },
+    {
+      "condition": "sky",
+      "view": 9,
+      "lit_count": 58,
+      "shadow_count": 4067,
+      "floor_interior_count": 4624,
+      "floor_opacity_mean": 0.9942079782485962,
+      "floor_opacity_fraction_above_095": 0.9900519031141869,
+      "albedo_mae_linear": 0.1815055511316076,
+      "albedo_scale_aligned_mae": 0.031081768965956602,
+      "evaluation_only_albedo_scale": 0.5372180371841995,
+      "floor_mean_linear_albedo": [
+        0.4516502320766449,
+        0.3708004355430603,
+        0.32102808356285095
+      ],
+      "albedo_gap": -0.005421042442321777,
+      "normalized_gap": -0.014158244495992182,
+      "roughness_mean": 0.47734013199806213,
+      "roughness_mae": 0.42265981435775757,
+      "pbr_psnr": 30.10326529267086,
+      "floor_pbr_psnr": 38.77131847967435
+    }
+  ],
+  "difference_in_differences": [
+    {
+      "view": 3,
+      "raw_gap_change": -0.0023806393146514893,
+      "normalized_gap_change": -0.004253988819399958
+    },
+    {
+      "view": 9,
+      "raw_gap_change": -0.0054711103439331055,
+      "normalized_gap_change": -0.011994402582951487
+    }
+  ],
+  "comparison_to_EXP0019_IRIS": "not directly comparable: different tone mapping, learned prior and optimization protocol"
+}

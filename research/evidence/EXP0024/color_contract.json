@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "input_gamma": 2.2,
+  "display_half_gray_to_model": 0.21763764321804047,
+  "output_postprocess_max_error": 0.0,
+  "scope": "interface regression; prediction quality evaluated separately"
+}

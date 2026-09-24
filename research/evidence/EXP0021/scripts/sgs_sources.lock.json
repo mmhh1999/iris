@@ -1,0 +1,32 @@
+[
+  {
+    "path": "third_party/sgs_intrinsic",
+    "url": "https://github.com/GrumpySloths/SGS_Intrinsic.github.io.git",
+    "commit": "282f76608dc24ea217ae9eebb05d2141ceae00c2",
+    "submodules": ""
+  },
+  {
+    "path": "third_party/r3dg_upstream",
+    "url": "https://github.com/NJU-3DV/Relightable3DGaussian.git",
+    "commit": "a102f14c7e34b7bd5e421990e6f1593d39ebab83",
+    "submodules": ""
+  },
+  {
+    "path": "third_party/rgbx_upstream",
+    "url": "https://github.com/zheng95z/rgbx.git",
+    "commit": "977e0df27d369d3e68900399f59a42b0156d4440",
+    "submodules": ""
+  },
+  {
+    "path": "third_party/feature3dgs_upstream",
+    "url": "https://github.com/ShijieZhou-UCLA/feature-3dgs.git",
+    "commit": "6c570d6e7e4375129e57a588a206e6f629be2ff1",
+    "submodules": ""
+  },
+  {
+    "path": "third_party/nvdiffrast_upstream",
+    "url": "https://github.com/NVlabs/nvdiffrast.git",
+    "commit": "253ac4fcea7de5f396371124af597e6cc957bfae",
+    "submodules": ""
+  }
+]

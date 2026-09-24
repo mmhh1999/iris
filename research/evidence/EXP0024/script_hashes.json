@@ -1,0 +1,50 @@
+[
+  {
+    "path": "experiments/baselines/prepare_sgs_compat.py",
+    "sha256": "113fd39f0542b4ead94e3d4ab0cc776e6fe8f8e9cfb90a4b5c9856ba739cf701"
+  },
+  {
+    "path": "experiments/baselines/prepare_sgs_sunpatch.py",
+    "sha256": "675f7e3fcbfb777861857b1695746a149f9e4eb444f92caf4d4e710ea7a4ecdc"
+  },
+  {
+    "path": "experiments/baselines/infer_sgs_priors.py",
+    "sha256": "36c498dece65d15b6c650c6f11615f02cc6263026eb6b4ebdc61b3f7d6ee24a2"
+  },
+  {
+    "path": "experiments/baselines/run_sgs_p1_pilot.py",
+    "sha256": "5404a23eb352781ff359b5f03d0806bca6190730fe64f3e7aaaf72676778f61c"
+  },
+  {
+    "path": "experiments/baselines/launch_sgs_p1.py",
+    "sha256": "138838fc528dcf9d6269b860a391f26df2c8777b605502c4fc11404b394202bd"
+  },
+  {
+    "path": "experiments/baselines/evaluate_sgs_sunpatch.py",
+    "sha256": "aa6f059e7cf7f652a1b838a7bead8491c028eb4a2563ef5a127465b9dee14ce3"
+  },
+  {
+    "path": "experiments/baselines/audit_sgs_p1_run.py",
+    "sha256": "f3f1d98d12c6e75cd66059ca463fdc56779a9859876da6e7a014726612d8e1b5"
+  },
+  {
+    "path": "experiments/baselines/run_sgs_sunpatch_pair.py",
+    "sha256": "6b38d14a8bfe1a6e6a1484c0c73c2e02215a9a8487196d1fb7792e5387c2abd8"
+  },
+  {
+    "path": "experiments/baselines/report_sgs_sunpatch.py",
+    "sha256": "655e74ce933b1dceed925853d2b1266ccbaa944b8145e7424cc664d30bda8ca1"
+  },
+  {
+    "path": "experiments/baselines/test_sgs_color_contract.py",
+    "sha256": "e8783ac1ef7910c65baa8851015f2fcf9462c4dce888a85c434a2b45a3647a67"
+  },
+  {
+    "path": "experiments/baselines/audit_sgs_priors.py",
+    "sha256": "e7f72a990f2ba3a8114a11867933acc5c539edfedbe702e0d890c24260da6317"
+  },
+  {
+    "path": "experiments/baselines/archive_sgs_sunpatch.py",
+    "sha256": "6c304d8adbbfe43dd274e7fb1332dcefa3f786c34d94d735e11ef871420519a3"
+  }
+]

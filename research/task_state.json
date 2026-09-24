@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-23",
+  "updated": "2026-09-23 (T08/EXP0024)",
   "objective": "Explain sunlight patches in multi-view indoor inverse rendering and improve BRDF and unseen-light rerendering",
   "authoritative_brief": "research/ACTIVE_RESEARCH_TASK_ZH.md",
   "tasks": [
@@ -85,13 +85,15 @@
       "task": "Reproduce contemporary indoor baselines before method claims",
       "status": "in_progress",
       "primary": "SGS-Intrinsic",
-      "progress": "public-upstream adaptation starts; CUDA forward/backward contracts pass; dataset and image-prior integration pending",
+      "progress": "public-upstream adaptation entrypoint working (EXP0021); P1 known-geometry sun/sky pairing pilot trained, evaluated, and archived (EXP0024, 2026-09-23)",
+      "finding": "on this narrow 1-room/1-seed diagnostic, SGS-Intrinsic's sun-attributable albedo shift (-0.4 to -1.2pp) is far smaller than vanilla unmodified IRIS's (EXP0019, +14 to +18pp) -- not statistically robust, but raises the bar: beating SGS on material-contamination alone may not be the strongest wedge",
       "blocking_details": [
         "private RGB-X implementation equivalence unverified",
-        "dataset/priors and full training still pending"
+        "only 1 seed / 1 room / P1 known-geometry so far -- not official-budget convergence",
+        "our own method (T06) is not yet built, so no head-to-head vs SGS exists yet either"
       ],
-      "experiment": "EXP0021",
-      "evidence": "research/SGS_REPAIR_ZH.md"
+      "experiment": "EXP0021, EXP0024",
+      "evidence": "research/SGS_REPAIR_ZH.md, research/SGS_SUNPATCH_BENCHMARK_ZH.md, research/evidence/EXP0024/"
     }
   ],
   "claims": {

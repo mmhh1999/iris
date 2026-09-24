@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/home/minghao/projects/iris/third_party/sgs_adapted/train.py", line 27, in <module>
+    from eval_nvs import feature_visualize_saving
+  File "/home/minghao/projects/iris/third_party/sgs_adapted/eval_nvs.py", line 38, in <module>
+    import sklearn
+  File "/home/minghao/projects/iris/.baseline_deps/sgs/sklearn/__init__.py", line 73, in <module>
+    from .base import clone  # noqa: E402
+  File "/home/minghao/projects/iris/.baseline_deps/sgs/sklearn/base.py", line 19, in <module>
+    from .utils._estimator_html_repr import _HTMLDocumentationLinkMixin, estimator_html_repr
+  File "/home/minghao/projects/iris/.baseline_deps/sgs/sklearn/utils/__init__.py", line 13, in <module>
+    from . import _joblib, metadata_routing
+  File "/home/minghao/projects/iris/.baseline_deps/sgs/sklearn/utils/_joblib.py", line 12, in <module>
+    import joblib
+  File "/home/minghao/projects/iris/.baseline_deps/sgs/joblib/__init__.py", line 114, in <module>
+    from ._cloudpickle_wrapper import wrap_non_picklable_objects
+  File "/home/minghao/projects/iris/.baseline_deps/sgs/joblib/_cloudpickle_wrapper.py", line 14, in <module>
+    from .externals.loky import wrap_non_picklable_objects
+  File "/home/minghao/projects/iris/.baseline_deps/sgs/joblib/externals/loky/__init__.py", line 22, in <module>
+    from .cloudpickle_wrapper import wrap_non_picklable_objects
+  File "/home/minghao/projects/iris/.baseline_deps/sgs/joblib/externals/loky/cloudpickle_wrapper.py", line 3, in <module>
+    from cloudpickle import dumps, loads
+ModuleNotFoundError: No module named 'cloudpickle'

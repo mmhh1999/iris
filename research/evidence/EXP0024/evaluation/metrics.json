@@ -1,0 +1,114 @@
+{
+  "protocol": "P1 SGS public adaptation; fixed known geometry; 12 train / 2 heldout views; one room, one seed; no statistical independence across pixels",
+  "truth_in_training": false,
+  "color_space": "predicted sRGB base color converted to linear for material scoring",
+  "geometry_quality_gate": true,
+  "convergence_established": false,
+  "views": [
+    {
+      "condition": "sun_a",
+      "view": 3,
+      "lit_count": 206,
+      "shadow_count": 3040,
+      "floor_interior_count": 3815,
+      "floor_opacity_mean": 0.999725341796875,
+      "floor_opacity_fraction_above_095": 1.0,
+      "albedo_mae_linear": 0.215590432118307,
+      "albedo_scale_aligned_mae": 0.03877395912803069,
+      "evaluation_only_albedo_scale": 0.4914336799167089,
+      "floor_mean_linear_albedo": [
+        0.46483734250068665,
+        0.415999174118042,
+        0.3659358024597168
+      ],
+      "albedo_gap": -0.009834647178649902,
+      "normalized_gap": -0.023560247925352235,
+      "roughness_mean": 0.4900020658969879,
+      "roughness_mae": 0.4099978506565094,
+      "pbr_psnr": 26.659382388968456,
+      "floor_pbr_psnr": 32.141048519699645
+    },
+    {
+      "condition": "sky",
+      "view": 3,
+      "lit_count": 206,
+      "shadow_count": 3040,
+      "floor_interior_count": 3815,
+      "floor_opacity_mean": 0.999725341796875,
+      "floor_opacity_fraction_above_095": 1.0,
+      "albedo_mae_linear": 0.18300531508361156,
+      "albedo_scale_aligned_mae": 0.03014241103523942,
+      "evaluation_only_albedo_scale": 0.5350459309468677,
+      "floor_mean_linear_albedo": [
+        0.45793092250823975,
+        0.371938556432724,
+        0.31914597749710083
+      ],
+      "albedo_gap": -0.007454007863998413,
+      "normalized_gap": -0.019306259105952277,
+      "roughness_mean": 0.47405514121055603,
+      "roughness_mae": 0.42594486474990845,
+      "pbr_psnr": 27.15857686275951,
+      "floor_pbr_psnr": 37.958177036813055
+    },
+    {
+      "condition": "sun_a",
+      "view": 9,
+      "lit_count": 58,
+      "shadow_count": 4067,
+      "floor_interior_count": 4624,
+      "floor_opacity_mean": 0.9942079782485962,
+      "floor_opacity_fraction_above_095": 0.9900519031141869,
+      "albedo_mae_linear": 0.2158731200707584,
+      "albedo_scale_aligned_mae": 0.03956517631031204,
+      "evaluation_only_albedo_scale": 0.49116159940537946,
+      "floor_mean_linear_albedo": [
+        0.4627857208251953,
+        0.41703319549560547,
+        0.36676329374313354
+      ],
+      "albedo_gap": -0.010892152786254883,
+      "normalized_gap": -0.02615264707894367,
+      "roughness_mean": 0.4904365837574005,
+      "roughness_mae": 0.40956342220306396,
+      "pbr_psnr": 29.235917422365823,
+      "floor_pbr_psnr": 33.78366517224621
+    },
+    {
+      "condition": "sky",
+      "view": 9,
+      "lit_count": 58,
+      "shadow_count": 4067,
+      "floor_interior_count": 4624,
+      "floor_opacity_mean": 0.9942079782485962,
+      "floor_opacity_fraction_above_095": 0.9900519031141869,
+      "albedo_mae_linear": 0.1815055511316076,
+      "albedo_scale_aligned_mae": 0.031081768965956602,
+      "evaluation_only_albedo_scale": 0.5372180371841995,
+      "floor_mean_linear_albedo": [
+        0.4516502320766449,
+        0.3708004355430603,
+        0.32102808356285095
+      ],
+      "albedo_gap": -0.005421042442321777,
+      "normalized_gap": -0.014158244495992182,
+      "roughness_mean": 0.47734013199806213,
+      "roughness_mae": 0.42265981435775757,
+      "pbr_psnr": 30.10326529267086,
+      "floor_pbr_psnr": 38.77131847967435
+    }
+  ],
+  "difference_in_differences": [
+    {
+      "view": 3,
+      "raw_gap_change": -0.0023806393146514893,
+      "normalized_gap_change": -0.004253988819399958
+    },
+    {
+      "view": 9,
+      "raw_gap_change": -0.0054711103439331055,
+      "normalized_gap_change": -0.011994402582951487
+    }
+  ],
+  "comparison_to_EXP0019_IRIS": "not directly comparable: different tone mapping, learned prior and optimization protocol"
+}

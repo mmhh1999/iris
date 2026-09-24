@@ -1,0 +1,39 @@
+{
+  "experiment": "EXP0020",
+  "purpose": "official baseline reproducibility gate",
+  "commit": "282f76608dc24ea217ae9eebb05d2141ceae00c2",
+  "command": [
+    "/home/minghao/projects/iris/.venv/bin/python",
+    "train.py",
+    "--source_path",
+    "/home/minghao/projects/iris/experiments/out/EXP0019_sunpatch/data_03/sun_a",
+    "--model_path",
+    "/home/minghao/projects/iris/experiments/out/EXP0020_modern_baseline/attempt_02/model",
+    "--eval",
+    "--n_views",
+    "12",
+    "--iterations",
+    "1",
+    "-t",
+    "sgs"
+  ],
+  "seconds": 2.6352514079771936,
+  "returncode": 1,
+  "timeout": false,
+  "source_files": {
+    "rgb2x/pipeline_rgb2x_myversion.py": false,
+    "rgb2x/load_image.py": false,
+    "r3dg-rasterization/cuda_rasterizer/rasterizer_impl.cu": false,
+    "r3dg-rasterization/ext.cpp": false
+  },
+  "symlinks": {
+    "checkpoints": "../sam2/checkpoints",
+    "rgb2x": "../code_reference_firstwork/ipsm_relighting/rgb2x"
+  },
+  "input_manifest_sha256": "19ece28598dadf8551a2f542990c7f87b6dc5e2d3c5fdb42cef49c258a4d4fac",
+  "input_adapter_status": "not integrated: current data is IRIS layout, not SGS layout",
+  "status": "startup_failed",
+  "benchmark_completed": false,
+  "material_metrics": null,
+  "note": "Missing source paths are checkout audit findings; installed equivalents require separate verification. No replacement CUDA kernels, priors or GT supervision were injected."
+}

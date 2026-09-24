@@ -1,0 +1,8 @@
+{
+  "completed": true,
+  "elapsed_seconds": 445.9006245690107,
+  "peak_gpu_allocated_gb": 5.86743296,
+  "steps_logged": 1600,
+  "last_global_step": 1600,
+  "scientific_convergence_established": false
+}
