@@ -311,12 +311,13 @@ class InvSyntheticDatasetLDR(Dataset):
         self.focal = (0.5*w/np.tan(0.5*self.meta['camera_angle_x'])).item()
         self.directions = get_ray_directions(h, w, self.focal)
             
-        if self.pixel: 
+        if self.pixel:
             self.poses = []
             self.all_rays = []
             self.all_rgbs = []
             self.all_intrinsic = []
             self.all_cache = []
+            self.has_sun_vis = False
             for cur_idx in range(len(self.meta['frames'])):
                 frame = self.meta['frames'][cur_idx]
                 pose = np.array(frame['transform_matrix'])[:3, :4]
@@ -367,7 +368,17 @@ class InvSyntheticDatasetLDR(Dataset):
                         speculars1.append(specular1)
                     speculars0 = torch.cat(speculars0,-1)
                     speculars1 = torch.cat(speculars1,-1)
-                    self.all_cache += [torch.cat([diffuse, speculars0, speculars1,],1)]
+                    cache_parts = [diffuse, speculars0, speculars1]
+                    # Daylight-aware extension (research/daylight-aware-iris): optional
+                    # explicit-sun geometric term from bake_sun_term.py. Absent for any
+                    # scene that hasn't run that (new, opt-in) stage, so this is a pure
+                    # addition with no effect on existing cache directories/behavior.
+                    sun_vis_file = os.path.join(self.cache_dir,'sun_vis','{:03d}.exr'.format(cur_idx))
+                    self.has_sun_vis = os.path.exists(sun_vis_file)
+                    if self.has_sun_vis:
+                        sun_vis = open_exr(sun_vis_file,self.img_hw).reshape(-1,3)[:,:1]
+                        cache_parts.append(sun_vis)
+                    self.all_cache += [torch.cat(cache_parts,1)]
 
             self.all_rays = torch.cat(self.all_rays, 0)
             self.all_rgbs = torch.cat(self.all_rgbs, 0)
@@ -408,13 +419,15 @@ class InvSyntheticDatasetLDR(Dataset):
             if self.multi_exposure:
                 exposure = self.exposures[idx]
             
-            diffuse, specular0, specular1 = None, None, None
+            diffuse, specular0, specular1, sun_vis = None, None, None, None
             if self.cache_dir is not None:
                 cache = self.all_cache[idx]
                 diffuse = cache[..., :3]
                 specular0 = cache[..., 3:21].reshape(b1-b0,-1,3)
                 specular1 = cache[..., 21:39].reshape(b1-b0,-1,3)
-            
+                if self.has_sun_vis:
+                    sun_vis = cache[..., 39:40]
+
             sample = {'rays': tmp[...,:12],
                       'albedo': tmp[...,12:15],
                       'roughness': tmp[...,15],
@@ -425,7 +438,8 @@ class InvSyntheticDatasetLDR(Dataset):
                       'exposure': exposure,
                       'diffuse': diffuse,
                       'specular0': specular0,
-                      'specular1': specular1
+                      'specular1': specular1,
+                      'sun_vis': sun_vis
                     }
             if self.load_metallic:
                 sample['metallic'] = self.metallic_all[idx]

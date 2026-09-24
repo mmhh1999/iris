@@ -6,6 +6,7 @@
 
 import torch
 torch.set_float32_matmul_precision('high')
+import torch.nn as nn
 import torch.nn.functional as NF
 import torch.optim as optim
 from torch.utils.data import DataLoader
@@ -86,6 +87,24 @@ class ModelTrainer(pl.LightningModule):
         for p in emitter.parameters():
             p.requires_grad=False
         self.emitter = emitter
+
+        # Daylight-aware extension (research/daylight-aware-iris,
+        # research/SUNPATCH_DAYLIGHT_METHOD_ZH.md): a low-DOF explicit external
+        # sun term, jointly fit alongside material rather than left for albedo
+        # or the emitter threshold to absorb. Parameterized as a square (not
+        # softplus) for non-negativity: softplus(0)=ln(2)~=0.69 is ~50x the
+        # baked `diffuse` cache's real scale (~0.01-0.02) and dominated it
+        # from step zero regardless of evidence (first attempt: converged to
+        # the same large value whether or not the scene had a sun, collapsing
+        # kd at sun_vis>0 points); softplus at a deliberately-tiny init
+        # (-10) then failed the other way -- sigmoid(-10)~=4.5e-5 gradient
+        # means it never moved at all in 200-1000 steps (second attempt:
+        # stayed at its init, reproducing vanilla IRIS exactly). A square
+        # keeps a healthy gradient (2x) at any nonzero init, so it can move
+        # either direction; init at 0.1 (value 0.01) matches diffuse's
+        # observed scale as a physically-motivated non-dead starting point.
+        # See EXP0025 diagnosis in research/SUNPATCH_DAYLIGHT_METHOD_ZH.md.
+        self.sun_irradiance_raw = nn.Parameter(torch.full((3,), 0.1))
 
         model_crf = EmorCRF(dim=hparams.crf_basis)
         if hparams.ckpt_path and hparams.load_crf:
@@ -170,6 +189,7 @@ class ModelTrainer(pl.LightningModule):
         diffuse = batch['diffuse']
         specular0 = batch['specular0']
         specular1 = batch['specular1']
+        sun_vis = batch.get('sun_vis')
         
         # fetch segmentation
         segmentation = batch['segmentation'].long()
@@ -188,6 +208,8 @@ class ModelTrainer(pl.LightningModule):
         specular0 = specular0[valid]
         specular1 = specular1[valid]
         segmentation = segmentation[valid]
+        if sun_vis is not None:
+            sun_vis = sun_vis[valid]
         
         # get brdf
         mat = self.material(positions)
@@ -198,7 +220,15 @@ class ModelTrainer(pl.LightningModule):
         ks = 0.04*(1-metallic) + albedo*metallic
        
         # diffuse component and specular component
-        Ld = kd*diffuse
+        if sun_vis is not None:
+            # Daylight-aware extension: explicit external-sun irradiance,
+            # gated by the purely-geometric visibility/cos-theta term baked by
+            # bake_sun_term.py, competing with albedo/emitter-threshold to
+            # explain sun-lit brightness instead of leaving it unconstrained.
+            sun_irradiance = self.sun_irradiance_raw.square()
+            Ld = kd*(diffuse + sun_vis*sun_irradiance)
+        else:
+            Ld = kd*diffuse
         Ls = ks*lerp_specular(specular0,roughness)+lerp_specular(specular1,roughness)
         L = Ld+Ls
 
@@ -231,12 +261,29 @@ class ModelTrainer(pl.LightningModule):
 
             mean_metallic = mean_metallic/weight_seg
             mean_roughness = mean_roughness/weight_seg
-    
+
             # propagation loss
             loss_seg = (metallic-mean_metallic[inv_idxs]).abs().mean()\
                      + (roughness-mean_roughness[inv_idxs]).abs().mean()
             loss_seg = self.hparams.lp*loss_seg
-            
+
+            if sun_vis is not None:
+                # Daylight-aware extension: same within-segment consistency
+                # pattern as metallic/roughness above, extended to albedo.
+                # Without this, kd/albedo is completely unregularized in this
+                # branch and freely absorbs any lit/shadow brightness gap no
+                # matter how the illumination side is parameterized -- adding
+                # the explicit sun term alone did not help (see EXP0025 in
+                # research/SUNPATCH_DAYLIGHT_METHOD_ZH.md) because nothing
+                # made spatially-varying albedo more costly than using the
+                # (cost-free, non-spatial) sun_irradiance parameter instead.
+                # Gated on sun_vis so vanilla runs are completely unaffected.
+                mean_albedo = torch.zeros(len(seg_idxs),3,device=seg_idxs.device)
+                mean_albedo = torch_scatter.scatter(
+                    albedo*weight_seg_.unsqueeze(-1),inv_idxs,0,mean_albedo,reduce='sum')
+                mean_albedo = mean_albedo/weight_seg
+                loss_seg = loss_seg + self.hparams.lp*(albedo-mean_albedo[inv_idxs]).abs().mean()
+
         else:
             # with semantic segmentation
 
@@ -327,6 +374,8 @@ class ModelTrainer(pl.LightningModule):
         self.log('train/loss_seg', loss_seg)
         self.log('train/loss_a', loss_a)
         self.log('train/psnr', psnr)
+        if sun_vis is not None:
+            self.log('train/sun_irradiance_mean', self.sun_irradiance_raw.square().mean())
 
         val_step = self.hparams.val_step
         if self.global_step%val_step == 0: # and self.global_step > 0:
@@ -564,4 +613,7 @@ if __name__ == '__main__':
         ckpt_path=last_ckpt, 
         )
     
+    # Persist actual final weights independently of monitored-checkpoint selection.
+    trainer.save_checkpoint(str(checkpoint_path / 'final.ckpt'))
+
     print('[train - BRDF-emission] time (s): ', time.time()-start_time)

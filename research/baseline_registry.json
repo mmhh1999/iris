@@ -1,7 +1,15 @@
 {
-  "updated": "2026-09-20",
+  "updated": "2026-09-24",
   "selection_authorized": true,
   "primary": "SGS-Intrinsic",
+  "our_method_vs_primary": {
+    "experiment": "EXP0025",
+    "metric": "sun-attributable normalized lit/shadow albedo gap change, matched 200-step budget, same scene as EXP0019/EXP0024",
+    "vanilla_iris_EXP0019": "+18.4pp / +14.0pp",
+    "sgs_intrinsic_EXP0024": "-0.43pp / -1.20pp",
+    "ours_EXP0025": "+1.7pp / +1.6pp",
+    "verdict": "not yet beating SGS-Intrinsic's magnitude on this narrow metric (still 1.5-4x larger in absolute value), but closed ~11x of the gap from vanilla IRIS; not stable across step counts (1000-step check regresses to +6.6/+5.4pp); 1 room/1 seed/oracle sun direction -- see SUNPATCH_DAYLIGHT_METHOD_ZH.md for the full honest scope"
+  },
   "methods": [
     {
       "name": "SGS-Intrinsic",

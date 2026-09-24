@@ -178,6 +178,51 @@ indoor+outdoor, camera-to-sun angle 137°/145°); the full RAW data will be
 sitting in `data_download/cali_hdr/` and `data_download/pano2pano/` once the
 background import finishes.
 
+## D0014 — 2026-09-24: an explicit low-DOF illumination term needs a matching material-smoothness cost, or it does nothing (or backfires)
+
+**Decision:** When integrating the explicit sun term into real IRIS training
+(EXP0025, T06), add a within-segment albedo-consistency regularizer
+alongside it (mirroring the existing metallic/roughness regularizer already
+in `train_brdf_crf.py`'s `has_part` branch), gated to activate only when the
+new `sun_vis` term is present so vanilla runs are unaffected.
+
+**Reason:** Two earlier attempts (a global learnable sun-irradiance
+parameter alone, under two different non-negativity parameterizations) did
+not just fail to help -- they made the sun-attributable albedo contamination
+3x *worse* than vanilla, unmodified IRIS (+55/+50pp and +75/+64pp vs vanilla's
++18/+14pp), and training longer made it worse, not better, ruling out
+"just needs more steps." Root cause, confirmed by inspection: `kd`/albedo has
+*zero* spatial-consistency regularization in this code path (only
+metallic/roughness are pulled toward a per-segment mean) -- so a free-form,
+per-point neural albedo field can always absorb a lit/shadow brightness
+difference at zero cost, and there is no reason for gradient descent to
+prefer routing that difference through a new, otherwise-equally-valid global
+parameter instead. This directly generalizes EXP0004's own experimental
+design (which used *identical* albedo regularization for both its baseline
+and treatment arms, so its reported disentanglement gain already depended on
+this ingredient being present) -- it just wasn't obvious it would need to be
+added explicitly to IRIS's real loss function, since IRIS's own code doesn't
+regularize albedo at all in this branch. Worth remembering for any future
+low-DOF explicit-illumination or explicit-material-prior addition to this
+codebase: check what (if anything) already constrains the field the new term
+is meant to compete with, don't assume adding the term is sufficient by
+itself.
+
+**Also recorded:** two numerically-bad parameterizations of a
+"non-negative, jointly-learned, near-zero-at-init" scalar, as a reusable
+lesson. `softplus(0) = ln(2) ~= 0.69` is not a small number in every unit
+system -- here it was ~50x the actual scale of the signal (`diffuse`'s baked
+value, ~0.01-0.02) it was meant to compete with, so it dominated from step
+zero regardless of evidence. Overcorrecting to `softplus(-10) ~= 4.5e-5`
+then failed the opposite way: `sigmoid(-10) ~= 4.5e-5` is also the
+gradient's scale factor, so the parameter never moved in 1000 steps. A
+squared parameterization (`raw.square()`, `raw` initialized to a small
+*positive* value matching the target signal's real scale) kept a healthy
+gradient (`2*raw`) in both directions and was not brittle to this. Check
+scale/gradient-conditioning together, not just non-negativity, when adding a
+new learnable physical parameter to an existing loss whose other terms
+already have an established internal unit scale.
+
 ## D0013 — 2026-09-23: renumber the SGS sun-patch pairing experiment EXP0022 → EXP0024
 
 **Decision:** A pre-existing draft (`research/SGS_SUNPATCH_BENCHMARK_ZH.md`,

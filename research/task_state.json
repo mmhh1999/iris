@@ -59,7 +59,19 @@
     {
       "id": "T06",
       "task": "Integrate explicit sunlight visibility into IRIS and run matched ablations",
-      "status": "planned"
+      "status": "first_real_result",
+      "experiment": "EXP0025",
+      "finding": "reduced EXP0019's sun-attributable normalized-gap contamination from +18.4/+14.0pp to +1.7/+1.6pp at matched 200-step budget (~11x), now same order of magnitude as SGS-Intrinsic's -0.43/-1.20pp (EXP0024), though still 1.5-4x larger in absolute value",
+      "required_fix": "adding the explicit sun term alone was insufficient/actively harmful (two failed parameterizations made contamination 3x WORSE than vanilla IRIS); only worked once a within-segment albedo-consistency regularizer was added alongside it, since kd/albedo had zero spatial regularization in IRIS's has_part branch and had no reason to prefer the new low-DOF term",
+      "limitations": [
+        "absolute albedo accuracy degraded (saturated/clipped at 200 steps)",
+        "not stable across step counts: 1000-step run regresses to +6.6/+5.4pp",
+        "1 room, 1 seed only",
+        "sun direction is oracle (generator ground truth), not Mode B or ephemeris-recovered",
+        "does not yet touch emitter extraction/classification stage"
+      ],
+      "evidence": "research/evidence/EXP0025/",
+      "report": "research/SUNPATCH_DAYLIGHT_METHOD_ZH.md"
     },
     {
       "id": "T07",
@@ -101,7 +113,9 @@
     "brdf_improvement_from_sun_proven": false,
     "real_cross_time_advantage_proven": false,
     "controlled_sunpatch_contamination_observed": true,
-    "controlled_observation_scope": "EXP0019 sun A only, neutral-prior known-geometry single-room bounded setting"
+    "controlled_observation_scope": "EXP0019 sun A only, neutral-prior known-geometry single-room bounded setting",
+    "explicit_sun_term_reduces_contamination_in_real_iris": true,
+    "explicit_sun_term_scope": "EXP0025, same single-room/seed/200-step scope as EXP0019, oracle sun direction, not stable across step counts -- component evidence, not a general method claim yet"
   },
   "automation": "bounded runs with configs, source/data hashes, logs, progress timeout and per-scene evaluation; not an always-on service",
   "baseline_registry": "research/baseline_registry.json"
