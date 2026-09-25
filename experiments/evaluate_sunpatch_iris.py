@@ -41,6 +41,7 @@ def run(a):
                      'lit_count':int(lit.sum()),'region_eligible':bool(lit.sum()>=32 and dark.sum()>=32),'shadow_count':int(dark.sum()),'albedo_gap':gap,
                      'normalized_gap':None if gap is None else gap/float(gray[mask].mean()),
                      'floor_fraction_mean_albedo_above_095':float((albedo[mask].mean(-1)>.95).mean()),
+                     'floor_albedo_cv':float(gray[mask].std()/gray[mask].mean()),
                      'floor_albedo_mae':float(np.abs(albedo[mask]-np.array([.28,.20,.12])).mean()),
                      'floor_mean_roughness':float(mat['roughness'].mean()),'floor_mean_metallic':float(mat['metallic'].mean())}
                 report['views'].append(row)

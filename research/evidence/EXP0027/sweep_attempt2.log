@@ -1,0 +1,627 @@
+REMOVE incomplete iris_sun_a_reg_only_s0
+RUN iris_sun_a_reg_only_s0
+START 01_slf_bake
+END 01_slf_bake 0 5.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 10.0 seconds
+START 03_initialize
+END 03_initialize 0 35.0 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.0 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.0 seconds
+START 051_bake_sun_term
+END 051_bake_sun_term 0 5.0 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 20.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 5.0 seconds
+START 08_train_emitter
+END 08_train_emitter 0 35.0 seconds
+START 09_emitter_update
+END 09_emitter_update 0 5.0 seconds
+START 10_refine_shading
+END 10_refine_shading 0 55.1 seconds
+START 101_bake_sun_term
+END 101_bake_sun_term 0 5.0 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 15.0 seconds
+START 12_render
+END 12_render 0 10.0 seconds
+RUN iris_sky_reg_only_s0
+START 01_slf_bake
+END 01_slf_bake 0 5.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 10.0 seconds
+START 03_initialize
+END 03_initialize 0 35.0 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.0 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.0 seconds
+START 051_bake_sun_term
+END 051_bake_sun_term 0 5.0 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 15.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 5.0 seconds
+START 08_train_emitter
+END 08_train_emitter 0 35.0 seconds
+START 09_emitter_update
+END 09_emitter_update 0 5.0 seconds
+START 10_refine_shading
+END 10_refine_shading 0 50.1 seconds
+START 101_bake_sun_term
+END 101_bake_sun_term 0 5.0 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 15.0 seconds
+START 12_render
+END 12_render 0 10.0 seconds
+EVAL eval_reg_only_s0
+RUN iris_sun_a_vanilla_s0
+START 01_slf_bake
+END 01_slf_bake 0 5.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 10.0 seconds
+START 03_initialize
+END 03_initialize 0 35.0 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.0 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.0 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 15.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 5.0 seconds
+START 08_train_emitter
+END 08_train_emitter 0 35.0 seconds
+START 09_emitter_update
+END 09_emitter_update 0 5.0 seconds
+START 10_refine_shading
+END 10_refine_shading 0 50.0 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 15.0 seconds
+START 12_render
+END 12_render 0 10.0 seconds
+RUN iris_sky_vanilla_s0
+START 01_slf_bake
+END 01_slf_bake 0 5.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 10.0 seconds
+START 03_initialize
+END 03_initialize 0 35.0 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.0 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.0 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 15.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 5.0 seconds
+START 08_train_emitter
+END 08_train_emitter 0 35.0 seconds
+START 09_emitter_update
+END 09_emitter_update 0 5.0 seconds
+START 10_refine_shading
+END 10_refine_shading 0 45.1 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 15.0 seconds
+START 12_render
+END 12_render 0 10.0 seconds
+EVAL eval_vanilla_s0
+EVAL eval_full_s0
+RUN iris_sun_a_sun_only_s0
+START 01_slf_bake
+END 01_slf_bake 0 5.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 10.0 seconds
+START 03_initialize
+END 03_initialize 0 35.0 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.0 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.0 seconds
+START 051_bake_sun_term
+END 051_bake_sun_term 0 5.0 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 15.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 5.0 seconds
+START 08_train_emitter
+END 08_train_emitter 0 35.0 seconds
+START 09_emitter_update
+END 09_emitter_update 0 5.0 seconds
+START 10_refine_shading
+END 10_refine_shading 0 50.1 seconds
+START 101_bake_sun_term
+END 101_bake_sun_term 0 5.0 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 15.0 seconds
+START 12_render
+END 12_render 0 10.0 seconds
+RUN iris_sky_sun_only_s0
+START 01_slf_bake
+END 01_slf_bake 0 5.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 10.0 seconds
+START 03_initialize
+END 03_initialize 0 35.0 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.0 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.0 seconds
+START 051_bake_sun_term
+END 051_bake_sun_term 0 5.0 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 15.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 5.0 seconds
+START 08_train_emitter
+END 08_train_emitter 0 35.0 seconds
+START 09_emitter_update
+END 09_emitter_update 0 5.0 seconds
+START 10_refine_shading
+END 10_refine_shading 0 50.1 seconds
+START 101_bake_sun_term
+END 101_bake_sun_term 0 5.0 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 15.0 seconds
+START 12_render
+END 12_render 0 10.0 seconds
+EVAL eval_sun_only_s0
+RUN iris_sun_a_reg_only_s1
+START 01_slf_bake
+END 01_slf_bake 0 5.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 10.0 seconds
+START 03_initialize
+END 03_initialize 0 35.0 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.0 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.0 seconds
+START 051_bake_sun_term
+END 051_bake_sun_term 0 5.0 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 20.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 5.0 seconds
+START 08_train_emitter
+END 08_train_emitter 0 35.0 seconds
+START 09_emitter_update
+END 09_emitter_update 0 5.0 seconds
+START 10_refine_shading
+END 10_refine_shading 0 55.1 seconds
+START 101_bake_sun_term
+END 101_bake_sun_term 0 5.0 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 15.0 seconds
+START 12_render
+END 12_render 0 10.0 seconds
+RUN iris_sky_reg_only_s1
+START 01_slf_bake
+END 01_slf_bake 0 5.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 10.0 seconds
+START 03_initialize
+END 03_initialize 0 35.0 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.0 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.0 seconds
+START 051_bake_sun_term
+END 051_bake_sun_term 0 5.0 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 15.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 5.0 seconds
+START 08_train_emitter
+END 08_train_emitter 0 35.1 seconds
+START 09_emitter_update
+END 09_emitter_update 0 5.0 seconds
+START 10_refine_shading
+END 10_refine_shading 0 55.1 seconds
+START 101_bake_sun_term
+END 101_bake_sun_term 0 5.0 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 20.0 seconds
+START 12_render
+END 12_render 0 10.0 seconds
+EVAL eval_reg_only_s1
+RUN iris_sun_a_vanilla_s1
+START 01_slf_bake
+END 01_slf_bake 0 5.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 10.0 seconds
+START 03_initialize
+END 03_initialize 0 35.0 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.0 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.0 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 15.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 5.0 seconds
+START 08_train_emitter
+END 08_train_emitter 0 35.0 seconds
+START 09_emitter_update
+END 09_emitter_update 0 5.0 seconds
+START 10_refine_shading
+END 10_refine_shading 0 55.1 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 15.0 seconds
+START 12_render
+END 12_render 0 10.0 seconds
+RUN iris_sky_vanilla_s1
+START 01_slf_bake
+END 01_slf_bake 0 5.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 10.0 seconds
+START 03_initialize
+END 03_initialize 0 35.0 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.0 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.0 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 25.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 5.0 seconds
+START 08_train_emitter
+END 08_train_emitter 0 35.0 seconds
+START 09_emitter_update
+END 09_emitter_update 0 5.0 seconds
+START 10_refine_shading
+END 10_refine_shading 0 55.0 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 15.0 seconds
+START 12_render
+END 12_render 0 10.0 seconds
+EVAL eval_vanilla_s1
+RUN iris_sun_a_full_s1
+START 01_slf_bake
+END 01_slf_bake 0 10.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 10.0 seconds
+START 03_initialize
+END 03_initialize 0 35.0 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.0 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.0 seconds
+START 051_bake_sun_term
+END 051_bake_sun_term 0 5.0 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 15.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 5.0 seconds
+START 08_train_emitter
+END 08_train_emitter 0 35.0 seconds
+START 09_emitter_update
+END 09_emitter_update 0 5.0 seconds
+START 10_refine_shading
+END 10_refine_shading 0 55.1 seconds
+START 101_bake_sun_term
+END 101_bake_sun_term 0 5.0 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 20.0 seconds
+START 12_render
+END 12_render 0 10.0 seconds
+RUN iris_sky_full_s1
+START 01_slf_bake
+END 01_slf_bake 0 5.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 10.0 seconds
+START 03_initialize
+END 03_initialize 0 35.0 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.0 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.0 seconds
+START 051_bake_sun_term
+END 051_bake_sun_term 0 5.0 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 20.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 5.0 seconds
+START 08_train_emitter
+END 08_train_emitter 0 35.0 seconds
+START 09_emitter_update
+END 09_emitter_update 0 5.0 seconds
+START 10_refine_shading
+END 10_refine_shading 0 55.1 seconds
+START 101_bake_sun_term
+END 101_bake_sun_term 0 5.0 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 20.0 seconds
+START 12_render
+END 12_render 0 10.0 seconds
+EVAL eval_full_s1
+RUN iris_sun_a_sun_only_s1
+START 01_slf_bake
+END 01_slf_bake 0 5.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 10.0 seconds
+START 03_initialize
+END 03_initialize 0 35.0 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.0 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.0 seconds
+START 051_bake_sun_term
+END 051_bake_sun_term 0 5.0 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 15.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 5.0 seconds
+START 08_train_emitter
+END 08_train_emitter 0 35.0 seconds
+START 09_emitter_update
+END 09_emitter_update 0 5.0 seconds
+START 10_refine_shading
+END 10_refine_shading 0 55.1 seconds
+START 101_bake_sun_term
+END 101_bake_sun_term 0 5.0 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 15.0 seconds
+START 12_render
+END 12_render 0 10.0 seconds
+RUN iris_sky_sun_only_s1
+START 01_slf_bake
+END 01_slf_bake 0 5.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 10.0 seconds
+START 03_initialize
+END 03_initialize 0 35.0 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.0 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.0 seconds
+START 051_bake_sun_term
+END 051_bake_sun_term 0 5.0 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 15.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 5.0 seconds
+START 08_train_emitter
+END 08_train_emitter 0 35.0 seconds
+START 09_emitter_update
+END 09_emitter_update 0 5.0 seconds
+START 10_refine_shading
+END 10_refine_shading 0 45.0 seconds
+START 101_bake_sun_term
+END 101_bake_sun_term 0 5.0 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 15.0 seconds
+START 12_render
+END 12_render 0 10.0 seconds
+EVAL eval_sun_only_s1
+RUN iris_sun_a_reg_only_s2
+START 01_slf_bake
+END 01_slf_bake 0 5.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 10.0 seconds
+START 03_initialize
+END 03_initialize 0 35.0 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.0 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.0 seconds
+START 051_bake_sun_term
+END 051_bake_sun_term 0 5.0 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 20.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 5.0 seconds
+START 08_train_emitter
+END 08_train_emitter 0 35.0 seconds
+START 09_emitter_update
+END 09_emitter_update 0 5.0 seconds
+START 10_refine_shading
+END 10_refine_shading 0 55.1 seconds
+START 101_bake_sun_term
+END 101_bake_sun_term 0 5.0 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 20.0 seconds
+START 12_render
+END 12_render 0 10.0 seconds
+RUN iris_sky_reg_only_s2
+START 01_slf_bake
+END 01_slf_bake 0 5.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 10.0 seconds
+START 03_initialize
+END 03_initialize 0 35.0 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.0 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.0 seconds
+START 051_bake_sun_term
+END 051_bake_sun_term 0 5.0 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 15.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 5.0 seconds
+START 08_train_emitter
+END 08_train_emitter 0 30.0 seconds
+START 09_emitter_update
+END 09_emitter_update 0 5.0 seconds
+START 10_refine_shading
+END 10_refine_shading 0 55.1 seconds
+START 101_bake_sun_term
+END 101_bake_sun_term 0 5.0 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 15.0 seconds
+START 12_render
+END 12_render 0 10.0 seconds
+EVAL eval_reg_only_s2
+RUN iris_sun_a_vanilla_s2
+START 01_slf_bake
+END 01_slf_bake 0 5.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 10.0 seconds
+START 03_initialize
+END 03_initialize 0 35.0 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.0 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.0 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 15.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 5.0 seconds
+START 08_train_emitter
+END 08_train_emitter 0 30.0 seconds
+START 09_emitter_update
+END 09_emitter_update 0 5.0 seconds
+START 10_refine_shading
+END 10_refine_shading 0 50.1 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 15.0 seconds
+START 12_render
+END 12_render 0 10.0 seconds
+RUN iris_sky_vanilla_s2
+START 01_slf_bake
+END 01_slf_bake 0 5.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 10.0 seconds
+START 03_initialize
+END 03_initialize 0 35.0 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.0 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.0 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 15.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 5.0 seconds
+START 08_train_emitter
+END 08_train_emitter 0 30.0 seconds
+START 09_emitter_update
+END 09_emitter_update 0 5.0 seconds
+START 10_refine_shading
+END 10_refine_shading 0 45.0 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 15.0 seconds
+START 12_render
+END 12_render 0 10.0 seconds
+EVAL eval_vanilla_s2
+RUN iris_sun_a_full_s2
+START 01_slf_bake
+END 01_slf_bake 0 5.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 10.0 seconds
+START 03_initialize
+END 03_initialize 0 35.0 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.0 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.0 seconds
+START 051_bake_sun_term
+END 051_bake_sun_term 0 5.0 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 15.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 5.0 seconds
+START 08_train_emitter
+END 08_train_emitter 0 35.0 seconds
+START 09_emitter_update
+END 09_emitter_update 0 5.0 seconds
+START 10_refine_shading
+END 10_refine_shading 0 55.0 seconds
+START 101_bake_sun_term
+END 101_bake_sun_term 0 5.0 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 15.0 seconds
+START 12_render
+END 12_render 0 10.0 seconds
+RUN iris_sky_full_s2
+START 01_slf_bake
+END 01_slf_bake 0 5.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 10.0 seconds
+START 03_initialize
+END 03_initialize 0 35.0 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.0 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.0 seconds
+START 051_bake_sun_term
+END 051_bake_sun_term 0 5.0 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 20.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 5.0 seconds
+START 08_train_emitter
+END 08_train_emitter 0 35.0 seconds
+START 09_emitter_update
+END 09_emitter_update 0 5.0 seconds
+START 10_refine_shading
+END 10_refine_shading 0 45.0 seconds
+START 101_bake_sun_term
+END 101_bake_sun_term 0 5.0 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 20.0 seconds
+START 12_render
+END 12_render 0 10.0 seconds
+EVAL eval_full_s2
+RUN iris_sun_a_sun_only_s2
+START 01_slf_bake
+END 01_slf_bake 0 5.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 10.0 seconds
+START 03_initialize
+END 03_initialize 0 35.0 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.0 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.0 seconds
+START 051_bake_sun_term
+END 051_bake_sun_term 0 5.0 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 15.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 5.0 seconds
+START 08_train_emitter
+END 08_train_emitter 0 35.1 seconds
+START 09_emitter_update
+END 09_emitter_update 0 5.0 seconds
+START 10_refine_shading
+END 10_refine_shading 0 65.1 seconds
+START 101_bake_sun_term
+END 101_bake_sun_term 0 5.0 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 15.0 seconds
+START 12_render
+END 12_render 0 10.0 seconds
+RUN iris_sky_sun_only_s2
+START 01_slf_bake
+END 01_slf_bake 0 5.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 10.0 seconds
+START 03_initialize
+END 03_initialize 0 40.0 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.0 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.0 seconds
+START 051_bake_sun_term
+END 051_bake_sun_term 0 5.0 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 20.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 5.0 seconds
+START 08_train_emitter
+END 08_train_emitter 0 30.0 seconds
+START 09_emitter_update
+END 09_emitter_update 0 5.0 seconds
+START 10_refine_shading
+END 10_refine_shading 0 45.1 seconds
+START 101_bake_sun_term
+END 101_bake_sun_term 0 5.0 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 15.0 seconds
+START 12_render
+END 12_render 0 10.0 seconds
+EVAL eval_sun_only_s2

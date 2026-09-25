@@ -12,6 +12,8 @@ import subprocess
 import sys
 import time
 
+import disk_guard
+
 ROOT = Path(__file__).resolve().parents[1]
 
 def main():
@@ -64,7 +66,7 @@ def main():
         start = time.time()
         print('START', name, flush=True)
         with (out / (name + '.log')).open('w') as f:
-            r = subprocess.run(cmd, cwd=ROOT, env=env, stdout=f, stderr=subprocess.STDOUT, timeout=a.stage_timeout)
+            r = disk_guard.run(cmd, path=out, cwd=ROOT, env=env, stdout=f, stderr=subprocess.STDOUT, timeout=a.stage_timeout)
         records.append(dict(stage=name, command=cmd, returncode=r.returncode, seconds=time.time()-start))
         (out/'stages.json').write_text(json.dumps(dict(full_training=a.full_training,
             steps=None if a.full_training else a.steps, stages=records), indent=2))
@@ -80,6 +82,10 @@ def main():
             raise RuntimeError(f'Expected final step {a.steps}, got {step}: {final}')
         del checkpoint
         shutil.move(final, model / filename)
+        # Lightning's ModelCheckpoint leaves ~0.4 GB epoch=*/last*.ckpt per stage that
+        # nothing downstream reads; drop them so sweeps do not fill the disk.
+        for leftover in [*model.glob('epoch=*.ckpt'), *model.glob('last.ckpt'), *model.glob('last-v*.ckpt')]:
+            leftover.unlink()
         audit_path = out / 'checkpoint_handoffs.json'
         audit = json.loads(audit_path.read_text()) if audit_path.exists() else []
         audit.append({'stage': records[-1]['stage'], 'checkpoint': filename, 'global_step': step})

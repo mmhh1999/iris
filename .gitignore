@@ -25,3 +25,7 @@ lightning_logs/
 /.toolchain/
 
 /.publication/
+
+/.baseline_deps/
+
+/third_party/

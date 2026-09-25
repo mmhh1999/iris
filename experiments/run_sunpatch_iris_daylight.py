@@ -17,6 +17,8 @@ import subprocess
 import sys
 import time
 
+import disk_guard
+
 ROOT = Path(__file__).resolve().parents[1]
 
 def main():
@@ -33,6 +35,9 @@ def main():
                    help='comma-separated x,y,z unit vector; enables the explicit daylight sun term')
     p.add_argument('--sun-lr-scale', type=float, default=1.0,
                    help='learning-rate multiplier for the sun_irradiance parameter (see EXP0026)')
+    p.add_argument('--sun-ablation', choices=['full','sun_only','reg_only'], default='full',
+                   help='EXP0027: drop the albedo-consistency term (sun_only) or the sun term (reg_only)')
+    p.add_argument('--seed', type=int, default=0, help='IRIS_SEED for every stage (EXP0027 multi-seed)')
     a = p.parse_args()
     out = a.output.resolve(); out.mkdir(parents=True, exist_ok=True)
     data = a.data.resolve()
@@ -40,7 +45,7 @@ def main():
     exp = 'sunpatch_' + out.name
     model = ckpts / exp
     env = os.environ.copy()
-    env.update(OPENCV_IO_ENABLE_OPENEXR='1', MPLCONFIGDIR='/tmp/iris-mpl',
+    env.update(IRIS_SEED=str(a.seed), OPENCV_IO_ENABLE_OPENEXR='1', MPLCONFIGDIR='/tmp/iris-mpl',
                LD_LIBRARY_PATH=str(ROOT / '.toolchain/compiler/lib') + ':' + env.get('LD_LIBRARY_PATH',''))
     record_path = out/'stages.json'
     if record_path.exists() and a.start_at == 1:
@@ -53,11 +58,11 @@ def main():
         start = time.time()
         print('START', name, flush=True)
         with (out / (name + '.log')).open('w') as f:
-            r = subprocess.run(cmd, cwd=ROOT, env=env, stdout=f, stderr=subprocess.STDOUT, timeout=a.stage_timeout)
+            r = disk_guard.run(cmd, path=out, cwd=ROOT, env=env, stdout=f, stderr=subprocess.STDOUT, timeout=a.stage_timeout)
         records.append(dict(stage=name, command=cmd, returncode=r.returncode, seconds=time.time()-start))
         (out/'stages.json').write_text(json.dumps(dict(full_training=a.full_training,
             steps=None if a.full_training else a.steps, stages=records,
-            sun_toward_world=a.sun_toward_world), indent=2))
+            sun_toward_world=a.sun_toward_world, sun_ablation=a.sun_ablation, seed=a.seed), indent=2))
         print('END', name, r.returncode, round(time.time()-start,1), 'seconds', flush=True)
         if r.returncode: raise SystemExit(r.returncode)
         return True
@@ -70,6 +75,10 @@ def main():
             raise RuntimeError(f'Expected final step {a.steps}, got {step}: {final}')
         del checkpoint
         shutil.move(final, model / filename)
+        # Lightning's ModelCheckpoint leaves ~0.4 GB epoch=*/last*.ckpt per stage that
+        # nothing downstream reads; drop them so sweeps do not fill the disk.
+        for leftover in [*model.glob('epoch=*.ckpt'), *model.glob('last.ckpt'), *model.glob('last-v*.ckpt')]:
+            leftover.unlink()
         audit_path = out / 'checkpoint_handoffs.json'
         audit = json.loads(audit_path.read_text()) if audit_path.exists() else []
         audit.append({'stage': records[-1]['stage'], 'checkpoint': filename, 'global_step': step})
@@ -92,7 +101,7 @@ def main():
     run('05_bake_shading','bake_shading.py',ds+['--slf_path',bake/'vslf.npz','--emitter_path',bake/'emitter.pth','--output',shading])
     if a.sun_toward_world:
         run('051_bake_sun_term','bake_sun_term.py',ds+['--output',shading,'--sun-toward-world='+a.sun_toward_world])
-    brdf = ['--max_epochs',1000,'--cache_dir',shading,'--lp',0.005,'--la',0.0,'--l_crf_weight',0.001,'--sun_lr_scale',a.sun_lr_scale]
+    brdf = ['--max_epochs',1000,'--cache_dir',shading,'--lp',0.005,'--la',0.0,'--l_crf_weight',0.001,'--sun_lr_scale',a.sun_lr_scale,'--sun_ablation',a.sun_ablation]
     if run('06_brdf_crf','train_brdf_crf.py',common+brdf+['--dir_val','val_0','--ckpt_path',model/'init.ckpt','--voxel_path',bake/'vslf.npz']):
         promote('last_0.ckpt')
     run('07_slf_refine','slf_refine.py',ds+['--output',bake,'--load','vslf.npz','--save','vslf_0.npz','--ckpt',model/'last_0.ckpt','--crf_basis',3])

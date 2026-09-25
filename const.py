@@ -4,11 +4,14 @@
 # This source code is licensed under the license found in the
 # LICENSE file in the root directory of this source tree.
 
+import os
+
 import numpy as np
 import torch
 
 GAMMA = 2.2
-SEED=0
+# Overridable for multi-seed robustness runs (EXP0027); default keeps stock behavior.
+SEED=int(os.environ.get('IRIS_SEED', 0))
 
 def set_random_seed():
     np.random.seed(SEED)

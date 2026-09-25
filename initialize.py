@@ -442,4 +442,7 @@ if __name__ == '__main__':
         ckpt_path=last_ckpt, 
         )
     
+    # Persist actual final weights independently of monitored-checkpoint selection.
+    trainer.save_checkpoint(str(checkpoint_path / 'final.ckpt'))
+
     print('[train - BRDF-emission] time (s): ', time.time()-start_time)

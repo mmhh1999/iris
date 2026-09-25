@@ -312,3 +312,39 @@ level, while one observed sun/patch fixes yaw exactly and makes every other
 time's sun direction parameter-free -- which is the mechanism the killer
 experiment depends on anyway. Weather is still valuable as a prior on sun
 intensity and sky/sun ratio, but only probabilistically.
+
+---
+
+## D0017 — Retract EXP0025/EXP0026 "beats SGS"; redesign the sun-patch benchmark before any further method claim
+
+**Decision:** (1) EXP0025/EXP0026 must not be cited as reducing sun contamination
+via the explicit sun term, nor as beating SGS-Intrinsic (EXP0024). (2) No further
+method comparison on the uniform-floor, single-segment EXP0019 scene. (3) The next
+sun-term test must use a benchmark where flattening is penalized and a sun term
+that is actually active.
+
+**Evidence:** EXP0027, all 24 runs (4 arms x 2 conditions x 3 seeds): the whole
+gap reduction comes from the albedo-consistency regularizer (reg_only
+-0.1/-0.0pp), which flattens the floor to ~white (99% of floor albedo > 0.95,
+MAE vs truth 0.78 vs vanilla 0.62). sun_only equals vanilla (+19.1/+14.2 vs
++19.5/+14.3pp). With sun_lr_scale 0.1 and 200 steps the learned sun irradiance
+barely leaves its init (0.010 -> 0.016 with sun vs 0.013 without), so the sun
+term was inert, not refuted.
+
+**Required benchmark changes:** textured / spatially varying true floor albedo;
+floor-only segment (not all-zero segmentation); report absolute albedo MAE and
+floor CV alongside the gap, and treat a gap win that worsens MAE as a failure.
+
+**Next sun-term arms (so the sun term is actually tested):** (a) sun_only with
+the sun term genuinely learned (sun_lr_scale 1.0 and/or more steps, verifying
+learned irradiance separates sun_a from sky); (b) sun_only with sun irradiance
+*supplied* rather than learned -- generator ground truth in synthetic scenes,
+reanalysis DNI in real ones (links to the time + place -> lighting chain, D0016).
+(b) is the cleaner test of the identifiability claim: the free albedo field no
+longer competes with a free low-DOF scalar.
+
+**Process lesson:** EXP0027 finished on 2026-09-24 night but was recorded only in
+a memory note; `task_state.json` and `EXPERIMENTS.md` still reported the
+retracted win, and a status summary on 2026-09-25 repeated it before this was
+caught. Registry files must be updated in the same pass an experiment finishes,
+and status reports must check `experiments/out/` for finished-but-unrecorded runs.

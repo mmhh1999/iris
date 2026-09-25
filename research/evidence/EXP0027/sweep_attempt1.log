@@ -1,0 +1,24 @@
+RUN iris_sun_a_reg_only_s0
+START 01_slf_bake
+END 01_slf_bake 0 15.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 15.0 seconds
+START 03_initialize
+Traceback (most recent call last):
+  File "/home/minghao/projects/iris/experiments/run_sunpatch_iris_daylight.py", line 123, in <module>
+    if __name__ == '__main__': main()
+  File "/home/minghao/projects/iris/experiments/run_sunpatch_iris_daylight.py", line 98, in main
+    if run('03_initialize','initialize.py',common+['--max_epochs',1000,'--voxel_path',bake/'vslf.npz']):
+  File "/home/minghao/projects/iris/experiments/run_sunpatch_iris_daylight.py", line 61, in run
+    r = disk_guard.run(cmd, path=out, cwd=ROOT, env=env, stdout=f, stderr=subprocess.STDOUT, timeout=a.stage_timeout)
+  File "/home/minghao/projects/iris/experiments/disk_guard.py", line 61, in run
+    raise subprocess.TimeoutExpired(cmd, timeout)
+subprocess.TimeoutExpired: Command '['/home/minghao/projects/iris/.venv/bin/python', 'initialize.py', '--experiment_name', 'sunpatch_iris_sun_a_reg_only_s0', '--checkpoint_path', '/home/minghao/projects/iris/experiments/out/EXP0027_ablation/iris_sun_a_reg_only_s0/checkpoints', '--dataset', 'synthetic', '/home/minghao/projects/iris/experiments/out/EXP0019_sunpatch/data_03/sun_a', '--emitter_path', '/home/minghao/projects/iris/experiments/out/EXP0027_ablation/iris_sun_a_reg_only_s0/bake/emitter.pth', '--has_part', '1', '--ldr_img_dir', 'Image', '--val_frame', '0', '--SPP', '32', '--spp', '16', '--crf_basis', '3', '--num_workers', '0', '--max_steps', '200', '--max_epochs', '1000', '--voxel_path', '/home/minghao/projects/iris/experiments/out/EXP0027_ablation/iris_sun_a_reg_only_s0/bake/vslf.npz']' timed out after 300 seconds
+Traceback (most recent call last):
+  File "/home/minghao/projects/iris/experiments/run_exp0027_ablation.py", line 74, in <module>
+    main(p.parse_args())
+  File "/home/minghao/projects/iris/experiments/run_exp0027_ablation.py", line 52, in main
+    subprocess.run(list(map(str, cmd)), cwd=ROOT, check=True)
+  File "/home/minghao/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/home/minghao/projects/iris/.venv/bin/python', 'experiments/run_sunpatch_iris_daylight.py', '--data', '/home/minghao/projects/iris/experiments/out/EXP0027_ablation/data_03/sun_a', '--output', '/home/minghao/projects/iris/experiments/out/EXP0027_ablation/iris_sun_a_reg_only_s0', '--steps', '200', '--seed', '0', '--sun-toward-world=-0.383022221559489,0.42261826174069944,-0.8213938048432696', '--sun-lr-scale', '0.1', '--sun-ablation', 'reg_only']' returned non-zero exit status 1.

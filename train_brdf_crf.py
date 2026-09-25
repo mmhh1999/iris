@@ -235,7 +235,7 @@ class ModelTrainer(pl.LightningModule):
         ks = 0.04*(1-metallic) + albedo*metallic
        
         # diffuse component and specular component
-        if sun_vis is not None:
+        if sun_vis is not None and self.hparams.sun_ablation != 'reg_only':
             # Daylight-aware extension: explicit external-sun irradiance,
             # gated by the purely-geometric visibility/cos-theta term baked by
             # bake_sun_term.py, competing with albedo/emitter-threshold to
@@ -282,7 +282,7 @@ class ModelTrainer(pl.LightningModule):
                      + (roughness-mean_roughness[inv_idxs]).abs().mean()
             loss_seg = self.hparams.lp*loss_seg
 
-            if sun_vis is not None:
+            if sun_vis is not None and self.hparams.sun_ablation != 'sun_only':
                 # Daylight-aware extension: same within-segment consistency
                 # pattern as metallic/roughness above, extended to albedo.
                 # Without this, kd/albedo is completely unregularized in this
@@ -590,6 +590,8 @@ if __name__ == '__main__':
     parser.add_argument('--cache_dir', type=str)
     parser.add_argument('--sun_lr_scale', type=float, default=1.0,
                          help='Daylight-aware extension: learning-rate multiplier for sun_irradiance_raw relative to the base learning rate, to damp bilinear kd/sun_irradiance coupling instability.')
+    parser.add_argument('--sun_ablation', choices=['full','sun_only','reg_only'], default='full',
+                         help='EXP0027 ablation when sun_vis is present: full = sun term + albedo consistency; sun_only drops the albedo consistency term; reg_only drops the sun term.')
     parser.set_defaults(resume=False)
     args = parser.parse_args()
     args.gpus = [args.device]
@@ -597,6 +599,7 @@ if __name__ == '__main__':
     hparams.val_frame = args.val_frame
     hparams.cache_dir = args.cache_dir
     hparams.sun_lr_scale = args.sun_lr_scale
+    hparams.sun_ablation = args.sun_ablation
     experiment_name = args.experiment_name
 
     # setup checkpoint loading

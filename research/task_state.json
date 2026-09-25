@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-25 (T10/EXP0028)",
+  "updated": "2026-09-25 (T06 retraction via EXP0027; T10/EXP0028)",
   "objective": "Explain sunlight patches in multi-view indoor inverse rendering and improve BRDF and unseen-light rerendering",
   "authoritative_brief": "research/ACTIVE_RESEARCH_TASK_ZH.md",
   "tasks": [
@@ -59,8 +59,8 @@
     {
       "id": "T06",
       "task": "Integrate explicit sunlight visibility into IRIS and run matched ablations",
-      "status": "first_real_result",
-      "experiment": "EXP0025",
+      "status": "claim_retracted_needs_redesign",
+      "experiment": "EXP0025, EXP0026, EXP0027",
       "finding": "EXP0025 reduced EXP0019's sun-attributable normalized-gap contamination from +18.4/+14.0pp to +0.83-1.71pp (non-monotonic, mixed vs SGS); EXP0026 fixed a bilinear kd/sun_irradiance coupling instability with a separate slower learning rate for the sun term, tightening the curve to +0.21-1.74pp and, at the matched 200-step budget, cleanly beating SGS-Intrinsic's magnitude (-0.43/-1.20pp) on BOTH heldout views (+0.21/+0.28pp)",
       "required_fix": "adding the explicit sun term alone was insufficient/actively harmful (two failed parameterizations made contamination 3x WORSE than vanilla IRIS); needed both (a) a within-segment albedo-consistency regularizer (EXP0025, since kd/albedo had zero spatial regularization in IRIS's has_part branch) and (b) a separate, slower learning rate for the global sun_irradiance parameter (EXP0026, to damp bilinear-coupling oscillation across step counts)",
       "limitations": [
@@ -71,7 +71,13 @@
         "does not yet touch emitter extraction/classification stage"
       ],
       "evidence": "research/evidence/EXP0025/, research/evidence/EXP0026/",
-      "report": "research/SUNPATCH_DAYLIGHT_METHOD_ZH.md"
+      "report": "research/SUNPATCH_DAYLIGHT_METHOD_ZH.md",
+      "retraction": "EXP0027 (3 seeds, 24 runs): reg_only gives the whole gap reduction (-0.1/-0.0pp) by flattening the single-segment uniform floor to ~white (MAE 0.78 vs vanilla 0.62); sun_only = vanilla (+19.1/+14.2 vs +19.5/+14.3pp); sun term inert at sun_lr_scale 0.1 (0.010 -> 0.016 sun_a vs 0.013 sky). EXP0025/26 do not beat SGS. D0017.",
+      "next": [
+        "textured-floor benchmark with floor-only segment; report MAE+CV with gap",
+        "sun_only with sun term actually learned (verify sun_a >> sky)",
+        "sun_only with sun irradiance supplied (generator GT / reanalysis DNI) instead of learned"
+      ]
     },
     {
       "id": "T07",
@@ -129,11 +135,12 @@
     "real_cross_time_advantage_proven": false,
     "controlled_sunpatch_contamination_observed": true,
     "controlled_observation_scope": "EXP0019 sun A only, neutral-prior known-geometry single-room bounded setting",
-    "explicit_sun_term_reduces_contamination_in_real_iris": true,
-    "explicit_sun_term_scope": "EXP0025, same single-room/seed/200-step scope as EXP0019, oracle sun direction, not stable across step counts -- component evidence, not a general method claim yet",
+    "explicit_sun_term_reduces_contamination_in_real_iris": false,
+    "explicit_sun_term_scope": "RETRACTED 2026-09-25 by EXP0027: the reduction came from the albedo regularizer flattening albedo; the sun term was inert at the tested settings, so its effect is untested, not disproven",
     "ephemeris_elevation_matches_real_sun": true,
     "ephemeris_elevation_scope": "EXP0028: 7 real window-view panoramas, one city/camera, elevation only (heading-free), JPG so no radiometry",
-    "compass_heading_usable": false
+    "compass_heading_usable": false,
+    "beats_sgs_on_sun_contamination": false
   },
   "automation": "bounded runs with configs, source/data hashes, logs, progress timeout and per-scene evaluation; not an always-on service",
   "baseline_registry": "research/baseline_registry.json"

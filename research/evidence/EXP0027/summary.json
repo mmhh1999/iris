@@ -1,0 +1,246 @@
+{
+  "scene": "EXP0019 Country Kitchen data_03 (uniform floor, all-zero segmentation -> 1 segment)",
+  "budget": "200 steps per learned stage, sun_lr_scale 0.1 (EXP0026 settings), oracle sun direction",
+  "arms": {
+    "vanilla": {
+      "gap_change_pp_view3": [
+        20.27,
+        19.44,
+        18.89
+      ],
+      "gap_change_pp_view9": [
+        14.98,
+        14.43,
+        13.6
+      ],
+      "gap_mean_pp": {
+        "view3": 19.53,
+        "view9": 14.34
+      },
+      "gap_sd_pp": {
+        "view3": 0.69,
+        "view9": 0.69
+      },
+      "floor_albedo_cv_mean": 0.202,
+      "floor_albedo_mae_mean": 0.618,
+      "floor_frac_albedo_above_095_mean": 0.08,
+      "learned_sun_irradiance_init": 0.01,
+      "learned_sun_irradiance": {
+        "sun_a": [
+          [
+            0.01,
+            0.01,
+            0.01
+          ],
+          [
+            0.01,
+            0.01,
+            0.01
+          ],
+          [
+            0.01,
+            0.01,
+            0.01
+          ]
+        ],
+        "sky": [
+          [
+            0.01,
+            0.01,
+            0.01
+          ],
+          [
+            0.01,
+            0.01,
+            0.01
+          ],
+          [
+            0.01,
+            0.01,
+            0.01
+          ]
+        ]
+      }
+    },
+    "sun_only": {
+      "gap_change_pp_view3": [
+        19.79,
+        18.25,
+        19.38
+      ],
+      "gap_change_pp_view9": [
+        14.51,
+        13.71,
+        14.22
+      ],
+      "gap_mean_pp": {
+        "view3": 19.14,
+        "view9": 14.15
+      },
+      "gap_sd_pp": {
+        "view3": 0.8,
+        "view9": 0.41
+      },
+      "floor_albedo_cv_mean": 0.197,
+      "floor_albedo_mae_mean": 0.619,
+      "floor_frac_albedo_above_095_mean": 0.08,
+      "learned_sun_irradiance_init": 0.01,
+      "learned_sun_irradiance": {
+        "sun_a": [
+          [
+            0.0156,
+            0.0156,
+            0.0154
+          ],
+          [
+            0.0156,
+            0.0156,
+            0.0154
+          ],
+          [
+            0.0156,
+            0.0156,
+            0.0154
+          ]
+        ],
+        "sky": [
+          [
+            0.0133,
+            0.0111,
+            0.0084
+          ],
+          [
+            0.0132,
+            0.011,
+            0.0084
+          ],
+          [
+            0.0132,
+            0.0109,
+            0.0083
+          ]
+        ]
+      }
+    },
+    "reg_only": {
+      "gap_change_pp_view3": [
+        -0.09,
+        -0.08,
+        -0.18
+      ],
+      "gap_change_pp_view9": [
+        -0.04,
+        -0.01,
+        -0.08
+      ],
+      "gap_mean_pp": {
+        "view3": -0.12,
+        "view9": -0.04
+      },
+      "gap_sd_pp": {
+        "view3": 0.05,
+        "view9": 0.04
+      },
+      "floor_albedo_cv_mean": 0.007,
+      "floor_albedo_mae_mean": 0.784,
+      "floor_frac_albedo_above_095_mean": 0.99,
+      "learned_sun_irradiance_init": 0.01,
+      "learned_sun_irradiance": {
+        "sun_a": [
+          [
+            0.01,
+            0.01,
+            0.01
+          ],
+          [
+            0.01,
+            0.01,
+            0.01
+          ],
+          [
+            0.01,
+            0.01,
+            0.01
+          ]
+        ],
+        "sky": [
+          [
+            0.01,
+            0.01,
+            0.01
+          ],
+          [
+            0.01,
+            0.01,
+            0.01
+          ],
+          [
+            0.01,
+            0.01,
+            0.01
+          ]
+        ]
+      }
+    },
+    "full": {
+      "gap_change_pp_view3": [
+        0.24,
+        1.73,
+        1.08
+      ],
+      "gap_change_pp_view9": [
+        0.32,
+        1.35,
+        0.89
+      ],
+      "gap_mean_pp": {
+        "view3": 1.02,
+        "view9": 0.85
+      },
+      "gap_sd_pp": {
+        "view3": 0.75,
+        "view9": 0.52
+      },
+      "floor_albedo_cv_mean": 0.015,
+      "floor_albedo_mae_mean": 0.773,
+      "floor_frac_albedo_above_095_mean": 0.97,
+      "learned_sun_irradiance_init": 0.01,
+      "learned_sun_irradiance": {
+        "sun_a": [
+          [
+            0.0157,
+            0.0157,
+            0.0156
+          ],
+          [
+            0.0156,
+            0.0156,
+            0.0154
+          ],
+          [
+            0.0156,
+            0.0156,
+            0.0154
+          ]
+        ],
+        "sky": [
+          [
+            0.0129,
+            0.0104,
+            0.0082
+          ],
+          [
+            0.0129,
+            0.0103,
+            0.0082
+          ],
+          [
+            0.0129,
+            0.0104,
+            0.0082
+          ]
+        ]
+      }
+    }
+  }
+}

@@ -12,6 +12,8 @@ import subprocess
 import sys
 import time
 
+import disk_guard
+
 ROOT = Path(__file__).resolve().parents[1]
 
 def main():
@@ -62,13 +64,31 @@ def main():
         start = time.time()
         print('START', name, flush=True)
         with (out / (name + '.log')).open('w') as f:
-            r = subprocess.run(cmd, cwd=ROOT, env=env, stdout=f, stderr=subprocess.STDOUT)
+            r = disk_guard.run(cmd, path=out, cwd=ROOT, env=env, stdout=f, stderr=subprocess.STDOUT)
         records.append(dict(stage=name, command=cmd, returncode=r.returncode, seconds=time.time()-start))
         (out/'stages.json').write_text(json.dumps(dict(full_training=a.full_training,
             steps=None if a.full_training else a.steps, stages=records), indent=2))
         print('END', name, r.returncode, round(time.time()-start,1), 'seconds', flush=True)
         if r.returncode: raise SystemExit(r.returncode)
         return True
+    def promote(filename):
+        import torch
+        final = model / 'final.ckpt'
+        checkpoint = torch.load(final, map_location='cpu', weights_only=False)
+        step = int(checkpoint['global_step'])
+        if not a.full_training and step != a.steps:
+            raise RuntimeError(f'Expected final step {a.steps}, got {step}: {final}')
+        del checkpoint
+        shutil.move(final, model / filename)
+        # Lightning's ModelCheckpoint leaves ~0.4 GB epoch=*/last*.ckpt per stage that
+        # nothing downstream reads; drop them so sweeps do not fill the disk.
+        for leftover in [*model.glob('epoch=*.ckpt'), *model.glob('last.ckpt'), *model.glob('last-v*.ckpt')]:
+            leftover.unlink()
+        audit_path = out / 'checkpoint_handoffs.json'
+        audit = json.loads(audit_path.read_text()) if audit_path.exists() else []
+        audit.append({'stage': records[-1]['stage'], 'checkpoint': filename, 'global_step': step})
+        audit_path.write_text(json.dumps(audit, indent=2))
+
     ds = ['--scene', data, '--dataset', 'synthetic', '--ldr_img_dir', 'Image']
     if not a.skip_bake:
         run('01_slf_bake','slf_bake.py',ds+['--output',bake])
@@ -81,19 +101,19 @@ def main():
         '--SPP',128,'--spp',32,'--crf_basis',3,'--num_workers',0]
     if not a.full_training: common += ['--max_steps',a.steps]
     if run('03_initialize','initialize.py',common+['--max_epochs',6,'--voxel_path',bake/'vslf.npz']):
-        shutil.move(model/'last.ckpt',model/'init.ckpt')
+        promote('init.ckpt')
     run('04_emitter_update','extract_emitter_ldr.py',ds+['--mode','update','--output',bake,'--ckpt',model/'init.ckpt'])
     run('05_bake_shading','bake_shading.py',ds+['--slf_path',bake/'vslf.npz','--emitter_path',bake/'emitter.pth','--output',shading])
     brdf = ['--max_epochs',4,'--cache_dir',shading,'--lp',0.005,'--la',0.01,'--l_crf_weight',0.001]
     if run('06_brdf_crf','train_brdf_crf.py',common+brdf+['--dir_val','val_0','--ckpt_path',model/'init.ckpt','--voxel_path',bake/'vslf.npz']):
-        shutil.move(model/'last.ckpt',model/'last_0.ckpt')
+        promote('last_0.ckpt')
     run('07_slf_refine','slf_refine.py',ds+['--output',bake,'--load','vslf.npz','--save','vslf_0.npz','--ckpt',model/'last_0.ckpt','--crf_basis',3])
     if run('08_train_emitter','train_emitter.py',common+['--max_epochs',1,'--dir_val','val_0_emitter','--ckpt_path',model/'last_0.ckpt','--voxel_path',bake/'vslf_0.npz']):
-        shutil.move(model/'last.ckpt',model/'last_0.ckpt')
+        promote('last_0.ckpt')
     run('09_emitter_update','extract_emitter_ldr.py',ds+['--mode','update','--output',bake,'--ckpt',model/'last_0.ckpt'])
     run('10_refine_shading','refine_shading.py',ds+['--slf_path',bake/'vslf_0.npz','--emitter_path',bake/'emitter.pth','--ckpt',model/'last_0.ckpt','--output',shading])
     if run('11_brdf_crf','train_brdf_crf.py',common+brdf+['--dir_val','val_1','--ckpt_path',model/'init.ckpt','--voxel_path',bake/'vslf_0.npz']):
-        shutil.move(model/'last.ckpt',model/'last_1.ckpt')
+        promote('last_1.ckpt')
     run('12_render','render.py',['--experiment_name',exp,'--checkpoint_path',ckpts,'--ckpt','last_1.ckpt',
         '--dataset','synthetic',data,'--emitter_path',bake,'--output_path',out/'render',
         '--split','val','--ldr_img_dir','Image','--SPP',256,'--spp',16,'--crf_basis',3])

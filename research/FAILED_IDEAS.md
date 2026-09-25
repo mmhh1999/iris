@@ -42,3 +42,13 @@ not the time/GPS or the equirectangular convention (mirror hypothesis ruled
 out). Use observed sun / sun patch for yaw (D0016); keep compass at most as a
 logged hint. Do not revisit unless a capture with a verified external heading
 reference (e.g. surveyed window normal) shows otherwise.
+
+## EXP0027: "explicit sun term + albedo-consistency regularizer beats SGS on sun contamination" (EXP0025/EXP0026)
+
+Retracted. 3-seed ablation shows the regularizer alone gives the entire gap
+reduction by flattening the single-segment uniform floor to ~white (absolute
+albedo error gets worse, MAE 0.78 vs vanilla 0.62). The sun term at
+sun_lr_scale 0.1 / 200 steps barely moved from init, so it contributed nothing.
+The uniform-floor lit/shadow gap metric is gameable by flattening; never use it
+alone. Revisit only with a textured-floor, floor-segment benchmark and an
+active (learned or supplied) sun term -- D0017.
