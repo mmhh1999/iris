@@ -31,3 +31,14 @@ implicit mesh visibility counts all hits to infinity. Its lower 0.624 heldout
 proxy IoU may partly reflect exterior/erroneous geometry, not just absence of the
 window label. Preserve this confound and the substantially different fitted sun
 (345/44 vs 240/26) rather than declaring real sun recovery correct.
+
+## EXP0028: camera/phone compass heading as the scene-orientation source
+
+Rejected. Ricoh THETA Z1 `GPSImgDirection` (ref = magnetic, corrected with
+WMM2020 -9.3 deg) disagreed with the observed sun azimuth by 82.7 deg median,
+146.9 deg max on 7 real window-view panoramas, while ephemeris elevation from
+the same EXIF time/GPS matched to 0.48 deg median. The failure is the heading,
+not the time/GPS or the equirectangular convention (mirror hypothesis ruled
+out). Use observed sun / sun patch for yaw (D0016); keep compass at most as a
+logged hint. Do not revisit unless a capture with a verified external heading
+reference (e.g. surveyed window normal) shows otherwise.

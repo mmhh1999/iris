@@ -1,0 +1,1 @@
+pvlib 0.15.2 pygeomag 1.1.0 (WMM2020) opencv 4.11.0 numpy 2.2.6

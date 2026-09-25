@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-23 (T08/EXP0024)",
+  "updated": "2026-09-25 (T10/EXP0028)",
   "objective": "Explain sunlight patches in multi-view indoor inverse rendering and improve BRDF and unseen-light rerendering",
   "authoritative_brief": "research/ACTIVE_RESEARCH_TASK_ZH.md",
   "tasks": [
@@ -106,6 +106,21 @@
       ],
       "experiment": "EXP0021, EXP0024",
       "evidence": "research/SGS_REPAIR_ZH.md, research/SGS_SUNPATCH_BENCHMARK_ZH.md, research/evidence/EXP0024/"
+    },
+    {
+      "id": "T10",
+      "task": "Validate the time + place -> lighting chain on real photos (layer 1: ephemeris sun position; compass heading; weather prior)",
+      "status": "layer1_direction_done",
+      "experiment": "EXP0028",
+      "claim_scope": "physical-premise check on real window-view panoramas; no BRDF/relighting claim",
+      "finding": "7 real suns: ephemeris elevation error median 0.48 deg (max 1.18); compass azimuth error median 82.7 deg (unusable); heading-free window-top occlusion predicted 6/6; 3 suns visible at DNI<120 so weather is soft prior only",
+      "decision": "D0016: yaw from observed sun/sun patch, not compass; weather as soft prior",
+      "next": [
+        "same-room cross-time yaw transfer (0421 kitchen 12:59/13:17, 0330 bedroom 13:21/13:26)",
+        "extract only outdoor DNG (16.1 GB) for radiometric sky test vs ephemeris + Open-Meteo + Mitsuba sunsky"
+      ],
+      "evidence": "research/evidence/EXP0028/",
+      "report": "research/PANO_SUN_DIRECTION_ZH.md"
     }
   ],
   "claims": {
@@ -115,7 +130,10 @@
     "controlled_sunpatch_contamination_observed": true,
     "controlled_observation_scope": "EXP0019 sun A only, neutral-prior known-geometry single-room bounded setting",
     "explicit_sun_term_reduces_contamination_in_real_iris": true,
-    "explicit_sun_term_scope": "EXP0025, same single-room/seed/200-step scope as EXP0019, oracle sun direction, not stable across step counts -- component evidence, not a general method claim yet"
+    "explicit_sun_term_scope": "EXP0025, same single-room/seed/200-step scope as EXP0019, oracle sun direction, not stable across step counts -- component evidence, not a general method claim yet",
+    "ephemeris_elevation_matches_real_sun": true,
+    "ephemeris_elevation_scope": "EXP0028: 7 real window-view panoramas, one city/camera, elevation only (heading-free), JPG so no radiometry",
+    "compass_heading_usable": false
   },
   "automation": "bounded runs with configs, source/data hashes, logs, progress timeout and per-scene evaluation; not an always-on service",
   "baseline_registry": "research/baseline_registry.json"

@@ -280,3 +280,35 @@ later"), and never reflected in `baseline_registry.json` (`scores: null`).
 Fixed all four in the same pass: renumbered, ran the missing
 `report_sgs_sunpatch.py` + `archive_sgs_sunpatch.py` steps, filled in the
 real numbers, and updated the registry.
+
+---
+
+## D0016 — Scene yaw comes from the observed sun / sun patch, not the compass; weather is a soft prior
+
+**Decision:** In the time + place -> lighting chain, (a) sun direction in the
+local ENU frame is taken from EXIF time + GPS via pvlib ephemeris; (b) the one
+remaining degree of freedom, the scene's rotation about the vertical (yaw), is
+calibrated from an observed sun or sun patch, never from the camera/phone
+compass heading; (c) Open-Meteo reanalysis DNI/DHI/cloud enter only as soft
+priors with uncertainty, never as hard gates.
+
+**Alternatives considered:** use the EXIF compass heading as the yaw source
+(cheapest, zero observations needed); use weather as a hard "sun present"
+gate for suppressing sun-patch hypotheses.
+
+**Evidence:** EXP0028 (`PANO_SUN_DIRECTION_ZH.md`). On 7 real panoramas with a
+detected sun, ephemeris elevation matched within 0.48 deg median / 1.18 deg
+max -- the heading-free part of the chain is sound. Compass-based azimuth was
+off by 82.7 deg median / 146.9 deg max even after magnetic-declination
+correction; a mirrored-convention bug was ruled out (error 83 deg with the
+sun at image center, correlation with image longitude +0.49 not the -2
+slope a mirror predicts). Indoors-through-window captures are exactly where
+compasses are disturbed. Weather: 3 of 7 suns were detected in hours with
+DNI < 120 W/m^2 (hazy sun), so a hard DNI gate would have wrongly suppressed
+them; hourly ~25 km reanalysis cannot resolve thin cloud or local occlusion.
+
+**Reason:** the compass is not just noisy, it is uninformative at this error
+level, while one observed sun/patch fixes yaw exactly and makes every other
+time's sun direction parameter-free -- which is the mechanism the killer
+experiment depends on anyway. Weather is still valuable as a prior on sun
+intensity and sky/sun ratio, but only probabilistically.
