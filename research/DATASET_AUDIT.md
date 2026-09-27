@@ -108,3 +108,46 @@ At least three distinct splits, each answering a different question:
 1. **Novel view**: `room_i, t1, views_train -> views_test` (standard held-out-view reconstruction quality — necessary but, per `NOVELTY_GAP.md`, not sufficient evidence on its own).
 2. **Novel time (the core evaluation)**: `room_i, t1 -> room_i, t_k (k != 1)` — the killer experiment's split.
 3. **Novel room**: `rooms_train -> room_heldout`. Since this project's method is expected to be a per-scene optimization (like IRIS/FIPT themselves), "novel room" generalization means re-running the *same* method/hyperparameters on a held-out room's own data (an ablation of robustness/reproducibility across scenes), not a traditional trained-model cross-scene generalization claim — state this distinction explicitly in any eventual paper to avoid an unfounded generalization claim.
+
+## Update 2026-09-27: datasets actually used for the SolarIR test sequence (EXP0030–EXP0038)
+
+Decision record: `DECISIONS.md` D0019.
+
+| Brief slot | What we use | Status | Why / limitation |
+|---|---|---|---|
+| A. Controlled synthetic (brief: OpenRooms, 3–5 window scenes) | **Procedural Mitsuba room** (`experiments/solarir_scene.py`): 4×4×2.5 m, 1.6×1.2 m south window, planked floor texture, Mitsuba `sunsky` ground truth at ephemeris sun directions (Pittsburgh, 2026-02-25) | in use (v1) | Exact control of sun, sky and ground-truth materials under a physical sky model. One scene, Lambertian only |
+| A (second scene, v2) | Bitterli **kitchen** (`data_download/pbr_interiors/kitchen`, 260 MB with bathroom; has a `thindielectric` window and 4 area lights) | available locally, not yet used | Realistic clutter and occluders, a real window frame. Needs a sun/sky swap-in and GT-material export |
+| A (OpenRooms) | not downloaded | accessible per scene | Download is public, but window scenes are lit by fixed outdoor HDR maps (Laval / HDRI Haven), not controllable sun positions. Re-rendering with ephemeris suns needs the scene assets (ScanNet layouts, ShapeNet objects), which sit behind separate licence agreements. Deferred until a multi-scene v2 is justified |
+| B. Real calibrated daylight | **Cali-HDR** (local, 9.4 GB JPG extracted; 14 dated scenes; indoor THETA Z1 panoramas, 9-shot brackets, 6720×3360, GPS + UTC time in EXIF; outdoor fisheye per time) and **Pano2Pano** (same group, 2024) | available | **Correction, same day:** Cali-HDR *does* contain same-room, fixed-tripod, multi-time sequences with a **moving sun patch** (see below). Single viewpoint (360° panorama), not multi-view |
+| C. Real multi-view stress test | Eyeful Tower (deleted in the 2026-09-27 cleanup; re-fetchable with `experiments/fetch_eyeful.py`, ~1 GB subset) | deferred | Single condition per scene; useful only as a robustness check (EXP0038) |
+| D. TexIR real | not downloaded | deferred | Single condition; not blocking |
+| E. IRIS / FIPT official | `data_download/iris_official` (2 GB) | available | Baseline reproduction; windowless / lamp-lit (see table above) |
+
+**Cali-HDR multi-time sequences with sun patches** (found 2026-09-27 by viewing
+contact sheets of every capture time; this corrects my earlier "one sunny time per room"):
+
+| Sequence | Times | Sun patch | Location (EXIF) |
+|---|---|---|---|
+| 2022-10-14 `1f_living` | 13:18, 14:05, 15:22, 16:32 | strong, large floor patches at 14:05 / 15:22 / 16:32 from **several** windows. **Camera moved** between 14:05 and 15:22 and again at 16:32 (edge-correlation 0.3, yaw changes); would need panorama registration | 40.368 N, 80.178 W |
+| 2023-06-25 `coda_334` | 06:56 … 13:56 (9 times) | stripe on the side wall ~08:5x–09:5x; sliver on the floor near the window ~10:58–12:56 | 40.458 N, 79.933 W |
+| 2023-07-06 `coda_334` | 06:56 … 14:56 (9 times) | same pattern | same room |
+| 2023-06-22 `coda_334` | 06:58 … 13:56 (8 times) | mostly overcast; sliver at 12:56 | same room |
+| 2023-05-19 / 05-21 `coda320` | 10:00 … 16:57 (8 times each) | none visible (diffuse only) | — |
+| 2022-10-06 house rooms | 4 times each, 13:xx–17:xx | weak / none | — |
+
+Camera stability check (edge-map cross-correlation between times, 0.21° per pixel):
+`coda_334` has **zero yaw shift at every time within 2023-06-25 and within 2023-07-06**.
+It is a fixed tripod, so one room, one viewpoint, 9 times per day. Cross-day alignment
+is not yet checked.
+
+**What this data supports:**
+- A **real held-out-time test of patch prediction** from one viewpoint: calibrate the
+  yaw on some times, predict the patch at others, and compare with an image-estimated
+  sun extrapolated in time (the real counterpart of R2's geometric part).
+- Real fitting of sun + low-frequency sky to the outdoor fisheye photos.
+
+**What it does not support:** multi-view inverse rendering. There is one panorama per
+time, and geometry must come from layout estimation or annotation.
+
+Real multi-view, multi-time data still does not exist locally, so the multi-view
+material claims (H2/H5 in the full form) remain **untested**.

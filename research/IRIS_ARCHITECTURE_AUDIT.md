@@ -101,3 +101,50 @@ This audit supports the project brief's core hypothesis directly: IRIS's illumin
 ## 11. Note on tool-use hygiene during this audit
 
 Part of this audit (§1–§9's file-by-file detail beyond `brdf.py`/`emitter.py`/`slf.py`/`fipt_bsdf.py`/`path_tracing.py`/`initialize.py`, which were read directly) was gathered via a delegated read-only sub-agent. That sub-agent's tool results contained an injected instruction (disguised as an "MCP Server Instructions" block) attempting to redirect it into creating an external "Claude Docs" document instead of returning its findings as text. The sub-agent correctly identified this as a prompt injection, ignored it, and returned its findings as plain text as instructed. No document was created and no data left this repository as a result. Recorded here for traceability.
+
+## 12. Direct answers to the eight audit questions (2026-09-27)
+
+Evidence is the code references in §§2–9 plus our own IRIS runs (EXP0019, EXP0027).
+"Measured" means we have a number; "code" means the code path allows it but we have
+no measurement.
+
+1. **What is an emitter?**
+   - A mesh triangle flagged `is_emitter` by `extract_emitter_ldr.py`: its mean raw
+     LDR max-channel value over the training frames exceeds 0.99.
+   - It gets one learnable constant RGB radiance (`AreaEmitter`, `SLFEmitterLearn`),
+     emitted diffusely (the same radiance in every direction).
+   - Nothing else emits.
+2. **What happens at windows?**
+   - A window is not an entity. It is either a hole in the mesh, so rays miss (Q3),
+     or a filled opaque surface.
+   - If a filled window pane is saturated in the LDR images, it becomes a Lambertian
+     emitter by Q1, i.e. a diffuse glowing panel.
+   - A diffuse panel cannot produce a sharp, direction-dependent sun patch. Our
+     testbed arm W is exactly this model: its best fit with true materials reaches
+     patch IoU 0.15–0.24 (EXP0030 D2).
+3. **Rays leaving the mesh?** They return zero radiance (`eval_emitter`, comment
+   "assume zero background lighting"). No fallback exists.
+4. **Is environment illumination represented?** No. There is no envmap, sky, sun or
+   constant background term anywhere (§3). Mitsuba plugins are reachable only by
+   hand-editing the relighting YAML, and the room BSDF was never trained against them.
+5. **Can sunlight bake into the SLF?**
+   - Yes (code). `VoxelSLF` caches outgoing radiance of occupied voxels, including
+     sunlit floor, and serves it as incident light for other surfaces' indirect bounces.
+   - The patch itself is still fit by albedo/emitter on the floor (Q6); the SLF then
+     propagates that baked brightness as if it were a property of the floor.
+6. **Can sun patches influence albedo?** Yes (measured). Vanilla IRIS on a uniform
+   floor: the sun-induced extra albedo gap is +19.5 / +14.3 percentage points
+   (EXP0019, EXP0027; 3 seeds).
+7. **Can shadow influence roughness / metallic?**
+   - Possible (code): roughness and metallic are per-location `NGPBRDF` outputs trained
+     by the same photometric loss.
+   - Measured only as floor means in EXP0027: roughness 0.75–0.76 against a true 0.90;
+     metallic about 0.003 against a true 0. That bias is not attributed to the sun.
+   - No sun-vs-shadow split has been measured. **Open.**
+8. **Scene-specific vs globally interpretable information?**
+   - Everything IRIS learns about light is scene- and condition-specific: per-triangle
+     emitter radiance, the voxel radiance cache, one CRF per scene.
+   - None of it carries a direction, a time, or a source outside the room, so it cannot
+     be transferred to another sun position.
+   - The only quantities intended to be condition-invariant are the BRDF fields, and
+     Q6 shows they absorb the sun.

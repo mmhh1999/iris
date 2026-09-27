@@ -381,3 +381,169 @@ and R1 is judged on v1+v2 together.
 **Reason:** the earlier plan's weak point was comparing against vanilla IRIS,
 which any explicit-sun method would beat. Comparing against B isolates exactly
 what we can still claim.
+
+## D0019 — SolarIR testbed v1: experiment-ID mapping, forward-model fixes and metric definitions, frozen before any arm comparison
+
+**Decision (IDs):** the autonomous-research brief's experiment sequence is numbered
+from EXP0030 on, because EXP0001–EXP0028 are taken and EXP0029 is reserved for the
+Pano2Pano single-time real check:
+
+| Brief | Ours | Content |
+|---|---|---|
+| EXP0001 transport sanity | EXP0030 | window-aperture transport, patch projection, estimator checks (`tests/test_solar_transport.py`) + D1/D2 diagnostics |
+| EXP0002 material leakage | EXP0031 | W / A / A_hi / B / C / C_oracle, floor error by region |
+| EXP0003 capacity control | EXP0032 | same runs; A vs A_hi (16x the lighting parameters) and W |
+| EXP0004 held-out solar condition | EXP0033 | 12:15 (interpolation), 14:30 (extrapolation) |
+| EXP0005 number of solar states | EXP0034 | 1 vs 3 training times (v1); 2 and 4 later if informative |
+| EXP0006 direction perturbation | EXP0035 | 0/2/5/10/20 deg on C's direction |
+| EXP0007 window geometry perturbation | EXP0036 | aperture error, occluder (= v2 of T11) |
+| EXP0008 Cali-HDR real fit | EXP0037 | |
+| EXP0009 real multi-view stress test | EXP0038 | |
+
+**Decision (scene / data):** v1 uses the procedural Mitsuba room (`experiments/solarir_scene.py`)
+instead of OpenRooms. Reason: the question needs exact control of the sun, the sky
+and ground-truth materials under a physical sky model, which the procedural room
+gives at no download cost. OpenRooms remains the candidate for a multi-scene v2;
+its access has not yet been checked.
+
+**Decision (forward model, fixed from training-image diagnostics only):**
+- D1 (true lighting, materials learned) and D2 (true materials, each arm's lighting
+  learned; scored on training images) were run before any arm comparison.
+- An 8x16 bilinear sky could not represent the sharp horizon of the sunsky ground
+  truth: walls came out 10% too dark with true materials. The sky became 16x32
+  piecewise-constant cells (drawn 2x2 per texel); walls are then within 2%.
+- A relative-error loss was tried and **rejected**: it stopped the generic
+  envmap arm from ever forming a sun (patch IoU 0). Adopting it would have handicapped
+  the baseline. All arms use linear MSE, lr decay over the last 40% of iterations.
+- The lighting learning rate for each arm was picked on the D2 training-image fit
+  only (W, A, B, C: 0.1; A_hi: 0.4).
+- A_hi (128x256 envmap) was added as the generic capacity control.
+  - Its D2 fit plateaus at 27.5–30.7 dB (patch IoU 0.90–0.95) against
+    C_oracle's 32.9–34.0 dB, including at 800 iterations.
+  - This is how the generic arm behaves under this optimiser, not proof that no
+    generic representation could do better.
+- W (Lambertian window area emitter, no outside light) is the analogue of IRIS's
+  emitter model.
+- Material optimisation was under-converged. With the **true** lighting (D1), 400
+  iterations at material lr 0.02 recovered the floor only to correlation 0.83.
+  - More views per iteration, higher spp and nearest-texel filtering made no
+    difference.
+  - Iterations and learning rate did: 1000 iterations at lr 0.05 gives correlation
+    0.92 on all texels and 0.965 on observed texels.
+  - Protocol for every arm: 1000 iterations, material lr 0.05, spp 8, 2 random views
+    per time per iteration.
+- The earlier lighting learning-rate choice (made at 400 iterations) is kept; the
+  decay schedule scales with the run length.
+
+**Decision (metrics; clarifies the pre-registration, not a change of rules):**
+- Image metrics use room pixels only. Pixels that look out of the window show
+  the sky directly, which says nothing about the room.
+- Floor metrics are computed on **observed** texels: those hit by >= 4 camera
+  pixels over the 6 views, 79% of the floor. Unobserved texels carry no information
+  for any arm. All-texel numbers are reported beside them.
+- Floor albedo is identified only up to one global scale shared with light
+  intensity. R1 is therefore read on **scale-aligned** MAE, with raw MAE reported
+  beside it. If the two disagree in direction, R1 is recorded as not holding.
+- Held-out lighting for every arm: linear interpolation between the bracketing
+  training times at 12:15; nearest training time at 14:30.
+  - B's held-out sun direction comes from a least-squares linear fit of (az, el)
+    against time over its own image estimates (a constant with one training time).
+  - C calibrates one bearing from the 11:30 patch and takes everything else from the
+    ephemeris.
+
+**Alternatives:** keep the 8x16 bilinear sky (rejected, inadequate on walls); relative
+loss (rejected, biased against the baseline); tune lighting learning rates on material
+error (rejected, leaks the evaluation metric).
+
+**Reversible?** Yes; every choice is a flag or constant in `solarir_scene.py` / `solarir_test.py`.
+
+**Relevant experiments:** EXP0030–EXP0034 (T11).
+
+## D0020 — Joint-fit protocol: spp 32 × 2000 iterations; explicit-sun arms use a 4×8 sky (chosen with oracle knowledge, declared); 16×32 kept as a sensitivity arm
+
+**What happened:** the first arm fit (EXP0035 δ=0, identical to C_oracle) recovered the
+floor far worse than D1 did under true lighting:
+- correlation 0.78 against 0.965;
+- patch bias +0.09 (sunlit albedo too bright);
+- sun irradiance fitted ~30% low;
+- sky barely moved from its initial value, including 0.075 below the horizon, where the
+  truth is 0.
+
+The loss reached the 8-spp Monte Carlo noise floor by iteration ~50. I stopped every run
+before any arm comparison could be read from it.
+
+**Diagnostics** (seed 0, multi-time, observed floor texels; scale-aligned MAE / corr /
+patch bias):
+
+| Setting | C_oracle | A_hi |
+|---|---|---|
+| spp 8, 1000 it, sky 16×32 | 0.053 / 0.78 / +0.090 | 0.097 / 0.57 / +0.158 |
+| spp 32, 1000 it | 0.045 / 0.845 / +0.070 | 0.060 / 0.72 / +0.072 |
+| spp 64, 2000 it | 0.039 / 0.877 / +0.055 | 0.053 / 0.74 / +0.042 |
+| spp 32, sky 8×16 | 0.037 / 0.880 / +0.051 | — |
+| spp 32, sky 4×8 | 0.032 / 0.916 / +0.034 | — |
+| spp 32, **true sky fixed**, only sun E learned | 0.021 / 0.960 / +0.022 | — |
+| D1: all lighting true | 0.018 / 0.965 / −0.002 | — |
+
+**Finding:** with the sun explicit, the remaining material–illumination ambiguity comes
+from the **free sky**, not the sun.
+- Different floor points see different parts of the sky through the window, so a
+  high-capacity sky can paint low-frequency brightness patterns that trade off against
+  albedo.
+- Lowering sky capacity helps monotonically. The true sky removes the problem.
+- This is the H1 mechanism: a generic light model needs high capacity to represent the
+  sun, and that capacity is what creates the ambiguity.
+
+**Decision:**
+- All arms: spp 32, 2000 iterations. More samples cost almost no time, because the run
+  is Python-overhead bound. Longer runs help both arms. This choice is neutral.
+- Explicit-sun arms (B, C, C_oracle) use a **4×8 piecewise-constant sky** (45° cells,
+  drawn 8×8 per texel).
+- **Declared:** this was chosen after seeing *oracle* floor-material error for C_oracle,
+  and after seeing C_oracle vs A_hi pipeline numbers. It is a method design choice made
+  with test-set knowledge.
+- To keep its effect visible, the comparison includes **C_oracle16** (C_oracle with the
+  earlier 16×32 sky).
+- Generic arms (W, A, A_hi) are unchanged: lowering their capacity would remove their
+  ability to represent the sun at all.
+- D2 adequacy is re-run for every arm under the new protocol.
+
+**Consequence for the research question:** the sky, not the sun direction, is where the
+action is. A calibrated solar state could also constrain the sky: a physical sky model
+parameterised by the sun position. In this testbed that would be an inverse crime,
+because the ground truth *is* Mitsuba `sunsky`. That test needs a sky from a different
+source, e.g. real HDR skies, and is deferred.
+
+**Reversible?** Yes: `SKY` table in `solarir_scene.py`; `--spp`, `--iters`.
+
+**Relevant experiments:** EXP0030–EXP0036.
+
+## D0021 — EXP0037 detector and timing changes, made before any held-out evaluation
+
+**Decision:** three changes to the pre-registered EXP0037 pipeline (`EXP0037_REAL_PATCH_PREREG_ZH.md`),
+all made before any held-out prediction was computed or viewed.
+
+1. **Detection uses a temporal brightness ratio, not single-image Otsu.** Because the tripod is
+   fixed, each pixel's brightness is divided by its own 30th-percentile brightness over the day's
+   times. This cancels albedo: the white card and the colour chart on the floor otherwise look
+   like patches. The threshold is `max(Otsu over pooled log-ratios, ln 3)`.
+   - The `ln 3` floor was added after 2023-06-25 gave a non-bimodal ratio distribution, with
+     Otsu at 0.24–0.32 and 8–40% of pixels flagged.
+   - 2023-07-06's Otsu threshold (1.59) is above the floor, so its masks are unchanged by it.
+2. **A single fixed exposure (1/60 s) replaces the 9-shot merge for detection.** The merge
+   produced horizontal banding where the chosen exposure switched, because the THETA tone curve
+   is not exactly sRGB.
+3. **Timing:**
+   - Time comes from the camera clock (`DateTimeOriginal`, EDT = UTC−4) of the detection shot.
+     The GPS time stamp is written once per bracket and was stale: 10:58 on 06-25 repeats 10:56's
+     stamp, and 06:56 on 07-06 is 3 min old. Where GPS is fresh, the camera clock agrees to 10–30 s
+     (≤ 0.13° of sun motion).
+   - The window wall is excluded from the receiver mask. Direct sun cannot land on the wall
+     holding the only window, so bright blobs there are bounce or glare.
+
+**Disclosure:** an EXP0037 evaluation on 07-06 under the earlier detector was started and killed
+before it printed anything; its log was deleted unread. Detection masks, not predictions, were
+inspected to make these changes.
+
+**Reversible?** Yes (`DETECT_EXPOSURE`, the threshold floor, `receivers()` in `cali_patch_test.py`).
+**Relevant experiments:** EXP0037.

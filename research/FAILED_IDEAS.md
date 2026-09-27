@@ -52,3 +52,18 @@ sun_lr_scale 0.1 / 200 steps barely moved from init, so it contributed nothing.
 The uniform-floor lit/shadow gap metric is gameable by flattening; never use it
 alone. Revisit only with a textured-floor, floor-segment benchmark and an
 active (learned or supplied) sun term -- D0017.
+
+## EXP0037: "calibrated sun predicts unseen-time patches better than image-estimated sun" did not replicate on real data
+
+Pre-registered R2-real required C > B on the replication day as well. On the primary day
+(2023-07-06) C won decisively on extrapolation: mean IoU 0.38 against 0.00. On the
+replication day (2023-06-25) C lost, 0.18 against 0.20.
+
+Cause, as far as can be seen: that day's training patches were tiny (~0.3% of the area),
+so the one-yaw calibration was unstable (161.6° vs 138.6° between splits). A post-hoc
+cross-day transfer of the 07-06 yaw did better (0.25), but it is exploratory and does not
+rescue the pre-registered test.
+
+Lesson: calibration from a single small patch is fragile. Any real claim needs a
+calibration protocol with a minimum patch size or multiple days, **decided before**
+looking at held-out results.

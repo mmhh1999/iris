@@ -1,0 +1,107 @@
+{
+  "exp": "EXP0035",
+  "mode": "multi",
+  "bearing_error_deg": 1.0,
+  "dir_err_deg": {
+    "10:00": 0.871,
+    "11:30": 0.782,
+    "13:00": 0.763,
+    "12:15": 0.76,
+    "14:30": 0.831
+  },
+  "arm": "C",
+  "seed": 0,
+  "iters": 2000,
+  "spp": 32,
+  "seconds": 522.2,
+  "loss_first": 0.0005384189098549541,
+  "loss_last": 5.133957438374637e-05,
+  "loss_curve": [
+    0.00053842,
+    5.142e-05,
+    5.104e-05,
+    5.692e-05,
+    4.273e-05,
+    4.9e-05,
+    4.884e-05,
+    4.627e-05,
+    4.805e-05,
+    4.568e-05,
+    4.178e-05,
+    4.52e-05,
+    5.046e-05,
+    4.536e-05,
+    4.37e-05,
+    5.114e-05,
+    4.741e-05,
+    4.742e-05,
+    4.945e-05,
+    4.565e-05
+  ],
+  "floor": {
+    "scale": 0.8576,
+    "all": {
+      "n": 3252,
+      "mae": 0.10373,
+      "mae_scaled": 0.09869,
+      "corr": 0.5026,
+      "bias_scaled": -0.058
+    },
+    "all_texels": {
+      "n": 4096,
+      "mae": 0.10588,
+      "mae_scaled": 0.10453,
+      "corr": 0.4788,
+      "bias_scaled": -0.068
+    },
+    "lit_interior": {
+      "n": 785,
+      "mae": 0.09347,
+      "mae_scaled": 0.04739,
+      "corr": 0.9795,
+      "bias_scaled": 0.04439
+    },
+    "boundary": {
+      "n": 424,
+      "mae": 0.13424,
+      "mae_scaled": 0.09944,
+      "corr": 0.6298,
+      "bias_scaled": 0.0328
+    },
+    "never_lit": {
+      "n": 2043,
+      "mae": 0.10134,
+      "mae_scaled": 0.11825,
+      "corr": 0.4337,
+      "bias_scaled": -0.11618
+    },
+    "patch_bias": 0.16057,
+    "wall_err_scaled": 0.02971
+  },
+  "heldout": {
+    "12:15": {
+      "psnr": 26.821,
+      "psnr_scaled": 26.786,
+      "patch_iou": 0.9413,
+      "sun_dir_err_deg": 0.76
+    },
+    "14:30": {
+      "psnr": 21.814,
+      "psnr_scaled": 21.832,
+      "patch_iou": 0.7593,
+      "sun_dir_err_deg": 0.831
+    }
+  },
+  "material_only": {
+    "12:15": {
+      "psnr": 24.525,
+      "psnr_scaled": 28.448,
+      "patch_iou": 0.9912
+    },
+    "14:30": {
+      "psnr": 24.287,
+      "psnr_scaled": 24.392,
+      "patch_iou": 0.8826
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "day": "20230706",
+  "room": "coda_334",
+  "frame": "levelled panorama (up vector from experiments/out/EXP0037_cali/level_20230706.json), degrees; azimuth -180..180 left to right, elevation up",
+  "annotated_on": "coda_334_07:56 exposure index 2, levelled, 1/0.5 deg grid crops",
+  "annotated_by": "Claude (visual reading of gridded crops), 2026-09-27, before any held-out evaluation",
+  "floor_corners": {
+    "window_wall_x_left_wall": [-63.2, -26.5],
+    "window_wall_x_right_wall": [44.3, -39.8]
+  },
+  "floor_corner_definition": "baseboard bottom edge meeting the floor",
+  "window_opening": {
+    "definition": "outer edge of the drywall return at the room-side wall surface; bottom = top of the stone stool at the wall",
+    "top_left": [-32.8, 37.3],
+    "top_right": [33.0, 37.2],
+    "bottom_left": [-32.8, -16.1],
+    "bottom_right": [33.0, -16.1]
+  },
+  "window_frame_inner_top_left_for_reference_only": [-29.5, 35.4],
+  "reading_uncertainty_deg": 0.3,
+  "notes": "A mullion cross and a deep reveal are present; the reveal depth r is fitted on training times only, per the pre-registration."
+}

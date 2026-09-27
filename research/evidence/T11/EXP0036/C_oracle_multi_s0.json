@@ -1,0 +1,130 @@
+{
+  "exp": "EXP0036",
+  "mode": "multi",
+  "true_window": [
+    [
+      -0.8,
+      0.8
+    ],
+    [
+      0.8,
+      2.0
+    ]
+  ],
+  "believed_window": [
+    [
+      -0.77,
+      0.83
+    ],
+    [
+      0.83,
+      1.97
+    ]
+  ],
+  "box": [
+    [
+      0.2,
+      1.4
+    ],
+    [
+      1.5,
+      2.3
+    ],
+    0.45
+  ],
+  "arm": "C_oracle",
+  "seed": 0,
+  "iters": 2000,
+  "spp": 32,
+  "seconds": 380.7,
+  "loss_first": 0.0005515934208233375,
+  "loss_last": 7.211223510239506e-05,
+  "loss_curve": [
+    0.00055159,
+    6.777e-05,
+    9.23e-05,
+    0.00010376,
+    8.013e-05,
+    6.041e-05,
+    6.896e-05,
+    6.645e-05,
+    8.965e-05,
+    5.352e-05,
+    5.561e-05,
+    8.357e-05,
+    8.671e-05,
+    5.953e-05,
+    5.925e-05,
+    7.153e-05,
+    8.477e-05,
+    8.255e-05,
+    8.482e-05,
+    6.518e-05
+  ],
+  "floor": {
+    "scale": 1.0751,
+    "all": {
+      "n": 2979,
+      "mae": 0.11622,
+      "mae_scaled": 0.11333,
+      "corr": 0.3426,
+      "bias_scaled": -0.08485
+    },
+    "all_texels": {
+      "n": 4096,
+      "mae": 0.1277,
+      "mae_scaled": 0.12458,
+      "corr": 0.3155,
+      "bias_scaled": -0.0941
+    },
+    "lit_interior": {
+      "n": 604,
+      "mae": 0.03125,
+      "mae_scaled": 0.03517,
+      "corr": 0.9106,
+      "bias_scaled": 0.00747
+    },
+    "boundary": {
+      "n": 380,
+      "mae": 0.10326,
+      "mae_scaled": 0.11003,
+      "corr": 0.4448,
+      "bias_scaled": 0.01125
+    },
+    "never_lit": {
+      "n": 1995,
+      "mae": 0.14442,
+      "mae_scaled": 0.13761,
+      "corr": 0.2743,
+      "bias_scaled": -0.13111
+    },
+    "patch_bias": 0.13858,
+    "wall_err_scaled": 0.05777
+  },
+  "heldout": {
+    "12:15": {
+      "psnr": 25.838,
+      "psnr_scaled": 25.757,
+      "patch_iou": 0.8936,
+      "sun_dir_err_deg": 0.0
+    },
+    "14:30": {
+      "psnr": 21.884,
+      "psnr_scaled": 21.952,
+      "patch_iou": 0.6304,
+      "sun_dir_err_deg": 0.0
+    }
+  },
+  "material_only": {
+    "12:15": {
+      "psnr": 24.223,
+      "psnr_scaled": 24.315,
+      "patch_iou": 0.9146
+    },
+    "14:30": {
+      "psnr": 23.198,
+      "psnr_scaled": 23.409,
+      "patch_iou": 0.7902
+    }
+  }
+}

@@ -1,0 +1,10 @@
+  [extrapolation] 09:56: B IoU 0.172 (ang 30.65)  C IoU 0.239 (ang 11.06)  oracle 0.486
+  [extrapolation] 10:58: B IoU 0.299 (ang 18.51)  C IoU 0.213 (ang 5.18)  oracle 0.601
+  [extrapolation] 11:44: B IoU 0.250 (ang 19.41)  C IoU 0.264 (ang 5.29)  oracle 0.729
+  [extrapolation] 13:56: B IoU 0.078 (ang 20.46)  C IoU 0.000 (ang 5.98)  oracle 0.654
+  [extrapolation] mean held-out IoU  B 0.200  C 0.179  oracle 0.617; B r=0.0 C r=0.0 alpha=161.61
+  [interpolation] 08:56: B IoU 0.010 (ang 23.82)  C IoU 0.002 (ang 32.27)  oracle 0.602
+  [interpolation] 09:56: B IoU 0.000 (ang 38.02)  C IoU 0.002 (ang 16.27)  oracle 0.486
+  [interpolation] 10:58: B IoU 0.000 (ang 40.42)  C IoU 0.044 (ang 17.41)  oracle 0.601
+  [interpolation] 11:44: B IoU 0.000 (ang 35.47)  C IoU 0.129 (ang 13.53)  oracle 0.729
+  [interpolation] mean held-out IoU  B 0.003  C 0.044  oracle 0.604; B r=0.1 C r=0.1 alpha=138.60

@@ -1,0 +1,27 @@
+{
+  "10:00": {
+    "psnr": 34.868,
+    "psnr_scaled": 34.87,
+    "patch_iou": 0.9667
+  },
+  "11:30": {
+    "psnr": 34.319,
+    "psnr_scaled": 34.322,
+    "patch_iou": 0.9979
+  },
+  "13:00": {
+    "psnr": 34.411,
+    "psnr_scaled": 34.413,
+    "patch_iou": 0.9974
+  },
+  "12:15": {
+    "psnr": 34.436,
+    "psnr_scaled": 34.439,
+    "patch_iou": 0.997
+  },
+  "14:30": {
+    "psnr": 34.361,
+    "psnr_scaled": 34.363,
+    "patch_iou": 0.9748
+  }
+}
