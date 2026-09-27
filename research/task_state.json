@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-27 (cleanup; single entry point = research/PROJECT_STATUS.md)",
-  "objective": "Explain sunlight patches in multi-view indoor inverse rendering and improve BRDF and unseen-light rerendering",
+  "updated": "2026-09-27 (D0018 SolarIR framing; T11 hypothesis test designed)",
+  "objective": "Test whether the Sun as a calibrated (time+place, 1 yaw DOF), moving light source entering through windows improves indoor material recovery and unseen time-of-day rerendering beyond an explicit but image-estimated sun",
   "authoritative_brief": "research/ACTIVE_RESEARCH_TASK_ZH.md (question/protocol); status entry point: research/PROJECT_STATUS.md",
   "tasks": [
     {
@@ -127,6 +127,14 @@
       ],
       "evidence": "research/evidence/EXP0028/",
       "report": "research/PANO_SUN_DIRECTION_ZH.md"
+    },
+    {
+      "id": "T11",
+      "task": "SolarIR hypothesis test, synthetic (calibrated sun C vs image-estimated sun B vs generic env A; single vs multi-time)",
+      "status": "designed",
+      "design": "research/SOLARIR_HYPOTHESIS_TEST_ZH.md",
+      "decision": "D0018",
+      "rules": "R1 material (C<B by >=15%), R2 extrapolated-time prediction (C>B by >=1 dB and >=0.1 IoU), R3 sanity"
     }
   ],
   "claims": {
@@ -140,12 +148,10 @@
     "ephemeris_elevation_matches_real_sun": true,
     "ephemeris_elevation_scope": "EXP0028: 7 real window-view panoramas, one city/camera, elevation only (heading-free), JPG so no radiometry",
     "compass_heading_usable": false,
-    "beats_sgs_on_sun_contamination": false
+    "beats_sgs_on_sun_contamination": false,
+    "multi_illumination_helps_is_novel": false,
+    "calibrated_sun_beats_uncalibrated_explicit_sun": null
   },
   "automation": "bounded runs with configs, source/data hashes, logs, progress timeout and per-scene evaluation; not an always-on service",
-  "baseline_registry": "research/baseline_registry.json",
-  "paused": {
-    "since": "2026-09-27",
-    "reason": "user asked to stop recent attempts and clean up; next experiments EXP0029-EXP0031 proposed, not started"
-  }
+  "baseline_registry": "research/baseline_registry.json"
 }

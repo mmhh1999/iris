@@ -348,3 +348,36 @@ a memory note; `task_state.json` and `EXPERIMENTS.md` still reported the
 retracted win, and a status summary on 2026-09-25 repeated it before this was
 caught. Registry files must be updated in the same pass an experiment finishes,
 and status reports must check `experiments/out/` for finished-but-unrecorded runs.
+
+---
+
+## D0018 — Adopt the "SolarIR" strong framing; test calibration against an explicit-but-uncalibrated sun before touching IRIS
+
+**Decision:** The project's claim is narrowed to: the Sun as a *calibrated*
+(time + place, one yaw DOF), moving, global light source that enters rooms
+through window apertures, whose predictable trajectory supervises recovery of a
+time-invariant indoor scene, validated by predicting unseen time-of-day photos.
+Before modifying IRIS further, run a controlled differentiable-rendering
+hypothesis test (`SOLARIR_HYPOTHESIS_TEST_ZH.md`) whose decisive comparison is
+calibrated sun (C) vs explicit sun with image-estimated direction (B), not vs
+vanilla IRIS.
+
+**Evidence:** user's 2026-09-27 survey plus my spot checks
+(`LITERATURE_AUDIT_2026-09-27_ZH.md`): explicit sun, sun+sky split, window
+directional light, indoor sun-direction estimation, shadow/material separation
+and explicit emitters all have prior art (Li 2022, ProjectiveShading, SOL-NeRF,
+EO-NeRF, SIR, SGS-Intrinsic, IR-HGP, AEGIR). New find: Dynamic Inverse
+Rendering (Yunus et al., ECCV 2026) states and exploits the general principle
+that multiple lighting conditions reduce material-lighting ambiguity -- so
+"multi-time helps" is not a contribution; only calibration can be.
+
+**Pre-registered rules:** R1 (C beats B on floor albedo MAE by >=15%,
+non-overlapping seeds), R2 (C beats B at the extrapolated time by >=1 dB PSNR
+and >=0.1 patch IoU), R3 sanity (multi-time C beats single-time C). Pre-stated
+expectation: in clean synthetic conditions R1 may fail because image-estimated
+directions are already accurate; v2 adds window-geometry error and an occluder,
+and R1 is judged on v1+v2 together.
+
+**Reason:** the earlier plan's weak point was comparing against vanilla IRIS,
+which any explicit-sun method would beat. Comparing against B isolates exactly
+what we can still claim.
