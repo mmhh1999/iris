@@ -1,5 +1,7 @@
 # 太阳光斑 × IRIS 实验入口
 
+> **2026-09-27:本页只记录 EXP0019 这一个实验。项目现状请看 [research/PROJECT_STATUS.md](research/PROJECT_STATUS.md)。**
+
 文件已经位于 `/home/minghao/projects/iris`，对应 Windows：
 `\\wsl.localhost\Ubuntu\home\minghao\projects\iris`。
 

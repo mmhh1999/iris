@@ -1,7 +1,7 @@
 {
-  "updated": "2026-09-25 (T06 retraction via EXP0027; T10/EXP0028)",
+  "updated": "2026-09-27 (cleanup; single entry point = research/PROJECT_STATUS.md)",
   "objective": "Explain sunlight patches in multi-view indoor inverse rendering and improve BRDF and unseen-light rerendering",
-  "authoritative_brief": "research/ACTIVE_RESEARCH_TASK_ZH.md",
+  "authoritative_brief": "research/ACTIVE_RESEARCH_TASK_ZH.md (question/protocol); status entry point: research/PROJECT_STATUS.md",
   "tasks": [
     {
       "id": "T01",
@@ -143,5 +143,9 @@
     "beats_sgs_on_sun_contamination": false
   },
   "automation": "bounded runs with configs, source/data hashes, logs, progress timeout and per-scene evaluation; not an always-on service",
-  "baseline_registry": "research/baseline_registry.json"
+  "baseline_registry": "research/baseline_registry.json",
+  "paused": {
+    "since": "2026-09-27",
+    "reason": "user asked to stop recent attempts and clean up; next experiments EXP0029-EXP0031 proposed, not started"
+  }
 }
