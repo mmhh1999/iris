@@ -1,0 +1,20 @@
+[
+  {
+    "condition": "sun_a",
+    "extracted_faces": 2,
+    "true_lamp_faces": 2,
+    "nonlamp_faces_classified_emitter": 0
+  },
+  {
+    "condition": "sun_b",
+    "extracted_faces": 48,
+    "true_lamp_faces": 2,
+    "nonlamp_faces_classified_emitter": 46
+  },
+  {
+    "condition": "sky",
+    "extracted_faces": 2,
+    "true_lamp_faces": 2,
+    "nonlamp_faces_classified_emitter": 0
+  }
+]

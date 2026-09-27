@@ -1,0 +1,23 @@
+test_center_and_axis (test_geometry_screening.GeometryTests) ... ok
+test_determinism (test_geometry_screening.GeometryTests) ... jit_kernel_write(): could not write compiled kernel to cache file "/home/minghao/.drjit/ccb4f980568ef4aa7a014fee51867236.llvm.v6.bin.3.tmp": Read-only file system
+ok
+test_empty_and_invalid (test_geometry_screening.GeometryTests) ... ok
+test_filter_backend_unchanged (test_geometry_screening.GeometryTests) ... ok
+test_known_plane (test_geometry_screening.GeometryTests) ... ok
+test_opengl_conversion_and_miss (test_geometry_screening.GeometryTests) ... ok
+test_scannetpp_world_frame (test_geometry_screening.GeometryTests) ... ok
+test_behind_camera (test_multiview_geometry.MultiViewTests) ... ok
+test_occluded (test_multiview_geometry.MultiViewTests) ... ok
+test_plane (test_multiview_geometry.MultiViewTests) ... ok
+test_roundtrip (test_multiview_geometry.MultiViewTests) ... ok
+test_portal_forward_and_backward (test_multiview_geometry.PortalTests) ... ok
+test_portal_shadow (test_multiview_geometry.PortalTests) ... ok
+test_chunk_boundary_keeps_direction_order (test_rerender_visibility.RerenderVisibilityTests) ... ok
+test_known_occlusion_and_open_sky (test_rerender_visibility.RerenderVisibilityTests) ... ok
+test_records_success (test_research_watchdog.ResearchWatchdogTests) ... ok
+test_stops_timed_out_child (test_research_watchdog.ResearchWatchdogTests) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 4.852s
+
+OK

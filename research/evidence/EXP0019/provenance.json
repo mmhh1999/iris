@@ -1,0 +1,33 @@
+{
+  "dataset_current_generator": "experiments/generate_sunpatch_benchmark.py",
+  "original_dataset_snapshot_has_separate_segmentation_repair": true,
+  "source_snapshot_note": "Final sources include explicit checkpoint saves and additional audit guards; running v2 jobs started before some later guards were added. Independently verified all final steps=200.",
+  "upstream_license": "IRIS code retains root LICENSE; room assets CC BY 3.0 Jay-Artist",
+  "source_hashes": {
+    "initialize.py": "5fa5ec552f6c9fe212ce43ee0eb345151a625d7557fb7b44e7f1ff4943908acb",
+    "train_brdf_crf.py": "7665a06252f2adf7f65611e63c49027d566eefd50f4ffab57659c9be152d84be",
+    "train_emitter.py": "bb0faf62105eec5a27c09868f3559d90de3ba72a729548798821a6fbd81a0270",
+    "experiments/run_original_iris.py": "49151e9865509dbf7b104e4aa59ed7cdd734512d3aeb7a9d83eef3bd47033d54",
+    "experiments/report_sunpatch_benchmark.py": "bd09126fe25620c0dec162213c8e8ac5490ec39ec271f5ca8936a2765d869f1e",
+    "experiments/evaluate_sunpatch_iris.py": "1b1ebd82d392934915f4af7359ba60ab13a8b91c26c04bdaeaa52b51373473ed",
+    "experiments/relight_sunpatch_floor.py": "3fb5bf0c25fae3a2e997c3473e6faf3831b6c9d86497b5e0fbfbb5f7d65ccb9c",
+    "experiments/run_sunpatch_iris.py": "21d12b21e3528893fa740fdfeb13528ef78758148ed78f760df5ab7e7b3855d1",
+    "experiments/report_sunpatch_relight.py": "b5929637eb7aa1c2dcd99c64b906070725e55b6b4dcd451d7d15622dd574ed74",
+    "experiments/audit_sunpatch_handoffs.py": "a8a290f61bce457fa133a7a4fb3f860e51bdabd9bda4cc61c54b17eab83c176d",
+    "experiments/generate_sunpatch_benchmark.py": "1891eac278e7cc13ad4f8b5111bd20f96801373811b8b2a9b05c72dd5bee50ac",
+    "experiments/audit_sunpatch_data.py": "d2903e75549affaa6a5730e4e178dc57bc203e146dc78f6f49cff14510080366",
+    "experiments/check_final_checkpoint.py": "e97520e4c10766dbd61b36906a828f742b2af615640fe6541d179e27d54acc62",
+    "model/brdf.py": "8b610ab0eea8a253f08260214a0195bb17da03b7997c28817ea54887c9ee8ac8",
+    "utils/path_tracing.py": "64511049ea9f97bc3a124259b0d67b9f117e262c9cfdfc2cf2ae0c3e5965daa0",
+    "utils/dataset/synthetic_ldr.py": "540f602023d5782058dbda4c3f8604eb30aaa99166a0227423f1897c0bb05b28",
+    "model/emitter.py": "44daf70b9e8fa759b6b349b5a2db1fa1c83555023c19abd7d253cd1a50de3521"
+  },
+  "environment": {
+    "torch": "2.11.0+cu128",
+    "pytorch-lightning": "2.6.6",
+    "mitsuba": "3.9.1",
+    "drjit": "1.5.0",
+    "numpy": "2.2.6",
+    "opencv-python": "4.11.0.86"
+  }
+}

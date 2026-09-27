@@ -1,0 +1,6 @@
+{
+  "lambertian_eval_cosine_check": "passed: RGB [0.2,0.4,0.6] at cosine 0.8 equals reflectance*cos/pi, rtol 1e-6",
+  "python_compile": "passed",
+  "full_inverse_rendering_run": false,
+  "gate": "failed: matched-family heldout sharp highlights remain unstable"
+}

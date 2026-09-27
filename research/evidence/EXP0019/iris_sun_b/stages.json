@@ -1,0 +1,82 @@
+{
+  "full_training": false,
+  "steps": 200,
+  "stages": [
+    {
+      "stage": "01_slf_bake",
+      "command": [
+        "/home/minghao/projects/iris/.venv/bin/python",
+        "slf_bake.py",
+        "--scene",
+        "/home/minghao/projects/iris/experiments/out/EXP0019_sunpatch/data_03/sun_b",
+        "--dataset",
+        "synthetic",
+        "--ldr_img_dir",
+        "Image",
+        "--output",
+        "/home/minghao/projects/iris/experiments/out/EXP0019_sunpatch/iris_sun_b/bake",
+        "--voxel_num",
+        "128"
+      ],
+      "returncode": 0,
+      "seconds": 3.727837562561035
+    },
+    {
+      "stage": "02_emitter_extract",
+      "command": [
+        "/home/minghao/projects/iris/.venv/bin/python",
+        "extract_emitter_ldr.py",
+        "--scene",
+        "/home/minghao/projects/iris/experiments/out/EXP0019_sunpatch/data_03/sun_b",
+        "--dataset",
+        "synthetic",
+        "--ldr_img_dir",
+        "Image",
+        "--output",
+        "/home/minghao/projects/iris/experiments/out/EXP0019_sunpatch/iris_sun_b/bake",
+        "--threshold",
+        "0.99"
+      ],
+      "returncode": 0,
+      "seconds": 5.384194612503052
+    },
+    {
+      "stage": "03_initialize",
+      "command": [
+        "/home/minghao/projects/iris/.venv/bin/python",
+        "initialize.py",
+        "--experiment_name",
+        "sunpatch_iris_sun_b",
+        "--checkpoint_path",
+        "/home/minghao/projects/iris/experiments/out/EXP0019_sunpatch/iris_sun_b/checkpoints",
+        "--dataset",
+        "synthetic",
+        "/home/minghao/projects/iris/experiments/out/EXP0019_sunpatch/data_03/sun_b",
+        "--emitter_path",
+        "/home/minghao/projects/iris/experiments/out/EXP0019_sunpatch/iris_sun_b/bake/emitter.pth",
+        "--has_part",
+        "1",
+        "--ldr_img_dir",
+        "Image",
+        "--val_frame",
+        "0",
+        "--SPP",
+        "32",
+        "--spp",
+        "16",
+        "--crf_basis",
+        "3",
+        "--num_workers",
+        "0",
+        "--max_steps",
+        "200",
+        "--max_epochs",
+        "1000",
+        "--voxel_path",
+        "/home/minghao/projects/iris/experiments/out/EXP0019_sunpatch/iris_sun_b/bake/vslf.npz"
+      ],
+      "returncode": 0,
+      "seconds": 40.53584361076355
+    }
+  ]
+}

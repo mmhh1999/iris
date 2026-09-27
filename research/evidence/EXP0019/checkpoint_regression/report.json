@@ -1,0 +1,7 @@
+{
+  "lightning_version": "2.6.6",
+  "trainer_final_step": 3,
+  "callback_last_step": 1,
+  "explicit_final_step": 3,
+  "final_weight_matches_live_model": true
+}

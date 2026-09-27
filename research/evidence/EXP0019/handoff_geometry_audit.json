@@ -1,0 +1,107 @@
+[
+  {
+    "condition": "sun_a",
+    "checkpoints": [
+      {
+        "name": "init",
+        "global_step": 200,
+        "bytes": 417834465
+      },
+      {
+        "name": "last_0",
+        "global_step": 200,
+        "bytes": 194127146
+      },
+      {
+        "name": "last_1",
+        "global_step": 200,
+        "bytes": 383190497
+      }
+    ],
+    "emitter_triangle_count": 2,
+    "geometry": [
+      {
+        "view": 3,
+        "max_floor_position_error": 1.6214227116506663e-06,
+        "floor_pixels_classified_emitter": 0,
+        "floor_pixels": 4108
+      },
+      {
+        "view": 9,
+        "max_floor_position_error": 2.0370491711219074e-06,
+        "floor_pixels_classified_emitter": 0,
+        "floor_pixels": 4870
+      }
+    ]
+  },
+  {
+    "condition": "sun_b",
+    "checkpoints": [
+      {
+        "name": "init",
+        "global_step": 200,
+        "bytes": 417836769
+      },
+      {
+        "name": "last_0",
+        "global_step": 200,
+        "bytes": 194129450
+      },
+      {
+        "name": "last_1",
+        "global_step": 200,
+        "bytes": 383192801
+      }
+    ],
+    "emitter_triangle_count": 48,
+    "geometry": [
+      {
+        "view": 3,
+        "max_floor_position_error": 1.6214227116506663e-06,
+        "floor_pixels_classified_emitter": 0,
+        "floor_pixels": 4108
+      },
+      {
+        "view": 9,
+        "max_floor_position_error": 2.0370491711219074e-06,
+        "floor_pixels_classified_emitter": 0,
+        "floor_pixels": 4870
+      }
+    ]
+  },
+  {
+    "condition": "sky",
+    "checkpoints": [
+      {
+        "name": "init",
+        "global_step": 200,
+        "bytes": 417834401
+      },
+      {
+        "name": "last_0",
+        "global_step": 200,
+        "bytes": 194127146
+      },
+      {
+        "name": "last_1",
+        "global_step": 200,
+        "bytes": 383190433
+      }
+    ],
+    "emitter_triangle_count": 2,
+    "geometry": [
+      {
+        "view": 3,
+        "max_floor_position_error": 1.6214227116506663e-06,
+        "floor_pixels_classified_emitter": 0,
+        "floor_pixels": 4108
+      },
+      {
+        "view": 9,
+        "max_floor_position_error": 2.0370491711219074e-06,
+        "floor_pixels_classified_emitter": 0,
+        "floor_pixels": 4870
+      }
+    ]
+  }
+]

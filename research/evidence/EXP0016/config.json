@@ -1,0 +1,31 @@
+{
+  "experiment": "EXP0016",
+  "role": "supervised material prior feasibility; not explicit solar method",
+  "archive": "data_download/interiorverse/part_0.zip",
+  "archive_sha256": "941bb94467ff65de713095447c2b93f97f78f1538b9858d8c7e633be28f1d670",
+  "splits_root": "data_download/interiorverse",
+  "resolution": [
+    128,
+    96
+  ],
+  "seeds": [
+    17,
+    23,
+    41
+  ],
+  "epochs": 8,
+  "batch_size": 16,
+  "learning_rate": 0.001,
+  "input": "HDR RGB only: log1p(clamp(rgb,0,64))/log(65)",
+  "targets": [
+    "albedo_rgb",
+    "roughness",
+    "metallic"
+  ],
+  "selection": "validation scene-macro mean of three material MSEs",
+  "test_policy": "evaluate final selected checkpoint once per frozen seed",
+  "sun_labels": false,
+  "multi_view_correspondences": false,
+  "max_runtime_seconds": 1800,
+  "no_progress_timeout_seconds": 300
+}

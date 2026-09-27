@@ -1,3 +1,5 @@
+> **2026-09-20 审查更新：下文为历史分析，包含尚未证实或已撤回的排他性判断。当前结论以 [最新文献审查](LITERATURE_AUDIT_2026-09-20_ZH.md) 为准。尤其不得将 SIR/AEGIR 排除为仅人工灯光方法，或将未检索到等同于此前不存在；创新性尚未成立。**
+
 # Novelty / Gap Analysis: Daylight-Aware Indoor Inverse Rendering
 
 Status: **substantially revised in session 2** after the user identified, and I verified, a directly on-point prior paper (Li et al., ECCV 2022 — see `LITERATURE.md` §1a) that the session-1 automated survey missed. That paper is co-authored by Zhengqin Li, who also co-authors FIPT and IRIS, and already models window radiance as 3 spherical Gaussians for sun/sky/ground. **This kills the "weak version" of this project's novelty claim** ("add an explicit sun+sky model to IRIS" is not, on its own, a sufficient contribution — the authors' own lab already did that physical decomposition, just single-image and without multi-view/geometric/ephemeris grounding). The revision below reframes the defensible claim around what that paper (and the two other newly-found close papers, ProjectiveShading and LuxRemix, both 2026) genuinely do not do. See `DECISIONS.md` D0007 for the decision record.

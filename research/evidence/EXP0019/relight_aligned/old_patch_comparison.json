@@ -1,0 +1,21 @@
+{
+  "scope": "oracle floor-only relight after evaluation-only single-scalar alignment; equal old-sun-A regions for both methods",
+  "views": [
+    {
+      "view": 3,
+      "old_patch_interior_pixels": 206,
+      "sun_a_rmse_on_old_patch": 0.007245490327477455,
+      "sky_rmse_on_same_old_patch": 0.006594284437596798,
+      "sun_a_signed_mean_residual": 0.002084562322124839,
+      "sky_signed_mean_residual": -0.0005483722779899836
+    },
+    {
+      "view": 9,
+      "old_patch_interior_pixels": 58,
+      "sun_a_rmse_on_old_patch": 0.0073814778588712215,
+      "sky_rmse_on_same_old_patch": 0.00676164822652936,
+      "sun_a_signed_mean_residual": 0.00197382690384984,
+      "sky_signed_mean_residual": -0.000732847664039582
+    }
+  ]
+}

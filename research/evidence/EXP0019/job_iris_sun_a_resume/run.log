@@ -1,0 +1,22 @@
+START 02_emitter_extract
+END 02_emitter_extract 0 5.5 seconds
+START 03_initialize
+END 03_initialize 0 56.5 seconds
+START 04_emitter_update
+END 04_emitter_update 0 3.4 seconds
+START 05_bake_shading
+END 05_bake_shading 0 10.2 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 15.0 seconds
+START 07_slf_refine
+END 07_slf_refine 0 3.8 seconds
+START 08_train_emitter
+END 08_train_emitter 0 52.6 seconds
+START 09_emitter_update
+END 09_emitter_update 0 3.3 seconds
+START 10_refine_shading
+END 10_refine_shading 0 59.5 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 13.5 seconds
+START 12_render
+END 12_render 0 8.7 seconds

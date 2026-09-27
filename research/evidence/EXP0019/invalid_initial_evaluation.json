@@ -1,0 +1,4 @@
+{
+  "valid_for_scientific_comparison": false,
+  "reason": "Stage handoff used callback last.ckpt at global_step 18, despite max_steps=200 run. Superseded by explicit trainer.save_checkpoint final.ckpt and v2 runs."
+}

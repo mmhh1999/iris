@@ -1,0 +1,17 @@
+{
+  "status": "succeeded",
+  "pid": 840260,
+  "command": [
+    ".venv/bin/python",
+    "experiments/generate_sunpatch_benchmark.py",
+    "--out",
+    "experiments/out/EXP0019_sunpatch/data_03"
+  ],
+  "started_utc": "2026-09-20T17:12:03.378837+00:00",
+  "max_seconds": 600,
+  "idle_seconds": 90,
+  "elapsed_seconds": 30.095964609005023,
+  "log_idle_seconds": 0.8838579654693604,
+  "returncode": 0,
+  "finished_utc": "2026-09-20T17:12:33.474557+00:00"
+}

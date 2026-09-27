@@ -1,0 +1,15 @@
+{
+  "status": "succeeded",
+  "pid": 855675,
+  "command": [
+    ".venv/bin/python",
+    "experiments/relight_sunpatch_floor.py"
+  ],
+  "started_utc": "2026-09-20T17:32:29.893434+00:00",
+  "max_seconds": 600,
+  "idle_seconds": 120,
+  "elapsed_seconds": 16.03386189500452,
+  "log_idle_seconds": 0.1286921501159668,
+  "returncode": 0,
+  "finished_utc": "2026-09-20T17:32:45.926959+00:00"
+}

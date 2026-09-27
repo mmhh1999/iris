@@ -1,0 +1,8 @@
+WAITING for successful completion: /home/minghao/projects/iris/experiments/out/EXP0019_sunpatch/iris_sky/stages.json
+START 01_slf_bake
+END 01_slf_bake 0 3.7 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 5.4 seconds
+START 03_initialize
+END 03_initialize 0 40.5 seconds
+START 04_emitter_update

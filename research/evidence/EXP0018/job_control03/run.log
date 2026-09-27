@@ -1,0 +1,16 @@
+bathroom 0 seed 17 finished
+bathroom 0 seed 23 finished
+bathroom 0 seed 41 finished
+{"room": "bathroom", "view": 0, "eligible_fraction": 0.6465657552083334, "samples": 2048, "fit": {"rmse": 0.004580293782055378, "relative_rmse": 0.0071059404872357845, "median_pixel_relative_rmse": 0.0018507096683606505, "p90_pixel_relative_rmse": 0.01860199309885502}, "heldout_angles": {"rmse": 0.5905213356018066, "relative_rmse": 0.7579939365386963, "median_pixel_relative_rmse": 0.003174553159624338, "p90_pixel_relative_rmse": 0.056168075650930405}}
+bathroom 1 seed 17 finished
+bathroom 1 seed 23 finished
+bathroom 1 seed 41 finished
+{"room": "bathroom", "view": 1, "eligible_fraction": 0.6531270345052084, "samples": 2048, "fit": {"rmse": 0.004152290523052216, "relative_rmse": 0.010624405927956104, "median_pixel_relative_rmse": 0.0018417139071971178, "p90_pixel_relative_rmse": 0.01918647065758705}, "heldout_angles": {"rmse": 0.05904463678598404, "relative_rmse": 0.40199172496795654, "median_pixel_relative_rmse": 0.003412381513044238, "p90_pixel_relative_rmse": 0.06311783194541931}}
+kitchen 0 seed 17 finished
+kitchen 0 seed 23 finished
+kitchen 0 seed 41 finished
+{"room": "kitchen", "view": 0, "eligible_fraction": 0.8283589680989584, "samples": 2048, "fit": {"rmse": 0.005028024315834045, "relative_rmse": 0.01111635472625494, "median_pixel_relative_rmse": 0.002022306900471449, "p90_pixel_relative_rmse": 0.01783113367855549}, "heldout_angles": {"rmse": 0.048072054982185364, "relative_rmse": 0.3010638356208801, "median_pixel_relative_rmse": 0.0035810060799121857, "p90_pixel_relative_rmse": 0.07979455590248108}}
+kitchen 1 seed 17 finished
+kitchen 1 seed 23 finished
+kitchen 1 seed 41 finished
+{"room": "kitchen", "view": 1, "eligible_fraction": 0.823699951171875, "samples": 2048, "fit": {"rmse": 0.0044333357363939285, "relative_rmse": 0.00935362558811903, "median_pixel_relative_rmse": 0.0019968643318861723, "p90_pixel_relative_rmse": 0.018559403717517853}, "heldout_angles": {"rmse": 0.12410856038331985, "relative_rmse": 0.6867567300796509, "median_pixel_relative_rmse": 0.0035990236792713404, "p90_pixel_relative_rmse": 0.07383156567811966}}

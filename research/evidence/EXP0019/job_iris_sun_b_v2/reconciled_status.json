@@ -1,0 +1,10 @@
+{
+  "status": "pipeline_complete_verified",
+  "original_monitor_status": "running (stale)",
+  "runner_process_no_longer_exists": true,
+  "all_12_stage_returncodes_zero": true,
+  "final_checkpoint_step": 200,
+  "final_checkpoint_independently_evaluated": true,
+  "parent_process_exit_code_observed": false,
+  "note": "Preserve raw monitor status; final status reconciled from stage records, output evaluation and process inspection."
+}

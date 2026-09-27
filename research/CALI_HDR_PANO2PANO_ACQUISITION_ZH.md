@@ -132,3 +132,9 @@ EXIF+缩略图段），用 PIL 解析 EXIF，不下载/解压 DNG/CR2 大文件�
 - 证据：`research/evidence/EXP0022/`、`research/evidence/EXP0023/`
 - 更新：`research/DATASET_AUDIT.md`（Cali-HDR 行状态、新增 Pano2Pano 行）、
   `research/EXPERIMENTS.md`（EXP0022/EXP0023）、`research/DECISIONS.md`（D0012）
+
+## 2026-09-24 更新：WSL 内已删除 RAW
+
+为节省 WSL 磁盘，已删除 `data_download/cali_hdr/` 与 `data_download/pano2pano/`
+中全部 DNG/CR2（约 151GB），仅保留 JPG（约 17GB）。原始 zip 仍在
+`/mnt/c/Users/XMH/Downloads/`，需要 RAW（如重新合成 HDR）时从 zip 中按需解压。

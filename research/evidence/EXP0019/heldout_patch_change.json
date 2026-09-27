@@ -1,0 +1,26 @@
+[
+  {
+    "condition": "sun_a",
+    "view": 3,
+    "old_direct_pixels": 482,
+    "fraction_not_direct_under_sun_c": 1.0
+  },
+  {
+    "condition": "sun_a",
+    "view": 9,
+    "old_direct_pixels": 307,
+    "fraction_not_direct_under_sun_c": 1.0
+  },
+  {
+    "condition": "sun_b",
+    "view": 3,
+    "old_direct_pixels": 27,
+    "fraction_not_direct_under_sun_c": 1.0
+  },
+  {
+    "condition": "sun_b",
+    "view": 9,
+    "old_direct_pixels": 306,
+    "fraction_not_direct_under_sun_c": 1.0
+  }
+]

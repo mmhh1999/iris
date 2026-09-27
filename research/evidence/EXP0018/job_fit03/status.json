@@ -1,0 +1,19 @@
+{
+  "status": "succeeded",
+  "pid": 835182,
+  "command": [
+    ".venv/bin/python",
+    "experiments/fit_native_brdf_compatibility.py",
+    "--source",
+    "experiments/out/EXP0018_native_brdf/run_04",
+    "--out",
+    "experiments/out/EXP0018_native_brdf/fit_03"
+  ],
+  "started_utc": "2026-09-20T16:54:15.249301+00:00",
+  "max_seconds": 300,
+  "idle_seconds": 90,
+  "elapsed_seconds": 16.019754501990974,
+  "log_idle_seconds": 0.287355899810791,
+  "returncode": 0,
+  "finished_utc": "2026-09-20T16:54:31.268723+00:00"
+}

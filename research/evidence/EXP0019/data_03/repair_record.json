@@ -1,0 +1,5 @@
+{
+  "repair": "Added segmentation/NNN.exr files as copies of all-zero IndexMA placeholders because original loader requires them; photos and geometry unchanged. Current generator includes this export.",
+  "original_source_snapshot": "source.py",
+  "current_generator": "experiments/generate_sunpatch_benchmark.py"
+}

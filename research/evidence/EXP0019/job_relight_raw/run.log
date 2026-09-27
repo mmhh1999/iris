@@ -1,0 +1,6 @@
+{"condition": "sun_a", "view": 3, "albedo_scale": 1.0, "floor_hdr_rmse": 0.08550707250833511, "old_patch_hdr_rmse": 0.09290210157632828, "render_seed_rmse_floor": 0.0027382895350456238, "truth_seed_rmse_floor": 0.0007647762540727854}
+{"condition": "sun_a", "view": 9, "albedo_scale": 1.0, "floor_hdr_rmse": 0.09313862025737762, "old_patch_hdr_rmse": 0.09527721256017685, "render_seed_rmse_floor": 0.0028500223997980356, "truth_seed_rmse_floor": 0.0007639413233846426}
+{"condition": "sun_b", "view": 3, "albedo_scale": 1.0, "floor_hdr_rmse": 0.11117243766784668, "old_patch_hdr_rmse": 0.09273809939622879, "render_seed_rmse_floor": 0.0033687602262943983, "truth_seed_rmse_floor": 0.0007647759630344808}
+{"condition": "sun_b", "view": 9, "albedo_scale": 1.0, "floor_hdr_rmse": 0.11525905132293701, "old_patch_hdr_rmse": 0.09663154929876328, "render_seed_rmse_floor": 0.0033226453233510256, "truth_seed_rmse_floor": 0.0007639433024451137}
+{"condition": "sky", "view": 3, "albedo_scale": 1.0, "floor_hdr_rmse": 0.08597349375486374, "old_patch_hdr_rmse": null, "render_seed_rmse_floor": 0.0027684648521244526, "truth_seed_rmse_floor": 0.0007647749735042453}
+{"condition": "sky", "view": 9, "albedo_scale": 1.0, "floor_hdr_rmse": 0.08973656594753265, "old_patch_hdr_rmse": null, "render_seed_rmse_floor": 0.0027712492737919092, "truth_seed_rmse_floor": 0.0007639421964995563}

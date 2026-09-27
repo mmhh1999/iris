@@ -1,3 +1,5 @@
+> **2026-09-20 审查更新：下文为历史分析，包含尚未证实或已撤回的排他性判断。当前结论以 [最新文献审查](LITERATURE_AUDIT_2026-09-20_ZH.md) 为准。尤其不得将 SIR/AEGIR 排除为仅人工灯光方法，或将未检索到等同于此前不存在；创新性尚未成立。**
+
 # Literature Survey: Daylight-Aware Indoor Inverse Rendering
 
 Status: initial survey, session 1. Scope per project brief — IRIS's lineage, indoor inverse rendering broadly, outdoor/daylight-aware neural rendering, sun/shadow geometry estimation, window & environment-map estimation, and transparent/transmissive material recovery. Compiled via web search in September 2026; coverage is necessarily a sample of an active field, not exhaustive. Every entry below was checked against at least an abstract/README (via WebSearch/WebFetch); entries marked "(abstract only, fields not fully confirmed)" mean I could not extract every table column with confidence from the source(s) reachable and the cell says "not stated in abstract" rather than guessing.

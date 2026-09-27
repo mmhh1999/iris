@@ -1,0 +1,10 @@
+/home/minghao/projects/iris/.venv/lib/python3.10/site-packages/torch/functional.py:505: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:4381.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+find scene bound
+  0%|          | 0/12 [00:00<?, ?it/s]  8%|▊         | 1/12 [00:00<00:02,  4.25it/s] 83%|████████▎ | 10/12 [00:00<00:00, 36.53it/s]100%|██████████| 12/12 [00:00<00:00, 33.85it/s]
+find visible voxels
+  0%|          | 0/12 [00:00<?, ?it/s] 67%|██████▋   | 8/12 [00:00<00:00, 73.95it/s]100%|██████████| 12/12 [00:00<00:00, 79.62it/s]
+bake voxel surface light field
+  0%|          | 0/12 [00:00<?, ?it/s]/home/minghao/projects/iris/.venv/lib/python3.10/site-packages/torch_interpolations/multilinear.py:57: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+  numerator += self.values[as_s] * \
+ 75%|███████▌  | 9/12 [00:00<00:00, 83.69it/s]100%|██████████| 12/12 [00:00<00:00, 83.64it/s]

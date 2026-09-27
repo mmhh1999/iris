@@ -1,0 +1,25 @@
+WAITING for successful completion: /home/minghao/projects/iris/experiments/out/EXP0019_sunpatch/iris_sky_v2/stages.json
+START 01_slf_bake
+END 01_slf_bake 0 4.0 seconds
+START 02_emitter_extract
+END 02_emitter_extract 0 5.6 seconds
+START 03_initialize
+END 03_initialize 0 31.4 seconds
+START 04_emitter_update
+END 04_emitter_update 0 5.5 seconds
+START 05_bake_shading
+END 05_bake_shading 0 8.8 seconds
+START 06_brdf_crf
+END 06_brdf_crf 0 15.2 seconds
+START 07_slf_refine
+END 07_slf_refine 0 3.9 seconds
+START 08_train_emitter
+END 08_train_emitter 0 46.9 seconds
+START 09_emitter_update
+END 09_emitter_update 0 3.8 seconds
+START 10_refine_shading
+END 10_refine_shading 0 57.9 seconds
+START 11_brdf_crf
+END 11_brdf_crf 0 14.2 seconds
+START 12_render
+END 12_render 0 8.8 seconds

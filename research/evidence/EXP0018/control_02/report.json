@@ -1,0 +1,106 @@
+{
+  "purpose": "Oracle native-response fit; assesses material-family mismatch only",
+  "matched_iris_control": true,
+  "uses_ground_truth": true,
+  "is_photo_estimation": false,
+  "is_proven_error_lower_bound": false,
+  "train_directions": [
+    0,
+    1,
+    3,
+    5,
+    7
+  ],
+  "heldout_directions": [
+    2,
+    4,
+    6,
+    8
+  ],
+  "steps": 2000,
+  "seeds": [
+    17,
+    23,
+    41
+  ],
+  "selection": "per-pixel minimum training loss across steps/seeds; heldout angles not used",
+  "excluded": "invalid, any delta/null lobe, camera local z <= 0.1",
+  "roughness_range": [
+    0.02,
+    1.0
+  ],
+  "views": [
+    {
+      "room": "bathroom",
+      "view": 0,
+      "eligible_fraction": 0.6465657552083334,
+      "samples": 2048,
+      "fit": {
+        "rmse": 0.0012387485476210713,
+        "relative_rmse": 0.003303566947579384,
+        "median_pixel_relative_rmse": 0.00016008764214348048,
+        "p90_pixel_relative_rmse": 0.005251741502434015
+      },
+      "heldout_angles": {
+        "rmse": 0.5785905718803406,
+        "relative_rmse": 0.7021534442901611,
+        "median_pixel_relative_rmse": 0.0008888671291060746,
+        "p90_pixel_relative_rmse": 0.12098583579063416
+      }
+    },
+    {
+      "room": "bathroom",
+      "view": 1,
+      "eligible_fraction": 0.6531270345052084,
+      "samples": 2048,
+      "fit": {
+        "rmse": 0.0012046066112816334,
+        "relative_rmse": 0.0018691141158342361,
+        "median_pixel_relative_rmse": 0.00017786318494472653,
+        "p90_pixel_relative_rmse": 0.004828520119190216
+      },
+      "heldout_angles": {
+        "rmse": 0.1536862552165985,
+        "relative_rmse": 0.4046604633331299,
+        "median_pixel_relative_rmse": 0.0008383122622035444,
+        "p90_pixel_relative_rmse": 0.11023522168397903
+      }
+    },
+    {
+      "room": "kitchen",
+      "view": 0,
+      "eligible_fraction": 0.8283589680989584,
+      "samples": 2048,
+      "fit": {
+        "rmse": 0.0016822178149595857,
+        "relative_rmse": 0.002935950644314289,
+        "median_pixel_relative_rmse": 7.244437438203022e-05,
+        "p90_pixel_relative_rmse": 0.0044930060394108295
+      },
+      "heldout_angles": {
+        "rmse": 0.020935842767357826,
+        "relative_rmse": 0.21817843616008759,
+        "median_pixel_relative_rmse": 0.00017724174540489912,
+        "p90_pixel_relative_rmse": 0.02969016134738922
+      }
+    },
+    {
+      "room": "kitchen",
+      "view": 1,
+      "eligible_fraction": 0.823699951171875,
+      "samples": 2048,
+      "fit": {
+        "rmse": 0.0018026742618530989,
+        "relative_rmse": 0.0033094054087996483,
+        "median_pixel_relative_rmse": 7.554797048214823e-05,
+        "p90_pixel_relative_rmse": 0.005230861250311136
+      },
+      "heldout_angles": {
+        "rmse": 0.01854134351015091,
+        "relative_rmse": 0.18707258999347687,
+        "median_pixel_relative_rmse": 0.00016506559040863067,
+        "p90_pixel_relative_rmse": 0.03719107434153557
+      }
+    }
+  ]
+}

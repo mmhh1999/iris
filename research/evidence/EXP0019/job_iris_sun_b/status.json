@@ -1,0 +1,23 @@
+{
+  "status": "failed",
+  "pid": 842190,
+  "command": [
+    ".venv/bin/python",
+    "experiments/run_sunpatch_iris.py",
+    "--data",
+    "experiments/out/EXP0019_sunpatch/data_03/sun_b",
+    "--output",
+    "experiments/out/EXP0019_sunpatch/iris_sun_b",
+    "--steps",
+    "200",
+    "--after-success",
+    "experiments/out/EXP0019_sunpatch/iris_sky"
+  ],
+  "started_utc": "2026-09-20T17:16:26.998180+00:00",
+  "max_seconds": 2400,
+  "idle_seconds": 900,
+  "elapsed_seconds": 312.35323068199796,
+  "log_idle_seconds": 0.4636111259460449,
+  "returncode": -15,
+  "finished_utc": "2026-09-20T17:21:39.351071+00:00"
+}

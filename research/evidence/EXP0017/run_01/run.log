@@ -1,0 +1,25 @@
+RENDER bathroom 0 0 101 2.5
+RENDER bathroom 0 0 202 2.6
+RENDER bathroom 0 1 101 3.7
+RENDER bathroom 0 1 202 3.9
+RENDER bathroom 0 2 101 4.9
+RENDER bathroom 0 2 202 5.1
+RENDER bathroom 1 0 101 7.1
+RENDER bathroom 1 0 202 7.1
+RENDER bathroom 1 1 101 7.8
+RENDER bathroom 1 1 202 7.9
+RENDER bathroom 1 2 101 8.8
+RENDER bathroom 1 2 202 8.8
+RENDER kitchen 0 0 101 10.7
+RENDER kitchen 0 0 202 10.8
+RENDER kitchen 0 1 101 11.6
+RENDER kitchen 0 1 202 11.8
+RENDER kitchen 0 2 101 12.9
+RENDER kitchen 0 2 202 13.1
+RENDER kitchen 1 0 101 14.5
+RENDER kitchen 1 0 202 14.7
+RENDER kitchen 1 1 101 15.1
+RENDER kitchen 1 1 202 15.3
+RENDER kitchen 1 2 101 15.9
+RENDER kitchen 1 2 202 16.1
+COMPLETE 24 observations

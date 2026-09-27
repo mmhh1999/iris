@@ -1,0 +1,16 @@
+{
+  "status": "succeeded",
+  "pid": 795162,
+  "command": [
+    ".venv/bin/python",
+    "-u",
+    "experiments/train_interiorverse_prior.py"
+  ],
+  "started_utc": "2026-09-20T14:06:36.009553+00:00",
+  "max_seconds": 1800,
+  "idle_seconds": 300,
+  "elapsed_seconds": 44.05270067698439,
+  "log_idle_seconds": 0.3655679225921631,
+  "returncode": 0,
+  "finished_utc": "2026-09-20T14:07:20.061736+00:00"
+}

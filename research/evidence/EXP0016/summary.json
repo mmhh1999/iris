@@ -1,0 +1,20 @@
+{
+  "albedo_mse": {
+    "baseline": 0.05358006156855771,
+    "mean": 0.03781742982611575,
+    "seed_std": 0.0006768379013060699,
+    "relative_mse_reduction": 0.29418838427934757
+  },
+  "roughness_mse": {
+    "baseline": 0.06619936992872132,
+    "mean": 0.05766300361335667,
+    "seed_std": 0.0008228911086588796,
+    "relative_mse_reduction": 0.12894935895244908
+  },
+  "metallic_mse": {
+    "baseline": 0.022791603288133247,
+    "mean": 0.022862072142834988,
+    "seed_std": 0.00069343591731127,
+    "relative_mse_reduction": -0.003091877908318663
+  }
+}

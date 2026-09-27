@@ -1,0 +1,8 @@
+/home/minghao/projects/iris/.venv/lib/python3.10/site-packages/torch/functional.py:505: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:4381.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+bake diffuse
+  0%|          | 0/12 [00:00<?, ?it/s]  8%|▊         | 1/12 [00:00<00:10,  1.08it/s] 25%|██▌       | 3/12 [00:01<00:02,  3.39it/s] 42%|████▏     | 5/12 [00:01<00:01,  5.41it/s] 58%|█████▊    | 7/12 [00:01<00:00,  7.15it/s] 75%|███████▌  | 9/12 [00:01<00:00,  8.53it/s] 92%|█████████▏| 11/12 [00:01<00:00,  9.81it/s]100%|██████████| 12/12 [00:01<00:00,  6.76it/s]
+[bake_shading - diffuse] time (s):  1.7757494449615479
+bake specular
+  0%|          | 0/12 [00:00<?, ?it/s]  8%|▊         | 1/12 [00:00<00:03,  3.40it/s] 17%|█▋        | 2/12 [00:00<00:02,  3.64it/s] 25%|██▌       | 3/12 [00:00<00:02,  3.73it/s] 33%|███▎      | 4/12 [00:01<00:02,  3.71it/s] 42%|████▏     | 5/12 [00:01<00:01,  3.79it/s] 50%|█████     | 6/12 [00:01<00:01,  3.82it/s] 58%|█████▊    | 7/12 [00:01<00:01,  3.81it/s] 67%|██████▋   | 8/12 [00:02<00:01,  3.84it/s] 75%|███████▌  | 9/12 [00:02<00:00,  3.90it/s] 83%|████████▎ | 10/12 [00:02<00:00,  3.84it/s] 92%|█████████▏| 11/12 [00:02<00:00,  3.78it/s]100%|██████████| 12/12 [00:03<00:00,  3.79it/s]100%|██████████| 12/12 [00:03<00:00,  3.78it/s]
+[bake_shading - specular] time (s):  3.171503782272339

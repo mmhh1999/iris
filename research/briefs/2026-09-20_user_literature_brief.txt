@@ -1,0 +1,581 @@
+有，而且我查完之后发现：**“太阳光斑/阴影污染 BRDF 恢复，从而导致重新渲染错误”不是我们猜出来的问题，而是 inverse rendering 领域一个非常明确、仍没彻底解决的问题。**
+
+但有一个重要转折：**已经有人专门研究“shadow → material/lighting ambiguity”了。** 所以我们的 novelty 不能只是“把 sun patch 从 BRDF 里去掉”。
+
+## 现在领域里到底发生了什么
+
+inverse rendering 想从图像恢复：
+
+$$
+I \rightarrow (G,\; BRDF,\; L)
+$$
+
+但图像里的一个暗/亮区域可能来自：
+
+$$
+\underbrace{\rho(x)}_{\text{material}}
+\times
+\underbrace{L(x)}_{\text{illumination}}
+\times
+\underbrace{V(x,L)}_{\text{visibility/shadow}}
+$$
+
+所以如果没有正确建模 \(V\)，优化器很容易：
+
+$$
+\text{shadow / sun patch}
+\rightarrow
+\text{albedo}
+$$
+
+也就是常说的 **baked-in lighting**。
+
+结果就是原视角 reconstruction 可能很好，但：
+
+```text
+Captured condition
+
+floor:
+████ SUN ████
+
+Recovered albedo:
+████ bright ████
+
+Change illumination
+       ↓
+
+floor still has
+████ bright ████
+
++
+new illumination
+```
+
+出现 ghost illumination / wrong relighting。
+
+---
+
+## ① Eclipse — CVPR 2024
+
+这个是我认为**与你的核心 scientific insight 最接近**的一篇。
+
+[Eclipse: Disambiguating Illumination and Materials using Unintended Shadows](https://openaccess.thecvf.com/content/CVPR2024/html/Verbin_Eclipse_Disambiguating_Illumination_and_Materials_using_Unintended_Shadows_CVPR_2024_paper.html?utm_source=chatgpt.com)
+
+他们直接说：
+
+> material 和 illumination 即使 geometry 已知也很难分解。
+
+尤其 diffuse material 下是 ill-conditioned / ill-posed。
+
+但他们有个非常漂亮的反向思路：
+
+> **以前大家觉得 shadow 是 nuisance；他们反而利用 shadow 帮助恢复 BRDF 和 illumination。**
+
+具体利用拍摄者移动产生的 unintended shadows，通过 differentiable Monte Carlo ray tracing，同时恢复：
+
+$$
+BRDF + illumination + occluder
+$$
+
+而且论文明确证明 shadow cue 能改善 material-light ambiguity。([CVF开放获取][1])
+
+这个对我们非常重要，因为它证明：
+
+> **shadow 本身可以成为 inverse rendering 的 constraint，而不只是需要消除的 artifact。**
+
+这和我们利用 **sun patch + window geometry** 的思想高度一致。
+
+但 Eclipse 是：
+
+**object-centric + environment illumination + moving photographer occluder**
+
+而我们可以是：
+
+**indoor scene + solar illumination + architectural window occluder/aperture + astronomical prior**。
+
+所以不是同一个问题。
+
+---
+
+## ② SIR — ICME 2025
+
+这个更加直接：
+
+[SIR: Multi-view Inverse Rendering with Decomposable Shadow](https://xiaokangwei.github.io/SIR/?utm_source=chatgpt.com)
+
+它研究的就是：
+
+> **复杂室内强光条件下，shadow 导致 material recovery ambiguity。**
+
+SIR 使用：
+
+* multi-view HDR；
+* SDF scene；
+* differentiable shadow；
+* 三阶段 SVBRDF estimation；
+* BRDF regularization。
+
+论文明确说，复杂 illumination + shadow 会导致 material reconstruction 出问题，因此显式 decomposable shadow 能改善 SVBRDF，并进一步支持 relighting/material replacement。
+
+所以：
+
+> ❌ “我们发现 shadow 会影响 BRDF recovery。”
+
+这个已经绝对不能作为 novelty。
+
+甚至：
+
+> ❌ “我们显式分离 shadow 和 albedo。”
+
+也已经不够。
+
+---
+
+## ③ IRIS — CVPR 2025
+
+而你现在基于的 IRIS 本身恰恰是在解决：
+
+> indoor material + lighting + multi-bounce + LDR input。
+
+[IRIS paper](https://openaccess.thecvf.com/content/CVPR2025/papers/Lin_IRIS_Inverse_Rendering_of_Indoor_Scenes_from_Low_Dynamic_Range_Images.pdf?utm_source=chatgpt.com)
+
+IRIS 的论点是现有方法在复杂 indoor light transport 下容易恢复错误的 material / HDR lighting，因此它自动识别 emitters、恢复 HDR lighting，并考虑 multi-bounce。([CVF开放获取][2])
+
+但它的 illumination representation 依然没有把：
+
+$$
+Sun \rightarrow Window \rightarrow Visibility
+$$
+
+作为一个明确、可编辑的 physical causal chain。
+
+**这就是我们还能进去的位置。**
+
+---
+
+# ④ ProjectiveShading — 2026
+
+这个又吃掉我们一块 novelty：
+
+[ProjectiveShading](https://onlinelibrary.wiley.com/doi/10.1111/cgf.70320?utm_source=chatgpt.com)
+
+它明确研究：
+
+> indoor scenes with sunlight + complex shadows。
+
+而且会：
+
+* estimate sunlight direction；
+* 建 sunlight map；
+* 表示 arbitrary occlusions；
+* inverse + re-render；
+* 给插入物体生成合理 sunlight/shadow。
+
+([Wiley Online Library][3])
+
+所以：
+
+> ❌ “估计室内太阳方向然后重新产生 shadow。”
+
+也不够新。
+
+---
+
+# 但是这里出现了一个很漂亮的研究 gap
+
+把这些论文排起来：
+
+```text
+Eclipse
+2024
+│
+├── shadow
+│      ↓
+│  helps recover
+│
+└── material + lighting
+
+
+SIR
+2025
+│
+├── indoor shadow decomposition
+│
+└── better SVBRDF
+
+
+IRIS
+2025
+│
+├── indoor LDR
+├── BRDF
+├── HDR lighting
+└── multi-bounce
+
+
+ProjectiveShading
+2026
+│
+├── indoor sunlight
+├── sun direction
+└── shadow re-rendering
+```
+
+但我目前没有找到一个方法真正把：
+
+$$
+\boxed{
+Sun
+\rightarrow
+Window
+\rightarrow
+Sun\ Patch
+\rightarrow
+Material/Lighting\ Disambiguation
+}
+$$
+
+作为 **multi-view indoor inverse rendering constraint**。
+
+更没有看到：
+
+$$
+\boxed{
+t_1\ inverse\ rendering
+\rightarrow
+t_2\ solar\ condition
+\rightarrow
+real\ t_2\ validation
+}
+$$
+
+作为主要 evaluation。
+
+这个区别非常重要。
+
+---
+
+# 所以我会重新定义我们的研究
+
+之前我们说：
+
+> 去除太阳光斑对 BRDF 的影响。
+
+我现在觉得这个表述**太弱，而且科学上也不够准确**。
+
+不要“去除” sun patch。
+
+而应该：
+
+> **解释 sun patch。**
+
+即：
+
+$$
+I =
+R(
+G,
+BRDF,
+L_{art},
+L_{sky},
+L_{sun},
+W
+)
+$$
+
+其中 sun patch 应该自然来自：
+
+$$
+P_{sun}
+=
+Visibility(
+G,
+W,
+\mathbf{s}
+)
+$$
+
+而：
+
+$$
+\mathbf{s}
+=
+SunPosition(
+lat,lon,time
+)
+$$
+
+或通过图像 refine。
+
+于是优化器不能随便把：
+
+```text
+████ sunlight ████
+```
+
+解释成：
+
+```text
+████ albedo ████
+```
+
+因为我们告诉它：
+
+> 这个位置按照 window + sun geometry **应该被太阳照到**。
+
+这就是 physical constraint。
+
+---
+
+## 更有意思：太阳光斑不是问题，而是信息
+
+这是我现在最喜欢这个项目的一点。
+
+传统观点：
+
+$$
+SunPatch = nuisance
+$$
+
+我们的观点应该像 Eclipse：
+
+$$
+\boxed{SunPatch = measurement}
+$$
+
+因为一个 sun patch 同时告诉你：
+
+### Sun direction
+
+$$
+\mathbf{s}
+$$
+
+### Window geometry
+
+$$
+W
+$$
+
+### Scene geometry
+
+$$
+G
+$$
+
+### Visibility
+
+$$
+V(x,\mathbf{s})
+$$
+
+甚至还包含：
+
+### Window transmission
+
+$$
+T_W
+$$
+
+和一定程度的：
+
+### BRDF response
+
+$$
+f_r(x,\mathbf{s},\omega_o)
+$$
+
+所以实际上它是一个非常强的 structured illumination cue。
+
+---
+
+# 这会导致一个比之前更强的方法
+
+我甚至不一定会先做：
+
+$$
+L_{patch}=IoU(P_{pred},P_{obs})
+$$
+
+而会尝试直接建立：
+
+$$
+L_{sun}(x)
+=
+E_{sun}
+\cdot
+T_W
+\cdot
+V(x,\mathbf{s})
+\cdot
+\max(0,n\cdot\mathbf{s})
+$$
+
+然后：
+
+$$
+L_o(x,\omega_o)
+=
+f_r(x,\mathbf{s},\omega_o)L_{sun}(x)
++
+L_{sky}
++
+L_{artificial}
++
+L_{indirect}
+$$
+
+进入 IRIS/path tracer。
+
+这样 optimizer 被迫回答：
+
+> 这个亮度来自 material，还是来自太阳？
+
+而不是事后 mask 掉太阳。
+
+---
+
+# 然后重新渲染才真正成为 killer application
+
+假设训练照片是：
+
+### 10 AM
+
+```text
+Window
+
+      \ sunlight
+       \
+        █████
+        █████ floor
+```
+
+恢复：
+
+$$
+BRDF,\;T_W,\;L_{sky},\;L_{artificial}
+$$
+
+然后太阳移动到 2 PM：
+
+```text
+Window
+
+             \
+              \
+                  █████
+                  █████
+```
+
+你的 material：
+
+**完全不变。**
+
+只有：
+
+$$
+\mathbf{s}_{10AM}
+\rightarrow
+\mathbf{s}_{2PM}
+$$
+
+于是 sun patch 自然移动。
+
+然后拿真实 2 PM 照片比较。
+
+这比：
+
+> “Our recovered albedo looks cleaner.”
+
+强非常多。
+
+---
+
+## 而且我又找到一个 2026 工作进一步证明问题还没死
+
+GLOW 2026 仍然把 indoor inverse rendering 的核心挑战描述成 **reflectance-lighting ambiguity + global illumination/interreflection**，它通过动态 co-located light/camera capture 来增加额外观测约束。([GLOW Project Page][4])
+
+换句话说，现在整个领域都在寻找：
+
+> **额外的 physical cue 来解除 inverse rendering ambiguity。**
+
+Eclipse：
+
+$$
+moving\ shadow
+$$
+
+GLOW：
+
+$$
+moving\ flash
+$$
+
+我们的：
+
+$$
+\boxed{
+moving\ sun
++
+fixed\ architecture
+}
+$$
+
+这个 framing 我认为比“daylight-aware IRIS”漂亮很多。
+
+---
+
+# 我现在甚至会这样命名论文
+
+而不是：
+
+> Daylight-Aware IRIS
+
+我更喜欢：
+
+### **Sunlight as Supervision: Solar-Geometry-Constrained Indoor Inverse Rendering**
+
+或者：
+
+### **Inverse Daylighting: Disentangling Materials and Illumination through Solar Geometry**
+
+核心一句：
+
+> **We treat naturally occurring sun patches not as nuisance illumination to remove, but as structured physical supervision for recovering scene materials and lighting.**
+
+这句话已经非常像 CVPR paper 的 central insight。
+
+---
+
+所以这次调研后，我对项目的判断其实**提高了一点，但 novelty 的位置改变了**。
+
+“shadow/sunlight 会污染 BRDF”——已经有人做，而且 SIR 非常接近。
+
+“估计太阳方向”——ProjectiveShading 也做了。
+
+真正值得冲的是：
+
+$$
+\boxed{
+\text{naturally moving sunlight}
++
+\text{known architectural geometry}
++
+\text{solar ephemeris}
+}
+$$
+
+作为一种新的 **structured physical supervision**，去解决：
+
+$$
+BRDF \leftrightarrow illumination
+$$
+
+ambiguity，并最终用**未见过的真实太阳时刻**证明 decomposition 是真的，而不是 appearance fitting。
+
+这会比我们最开始那个“修 IRIS sun patch bug”的故事强不少。
+
+[1]: https://openaccess.thecvf.com/content/CVPR2024/html/Verbin_Eclipse_Disambiguating_Illumination_and_Materials_using_Unintended_Shadows_CVPR_2024_paper.html?utm_source=chatgpt.com "CVPR 2024 Open Access Repository"
+[2]: https://openaccess.thecvf.com/content/CVPR2025/papers/Lin_IRIS_Inverse_Rendering_of_Indoor_Scenes_from_Low_Dynamic_Range_CVPR_2025_paper.pdf?utm_source=chatgpt.com "IRIS: Inverse Rendering of Indoor Scenes from Low Dynamic Range Images"
+[3]: https://onlinelibrary.wiley.com/doi/10.1111/cgf.70320?af=R&utm_source=chatgpt.com "ProjectiveShading: Inserting 3D Objects into Indoor Images with Complex Shadows - Luo‡ - Computer Graphics Forum - Wiley Online Library"
+[4]: https://glow-inverse-rendering.github.io/?utm_source=chatgpt.com "GLOW: Global Illumination-Aware Inverse Rendering"

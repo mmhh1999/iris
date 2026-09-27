@@ -1,0 +1,9 @@
+{
+  "checked_utc": "2026-09-20T14:04:38Z",
+  "log_mtime": 1789866223.0230346,
+  "log_stale_seconds": 46855.748522758484,
+  "pid": 678049,
+  "reason": "Stage 10 log stuck at 36/109; elapsed process over 13 hours; queued full run timed out",
+  "action": "SIGTERM only this run child; preserve checkpoints and partial output",
+  "command": "/home/minghao/projects/iris/.venv/bin/python refine_shading.py --scene /home/minghao/projects/iris/data_download/iris_official/datasets/fipt/indoor_synthetic/bathroom --dataset synthetic --ldr_img_dir Image --slf_path /home/minghao/projects/iris/experiments/out/EXP0011_baseline/from_scratch/bake/vslf_0.npz --emitter_path /home/minghao/projects/iris/experiments/out/EXP0011_baseline/from_scratch/bake/emitter.pth --ckpt /home/minghao/projects/iris/experiments/out/EXP0011_baseline/from_scratch/checkpoints/original_bathroom/last_0.ckpt --output /home/minghao/projects/iris/experiments/out/EXP0011_baseline/from_scratch/shading "
+}

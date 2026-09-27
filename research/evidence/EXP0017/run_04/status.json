@@ -1,0 +1,20 @@
+{
+  "status": "succeeded",
+  "pid": 798262,
+  "command": [
+    ".venv/bin/python",
+    "-u",
+    "experiments/pbr_solar_pilot.py",
+    "--out",
+    "experiments/out/EXP0017_pbr_solar/run_04",
+    "--spp",
+    "4096"
+  ],
+  "started_utc": "2026-09-20T14:18:05.278016+00:00",
+  "max_seconds": 1800,
+  "idle_seconds": 300,
+  "elapsed_seconds": 54.08635872701416,
+  "log_idle_seconds": 1.0362300872802734,
+  "returncode": 0,
+  "finished_utc": "2026-09-20T14:18:59.364039+00:00"
+}

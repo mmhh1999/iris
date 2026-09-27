@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/minghao/projects/iris/experiments/generate_sunpatch_benchmark.py", line 116, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--out',default='experiments/out/EXP0019_sunpatch/data_01');p.add_argument('--width',type=int,default=128);p.add_argument('--height',type=int,default=96);p.add_argument('--spp',type=int,default=1024);run(p.parse_args())
+  File "/home/minghao/projects/iris/experiments/generate_sunpatch_benchmark.py", line 101, in run
+    if 'vertex_positions' not in p:raise ValueError(f'Non-mesh shape {shape.id()}')
+ValueError: Non-mesh shape fixed_ceiling_lamp

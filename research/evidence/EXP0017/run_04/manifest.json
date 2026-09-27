@@ -1,0 +1,1189 @@
+{
+  "experiment": "EXP0017",
+  "source": "artist-authored PBR rooms, not real scans",
+  "sun": "directional, zero angular diameter approximation",
+  "sky": "constant RGB radiance",
+  "spp": 4096,
+  "depth": 12,
+  "seed_pair": [
+    101,
+    202
+  ],
+  "source_sha256": "e97cb535f6eda702094bfbb540f37c7f6c53b1d332be581712b6f5afcac40db2",
+  "mitsuba": "3.9.1",
+  "observations": [
+    {
+      "room": "bathroom",
+      "view": 0,
+      "condition": 0,
+      "seed": 101,
+      "path": "bathroom/view0_sun0_seed101.exr",
+      "sun_toward_world": [
+        -0.8516507531886608,
+        0.42261826174069944,
+        -0.3099754819924578
+      ],
+      "elevation_deg": 25,
+      "azimuth_relative_to_aperture_deg": -20,
+      "c2w_mitsuba": [
+        [
+          -0.659198,
+          0.0116337,
+          -0.751879,
+          0.00724053
+        ],
+        [
+          0.0,
+          0.99988,
+          0.015471,
+          0.912405
+        ],
+        [
+          0.751969,
+          0.0101985,
+          -0.659119,
+          -0.227584
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 8,
+        "median_distance": 2.7505805492401123
+      },
+      "mean_rgb": 0.04003666341304779,
+      "max_rgb": 11.407815933227539,
+      "display_clip_fraction": 0.0004984537760416666
+    },
+    {
+      "room": "bathroom",
+      "view": 0,
+      "condition": 0,
+      "seed": 202,
+      "path": "bathroom/view0_sun0_seed202.exr",
+      "sun_toward_world": [
+        -0.8516507531886608,
+        0.42261826174069944,
+        -0.3099754819924578
+      ],
+      "elevation_deg": 25,
+      "azimuth_relative_to_aperture_deg": -20,
+      "c2w_mitsuba": [
+        [
+          -0.659198,
+          0.0116337,
+          -0.751879,
+          0.00724053
+        ],
+        [
+          0.0,
+          0.99988,
+          0.015471,
+          0.912405
+        ],
+        [
+          0.751969,
+          0.0101985,
+          -0.659119,
+          -0.227584
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 8,
+        "median_distance": 2.7505805492401123
+      },
+      "mean_rgb": 0.040050264447927475,
+      "max_rgb": 11.089943885803223,
+      "display_clip_fraction": 0.0004950629340277778,
+      "paired_seed_rmse": 0.0037056533619761467
+    },
+    {
+      "room": "bathroom",
+      "view": 0,
+      "condition": 1,
+      "seed": 101,
+      "path": "bathroom/view0_sun1_seed101.exr",
+      "sun_toward_world": [
+        -0.7660444431189772,
+        0.6427876096865393,
+        3.348500137361371e-08
+      ],
+      "elevation_deg": 40,
+      "azimuth_relative_to_aperture_deg": 0,
+      "c2w_mitsuba": [
+        [
+          -0.659198,
+          0.0116337,
+          -0.751879,
+          0.00724053
+        ],
+        [
+          0.0,
+          0.99988,
+          0.015471,
+          0.912405
+        ],
+        [
+          0.751969,
+          0.0101985,
+          -0.659119,
+          -0.227584
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 8,
+        "median_distance": 2.7505805492401123
+      },
+      "mean_rgb": 0.030331114307045937,
+      "max_rgb": 0.3776920735836029,
+      "display_clip_fraction": 0.0
+    },
+    {
+      "room": "bathroom",
+      "view": 0,
+      "condition": 1,
+      "seed": 202,
+      "path": "bathroom/view0_sun1_seed202.exr",
+      "sun_toward_world": [
+        -0.7660444431189772,
+        0.6427876096865393,
+        3.348500137361371e-08
+      ],
+      "elevation_deg": 40,
+      "azimuth_relative_to_aperture_deg": 0,
+      "c2w_mitsuba": [
+        [
+          -0.659198,
+          0.0116337,
+          -0.751879,
+          0.00724053
+        ],
+        [
+          0.0,
+          0.99988,
+          0.015471,
+          0.912405
+        ],
+        [
+          0.751969,
+          0.0101985,
+          -0.659119,
+          -0.227584
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 8,
+        "median_distance": 2.7505805492401123
+      },
+      "mean_rgb": 0.0303281769156456,
+      "max_rgb": 0.38241448998451233,
+      "display_clip_fraction": 0.0,
+      "paired_seed_rmse": 0.0012095406418666244
+    },
+    {
+      "room": "bathroom",
+      "view": 0,
+      "condition": 2,
+      "seed": 101,
+      "path": "bathroom/view0_sun2_seed101.exr",
+      "sun_toward_world": [
+        -0.5389855361206529,
+        0.8191520442889918,
+        0.19617471852891252
+      ],
+      "elevation_deg": 55,
+      "azimuth_relative_to_aperture_deg": 20,
+      "c2w_mitsuba": [
+        [
+          -0.659198,
+          0.0116337,
+          -0.751879,
+          0.00724053
+        ],
+        [
+          0.0,
+          0.99988,
+          0.015471,
+          0.912405
+        ],
+        [
+          0.751969,
+          0.0101985,
+          -0.659119,
+          -0.227584
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 8,
+        "median_distance": 2.7505805492401123
+      },
+      "mean_rgb": 0.0480455718934536,
+      "max_rgb": 0.5164608359336853,
+      "display_clip_fraction": 0.0
+    },
+    {
+      "room": "bathroom",
+      "view": 0,
+      "condition": 2,
+      "seed": 202,
+      "path": "bathroom/view0_sun2_seed202.exr",
+      "sun_toward_world": [
+        -0.5389855361206529,
+        0.8191520442889918,
+        0.19617471852891252
+      ],
+      "elevation_deg": 55,
+      "azimuth_relative_to_aperture_deg": 20,
+      "c2w_mitsuba": [
+        [
+          -0.659198,
+          0.0116337,
+          -0.751879,
+          0.00724053
+        ],
+        [
+          0.0,
+          0.99988,
+          0.015471,
+          0.912405
+        ],
+        [
+          0.751969,
+          0.0101985,
+          -0.659119,
+          -0.227584
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 8,
+        "median_distance": 2.7505805492401123
+      },
+      "mean_rgb": 0.048041775822639465,
+      "max_rgb": 0.5210490822792053,
+      "display_clip_fraction": 0.0,
+      "paired_seed_rmse": 0.00208260933868587
+    },
+    {
+      "room": "bathroom",
+      "view": 1,
+      "condition": 0,
+      "seed": 101,
+      "path": "bathroom/view1_sun0_seed101.exr",
+      "sun_toward_world": [
+        -0.8516507531886608,
+        0.42261826174069944,
+        -0.3099754819924578
+      ],
+      "elevation_deg": 25,
+      "azimuth_relative_to_aperture_deg": -20,
+      "c2w_mitsuba": [
+        [
+          -0.659198,
+          0.0116337,
+          -0.751879,
+          -0.08298495
+        ],
+        [
+          0.0,
+          0.99988,
+          0.015471,
+          0.91426152
+        ],
+        [
+          0.751969,
+          0.0101985,
+          -0.659119,
+          -0.30667828
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 9,
+        "median_distance": 2.6946017742156982
+      },
+      "mean_rgb": 0.04112379997968674,
+      "max_rgb": 11.791956901550293,
+      "display_clip_fraction": 0.0006612141927083334
+    },
+    {
+      "room": "bathroom",
+      "view": 1,
+      "condition": 0,
+      "seed": 202,
+      "path": "bathroom/view1_sun0_seed202.exr",
+      "sun_toward_world": [
+        -0.8516507531886608,
+        0.42261826174069944,
+        -0.3099754819924578
+      ],
+      "elevation_deg": 25,
+      "azimuth_relative_to_aperture_deg": -20,
+      "c2w_mitsuba": [
+        [
+          -0.659198,
+          0.0116337,
+          -0.751879,
+          -0.08298495
+        ],
+        [
+          0.0,
+          0.99988,
+          0.015471,
+          0.91426152
+        ],
+        [
+          0.751969,
+          0.0101985,
+          -0.659119,
+          -0.30667828
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 9,
+        "median_distance": 2.6946017742156982
+      },
+      "mean_rgb": 0.041124314069747925,
+      "max_rgb": 11.944042205810547,
+      "display_clip_fraction": 0.0006612141927083334,
+      "paired_seed_rmse": 0.0037902817130088806
+    },
+    {
+      "room": "bathroom",
+      "view": 1,
+      "condition": 1,
+      "seed": 101,
+      "path": "bathroom/view1_sun1_seed101.exr",
+      "sun_toward_world": [
+        -0.7660444431189772,
+        0.6427876096865393,
+        3.348500137361371e-08
+      ],
+      "elevation_deg": 40,
+      "azimuth_relative_to_aperture_deg": 0,
+      "c2w_mitsuba": [
+        [
+          -0.659198,
+          0.0116337,
+          -0.751879,
+          -0.08298495
+        ],
+        [
+          0.0,
+          0.99988,
+          0.015471,
+          0.91426152
+        ],
+        [
+          0.751969,
+          0.0101985,
+          -0.659119,
+          -0.30667828
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 9,
+        "median_distance": 2.6946017742156982
+      },
+      "mean_rgb": 0.03203257918357849,
+      "max_rgb": 0.41952773928642273,
+      "display_clip_fraction": 0.0
+    },
+    {
+      "room": "bathroom",
+      "view": 1,
+      "condition": 1,
+      "seed": 202,
+      "path": "bathroom/view1_sun1_seed202.exr",
+      "sun_toward_world": [
+        -0.7660444431189772,
+        0.6427876096865393,
+        3.348500137361371e-08
+      ],
+      "elevation_deg": 40,
+      "azimuth_relative_to_aperture_deg": 0,
+      "c2w_mitsuba": [
+        [
+          -0.659198,
+          0.0116337,
+          -0.751879,
+          -0.08298495
+        ],
+        [
+          0.0,
+          0.99988,
+          0.015471,
+          0.91426152
+        ],
+        [
+          0.751969,
+          0.0101985,
+          -0.659119,
+          -0.30667828
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 9,
+        "median_distance": 2.6946017742156982
+      },
+      "mean_rgb": 0.032023027539253235,
+      "max_rgb": 0.41741108894348145,
+      "display_clip_fraction": 0.0,
+      "paired_seed_rmse": 0.001236776472069323
+    },
+    {
+      "room": "bathroom",
+      "view": 1,
+      "condition": 2,
+      "seed": 101,
+      "path": "bathroom/view1_sun2_seed101.exr",
+      "sun_toward_world": [
+        -0.5389855361206529,
+        0.8191520442889918,
+        0.19617471852891252
+      ],
+      "elevation_deg": 55,
+      "azimuth_relative_to_aperture_deg": 20,
+      "c2w_mitsuba": [
+        [
+          -0.659198,
+          0.0116337,
+          -0.751879,
+          -0.08298495
+        ],
+        [
+          0.0,
+          0.99988,
+          0.015471,
+          0.91426152
+        ],
+        [
+          0.751969,
+          0.0101985,
+          -0.659119,
+          -0.30667828
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 9,
+        "median_distance": 2.6946017742156982
+      },
+      "mean_rgb": 0.05110876262187958,
+      "max_rgb": 0.5229403972625732,
+      "display_clip_fraction": 0.0
+    },
+    {
+      "room": "bathroom",
+      "view": 1,
+      "condition": 2,
+      "seed": 202,
+      "path": "bathroom/view1_sun2_seed202.exr",
+      "sun_toward_world": [
+        -0.5389855361206529,
+        0.8191520442889918,
+        0.19617471852891252
+      ],
+      "elevation_deg": 55,
+      "azimuth_relative_to_aperture_deg": 20,
+      "c2w_mitsuba": [
+        [
+          -0.659198,
+          0.0116337,
+          -0.751879,
+          -0.08298495
+        ],
+        [
+          0.0,
+          0.99988,
+          0.015471,
+          0.91426152
+        ],
+        [
+          0.751969,
+          0.0101985,
+          -0.659119,
+          -0.30667828
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 9,
+        "median_distance": 2.6946017742156982
+      },
+      "mean_rgb": 0.05108930170536041,
+      "max_rgb": 0.5233103036880493,
+      "display_clip_fraction": 0.0,
+      "paired_seed_rmse": 0.00215151347219944
+    },
+    {
+      "room": "kitchen",
+      "view": 0,
+      "condition": 0,
+      "seed": 101,
+      "path": "kitchen/view0_sun0_seed101.exr",
+      "sun_toward_world": [
+        0.30997551921944466,
+        0.42261826174069944,
+        -0.8516507396391465
+      ],
+      "elevation_deg": 25,
+      "azimuth_relative_to_aperture_deg": -20,
+      "c2w_mitsuba": [
+        [
+          -0.89874,
+          -0.0182716,
+          -0.4381,
+          1.211
+        ],
+        [
+          0.0,
+          0.999131,
+          -0.0416703,
+          1.80475
+        ],
+        [
+          0.438481,
+          -0.0374507,
+          -0.89796,
+          3.85239
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 8,
+        "median_distance": 5.534168243408203
+      },
+      "mean_rgb": 0.021766768768429756,
+      "max_rgb": 1.3467406034469604,
+      "display_clip_fraction": 2.0345052083333332e-05
+    },
+    {
+      "room": "kitchen",
+      "view": 0,
+      "condition": 0,
+      "seed": 202,
+      "path": "kitchen/view0_sun0_seed202.exr",
+      "sun_toward_world": [
+        0.30997551921944466,
+        0.42261826174069944,
+        -0.8516507396391465
+      ],
+      "elevation_deg": 25,
+      "azimuth_relative_to_aperture_deg": -20,
+      "c2w_mitsuba": [
+        [
+          -0.89874,
+          -0.0182716,
+          -0.4381,
+          1.211
+        ],
+        [
+          0.0,
+          0.999131,
+          -0.0416703,
+          1.80475
+        ],
+        [
+          0.438481,
+          -0.0374507,
+          -0.89796,
+          3.85239
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 8,
+        "median_distance": 5.534168243408203
+      },
+      "mean_rgb": 0.021775832399725914,
+      "max_rgb": 1.46389639377594,
+      "display_clip_fraction": 2.0345052083333332e-05,
+      "paired_seed_rmse": 0.0019154750043526292
+    },
+    {
+      "room": "kitchen",
+      "view": 0,
+      "condition": 1,
+      "seed": 101,
+      "path": "kitchen/view0_sun1_seed101.exr",
+      "sun_toward_world": [
+        -7.648228506784466e-22,
+        0.6427876096865393,
+        -0.766044443118978
+      ],
+      "elevation_deg": 40,
+      "azimuth_relative_to_aperture_deg": 0,
+      "c2w_mitsuba": [
+        [
+          -0.89874,
+          -0.0182716,
+          -0.4381,
+          1.211
+        ],
+        [
+          0.0,
+          0.999131,
+          -0.0416703,
+          1.80475
+        ],
+        [
+          0.438481,
+          -0.0374507,
+          -0.89796,
+          3.85239
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 8,
+        "median_distance": 5.534168243408203
+      },
+      "mean_rgb": 0.018302302807569504,
+      "max_rgb": 1.3460763692855835,
+      "display_clip_fraction": 1.3563368055555555e-05
+    },
+    {
+      "room": "kitchen",
+      "view": 0,
+      "condition": 1,
+      "seed": 202,
+      "path": "kitchen/view0_sun1_seed202.exr",
+      "sun_toward_world": [
+        -7.648228506784466e-22,
+        0.6427876096865393,
+        -0.766044443118978
+      ],
+      "elevation_deg": 40,
+      "azimuth_relative_to_aperture_deg": 0,
+      "c2w_mitsuba": [
+        [
+          -0.89874,
+          -0.0182716,
+          -0.4381,
+          1.211
+        ],
+        [
+          0.0,
+          0.999131,
+          -0.0416703,
+          1.80475
+        ],
+        [
+          0.438481,
+          -0.0374507,
+          -0.89796,
+          3.85239
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 8,
+        "median_distance": 5.534168243408203
+      },
+      "mean_rgb": 0.01831709034740925,
+      "max_rgb": 1.3222824335098267,
+      "display_clip_fraction": 1.0172526041666666e-05,
+      "paired_seed_rmse": 0.0015204270603135228
+    },
+    {
+      "room": "kitchen",
+      "view": 0,
+      "condition": 2,
+      "seed": 101,
+      "path": "kitchen/view0_sun2_seed101.exr",
+      "sun_toward_world": [
+        -0.1961746949690111,
+        0.8191520442889918,
+        -0.5389855446957563
+      ],
+      "elevation_deg": 55,
+      "azimuth_relative_to_aperture_deg": 20,
+      "c2w_mitsuba": [
+        [
+          -0.89874,
+          -0.0182716,
+          -0.4381,
+          1.211
+        ],
+        [
+          0.0,
+          0.999131,
+          -0.0416703,
+          1.80475
+        ],
+        [
+          0.438481,
+          -0.0374507,
+          -0.89796,
+          3.85239
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 8,
+        "median_distance": 5.534168243408203
+      },
+      "mean_rgb": 0.017519567161798477,
+      "max_rgb": 1.1346380710601807,
+      "display_clip_fraction": 0.00010511610243055556
+    },
+    {
+      "room": "kitchen",
+      "view": 0,
+      "condition": 2,
+      "seed": 202,
+      "path": "kitchen/view0_sun2_seed202.exr",
+      "sun_toward_world": [
+        -0.1961746949690111,
+        0.8191520442889918,
+        -0.5389855446957563
+      ],
+      "elevation_deg": 55,
+      "azimuth_relative_to_aperture_deg": 20,
+      "c2w_mitsuba": [
+        [
+          -0.89874,
+          -0.0182716,
+          -0.4381,
+          1.211
+        ],
+        [
+          0.0,
+          0.999131,
+          -0.0416703,
+          1.80475
+        ],
+        [
+          0.438481,
+          -0.0374507,
+          -0.89796,
+          3.85239
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 8,
+        "median_distance": 5.534168243408203
+      },
+      "mean_rgb": 0.017530903220176697,
+      "max_rgb": 1.1426266431808472,
+      "display_clip_fraction": 0.00011189778645833333,
+      "paired_seed_rmse": 0.00137835752684623
+    },
+    {
+      "room": "kitchen",
+      "view": 1,
+      "condition": 0,
+      "seed": 101,
+      "path": "kitchen/view1_sun0_seed101.exr",
+      "sun_toward_world": [
+        0.30997551921944466,
+        0.42261826174069944,
+        -0.8516507396391465
+      ],
+      "elevation_deg": 25,
+      "azimuth_relative_to_aperture_deg": -20,
+      "c2w_mitsuba": [
+        [
+          -0.89874,
+          -0.0182716,
+          -0.4381,
+          1.158428
+        ],
+        [
+          0.0,
+          0.999131,
+          -0.0416703,
+          1.799749564
+        ],
+        [
+          0.438481,
+          -0.0374507,
+          -0.89796,
+          3.7446348
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 8,
+        "median_distance": 5.132119178771973
+      },
+      "mean_rgb": 0.02210717648267746,
+      "max_rgb": 1.7304506301879883,
+      "display_clip_fraction": 1.3563368055555555e-05
+    },
+    {
+      "room": "kitchen",
+      "view": 1,
+      "condition": 0,
+      "seed": 202,
+      "path": "kitchen/view1_sun0_seed202.exr",
+      "sun_toward_world": [
+        0.30997551921944466,
+        0.42261826174069944,
+        -0.8516507396391465
+      ],
+      "elevation_deg": 25,
+      "azimuth_relative_to_aperture_deg": -20,
+      "c2w_mitsuba": [
+        [
+          -0.89874,
+          -0.0182716,
+          -0.4381,
+          1.158428
+        ],
+        [
+          0.0,
+          0.999131,
+          -0.0416703,
+          1.799749564
+        ],
+        [
+          0.438481,
+          -0.0374507,
+          -0.89796,
+          3.7446348
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 8,
+        "median_distance": 5.132119178771973
+      },
+      "mean_rgb": 0.0221069548279047,
+      "max_rgb": 1.5466926097869873,
+      "display_clip_fraction": 1.0172526041666666e-05,
+      "paired_seed_rmse": 0.0019038922619074583
+    },
+    {
+      "room": "kitchen",
+      "view": 1,
+      "condition": 1,
+      "seed": 101,
+      "path": "kitchen/view1_sun1_seed101.exr",
+      "sun_toward_world": [
+        -7.648228506784466e-22,
+        0.6427876096865393,
+        -0.766044443118978
+      ],
+      "elevation_deg": 40,
+      "azimuth_relative_to_aperture_deg": 0,
+      "c2w_mitsuba": [
+        [
+          -0.89874,
+          -0.0182716,
+          -0.4381,
+          1.158428
+        ],
+        [
+          0.0,
+          0.999131,
+          -0.0416703,
+          1.799749564
+        ],
+        [
+          0.438481,
+          -0.0374507,
+          -0.89796,
+          3.7446348
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 8,
+        "median_distance": 5.132119178771973
+      },
+      "mean_rgb": 0.01893264800310135,
+      "max_rgb": 2.0678651332855225,
+      "display_clip_fraction": 2.0345052083333332e-05
+    },
+    {
+      "room": "kitchen",
+      "view": 1,
+      "condition": 1,
+      "seed": 202,
+      "path": "kitchen/view1_sun1_seed202.exr",
+      "sun_toward_world": [
+        -7.648228506784466e-22,
+        0.6427876096865393,
+        -0.766044443118978
+      ],
+      "elevation_deg": 40,
+      "azimuth_relative_to_aperture_deg": 0,
+      "c2w_mitsuba": [
+        [
+          -0.89874,
+          -0.0182716,
+          -0.4381,
+          1.158428
+        ],
+        [
+          0.0,
+          0.999131,
+          -0.0416703,
+          1.799749564
+        ],
+        [
+          0.438481,
+          -0.0374507,
+          -0.89796,
+          3.7446348
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 8,
+        "median_distance": 5.132119178771973
+      },
+      "mean_rgb": 0.018933547660708427,
+      "max_rgb": 1.8115952014923096,
+      "display_clip_fraction": 1.6954210069444445e-05,
+      "paired_seed_rmse": 0.0017014698823913932
+    },
+    {
+      "room": "kitchen",
+      "view": 1,
+      "condition": 2,
+      "seed": 101,
+      "path": "kitchen/view1_sun2_seed101.exr",
+      "sun_toward_world": [
+        -0.1961746949690111,
+        0.8191520442889918,
+        -0.5389855446957563
+      ],
+      "elevation_deg": 55,
+      "azimuth_relative_to_aperture_deg": 20,
+      "c2w_mitsuba": [
+        [
+          -0.89874,
+          -0.0182716,
+          -0.4381,
+          1.158428
+        ],
+        [
+          0.0,
+          0.999131,
+          -0.0416703,
+          1.799749564
+        ],
+        [
+          0.438481,
+          -0.0374507,
+          -0.89796,
+          3.7446348
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 8,
+        "median_distance": 5.132119178771973
+      },
+      "mean_rgb": 0.018100576475262642,
+      "max_rgb": 1.1289892196655273,
+      "display_clip_fraction": 0.00011867947048611111
+    },
+    {
+      "room": "kitchen",
+      "view": 1,
+      "condition": 2,
+      "seed": 202,
+      "path": "kitchen/view1_sun2_seed202.exr",
+      "sun_toward_world": [
+        -0.1961746949690111,
+        0.8191520442889918,
+        -0.5389855446957563
+      ],
+      "elevation_deg": 55,
+      "azimuth_relative_to_aperture_deg": 20,
+      "c2w_mitsuba": [
+        [
+          -0.89874,
+          -0.0182716,
+          -0.4381,
+          1.158428
+        ],
+        [
+          0.0,
+          0.999131,
+          -0.0416703,
+          1.799749564
+        ],
+        [
+          0.438481,
+          -0.0374507,
+          -0.89796,
+          3.7446348
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_geometry_check": {
+        "finite_rays": 8,
+        "median_distance": 5.132119178771973
+      },
+      "mean_rgb": 0.01810241863131523,
+      "max_rgb": 1.1185412406921387,
+      "display_clip_fraction": 0.00011867947048611111,
+      "paired_seed_rmse": 0.001325210090726614
+    }
+  ],
+  "rooms": {
+    "bathroom": {
+      "original_xml_sha256": "f00fc079990dcccfb4ae216cc04deeb9c3df576e901f729ca866f48c1cffb2cb",
+      "license": "This is the Mitsuba version of 'Contemporary Bathroom' by Mareck, downloaded from https://benedikt-bitterli.me/resources/\n\nThe original file may be obtained here: http://www.blendswap.com/blends/view/75302\n\nThis scene was released under a CC0 license and is in the public domain.\nIt may be copied, modified and used commercially, without permission or\nattribution. However, crediting the artist is encouraged.\n\nFor more information about the license, please see\nhttps://creativecommons.org/publicdomain/zero/1.0/\n",
+      "outward_axis": [
+        -0.999999999999999,
+        0.0,
+        4.3711564876416693e-08
+      ],
+      "modified_assets": "Remove original emissive rectangle shapes; all remaining BSDFs and geometry retained",
+      "removed_shapes": [
+        "<shape type=\"rectangle\" id=\"Light_0001\">\n\t\t<transform name=\"to_world\">\n\t\t\t<matrix value=\"-2.84819e-008 -5.69636e-008 1.30317 -2.89823 2.84819e-008 1 4.37114e-008 1.40504 -0.65159 4.37114e-008 -5.69636e-008 -1.39266 0 0 0 1\" />\n\t\t</transform>\n\t\t<ref id=\"LightBSDF\" />\n\t\t<emitter type=\"area\">\n\t\t\t<rgb name=\"radiance\" value=\"30, 30, 30\" />\n\t\t</emitter>\n\t</shape>\n\t"
+      ]
+    },
+    "kitchen": {
+      "original_xml_sha256": "1884745a00b9e9c3130977e0cad39ba991090cf5bf3f1e5c77559a35797838c2",
+      "license": "This is the Mitsuba version of 'Country Kitchen' by Jay-Artist, downloaded from https://benedikt-bitterli.me/resources/\n\nThe original file may be obtained here: http://www.blendswap.com/blends/view/42851\n\nThis scene was released under a CC-BY license.\nIt may be copied, modified and used commercially without permission, as long as:\n\n  * Appropriate credit is given to the original author\n  * A link to the license is provided\n  \nFor more information about the license, please see\nhttps://creativecommons.org/licenses/by/3.0/\n",
+      "outward_axis": [
+        -9.98405324323537e-22,
+        0.0,
+        -1.0
+      ],
+      "modified_assets": "Remove original emissive rectangle shapes; all remaining BSDFs and geometry retained",
+      "removed_shapes": [
+        "<shape type=\"rectangle\">\n\t\t<transform name=\"to_world\">\n\t\t\t<matrix value=\"0.811764 1.25471e-014 5.48452e-022 0.060314 -9.254e-015 1.10064 6.63724e-009 1.97379 0 5.90839e-008 0.549328 -3.1173 0 0 0 1\" />\n\t\t</transform>\n\t\t<bsdf type=\"twosided\">\n\t\t\t<bsdf type=\"diffuse\">\n\t\t\t\t<rgb name=\"reflectance\" value=\"0, 0, 0\" />\n\t\t\t</bsdf>\n\t\t</bsdf>\n\t\t<emitter type=\"area\">\n\t\t\t<rgb name=\"radiance\" value=\"16.032, 16.032, 16.032\" />\n\t\t</emitter>\n\t</shape>\n\t",
+        "<shape type=\"rectangle\">\n\t\t<transform name=\"to_world\">\n\t\t\t<matrix value=\"-0.0290284 3.30012e-015 -7.54979e-008 -2.38843 4.38317e-009 2.18557e-008 -0.5 1.6129 0 -0.244301 -1.06788e-008 -1.04852 0 0 0 1\" />\n\t\t</transform>\n\t\t<bsdf type=\"twosided\">\n\t\t\t<bsdf type=\"diffuse\">\n\t\t\t\t<rgb name=\"reflectance\" value=\"0, 0, 0\" />\n\t\t\t</bsdf>\n\t\t</bsdf>\n\t\t<emitter type=\"area\">\n\t\t\t<rgb name=\"radiance\" value=\"11.2212, 11.2212, 11.2212\" />\n\t\t</emitter>\n\t</shape>\n\t",
+        "<shape type=\"rectangle\">\n\t\t<transform name=\"to_world\">\n\t\t\t<matrix value=\"-0.0290284 3.30012e-015 -7.54979e-008 -2.38843 4.38317e-009 2.18557e-008 -0.5 1.6129 0 -0.244301 -1.06788e-008 -1.58497 0 0 0 1\" />\n\t\t</transform>\n\t\t<bsdf type=\"twosided\">\n\t\t\t<bsdf type=\"diffuse\">\n\t\t\t\t<rgb name=\"reflectance\" value=\"0, 0, 0\" />\n\t\t\t</bsdf>\n\t\t</bsdf>\n\t\t<emitter type=\"area\">\n\t\t\t<rgb name=\"radiance\" value=\"11.2212, 11.2212, 11.2212\" />\n\t\t</emitter>\n\t</shape>\n\t",
+        "<shape type=\"rectangle\">\n\t\t<transform name=\"to_world\">\n\t\t\t<matrix value=\"-0.0290284 3.30012e-015 -7.54979e-008 -2.38843 4.38317e-009 2.18557e-008 -0.5 1.6129 0 -0.244301 -1.06788e-008 -2.14209 0 0 0 1\" />\n\t\t</transform>\n\t\t<bsdf type=\"twosided\">\n\t\t\t<bsdf type=\"diffuse\">\n\t\t\t\t<rgb name=\"reflectance\" value=\"0, 0, 0\" />\n\t\t\t</bsdf>\n\t\t</bsdf>\n\t\t<emitter type=\"area\">\n\t\t\t<rgb name=\"radiance\" value=\"11.2212, 11.2212, 11.2212\" />\n\t\t</emitter>\n\t</shape>\n"
+      ]
+    }
+  },
+  "brdf_estimation_performed": false,
+  "elapsed_seconds": 52.22679172101198
+}

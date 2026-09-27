@@ -1,0 +1,103 @@
+{
+  "protocol": "generator-only native BSDF response at pixel centers",
+  "quantity": "BSDF times outgoing cosine; RGB, inverse steradian",
+  "limitations": [
+    "Not IRIS metallic-roughness parameters",
+    "Delta lobes have zero continuous eval and require separate assessment",
+    "First geometric intersection, not stochastic transparency traversal",
+    "Pixel-center samples do not reproduce filtered rendered pixels"
+  ],
+  "views": [
+    {
+      "room": "bathroom",
+      "view": 0,
+      "file": "bathroom_view0.npz",
+      "sha256": "313a4b6a59f79bbac00c3a89ba3a435a07d0fa482a1749a62a3ebd7f0cc6acc8",
+      "valid_fraction": 0.9364217122395834,
+      "delta_pixel_fraction": 0.23445638020833334,
+      "null_pixel_fraction": 0.00079345703125,
+      "max_response": 1.403226613998413,
+      "shape_count": 35
+    },
+    {
+      "room": "bathroom",
+      "view": 1,
+      "file": "bathroom_view1.npz",
+      "sha256": "7c5239b7887902403b5fab4dee2e5e67908ce02a65a5281c6cbc665057235b84",
+      "valid_fraction": 0.9330342610677084,
+      "delta_pixel_fraction": 0.23046875,
+      "null_pixel_fraction": 5.0862630208333336e-05,
+      "max_response": 1.4560993909835815,
+      "shape_count": 35
+    },
+    {
+      "room": "kitchen",
+      "view": 0,
+      "file": "kitchen_view0.npz",
+      "sha256": "f6764a77932d596950a88af07326331502d0a889c80aba07e47903ee60468d18",
+      "valid_fraction": 0.9533793131510416,
+      "delta_pixel_fraction": 0.021433512369791668,
+      "null_pixel_fraction": 0.012105305989583334,
+      "max_response": 23.870330810546875,
+      "shape_count": 75
+    },
+    {
+      "room": "kitchen",
+      "view": 1,
+      "file": "kitchen_view1.npz",
+      "sha256": "a112053ed08cfe6d0c4b4aaf45728efac5ab3e8bde5d789b03300435d7ffbb30",
+      "valid_fraction": 0.95050048828125,
+      "delta_pixel_fraction": 0.022054036458333332,
+      "null_pixel_fraction": 0.012522379557291666,
+      "max_response": 8.122292518615723,
+      "shape_count": 75
+    }
+  ],
+  "outgoing_directions_local": [
+    [
+      0.0,
+      0.0,
+      1.0
+    ],
+    [
+      0.49999999999999994,
+      0.0,
+      0.8660254037844387
+    ],
+    [
+      3.0616169978683824e-17,
+      0.49999999999999994,
+      0.8660254037844387
+    ],
+    [
+      -0.49999999999999994,
+      6.123233995736765e-17,
+      0.8660254037844387
+    ],
+    [
+      -9.184850993605147e-17,
+      -0.49999999999999994,
+      0.8660254037844387
+    ],
+    [
+      0.8660254037844386,
+      0.0,
+      0.5000000000000001
+    ],
+    [
+      5.302876193624534e-17,
+      0.8660254037844386,
+      0.5000000000000001
+    ],
+    [
+      -0.8660254037844386,
+      1.0605752387249068e-16,
+      0.5000000000000001
+    ],
+    [
+      -1.5908628580873602e-16,
+      -0.8660254037844386,
+      0.5000000000000001
+    ]
+  ]
+}
