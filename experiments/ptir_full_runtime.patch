@@ -1,0 +1,131 @@
+diff --git a/threedgptir_tracer/src/optixTracer.cpp b/threedgptir_tracer/src/optixTracer.cpp
+index 7045cd2..e56932e 100644
+--- a/threedgptir_tracer/src/optixTracer.cpp
++++ b/threedgptir_tracer/src/optixTracer.cpp
+@@ -460,6 +460,9 @@ void OptixTracer::createPipeline(const OptixDeviceContext context,
+             optix_include_dir = dependencies_path + "/../threedgrt_tracer/dependencies/optix-dev/include";
+         }
+         std::string cuda_include_dir  = cuda_path + "/include";
++        if (!std::ifstream(cuda_include_dir + "/vector_types.h").good()) {
++            cuda_include_dir = cuda_path + "/targets/x86_64-linux/include";
++        }
+ 
+         const char* input = getInputData(shaderFile.c_str(), includeDir.c_str(), optix_include_dir.c_str(),
+                                          cuda_include_dir.c_str(), kernel_name.c_str(), inputSize, defines,
+diff --git a/threedgptir_tracer/tracer.py b/threedgptir_tracer/tracer.py
+index 29bfddb..7d2b948 100644
+--- a/threedgptir_tracer/tracer.py
++++ b/threedgptir_tracer/tracer.py
+@@ -976,6 +976,25 @@ class Tracer:
+                     weighted if previous is None else previous + weighted
+                 )
+ 
++            # Activations depend on the model, not the Monte Carlo chunk. Sharing
++            # them avoids retaining a complete SH tensor copy per chunk in AD.
++            shared_attributes = (
++                gaussians.positions.contiguous(),
++                gaussians.get_rotation().contiguous(),
++                gaussians.get_scale().contiguous(),
++                gaussians.get_density().contiguous(),
++                gaussians.get_features().contiguous(),
++                gaussians.get_shading_normal().contiguous(),
++                gaussians.get_material_albedo().contiguous(),
++                gaussians.get_material_roughness().contiguous(),
++                gaussians.get_material_metallic().contiguous(),
++            )
++            native_apply = Tracer._Autograd.apply
++            if train and self.conf.render.get('checkpoint_spp_chunks', False):
++                from torch.utils.checkpoint import checkpoint
++                def native_apply(*args):
++                    return checkpoint(Tracer._Autograd.apply, *args, use_reentrant=True)
++
+             for spp_start in range(0, spp, spp_chunk):
+                 chunk_spp = min(spp_chunk, spp - spp_start)
+                 chunk_jitter = (
+@@ -1004,21 +1023,13 @@ class Tracer:
+                     chunk_pred_light,
+                     chunk_pbr_components,
+                     chunk_pred_coverage,
+-                ) = Tracer._Autograd.apply(
++                ) = native_apply(
+                     self.tracer_wrapper,
+                     frame_id + spp_start,
+                     gpu_batch.T_to_world.contiguous(),
+                     rays_ori,
+                     rays_dir,
+-                    gaussians.positions.contiguous(),
+-                    gaussians.get_rotation().contiguous(),
+-                    gaussians.get_scale().contiguous(),
+-                    gaussians.get_density().contiguous(),
+-                    gaussians.get_features().contiguous(),
+-                    gaussians.get_shading_normal().contiguous(),
+-                    gaussians.get_material_albedo().contiguous(),
+-                    gaussians.get_material_roughness().contiguous(),
+-                    gaussians.get_material_metallic().contiguous(),
++                    *shared_attributes,
+                     environment,
+                     environment_alias_table,
+                     sg_environment,
+diff --git a/threedgrut/strategy/gs.py b/threedgrut/strategy/gs.py
+index bc6305a..44be2c9 100644
+--- a/threedgrut/strategy/gs.py
++++ b/threedgrut/strategy/gs.py
+@@ -235,6 +235,23 @@ class GSStrategy(BaseStrategy):
+ 
+         torch.cuda.empty_cache()
+ 
++    def _limit_growth(self, mask, position_grad, normal_grad, growth_per_parent=1):
++        cap = self.conf.strategy.densify.get('max_gaussians', None)
++        if cap is None:
++            return mask
++        available = max(0, int(cap) - self.model.num_gaussians)
++        available = min(available, int(self.conf.strategy.densify.get('max_growth_per_update', available)))
++        budget = available // growth_per_parent
++        indices = torch.nonzero(mask, as_tuple=True)[0]
++        if indices.numel() <= budget:
++            return mask
++        priority = position_grad[indices] / max(self.clone_grad_threshold, 1e-12)
++        priority += normal_grad[indices] / max(self.clone_shading_normal_grad_threshold, 1e-12)
++        keep = indices[torch.topk(priority, budget).indices] if budget else indices[:0]
++        limited = torch.zeros_like(mask); limited[keep] = True
++        logger.info(f'Densification memory budget: selected {budget} / {indices.numel()} candidates; cap={cap}')
++        return limited
++
+     @torch.cuda.nvtx.range("split_gaussians")
+     def split_gaussians(
+         self,
+@@ -267,6 +284,10 @@ class GSStrategy(BaseStrategy):
+         )
+         mask = torch.logical_and(mask, size_mask)
+ 
++        mask = self._limit_growth(mask, padded_grad, padded_shading_normal_grad,
++                                  self.split_n_gaussians - 1)
++        if not mask.any():
++            return
+         stds = self.model.get_scale()[mask].repeat(self.split_n_gaussians, 1)
+         means = torch.zeros((stds.size(0), 3), device="cuda")
+         samples = torch.normal(mean=means, std=stds)
+@@ -348,6 +369,9 @@ class GSStrategy(BaseStrategy):
+             <= self.relative_size_threshold * scene_extent
+         )
+         mask = torch.logical_and(mask, size_mask)
++        mask = self._limit_growth(mask, densify_grad_norm, densify_shading_normal_grad_norm)
++        if not mask.any():
++            return
+ 
+         # stats
+         if self.conf.strategy.print_stats:
+diff --git a/threedgrut/utils/timer.py b/threedgrut/utils/timer.py
+index 5dbc890..6d5759b 100644
+--- a/threedgrut/utils/timer.py
++++ b/threedgrut/utils/timer.py
+@@ -19,7 +19,8 @@ import logging
+ import time
+ from dataclasses import dataclass, field
+ from types import TracebackType
+-from typing import Callable, Final, Optional, Self, Type, TypeVar, cast
++from typing import Callable, Final, Optional, Type, TypeVar, cast
++from typing_extensions import Self
+ 
+ import torch
+ 

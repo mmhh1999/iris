@@ -1,0 +1,112 @@
+diff --git a/threedgrut/strategy/base.py b/threedgrut/strategy/base.py
+index b262bd3..85945c0 100644
+--- a/threedgrut/strategy/base.py
++++ b/threedgrut/strategy/base.py
+@@ -20,6 +20,20 @@ import torch
+ from threedgrut.model.model import MixtureOfGaussians
+ 
+ 
++@torch.no_grad()
++def indexed_append(source: torch.Tensor, indices: torch.Tensor, tail: torch.Tensor):
++    """Copy retained rows and appended rows without a full gathered intermediate.
++
++    Exact indexing/copy semantics of cat([source[indices], tail]); avoids an
++    additional ~1.3 GiB SH tensor at eight million float32 Gaussians.
++    """
++    count = indices.numel()
++    result = source.new_empty((count + tail.shape[0], *source.shape[1:]))
++    torch.index_select(source, 0, indices, out=result[:count])
++    result[count:].copy_(tail)
++    return result
++
++
+ class BaseStrategy:
+     def __init__(self, config, model: MixtureOfGaussians) -> None:
+         self.conf = config
+@@ -114,6 +128,9 @@ class BaseStrategy:
+                         v = p_state[key]
+                         if update_optimizer_fn is not None:
+                             p_state[key] = update_optimizer_fn(key, v)
++                        # The old final Adam moment must not survive while the
++                        # parameter's replacement is allocated below.
++                        del v
+                 if update_param_fn is not None:
+                     p_new = update_param_fn(name, p)
+                     self.model.optimizer.param_groups[i]["params"] = [p_new]
+diff --git a/threedgrut/strategy/gs.py b/threedgrut/strategy/gs.py
+index bc6305a..adc1931 100644
+--- a/threedgrut/strategy/gs.py
++++ b/threedgrut/strategy/gs.py
+@@ -235,6 +235,23 @@ class GSStrategy(BaseStrategy):
+ 
+         torch.cuda.empty_cache()
+ 
++    def _limit_growth(self, mask, position_grad, normal_grad, growth_per_parent=1):
++        cap = self.conf.strategy.densify.get('max_gaussians', None)
++        if cap is None:
++            return mask
++        available = max(0, int(cap) - self.model.num_gaussians)
++        available = min(available, int(self.conf.strategy.densify.get('max_growth_per_update', available)))
++        budget = available // growth_per_parent
++        indices = torch.nonzero(mask, as_tuple=True)[0]
++        if indices.numel() <= budget:
++            return mask
++        priority = position_grad[indices] / max(self.clone_grad_threshold, 1e-12)
++        priority += normal_grad[indices] / max(self.clone_shading_normal_grad_threshold, 1e-12)
++        keep = indices[torch.topk(priority, budget).indices] if budget else indices[:0]
++        limited = torch.zeros_like(mask); limited[keep] = True
++        logger.info(f'Densification memory budget: selected {budget} / {indices.numel()} candidates; cap={cap}')
++        return limited
++
+     @torch.cuda.nvtx.range("split_gaussians")
+     def split_gaussians(
+         self,
+@@ -267,6 +284,10 @@ class GSStrategy(BaseStrategy):
+         )
+         mask = torch.logical_and(mask, size_mask)
+ 
++        mask = self._limit_growth(mask, padded_grad, padded_shading_normal_grad,
++                                  self.split_n_gaussians - 1)
++        if not mask.any():
++            return
+         stds = self.model.get_scale()[mask].repeat(self.split_n_gaussians, 1)
+         means = torch.zeros((stds.size(0), 3), device="cuda")
+         samples = torch.normal(mean=means, std=stds)
+@@ -297,6 +318,9 @@ class GSStrategy(BaseStrategy):
+                 f"normal-only={n_split_by_normal_only} ({normal_only_pct:.2f}% of split)"
+             )
+ 
++        from threedgrut.strategy.base import indexed_append
++        retained_indices = torch.nonzero(~mask, as_tuple=True)[0]
++
+         def update_param_fn(name: str, param: torch.Tensor) -> torch.Tensor:
+             repeats = [self.split_n_gaussians] + [1] * (param.dim() - 1)
+             if name == "positions":
+@@ -310,7 +334,7 @@ class GSStrategy(BaseStrategy):
+                 p_split = param[mask].repeat(repeats)
+ 
+             p_new = torch.nn.Parameter(
+-                torch.cat([param[~mask], p_split]), requires_grad=param.requires_grad
++                indexed_append(param, retained_indices, p_split), requires_grad=param.requires_grad
+             )
+ 
+             return p_new
+@@ -320,7 +344,7 @@ class GSStrategy(BaseStrategy):
+                 (self.split_n_gaussians * int(mask.sum()), *v.shape[1:]),
+                 device=v.device,
+             )
+-            return torch.cat([v[~mask], v_split])
++            return indexed_append(v, retained_indices, v_split)
+ 
+         self._update_param_with_optimizer(update_param_fn, update_optimizer_fn)
+         self.reset_densification_buffers()
+@@ -348,6 +372,9 @@ class GSStrategy(BaseStrategy):
+             <= self.relative_size_threshold * scene_extent
+         )
+         mask = torch.logical_and(mask, size_mask)
++        mask = self._limit_growth(mask, densify_grad_norm, densify_shading_normal_grad_norm)
++        if not mask.any():
++            return
+ 
+         # stats
+         if self.conf.strategy.print_stats:

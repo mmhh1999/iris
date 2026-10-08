@@ -1,0 +1,119 @@
+diff --git a/integrators/gsprim_prb.py b/integrators/gsprim_prb.py
+index a7c8d87..c814e07 100644
+--- a/integrators/gsprim_prb.py
++++ b/integrators/gsprim_prb.py
+@@ -282,7 +282,7 @@ class GaussianPrimitivePrbIntegrator(ReparamIntegrator):
+                 Vdirection = dr.normalize(-ray_cur.d) #view direction (outgoing) 
+                 Halfvector = dr.normalize(Ldirection + Vdirection)
+                 bsdf_value_em, bsdf_pdf_em = self.eval_bsdf(A_cur, R_cur, M_cur, N_cur, Vdirection, Ldirection, Halfvector)
+-                mis_direct = dr.detach(mis_weight(ds.pdf, bsdf_pdf_em))
++                mis_direct = dr.select(ds.delta, 1.0, dr.detach(mis_weight(ds.pdf, bsdf_pdf_em)))
+                 Lr_dir = visibility * β * mis_direct * bsdf_value_em * em_weight
+             
+             # BSDF sampling  
+diff --git a/integrators/reparam.py b/integrators/reparam.py
+index a851c0d..18fa59a 100644
+--- a/integrators/reparam.py
++++ b/integrators/reparam.py
+@@ -197,6 +197,7 @@ class ReparamIntegrator(mi.SamplingIntegrator):
+             else:
+                 active = active_gs
+ 
++            ray.maxt[active] = dr.maximum(ray.maxt - si_cur.t - 1e-4, 0.0)
+             ray.o[active] = si_cur.p + ray.d * 1e-4  
+ 
+         return ray
+@@ -232,6 +233,7 @@ class ReparamIntegrator(mi.SamplingIntegrator):
+         # If ray intersects GS first, execute mesh detection logic, skip surface GS
+         mesh_detection_active = ~hit_valid & si_mesh.is_valid() & si_mesh.shape.is_ellipsoids()
+         while dr.hint(mesh_detection_active, label=f"Mesh Intersect Skip Gaussians"):
++            ray.maxt = dr.maximum(ray.maxt - si_mesh.t - 1e-6, 0.0)
+             ray.o = si_mesh.p + ray.d * 1e-6
+             si_mesh = scene.ray_intersect(ray, mesh_detection_active)
+             mesh_detection_active &= (si_mesh.is_valid() & si_mesh.shape.is_ellipsoids())
+@@ -283,7 +285,6 @@ class ReparamIntegrator(mi.SamplingIntegrator):
+                     dist = dr.norm(si_cur.p - pos.p)
+                     within_max = dist <= self.selfocc_offset_max
+                     self_occ = self.is_self_occlusion(pos, si_cur, ray, active_gs) & within_max
+-                    ray.o[self_occ] = si_cur.p + ray.d * 1e-4
+                     active_gs &= ~self_occ
+             # else: strategy 'fixed' — no is_self_occlusion, all Gaussian hits go to transmission test below
+              
+@@ -294,6 +295,7 @@ class ReparamIntegrator(mi.SamplingIntegrator):
+             hit_occluded = rand < alpha
+             occluded[active_gs & hit_occluded] = mi.Bool(True)
+             active = (active_gs & ~hit_occluded) | self_occ
++            ray.maxt[active] = dr.maximum(ray.maxt - si_cur.t - 1e-4, 0.0)
+             ray.o[active] = si_cur.p + ray.d * 1e-4
+ 
+         return occluded
+@@ -307,6 +309,7 @@ class ReparamIntegrator(mi.SamplingIntegrator):
+ 
+             emitter_detection_active = active & si.is_valid() & si.shape.is_ellipsoids()
+             while dr.hint(emitter_detection_active, label=f"Skip Gaussians"):
++                ray.maxt = dr.maximum(ray.maxt - si.t - 1e-6, 0.0)
+                 ray.o = si.p + ray.d * 1e-6
+                 si = scene.ray_intersect(ray, emitter_detection_active)
+                 emitter_detection_active &= (si.is_valid() & si.shape.is_ellipsoids())
+@@ -345,7 +348,7 @@ class ReparamIntegrator(mi.SamplingIntegrator):
+                 center  = mi.Point3f([data[i] for i in range(3)])
+                 scale   = mi.Vector3f([data[i + 3] for i in range(3)])
+                 quat    = mi.Quaternion4f([data[i + 6] for i in range(4)])
+-                rot     = dr.quat_to_matrix(quat, size=3)
++                rot     = dr.quat_to_matrix(mi.Matrix3f, quat)
+                 return center, scale, rot
+             else:
+                 return mi.Point3f(0), mi.Vector3f(0), mi.Matrix3f(0)
+@@ -379,7 +382,7 @@ class ReparamIntegrator(mi.SamplingIntegrator):
+                 center  = mi.Point3f([data[i] for i in range(3)])
+                 scale   = mi.Vector3f([data[i + 3] for i in range(3)])
+                 quat    = mi.Quaternion4f([data[i + 6] for i in range(4)])
+-                rot     = dr.quat_to_matrix(quat, size=3)
++                rot     = dr.quat_to_matrix(mi.Matrix3f, quat)
+                 return center, scale, rot
+             else:
+                 return mi.Point3f(0), mi.Vector3f(0), mi.Matrix3f(0)
+@@ -513,6 +516,7 @@ class ReparamIntegrator(mi.SamplingIntegrator):
+             #T[active] *= dr.select(valid_gs, transmission, 1.0)
+             T[active] *= transmission
+ 
++            ray.maxt[active] = dr.maximum(ray.maxt - si.t - 1e-4, 0.0)
+             ray.o[active] = si.p + ray.d * 1e-4
+  
+             depth_acc[active] += 1e-4
+@@ -603,6 +607,7 @@ class ReparamIntegrator(mi.SamplingIntegrator):
+             #T[active] *= dr.select(valid_gs, transmission, 1.0)
+             T[active] *= transmission
+ 
++            ray.maxt[active] = dr.maximum(ray.maxt - si_cur.t - 1e-4, 0.0)
+             ray.o[active] = si_cur.p + ray.d * 1e-4
+             depth_acc[active] += 1e-4
+ 
+@@ -693,6 +698,7 @@ class ReparamIntegrator(mi.SamplingIntegrator):
+ 
+         mesh_detection_active = ~state['hit_valid'] & si_mesh.is_valid() & si_mesh.shape.is_ellipsoids()
+         while dr.hint(mesh_detection_active, label=f"Mesh Intersect Skip Gaussians"):
++            ray.maxt = dr.maximum(ray.maxt - si_mesh.t - 1e-6, 0.0)
+             ray.o = si_mesh.p + ray.d * 1e-6
+             si_mesh = scene.ray_intersect(ray, mesh_detection_active)
+             mesh_detection_active &= (si_mesh.is_valid() & si_mesh.shape.is_ellipsoids())
+@@ -757,4 +763,4 @@ class ReparamIntegrator(mi.SamplingIntegrator):
+         return self._bsdf.sample_bsdf(sampler, si, roughness, metallic, V_world)
+     
+     def bsdf(self, sampler, si, albedo, roughness, metallic, N, Vdir):
+-        return self._bsdf.bsdf(sampler, si, albedo, roughness, metallic, N, Vdir)
+\ No newline at end of file
++        return self._bsdf.bsdf(sampler, si, albedo, roughness, metallic, N, Vdir)
+diff --git a/integrators/volprim_rf.py b/integrators/volprim_rf.py
+index d02e80f..cef5e91 100644
+--- a/integrators/volprim_rf.py
++++ b/integrators/volprim_rf.py
+@@ -56,7 +56,7 @@ class BasicVolumetricPrimitiveRadianceFieldIntegrator(RBIntegrator):
+                 center  = mi.Point3f([data[i] for i in range(3)])
+                 scale   = mi.Vector3f([data[i + 3] for i in range(3)])
+                 quat    = mi.Quaternion4f([data[i + 6] for i in range(4)])
+-                rot     = dr.quat_to_matrix(quat, size=3)
++                rot     = dr.quat_to_matrix(mi.Matrix3f, quat)
+                 return center, scale, rot
+             else:
+                 return mi.Point3f(0), mi.Vector3f(0), mi.Matrix3f(0)

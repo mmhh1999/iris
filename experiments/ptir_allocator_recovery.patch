@@ -1,0 +1,244 @@
+diff --git a/threedgptir_tracer/include/3dgptir/cuoptixMacros.h b/threedgptir_tracer/include/3dgptir/cuoptixMacros.h
+index 2bad913..7875523 100644
+--- a/threedgptir_tracer/include/3dgptir/cuoptixMacros.h
++++ b/threedgptir_tracer/include/3dgptir/cuoptixMacros.h
+@@ -15,6 +15,10 @@
+ 
+ #pragma once
+ 
++#include <sstream>
++#include <stdexcept>
++#include <iostream>
++
+ //------------------------------------------------------------------------------
+ // CUDA / OPTIX macros
+ //------------------------------------------------------------------------------
+@@ -27,12 +31,26 @@
+             ss << "CUDA call (" << #call << " ) failed with error: '" \
+                << cudaGetErrorString(error)                           \
+                << "' (" __FILE__ << ":" << __LINE__ << ")\n";         \
++            throw std::runtime_error(ss.str());                       \
+         }                                                             \
+     } while (0)
+ 
+ #define CUDA_CHECK_LAST() \
+     CUDA_CHECK(cudaGetLastError())
+ 
++// Cleanup must report failures without throwing during stack unwinding.
++#define CUDA_CHECK_NO_THROW(call)                                     \
++    do {                                                             \
++        try { CUDA_CHECK(call); }                                    \
++        catch (const std::exception& e) { std::cerr << e.what(); }    \
++    } while (0)
++
++#define OPTIX_CHECK_NO_THROW(call)                                    \
++    do {                                                             \
++        try { OPTIX_CHECK(call); }                                   \
++        catch (const std::exception& e) { std::cerr << e.what(); }    \
++    } while (0)
++
+ #define OPTIX_CHECK(call)                                              \
+     do {                                                               \
+         OptixResult res = call;                                        \
+@@ -40,6 +58,7 @@
+             std::stringstream ss;                                      \
+             ss << "Optix call '" << #call << "' failed: " __FILE__ ":" \
+                << __LINE__ << ")\n";                                   \
++            throw std::runtime_error(ss.str());                        \
+         }                                                              \
+     } while (0)
+ 
+@@ -55,6 +74,7 @@
+                << log                                                                           \
+                << (sizeof_log_returned > sizeof(log) ? "<TRUNCATED>" : "")                      \
+                << "\n";                                                                         \
++            throw std::runtime_error(ss.str());                                                  \
+         }                                                                                       \
+     } while (0)
+ 
+diff --git a/threedgptir_tracer/src/optixTracer.cpp b/threedgptir_tracer/src/optixTracer.cpp
+index 7045cd2..a750d5d 100644
+--- a/threedgptir_tracer/src/optixTracer.cpp
++++ b/threedgptir_tracer/src/optixTracer.cpp
+@@ -387,31 +387,31 @@ OptixTracer::OptixTracer(
+ }
+ 
+ OptixTracer::~OptixTracer(void) {
+-    OPTIX_CHECK(optixPipelineDestroy(_state->pipelineTracingFwd));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->sbtTracingFwd.raygenRecord)));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->sbtTracingFwd.missRecordBase)));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->sbtTracingFwd.hitgroupRecordBase)));
+-    OPTIX_CHECK(optixModuleDestroy(_state->moduleTracingFwd));
+-
+-    OPTIX_CHECK(optixPipelineDestroy(_state->pipelineTracingBwd));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->sbtTracingBwd.raygenRecord)));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->sbtTracingBwd.missRecordBase)));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->sbtTracingBwd.hitgroupRecordBase)));
+-    OPTIX_CHECK(optixModuleDestroy(_state->moduleTracingBwd));
+-
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->gPrimVrt)));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->gPrimTri)));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->gPrimAABB)));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->iasBuffer)));
+-
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->optixAabbPtr)));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->paramsDevice)));
+-
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->gasBuffer)));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->gasBufferTmp)));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->sceneMeshBuffer)));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->sceneMeshBufferTmp)));
+-    OPTIX_CHECK(optixDeviceContextDestroy(_state->context));
++    OPTIX_CHECK_NO_THROW(optixPipelineDestroy(_state->pipelineTracingFwd));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->sbtTracingFwd.raygenRecord)));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->sbtTracingFwd.missRecordBase)));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->sbtTracingFwd.hitgroupRecordBase)));
++    OPTIX_CHECK_NO_THROW(optixModuleDestroy(_state->moduleTracingFwd));
++
++    OPTIX_CHECK_NO_THROW(optixPipelineDestroy(_state->pipelineTracingBwd));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->sbtTracingBwd.raygenRecord)));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->sbtTracingBwd.missRecordBase)));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->sbtTracingBwd.hitgroupRecordBase)));
++    OPTIX_CHECK_NO_THROW(optixModuleDestroy(_state->moduleTracingBwd));
++
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->gPrimVrt)));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->gPrimTri)));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->gPrimAABB)));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->iasBuffer)));
++
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->optixAabbPtr)));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->paramsDevice)));
++
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->gasBuffer)));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->gasBufferTmp)));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->sceneMeshBuffer)));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->sceneMeshBufferTmp)));
++    OPTIX_CHECK_NO_THROW(optixDeviceContextDestroy(_state->context));
+ 
+     delete _state;
+ }
+@@ -460,6 +460,9 @@ void OptixTracer::createPipeline(const OptixDeviceContext context,
+             optix_include_dir = dependencies_path + "/../threedgrt_tracer/dependencies/optix-dev/include";
+         }
+         std::string cuda_include_dir  = cuda_path + "/include";
++        if (!std::ifstream(cuda_include_dir + "/vector_types.h").good()) {
++            cuda_include_dir = cuda_path + "/targets/x86_64-linux/include";
++        }
+ 
+         const char* input = getInputData(shaderFile.c_str(), includeDir.c_str(), optix_include_dir.c_str(),
+                                          cuda_include_dir.c_str(), kernel_name.c_str(), inputSize, defines,
+diff --git a/threedgrt_tracer/include/3dgrt/cuoptixMacros.h b/threedgrt_tracer/include/3dgrt/cuoptixMacros.h
+index 2bad913..7875523 100644
+--- a/threedgrt_tracer/include/3dgrt/cuoptixMacros.h
++++ b/threedgrt_tracer/include/3dgrt/cuoptixMacros.h
+@@ -15,6 +15,10 @@
+ 
+ #pragma once
+ 
++#include <sstream>
++#include <stdexcept>
++#include <iostream>
++
+ //------------------------------------------------------------------------------
+ // CUDA / OPTIX macros
+ //------------------------------------------------------------------------------
+@@ -27,12 +31,26 @@
+             ss << "CUDA call (" << #call << " ) failed with error: '" \
+                << cudaGetErrorString(error)                           \
+                << "' (" __FILE__ << ":" << __LINE__ << ")\n";         \
++            throw std::runtime_error(ss.str());                       \
+         }                                                             \
+     } while (0)
+ 
+ #define CUDA_CHECK_LAST() \
+     CUDA_CHECK(cudaGetLastError())
+ 
++// Cleanup must report failures without throwing during stack unwinding.
++#define CUDA_CHECK_NO_THROW(call)                                     \
++    do {                                                             \
++        try { CUDA_CHECK(call); }                                    \
++        catch (const std::exception& e) { std::cerr << e.what(); }    \
++    } while (0)
++
++#define OPTIX_CHECK_NO_THROW(call)                                    \
++    do {                                                             \
++        try { OPTIX_CHECK(call); }                                   \
++        catch (const std::exception& e) { std::cerr << e.what(); }    \
++    } while (0)
++
+ #define OPTIX_CHECK(call)                                              \
+     do {                                                               \
+         OptixResult res = call;                                        \
+@@ -40,6 +58,7 @@
+             std::stringstream ss;                                      \
+             ss << "Optix call '" << #call << "' failed: " __FILE__ ":" \
+                << __LINE__ << ")\n";                                   \
++            throw std::runtime_error(ss.str());                        \
+         }                                                              \
+     } while (0)
+ 
+@@ -55,6 +74,7 @@
+                << log                                                                           \
+                << (sizeof_log_returned > sizeof(log) ? "<TRUNCATED>" : "")                      \
+                << "\n";                                                                         \
++            throw std::runtime_error(ss.str());                                                  \
+         }                                                                                       \
+     } while (0)
+ 
+diff --git a/threedgrt_tracer/src/optixTracer.cpp b/threedgrt_tracer/src/optixTracer.cpp
+index 98f6f1e..dc8f1b7 100644
+--- a/threedgrt_tracer/src/optixTracer.cpp
++++ b/threedgrt_tracer/src/optixTracer.cpp
+@@ -288,29 +288,29 @@ OptixTracer::OptixTracer(
+ }
+ 
+ OptixTracer::~OptixTracer(void) {
+-    OPTIX_CHECK(optixPipelineDestroy(_state->pipelineTracingFwd));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->sbtTracingFwd.raygenRecord)));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->sbtTracingFwd.missRecordBase)));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->sbtTracingFwd.hitgroupRecordBase)));
+-    OPTIX_CHECK(optixModuleDestroy(_state->moduleTracingFwd));
+-
+-    OPTIX_CHECK(optixPipelineDestroy(_state->pipelineTracingBwd));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->sbtTracingBwd.raygenRecord)));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->sbtTracingBwd.missRecordBase)));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->sbtTracingBwd.hitgroupRecordBase)));
+-    OPTIX_CHECK(optixModuleDestroy(_state->moduleTracingBwd));
+-
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->gPrimVrt)));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->gPrimTri)));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->gPrimAABB)));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->iasBuffer)));
+-
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->optixAabbPtr)));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->paramsDevice)));
+-
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->gasBuffer)));
+-    CUDA_CHECK(cudaFree(reinterpret_cast<void*>(_state->gasBufferTmp)));
+-    OPTIX_CHECK(optixDeviceContextDestroy(_state->context));
++    OPTIX_CHECK_NO_THROW(optixPipelineDestroy(_state->pipelineTracingFwd));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->sbtTracingFwd.raygenRecord)));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->sbtTracingFwd.missRecordBase)));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->sbtTracingFwd.hitgroupRecordBase)));
++    OPTIX_CHECK_NO_THROW(optixModuleDestroy(_state->moduleTracingFwd));
++
++    OPTIX_CHECK_NO_THROW(optixPipelineDestroy(_state->pipelineTracingBwd));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->sbtTracingBwd.raygenRecord)));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->sbtTracingBwd.missRecordBase)));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->sbtTracingBwd.hitgroupRecordBase)));
++    OPTIX_CHECK_NO_THROW(optixModuleDestroy(_state->moduleTracingBwd));
++
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->gPrimVrt)));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->gPrimTri)));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->gPrimAABB)));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->iasBuffer)));
++
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->optixAabbPtr)));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->paramsDevice)));
++
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->gasBuffer)));
++    CUDA_CHECK_NO_THROW(cudaFree(reinterpret_cast<void*>(_state->gasBufferTmp)));
++    OPTIX_CHECK_NO_THROW(optixDeviceContextDestroy(_state->context));
+ 
+     delete _state;
+ }
