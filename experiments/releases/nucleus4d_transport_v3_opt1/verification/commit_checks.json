@@ -1,0 +1,8 @@
+{
+  "python_compilation": true,
+  "launcher_uses_selected_v3_manifest": true,
+  "launcher_creates_missing_log_directory": true,
+  "v3_transport_unit_tests": 7,
+  "v3_transport_unit_tests_passed": true,
+  "rendering_source_unchanged_since_gpu_checks": true
+}

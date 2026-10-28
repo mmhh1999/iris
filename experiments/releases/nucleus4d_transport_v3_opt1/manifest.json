@@ -1,0 +1,136 @@
+{
+  "revision": "v3_opt1",
+  "created_at": "2026-10-28T04:03:55.517280+00:00",
+  "viewer": "http://localhost:8769/nucleus4d_transport_v3/",
+  "gaussians": 6100978,
+  "large_assets_in_git": false,
+  "asset_root": "experiments/out",
+  "assets": {
+    "nucleus4d_3dgs/full.splat": {
+      "bytes": 195231296,
+      "sha256": "d04248017cdf2cb3f749e01fe71b8163202df51cbf58852142d7ae5f81c8a2c9"
+    },
+    "nucleus4d_weather_controls/lamps/fixture_mask.f32": {
+      "bytes": 24403912,
+      "sha256": "e741a493c9e0a186723d770878e0dc7b34efe1277dfb5ad0ed3f410a7fbc944c"
+    },
+    "nucleus4d_transport_v3/binding_compact.u32": {
+      "bytes": 97615648,
+      "sha256": "6b8dd720116f39b63170c1b9083e02ba1b9ea86a904342236f22568c97b4bf37"
+    },
+    "nucleus4d_transport_v3/normal_weights_full.f32": {
+      "bytes": 97615648,
+      "sha256": "14fbd42362900f9380932258fe101f694351db076da60e7f6c1dba538d6fd53b"
+    },
+    "nucleus4d_transport_v3/patch_positions.f32": {
+      "bytes": 3809280,
+      "sha256": "a0778126646f1e24fb5fb3d6038cd3a3589467d2d7324fef66094315632e0cdc"
+    },
+    "nucleus4d_transport_v3/reference_irradiance.f32": {
+      "bytes": 3809280,
+      "sha256": "f4dbb2b805e8717948c147a1b6354c0fa4e44a6f4beae8c147505e8d4d2d1a44"
+    },
+    "nucleus4d_transport_v3/light_bank.rgb.f32": {
+      "bytes": 1158021120,
+      "sha256": "c7124dff4f8d7ff1f3d1fa390762496c6ebf5466e351dc038b941a2a44b221ea"
+    },
+    "nucleus4d_transport_v3/caster_positions.f32": {
+      "bytes": 269832,
+      "sha256": "ad9da225d4dc0c60bdb0e2c3c31ca47aa7093e1b6e6e0aa8c6098ae1ea237df4"
+    },
+    "nucleus4d_transport_v3/caster_indices.u32": {
+      "bytes": 478056,
+      "sha256": "fd65528fa7dd69218c26bb32b78f8903effda55e3321351c681beb1aac7ee7ea"
+    },
+    "nucleus4d_transport_v3/geometry.npz": {
+      "bytes": 11912038,
+      "sha256": "4d88861da9c790a224d9816ea1e223e771831cb4ab1800125ac5af3604ff831f"
+    },
+    "nucleus4d_transport_v3/geometry_report.json": {
+      "bytes": 979,
+      "sha256": "a5de7d49e34f405386191887a3b7732a9bf0bd0ddd43381eb27882f122f89e53"
+    }
+  },
+  "files": {
+    "README.txt": {
+      "bytes": 2729,
+      "sha256": "c5689ca60a9166000cd241e9e7068b0bb7f3365f151f0d9868ab142286f60e73"
+    },
+    "build_inputs/nucleus4d_3dgs/LICENSE": {
+      "bytes": 1067,
+      "sha256": "7d62ca775042bb7182918e42e6bd7b8cac3462ceaf7717d7836ef0c0fce075ef"
+    },
+    "build_inputs/nucleus4d_3dgs/index.html": {
+      "bytes": 1826,
+      "sha256": "22566609f06dfdf1d8a9a626280a42313a8514585cc9efe2613d800f33cc1bb0"
+    },
+    "build_inputs/nucleus4d_sun_increment_v2/main.js": {
+      "bytes": 50038,
+      "sha256": "f11b193ed8b86e06d8ed7f4591878408a9ea89318504b4ba2c77d3ed99f7e7bd"
+    },
+    "requirements.txt": {
+      "bytes": 129,
+      "sha256": "0548c7bfdcf7dcced6c778700acf137134ae616fbf649e6d61b4b3f499546cf0"
+    },
+    "verification/after.json": {
+      "bytes": 24147,
+      "sha256": "057b07604552d1338a5ae50f3394e9c8a3eafed9519a4abdf4e090db469c1ead"
+    },
+    "verification/after_ui.png": {
+      "bytes": 3053947,
+      "sha256": "620979b03f3069c0174e89bac3cd6a06355100b994826243cef9fb03c14c2346"
+    },
+    "verification/before.json": {
+      "bytes": 11651,
+      "sha256": "5e57c0918ebee6c3383a71bd5bcbc8e2d3ca0eb7bcc15d17cc1ed83d9df102c6"
+    },
+    "verification/commit_checks.json": {
+      "bytes": 258,
+      "sha256": "a393058537739ecd5ff5b0cfb727be0a6be0af729163939b53493342e9abde88"
+    },
+    "verification/pixel_comparison.json": {
+      "bytes": 1084,
+      "sha256": "c30c74c3500f6bba161bfca72e1fb00573aaca228c06f48caa0525677773c61b"
+    },
+    "verification/result.json": {
+      "bytes": 3737,
+      "sha256": "a37f8c7ad30365087d639990e09d52cd608992abf9f24269cb5f77a47aadb8e7"
+    },
+    "verification/unit_tests.txt": {
+      "bytes": 939,
+      "sha256": "cc7981604eeffc697756d623ebd23accb0b516eeedf6b0f0a1fe48c3694f41ef"
+    },
+    "viewer/LICENSE": {
+      "bytes": 1067,
+      "sha256": "7d62ca775042bb7182918e42e6bd7b8cac3462ceaf7717d7836ef0c0fce075ef"
+    },
+    "viewer/bank_manifest.json": {
+      "bytes": 3448,
+      "sha256": "17ce51301ee4f5c1299c9f63f63c2ca07258b80cf65fbfd17ed1a06a842d415f"
+    },
+    "viewer/index.html": {
+      "bytes": 9837,
+      "sha256": "3220b3ab3f65ad85622477040977c5fdc73017ed0ee5ea2b59a7c7aea2137193"
+    },
+    "viewer/lights.json": {
+      "bytes": 14614,
+      "sha256": "d8abb860bae47d5a5b7ad457caaf2745e0a171cdb6f9a64800d7a5a509a1d2a3"
+    },
+    "viewer/main.js": {
+      "bytes": 139249,
+      "sha256": "a329d828b111a896cb987ca3ed3852d195c272dc8c438afcd63f55d7b5730154"
+    },
+    "viewer/sun_keys.json": {
+      "bytes": 189460,
+      "sha256": "9921284a3b9f29cb630e64186e20a714da29e1b1f84a94ac8d27416143cb4a9f"
+    },
+    "viewer/verification.html": {
+      "bytes": 6411,
+      "sha256": "4c30cefd9e64f2d4c8c61f7a40bb6cc7889aee98b4e22da09894bfc3d576fda5"
+    },
+    "viewer/viewer_manifest.json": {
+      "bytes": 815,
+      "sha256": "8cef404d2c4dd9a4058e89c6340f2b5cae4e4a47f9ec1c9fc3c3cecdd4bc6720"
+    }
+  }
+}

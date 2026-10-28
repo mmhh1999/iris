@@ -1,0 +1,68 @@
+{
+  "original": {
+    "max_channel_error": 0,
+    "mean_channel_error": 0.0,
+    "pixels_changed": 0,
+    "pixels_over_1": 0,
+    "shape": [
+      1080,
+      1920,
+      3
+    ]
+  },
+  "sun750": {
+    "max_channel_error": 0,
+    "mean_channel_error": 0.0,
+    "pixels_changed": 0,
+    "pixels_over_1": 0,
+    "shape": [
+      1080,
+      1920,
+      3
+    ]
+  },
+  "sun960": {
+    "max_channel_error": 0,
+    "mean_channel_error": 0.0,
+    "pixels_changed": 0,
+    "pixels_over_1": 0,
+    "shape": [
+      1080,
+      1920,
+      3
+    ]
+  },
+  "sun1095": {
+    "max_channel_error": 0,
+    "mean_channel_error": 0.0,
+    "pixels_changed": 0,
+    "pixels_over_1": 0,
+    "shape": [
+      1080,
+      1920,
+      3
+    ]
+  },
+  "cloud": {
+    "max_channel_error": 0,
+    "mean_channel_error": 0.0,
+    "pixels_changed": 0,
+    "pixels_over_1": 0,
+    "shape": [
+      1080,
+      1920,
+      3
+    ]
+  },
+  "night": {
+    "max_channel_error": 0,
+    "mean_channel_error": 0.0,
+    "pixels_changed": 0,
+    "pixels_over_1": 0,
+    "shape": [
+      1080,
+      1920,
+      3
+    ]
+  }
+}

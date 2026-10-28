@@ -1,0 +1,144 @@
+{
+  "revision": "v3_opt1",
+  "verified_at": "2026-10-28T03:28:10.157665+00:00",
+  "viewer": "http://localhost:8769/nucleus4d_transport_v3/",
+  "browser_check_pass": true,
+  "reference_4k_pixel_checks": {
+    "original": {
+      "max_channel_error": 0,
+      "mean_channel_error": 0.0,
+      "pixels_changed": 0,
+      "pixels_over_1": 0,
+      "shape": [
+        1080,
+        1920,
+        3
+      ]
+    },
+    "sun750": {
+      "max_channel_error": 0,
+      "mean_channel_error": 0.0,
+      "pixels_changed": 0,
+      "pixels_over_1": 0,
+      "shape": [
+        1080,
+        1920,
+        3
+      ]
+    },
+    "sun960": {
+      "max_channel_error": 0,
+      "mean_channel_error": 0.0,
+      "pixels_changed": 0,
+      "pixels_over_1": 0,
+      "shape": [
+        1080,
+        1920,
+        3
+      ]
+    },
+    "sun1095": {
+      "max_channel_error": 0,
+      "mean_channel_error": 0.0,
+      "pixels_changed": 0,
+      "pixels_over_1": 0,
+      "shape": [
+        1080,
+        1920,
+        3
+      ]
+    },
+    "cloud": {
+      "max_channel_error": 0,
+      "mean_channel_error": 0.0,
+      "pixels_changed": 0,
+      "pixels_over_1": 0,
+      "shape": [
+        1080,
+        1920,
+        3
+      ]
+    },
+    "night": {
+      "max_channel_error": 0,
+      "mean_channel_error": 0.0,
+      "pixels_changed": 0,
+      "pixels_over_1": 0,
+      "shape": [
+        1080,
+        1920,
+        3
+      ]
+    }
+  },
+  "sun_motion_checks": {
+    "sun750_to_sun960": {
+      "direction_changed": true,
+      "shadow_matrix_changed": true,
+      "pixels_changed": 1804289
+    },
+    "sun960_to_sun1095": {
+      "direction_changed": true,
+      "shadow_matrix_changed": true,
+      "pixels_changed": 1908106
+    },
+    "sun8k_to_sun8k960": {
+      "direction_changed": true,
+      "shadow_matrix_changed": true,
+      "pixels_changed": 1803964
+    },
+    "enable_after_inactive_time_change": {
+      "time": 1000,
+      "effective_sun": 1,
+      "shadow_matrix_changed": true,
+      "shadow_recomputed": true
+    },
+    "return_to_original_4k": {
+      "max_channel_error": 0
+    }
+  },
+  "redundant_work_before": {
+    "exposureAtlasPasses": 12,
+    "inactiveSunTimeAtlasPasses": 12,
+    "inactiveSunShadowPasses": 12
+  },
+  "redundant_work_after": {
+    "exposureAtlasPasses": 0,
+    "inactiveSunTimeAtlasPasses": 0,
+    "inactiveSunShadowPasses": 0
+  },
+  "gaussians": 6100978,
+  "independent_lamps": 25,
+  "keyboard_walk": true,
+  "unchanged_shading_programs": {
+    "nucleus4d_transport_programs.js": true,
+    "nucleus4d_transport_shading.glsl": true
+  },
+  "source_fields_recomputed": false,
+  "source_model_modified": false,
+  "quality_scope": "Preserves the restored v3 visual output at the tested camera/states and default 4K. Optional 8K is a resolution choice, not a physical-accuracy certification.",
+  "physical_ground_truth_verified": false,
+  "pass": true,
+  "files": {
+    "experiments/nucleus4d_transport_runtime.js": {
+      "bytes": 21470,
+      "sha256": "97a0dd92156428cbf1b80a19cb39de99afac8624ad2fa1ff6dcf56dc7bf0bd6d"
+    },
+    "experiments/nucleus4d_transport_viewer.py": {
+      "bytes": 8684,
+      "sha256": "2ea514d5feeb48a6cda062d6433632efbe69f7f9c6a11fa1ba5bebe351ed054b"
+    },
+    "experiments/out/nucleus4d_transport_v3/index.html": {
+      "bytes": 9837,
+      "sha256": "3220b3ab3f65ad85622477040977c5fdc73017ed0ee5ea2b59a7c7aea2137193"
+    },
+    "experiments/out/nucleus4d_transport_v3/main.js": {
+      "bytes": 139249,
+      "sha256": "a329d828b111a896cb987ca3ed3852d195c272dc8c438afcd63f55d7b5730154"
+    },
+    "experiments/out/nucleus4d_transport_v3/viewer_manifest.json": {
+      "bytes": 815,
+      "sha256": "8cef404d2c4dd9a4058e89c6340f2b5cae4e4a47f9ec1c9fc3c3cecdd4bc6720"
+    }
+  }
+}

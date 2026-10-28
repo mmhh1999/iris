@@ -1,0 +1,34 @@
+当前开发基线：贴实现方案之前的“全屋光照 v3”
+当前增量版本：v3_opt1（在同一 v3 渲染器上优化，必须保留太阳功能）
+
+用户要求撤回“基于这个在现有基础上实现 你看看”之后的新框架，后续从此版本改进。
+
+打开：http://localhost:8769/nucleus4d_transport_v3/
+恢复服务：.venv/bin/python experiments/gs_relight_launch.py --no-window
+已有 --world 启动命令也尊重此次回退选择。
+
+基线实现：
+  experiments/nucleus4d_transport_viewer.py
+  experiments/nucleus4d_transport_runtime.js
+  experiments/nucleus4d_transport_programs.js
+  experiments/nucleus4d_transport_shading.glsl
+已发布文件与光场：experiments/out/nucleus4d_transport_v3/
+默认选择配置：experiments/gs_relight_baseline.json
+
+此版本已有连续时间/天气、25 个独立灯光控制，以及完整原始高斯漫游。
+原有局限及当时的画面验收状态保留，未将回退解释为新的物理准确性认证。
+
+后续 gs_relight_stages、app_world、world_environment 等实验全部留档；
+它们已退出默认入口和计算服务，不再作为当前开发基线。
+回退时没有执行 git reset、删除数据或重写旧版模型/光场/页面。
+
+v3_opt1：在该基线上修改交互与调度，保留原始模型、光场及着色程序。
+保留连续时间、移动太阳、强度、天气、播放、软阴影与日照预设。
+新增太阳开关/有效直射状态，以及可选 8K 太阳阴影；默认仍为原版 4K。
+曝光改变及无直射时的时间改变，不再重复计算不变的光场/阴影。
+优化前代码备份、画面对照及浏览器验证：
+  experiments/out/nucleus4d_transport_v3/optimization_review/
+Git 中保存的发布快照、验证摘要及本地大文件校验清单：
+  experiments/releases/nucleus4d_transport_v3_opt1/
+
+回退记录与验证：experiments/out/gs_relight_stages/rollback/

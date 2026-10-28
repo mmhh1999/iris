@@ -1,0 +1,24 @@
+{
+  "active": "pre_spec_transport_v3",
+  "viewer": "http://localhost:8769/nucleus4d_transport_v3/",
+  "label": "全屋光照 v3 · 贴方案之前的基线",
+  "revision": "v3_opt1",
+  "required_preserved_features": [
+    "continuous time slider and moving geometric sun",
+    "sun strength, soft shadows, playback, sunny and dusk presets",
+    "cloud and sky controls",
+    "25 independent lamps",
+    "all 6100978 original Gaussians and free camera movement",
+    "resident float32 light fields; no field transfers on slider drag",
+    "exact original-capture reference mode"
+  ],
+  "implementation_entry_points": [
+    "experiments/nucleus4d_transport_viewer.py",
+    "experiments/nucleus4d_transport_runtime.js",
+    "experiments/nucleus4d_transport_programs.js",
+    "experiments/nucleus4d_transport_shading.glsl"
+  ],
+  "published_baseline": "experiments/out/nucleus4d_transport_v3/",
+  "cutoff": "Before the user's 2026-10-27 attachment: 基于这个在现有基础上实现 你看看",
+  "newer_experiments": "retained on disk; inactive as the default and not used for subsequent baseline work"
+}

@@ -1,0 +1,13 @@
+test_finite_downlight_matches_exact_on_axis_disk_irradiance (test_transport_v3.TransportV3) ... jit_kernel_write(): could not write compiled kernel to cache file "/home/minghao/.drjit/84baf20b1fa8f2f21e060341fd7310e2.llvm.v6.bin.3.tmp": Read-only file system
+ok
+test_independent_lights_superpose_and_zero_power_is_zero_energy (test_transport_v3.TransportV3) ... ok
+test_lamp_housing_alignment_keeps_intervening_walls_opaque (test_transport_v3.TransportV3) ... ok
+test_opaque_intervening_wall_blocks_actual_finite_source (test_transport_v3.TransportV3) ... ok
+test_sampling_portals_do_not_leak_through_a_closed_room (test_transport_v3.TransportV3) ... ok
+test_solar_direction_is_one_moving_unit_vector (test_transport_v3.TransportV3) ... ok
+test_window_mis_preserves_constant_sky_including_portal_plane (test_transport_v3.TransportV3) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.473s
+
+OK

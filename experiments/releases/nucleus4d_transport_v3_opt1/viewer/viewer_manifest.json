@@ -1,0 +1,28 @@
+{
+  "gaussians": 6100978,
+  "source_geometry_unchanged": true,
+  "source_asset": "../nucleus4d_3dgs/full.splat",
+  "direct_sun": "single moving geometric shadow map, original 4096 default, optional 8192",
+  "secondary_diffuse_bounces": 8,
+  "independent_lights": 25,
+  "resident_float32_fields": true,
+  "experimental": true,
+  "visual_review_passed": false,
+  "known_issues": [
+    "wall mottling after lamp removal",
+    "source housing alignment remains approximate"
+  ],
+  "physical_ground_truth_verified": false,
+  "optimization_revision": "v3_opt1",
+  "default_solar_shadow_resolution": 4096,
+  "optional_solar_shadow_resolution": 8192,
+  "sun_controls": [
+    "continuous time",
+    "power",
+    "on/off",
+    "playback",
+    "sunny/dusk presets",
+    "soft shadows"
+  ],
+  "reference_capture_bypass": true
+}

@@ -1,0 +1,568 @@
+{
+  "lights": [
+    {
+      "id": 0,
+      "label": "客厅筒灯 01",
+      "group": 0,
+      "center": [
+        1.409951535033376,
+        -1.4074108125483609,
+        1.3032983178957573
+      ],
+      "radius": 0.055277418941546475,
+      "radiance": [
+        150.19803414420554,
+        134.28313044834798,
+        126.33018322321246
+      ],
+      "views": 33,
+      "ray_error": 0.00578769465122191,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 1,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 1,
+      "label": "客厅筒灯 02",
+      "group": 0,
+      "center": [
+        3.1802854936120206,
+        -1.4808946221876087,
+        1.2804342265711064
+      ],
+      "radius": 0.051750055564715264,
+      "radiance": [
+        171.37131151028996,
+        153.21289862253852,
+        144.13883181394726
+      ],
+      "views": 30,
+      "ray_error": 0.008439845763900795,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 2,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 2,
+      "label": "客厅筒灯 03",
+      "group": 0,
+      "center": [
+        0.19828964548925535,
+        -1.3713109527617642,
+        1.3059933839784708
+      ],
+      "radius": 0.0594327472576767,
+      "radiance": [
+        129.9296144168863,
+        116.16234167948592,
+        109.2826020588754
+      ],
+      "views": 27,
+      "ray_error": 0.009135932658765675,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 3,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 3,
+      "label": "客厅筒灯 04",
+      "group": 0,
+      "center": [
+        5.116747834982646,
+        0.8089859780523732,
+        1.2767479749121198
+      ],
+      "radius": 0.06187155959437592,
+      "radiance": [
+        119.8885298073127,
+        107.18520504682056,
+        100.83713827025265
+      ],
+      "views": 24,
+      "ray_error": 0.006435724270869463,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 4,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 4,
+      "label": "客厅筒灯 05",
+      "group": 0,
+      "center": [
+        5.025945700266967,
+        -1.54465940317233,
+        1.258091965758752
+      ],
+      "radius": 0.05839435435687772,
+      "radiance": [
+        134.59162583387217,
+        120.3303688499198,
+        113.20377692545907
+      ],
+      "views": 22,
+      "ray_error": 0.004788790875434096,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 5,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 5,
+      "label": "客厅筒灯 06",
+      "group": 0,
+      "center": [
+        -0.6700382233899392,
+        0.3500743434031984,
+        1.3253542990810576
+      ],
+      "radius": 0.06608770420577696,
+      "radiance": [
+        105.0796047593048,
+        93.9454258090164,
+        88.38148779977122
+      ],
+      "views": 21,
+      "ray_error": 0.004867051549571459,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 6,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 6,
+      "label": "客厅筒灯 07",
+      "group": 0,
+      "center": [
+        -0.6423835693148122,
+        1.171665650502846,
+        1.330158178678859
+      ],
+      "radius": 0.05793465886448622,
+      "radiance": [
+        136.7359943418317,
+        122.24752121296066,
+        115.00738552827555
+      ],
+      "views": 20,
+      "ray_error": 0.005295744362564711,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 7,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 7,
+      "label": "客厅筒灯 08",
+      "group": 0,
+      "center": [
+        -0.7204598262933004,
+        -1.346762315352812,
+        1.3150848422534769
+      ],
+      "radius": 0.06077850751753389,
+      "radiance": [
+        124.2395010794422,
+        111.0751497204734,
+        104.49670013561851
+      ],
+      "views": 20,
+      "ray_error": 0.005990388564940898,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 8,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 8,
+      "label": "客厅筒灯 09",
+      "group": 0,
+      "center": [
+        3.2555262999996972,
+        0.8813396290781141,
+        1.287480987244906
+      ],
+      "radius": 0.06344570979543457,
+      "radiance": [
+        114.01322765663339,
+        101.93244678258354,
+        95.89547574173756
+      ],
+      "views": 20,
+      "ray_error": 0.005825305848293155,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 9,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 9,
+      "label": "客厅筒灯 10",
+      "group": 0,
+      "center": [
+        0.8754203998064711,
+        1.1157130843899634,
+        1.297637754680928
+      ],
+      "radius": 0.06524528194683211,
+      "radiance": [
+        107.81061833328941,
+        96.38706263935924,
+        90.67851816473134
+      ],
+      "views": 19,
+      "ray_error": 0.006170074686491397,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 10,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 10,
+      "label": "其它灯具 01",
+      "group": 1,
+      "center": [
+        -0.18912313132311134,
+        3.8369310312118,
+        1.0041230824535883
+      ],
+      "radius": 0.0967421416498986,
+      "radiance": [
+        164.9670129024613,
+        141.12786580964053,
+        122.3646864791275
+      ],
+      "views": 19,
+      "ray_error": 0.014899426091453586,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 11,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 11,
+      "label": "其它灯具 02",
+      "group": 1,
+      "center": [
+        1.8486645860346496,
+        3.29414865792757,
+        1.3310862075317815
+      ],
+      "radius": 0.06434115507745625,
+      "radiance": [
+        110.86183294549286,
+        99.11497217646438,
+        93.24486667394633
+      ],
+      "views": 17,
+      "ray_error": 0.005077781917068214,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 12,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 12,
+      "label": "其它灯具 03",
+      "group": 1,
+      "center": [
+        3.490060843344431,
+        5.655466800275069,
+        1.3093107972714728
+      ],
+      "radius": 0.05194505906284193,
+      "radiance": [
+        170.08705927659267,
+        152.06472507147473,
+        143.05865908790457
+      ],
+      "views": 14,
+      "ray_error": 0.016610794092907184,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 13,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 13,
+      "label": "其它灯具 04",
+      "group": 1,
+      "center": [
+        5.317244564600869,
+        7.520314353809452,
+        1.2837696660613092
+      ],
+      "radius": 0.063152342714941,
+      "radiance": [
+        115.07495918126386,
+        102.88167780038896,
+        96.78848834875777
+      ],
+      "views": 13,
+      "ray_error": 0.009738554974557214,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 14,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 14,
+      "label": "其它灯具 05",
+      "group": 1,
+      "center": [
+        5.269873782533136,
+        5.588709583314067,
+        1.2778135636028851
+      ],
+      "radius": 0.05829777234316025,
+      "radiance": [
+        135.03795157050644,
+        120.72940214923295,
+        113.57917739196655
+      ],
+      "views": 13,
+      "ray_error": 0.008185213761166698,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 15,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 15,
+      "label": "其它灯具 06",
+      "group": 1,
+      "center": [
+        1.9255672311768255,
+        5.441109176177112,
+        1.3296704037904643
+      ],
+      "radius": 0.06454986658006676,
+      "radiance": [
+        110.14608450934692,
+        98.47506406337345,
+        92.64285725621167
+      ],
+      "views": 12,
+      "ray_error": 0.010284716499965244,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 16,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 16,
+      "label": "其它灯具 07",
+      "group": 1,
+      "center": [
+        1.9983953226666533,
+        7.55352337883041,
+        1.3290771688776284
+      ],
+      "radius": 0.06292292008262773,
+      "radiance": [
+        115.91563631007642,
+        103.63327722841406,
+        97.4955741393247
+      ],
+      "views": 11,
+      "ray_error": 0.011461968005565875,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 17,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 17,
+      "label": "其它灯具 08",
+      "group": 1,
+      "center": [
+        5.3025777612274645,
+        9.346804640145384,
+        1.2808616338076066
+      ],
+      "radius": 0.05868333287231156,
+      "radiance": [
+        133.2693313471769,
+        119.14818398272268,
+        112.09160721078173
+      ],
+      "views": 9,
+      "ray_error": 0.020100359476097392,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 18,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 18,
+      "label": "其它灯具 09",
+      "group": 1,
+      "center": [
+        2.8920180884973488,
+        9.884774642928177,
+        1.2644299475814922
+      ],
+      "radius": 0.06809413552084614,
+      "radiance": [
+        98.97837965469735,
+        88.49068326671298,
+        83.24980355541483
+      ],
+      "views": 9,
+      "ray_error": 0.011244629618000802,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 19,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 19,
+      "label": "其它灯具 10",
+      "group": 1,
+      "center": [
+        4.4002058428952795,
+        6.581691120193081,
+        0.9366775384076527
+      ],
+      "radius": 0.07879639421079944,
+      "radiance": [
+        248.66566134462155,
+        212.73134227422062,
+        184.44836427116715
+      ],
+      "views": 8,
+      "ray_error": 0.013695911627937533,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 20,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 20,
+      "label": "其它灯具 11",
+      "group": 1,
+      "center": [
+        3.552190419962272,
+        7.588066515630468,
+        1.3076946240769873
+      ],
+      "radius": 0.06632665915528714,
+      "radiance": [
+        104.32382838321536,
+        93.26973109517773,
+        87.74581125039984
+      ],
+      "views": 8,
+      "ray_error": 0.012528818580207272,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 21,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 21,
+      "label": "其它灯具 12",
+      "group": 1,
+      "center": [
+        -0.07308643498435788,
+        6.530220787189412,
+        1.347632531694947
+      ],
+      "radius": 0.06831463009874535,
+      "radiance": [
+        98.34047893679252,
+        87.92037416910344,
+        82.71327113653001
+      ],
+      "views": 7,
+      "ray_error": 0.011933880993800775,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 22,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 22,
+      "label": "其它灯具 14",
+      "group": 1,
+      "center": [
+        -0.020476953557617757,
+        9.276795877716479,
+        1.0121848534500448
+      ],
+      "radius": 0.08328536891368725,
+      "radiance": [
+        222.58253172127638,
+        190.41744840772148,
+        165.10113889198072
+      ],
+      "views": 5,
+      "ray_error": 0.003829078842841065,
+      "evidence": "multiview photographic triangulation",
+      "source_id": 24,
+      "type": "disk",
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 23,
+      "label": "厨房吊灯 01",
+      "group": 2,
+      "center": [
+        0.061,
+        -0.32,
+        0.669
+      ],
+      "radius": 0.04,
+      "radii": [
+        0.065,
+        0.065,
+        0.165
+      ],
+      "radiance": [
+        45.0,
+        40.5,
+        36.0
+      ],
+      "views": null,
+      "ray_error": null,
+      "evidence": "reviewed native GS projection; pendant_candidates.json components 28 and 19",
+      "source_id": 25,
+      "type": "cylinder",
+      "height": 0.26,
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    },
+    {
+      "id": 24,
+      "label": "厨房吊灯 02",
+      "group": 2,
+      "center": [
+        -0.527,
+        -0.297,
+        0.669
+      ],
+      "radius": 0.04,
+      "radii": [
+        0.065,
+        0.065,
+        0.165
+      ],
+      "radiance": [
+        45.0,
+        40.5,
+        36.0
+      ],
+      "views": null,
+      "ray_error": null,
+      "evidence": "reviewed native GS projection; pendant_candidates.json components 28 and 19",
+      "source_id": 26,
+      "type": "cylinder",
+      "height": 0.26,
+      "power_calibration": "estimated relative radiance; not measured lumens"
+    }
+  ],
+  "count": 25,
+  "source": "verified photographic fixtures + reviewed pendant GS components"
+}
